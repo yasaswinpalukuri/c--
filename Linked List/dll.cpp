@@ -236,8 +236,7 @@ int main(){
             case 9:{
                 reverseUStack();
                 break;
-            }
-            
+            }   
             case 10: cout<<"Thank you :)"; exit(0);
             default: cout<<"Invalid Input!!!!\n"; break;
         }
