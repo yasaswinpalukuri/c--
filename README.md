@@ -1,4 +1,4 @@
-# c--
+# C++ codes
 
 It contains codes for few:
   1. Algorithms
