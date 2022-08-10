@@ -7,3 +7,4 @@ It contains codes for few:
   4. Sorts
   5. Tree
   6. Trie DS
+  7. MST
