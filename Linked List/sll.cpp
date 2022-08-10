@@ -14,7 +14,6 @@ class SLLNode{
 
 SLLNode *h = nullptr;
 SLLNode *l = nullptr;
-SLLNode *rl = nullptr;
 
 SLLNode* insertNode(int x){
     if(h == nullptr){
