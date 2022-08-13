@@ -20,7 +20,6 @@ void insertWord(Trie* r,string s){
         t = t->next[i]; 
     }
     t->isEOW = true;
-    
 }
 
 bool search(Trie* r,string s){
