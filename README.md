@@ -1,4 +1,4 @@
-Algos:
+#Algos:
     Searches:
         Binary Search
     Sorts:
