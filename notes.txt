@@ -1,20 +1,19 @@
 Algos:
+    Searches:
+        Binary Search
+    Sorts:
+        Bubble Sort
+        Merge Sort
+        Insertion Sort
+        Quick Sort
+        Radix Sort
+        Comb Sort
+        Bucket Sort
+        Shell Sort
+        Counting Sort
+        Intro Sort
 
-Binary Search
-
-
-Bubble Sort
-Merge Sort
-Insertion Sort
-Quick Sort
-Radix Sort
-Comb Sort
-Bucket Sort
-Shell Sort
-Counting Sort
-Intro Sort
-
-DFS,BFS
-
-
-Trie Data Structure
+DS:
+    Trie Data Structure
+    Tree:
+        DFS,BFS
