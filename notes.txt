@@ -16,4 +16,5 @@ Algos:
 DS:
     Trie Data Structure
     Tree:
-        DFS,BFS
+        DFS
+        BFS
