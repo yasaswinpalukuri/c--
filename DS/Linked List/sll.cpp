@@ -138,7 +138,7 @@ void reverse(){
         s.push(temp);
         temp = temp->next;
     }
-    rl = temp; h =temp;
+    l = temp; h =temp;
     while (! s.empty()) {
         // Store the top value of stack in list
         temp->next =  s.top();
@@ -169,7 +169,7 @@ void reverseU3P(){
         prev = current;
         current = next;
     }
-    rl = prev;
+    l = prev;
     h = prev;
 }
 
