@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch meetingParadox",
+            "request": "launch",
+            "mainClass": "meetingParadox",
+            "projectName": "c++_7751b3ea"
+        },
+        {
+            "type": "java",
             "name": "Launch distinctPasswords",
             "request": "launch",
             "mainClass": "CoPart.distinctPasswords",
