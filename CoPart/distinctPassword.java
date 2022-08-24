@@ -2,7 +2,7 @@ package CoPart;
 
 import java.util.*;
 
-public class distinctPasswords {
+public class distinctPassword{
     static Scanner scan = new Scanner(System.in);
     
     private static String customHash(String str){
