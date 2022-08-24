@@ -12,6 +12,9 @@ Algos:
         Shell Sort
         Counting Sort
         Intro Sort
+    
+    Sieve
+    
 
 DS:
     Trie Data Structure
