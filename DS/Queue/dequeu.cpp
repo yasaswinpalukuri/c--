@@ -23,6 +23,15 @@ deque::emplace_front() and deque::emplace_back()=>emplace_front() function is us
 deque::emplace()=>emplace() function is used to insert a new element into the deque container. The new element is added at the position given as the parameter to the function.
 */
 
+/*
+Applied as both stack and queue, as it supports both operations.
+Storing a web browser’s history.
+Storing a software application’s list of undo operations.
+Job scheduling algorithm
+Using for finding max subarray in an array, in O(N);
+Used maximum in a sliding window algorithm.
+*/
+
 void showdq(deque<int> g)
 {
     deque<int>::iterator it;
