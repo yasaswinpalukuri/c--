@@ -69,8 +69,8 @@ int main()
 }
 
 /*
-vector<int> bfsOfGraph(int V, vector<int> adj[])
-{
+
+vector<int> bfsOfGraph(int V, vector<int> adj[]){
     vector<int> bfs_traversal;
     vector<bool> vis(V, false);
     for (int i = 0; i < V; ++i) {
@@ -93,4 +93,5 @@ vector<int> bfsOfGraph(int V, vector<int> adj[])
     }
     return bfs_traversal;
 }
+
 */
