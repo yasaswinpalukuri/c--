@@ -10,9 +10,9 @@ def removeDuplicates(combos):
 
 def coin_change(c):
   if c == 0:
-    return [[]]     # the only combo possible is no coins
+    return [[]]
   if c < 0:
-    return []      # no combos possible
+    return []
   else:
     all_combos = []
     for i in coins:
