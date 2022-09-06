@@ -1,7 +1,6 @@
 coins = [1, 5, 8]
 change = 12
 
-
 def removeDuplicates(combos):
   filtered = set()
   for combo in combos:
