@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 #include<fstream>
 using namespace std;
+
 class Trie
 {
 public:
