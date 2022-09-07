@@ -12,8 +12,7 @@ void SieveOfEratosthenes(int n){
 	for (int p = 2; p <= n; p++) if (prime[p]) cout << p << " ";
 }
 
-int main()
-{
+int main(){
 	int n = 30;
 	cout << "Following are the prime numbers smaller "
 		<< " than or equal to " << n << endl;
