@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch milestone4",
+            "request": "launch",
+            "mainClass": "milestone4",
+            "projectName": "c++_7751b3ea"
+        },
+        {
+            "type": "java",
             "name": "Launch matrixMultiplication",
             "request": "launch",
             "mainClass": "matrixMultiplication",
