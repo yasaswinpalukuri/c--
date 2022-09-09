@@ -275,25 +275,22 @@ public class milestone4{
         for (Map.Entry<Integer, Integer> aa : list) {
             temp.put(aa.getKey(), aa.getValue());
         }
-        String str[] =new String[2];
-    
-        // String s = "";
-
+        // String str[] =new String[2];
+        String s = "";
         int i = 0;
+        // for(Map.Entry<Integer,Integer> e : temp.entrySet()){
+        //     if(i < 2) str[i++] = Integer.toString(e.getKey());
+        //     else break;
+        // }
         for(Map.Entry<Integer,Integer> e : temp.entrySet()){
-            if(i < 2) str[i++] = Integer.toString(e.getKey());
+            if(i < 2) s += Integer.toString(e.getKey());
             else break;
+            i++;
         }
 
-        // for(Map.Entry<Integer,Integer> e : temp.entrySet()){
-        //     if(i < 2) s += Integer.toString(e.getKey());
-        //     else break;
-        //     i++;
-        // }
-
-        // return Integer.parseInt(s);
+        return Integer.parseInt(s);
         
-        return Integer.parseInt(str[1] + str[0]);
+        // return Integer.parseInt(str[1] + str[0]);
     }
 
     public static int find3Password(int[] input1,int input2){
