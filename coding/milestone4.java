@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.Map.Entry;
 
 public class milestone4{
     static Scanner scan =  new Scanner(System.in);
