@@ -120,7 +120,33 @@ public class milestone4{
         String[] str = input2.split(" ");
         for(String s:str){
             int sum = 0;
-            int i = 0;
+            int i = 1;
+            if(s.charAt(0) >= 'a' && s.charAt(0)<='z'){
+                int t = input1[s.charAt(0) - 'a'] + (int)(s.charAt(0) - 'a' + 1);
+                // System.out.print("sum:" + sum + " " + s.charAt(i) + " " + input1[s.charAt(i) - 'a'] + " " + t + " ");
+                if(input1[s.charAt(0) - 'a'] < 0){
+                    // System.out.print("Adding t,t=" + t+ ",");
+                    sum += t;
+                }
+                else{
+                    // System.out.print("Adding input1,");
+                    sum += input1[0];
+                }
+                // System.out.print("sum:"+sum);
+            }
+            else if(s.charAt(0) >= 'A' && s.charAt(0) <= 'Z'){
+                int t = input1[s.charAt(0) - 'A'] + (int)(s.charAt(0) - 'A' + 1);
+                // System.out.print("sum:" + sum + " " + s.charAt(i) + " " + input1[s.charAt(i) - 'A'] + " " + t + " ");
+                if(input1[s.charAt(0) - 'A'] < 0){
+                    // System.out.print("Adding t,t=" + t + ",");
+                    sum += t;
+                }
+                else{
+                    // System.out.print("Adding input1,");
+                    sum += input1[0];
+                }
+                // System.out.println("sum:"+sum);
+            }
             for(;i < s.length()-1 ;i++){
                 if(s.charAt(i) >= 'a' && s.charAt(i) <= 'z'){
                     // System.out.print("sum:" + sum + " " + s.charAt(i) + " " + input1[s.charAt(i) - 'a'] + " ");
