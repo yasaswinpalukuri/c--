@@ -15,7 +15,8 @@ public class milestone4{
         // System.out.println("findPin:" + findPin(8530,5620,7532));
         // System.out.println("totalHillWeight : " + totalHillWeight(5,10,2));
         // System.out.println("find2Password : " + find2Password(new int[]{12,2,36,10,217,36,5,36,15,10},10));
-        System.out.println("find3Password : " + find3Password(new int[]{12,2,36,10,217,36,5,36,15,10},10));
+        // System.out.println("find3Password : " + find3Password(new int[]{12,2,36,10,217,36,5,36,15,10},10));
+        System.out.println("findDashes : " + findDashes(new String[]{".-.-.--",".-.-.-.-.-","...---.-"}));
     }
 
     public static boolean isPrime(int n){
@@ -318,5 +319,25 @@ public class milestone4{
         s[2] = Integer.toString(al.get(al.size()-1));
 
         return Integer.parseInt(s[2]+s[1]+s[0]);
+    }
+
+    public static boolean checkDashes(String s){
+        Stack<Character> st = new Stack<Character>();
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i) == '.') st.push(s.charAt(i));
+            else if(s.charAt(i) == '-'){
+                if(st.isEmpty()) return false;
+                else st.pop();
+            }
+        }
+        return true;
+    }
+
+    public static int findDashes(String[] str){
+        int ans = 0;
+        for(int i=0;i<str.length;i++){
+            if(checkDashes(str[i])) ans++;
+        }
+        return ans;
     }
 }
