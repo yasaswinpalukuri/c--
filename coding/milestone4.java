@@ -5,16 +5,16 @@ public class milestone4{
     public static void main(String args[]){
         // System.out.print("Enter n:"); int n = scan.nextInt();
         // int a[] = new int[n];
-        // System.out.println("Enter Array:"); for(int i=0;i<n;i++) a[i] = scan.nextInt();
+        // System.out.print("Enter Array:"); for(int i=0;i<n;i++) a[i] = scan.nextInt();
         // System.out.println("PositionBasedSum:"+PositionBasedSum(a,n));
         // System.out.println("sumOfPrimeIndexValues:"+sumOfPrimeIndexValues(a,n));
         // System.out.println("stringDecoder:"+stringDecoder("0010001010000"));
         // System.out.println("findSumOfPrimes:"+findSumOfPrimes(a,n));
-        int k[] = {15,16,1,-2,-13,61,11,4,3,19,-4,17,-3,90,-65,67,12,0,13,2,3,43,21,-17,2,42};
-        System.out.println("findStringWeight:"+findStringWeight(k,"Wipro Limited"));
-        System.out.println("findPin:" + findPin(8530,5620,7532));
-        System.out.println("totalHillWeight : " + totalHillWeight(5,10,2));
-        System.out.println("find2Password : " + find2Password(new int[]{12,2,36,10,217,36,5,36,15,10},10));
+        // int k[] = {15,16,1,-2,-13,61,11,4,3,19,-4,17,-3,90,-65,67,12,0,13,2,3,43,21,-17,2,42};
+        // System.out.println("findStringWeight:"+findStringWeight(k,"Wipro Limited"));
+        // System.out.println("findPin:" + findPin(8530,5620,7532));
+        // System.out.println("totalHillWeight : " + totalHillWeight(5,10,2));
+        // System.out.println("find2Password : " + find2Password(new int[]{12,2,36,10,217,36,5,36,15,10},10));
         System.out.println("find3Password : " + find3Password(new int[]{12,2,36,10,217,36,5,36,15,10},10));
     }
 
@@ -302,17 +302,20 @@ public class milestone4{
 
         Collections.sort(list,(i1,i2) -> i2.getValue().compareTo(i1.getValue()));
 
-        HashMap<Integer, Integer> temp
-            = new LinkedHashMap<Integer, Integer>();
-        for (Map.Entry<Integer, Integer> aa : list) {
-            temp.put(aa.getKey(), aa.getValue());
+        HashMap<Integer, Integer> temp = new HashMap<Integer, Integer>();
+
+        for (Map.Entry<Integer, Integer> aa : list){
+            if(temp.containsKey(aa.getKey())){
+                if(temp.get(aa.getKey()) < aa.getValue()) temp.put(aa.getKey(),aa.getValue());
+            }
+            else temp.put(aa.getKey(), aa.getValue());
         }
+
         String s[] =new String[3];
-        int i = 0;
-        for(Map.Entry<Integer,Integer> m:temp.entrySet()){
-            if(i < 3) s[i++] = Integer.toString(m.getKey());
-            else break;
-        }
+        List<Integer> al = new ArrayList<>(temp.values());
+        s[0] = Integer.toString(al.get(0));
+        s[1] = Integer.toString(al.get(1));
+        s[2] = Integer.toString(al.get(al.size()-1));
 
         return Integer.parseInt(s[2]+s[1]+s[0]);
     }
