@@ -336,7 +336,7 @@ public class milestone4{
     public static int findDashes(String[] str){
         int ans = 0;
         for(int i=0;i<str.length;i++){
-            // System.out.println(str[i]+":"+checkDashes(str[i]));
+            // System.out.println(str[i]+" : "+checkDashes(str[i]));
             if(checkDashes(str[i])) ans++;
         }
         return ans;
