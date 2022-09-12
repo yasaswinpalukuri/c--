@@ -24,13 +24,13 @@ public class accenture {
     }
 
     public static int sumDigits(int n){
-        System.out.print(n);
+        // System.out.print(n);
         int sum = 0;
         while(n>0){
             sum += n%10;
             n /= 10;
         }
-        System.out.println(",digit sum is:"+ sum);
+        // System.out.println(",digit sum is:"+ sum);
         return sum;
     }
 
@@ -40,7 +40,7 @@ public class accenture {
             f1 += sumDigits(arr[i]);
             f2 += arr[i];
         }
-        System.out.println("f1:"+f1+",f2:"+f2);
+        // System.out.println("f1:"+f1+",f2:"+f2);
         return (f1%10)-(f2%10);
     }
 }
