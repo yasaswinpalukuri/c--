@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch accenture",
+            "request": "launch",
+            "mainClass": "accenture",
+            "projectName": "c++_7751b3ea"
+        },
+        {
+            "type": "java",
             "name": "Launch sumOfDigits",
             "request": "launch",
             "mainClass": "sumOfDigits",

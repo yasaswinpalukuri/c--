@@ -1,14 +1,25 @@
 import java.util.*;
 
-public class sumOfDigits {
+public class accenture {
     static Scanner scan = new Scanner(System.in);
     public static void main(String args[]){
+        String s = scan.next();
+        System.out.println(sumValues(s));
+
+        // DifferenceSumOfDigits(arr,n);
         System.out.print("Enter n:");
         int n = scan.nextInt();
         System.out.print("Enter array:");
         int arr[] = new int[n];
         for(int i=0;i<n;i++) arr[i] = scan.nextInt();
         System.out.println(DifferenceSumOfDigits(arr,n));
+    }
+
+    static int val[] = {1,10,100,1000,10000,100000,1000000};
+    public static int sumValues(String s){
+        int sum = 0;
+        for(int i=0;i<s.length();i++) sum += val[s.charAt(i)-'A'];
+        return sum;
     }
 
     public static int sumDigits(int n){
