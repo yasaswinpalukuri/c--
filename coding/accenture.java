@@ -3,6 +3,7 @@ import java.util.*;
 public class accenture {
     static Scanner scan = new Scanner(System.in);
     public static void main(String args[]){
+        //sumValues(s);
         String s = scan.next();
         System.out.println(sumValues(s));
 
