@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch setBits",
+            "request": "launch",
+            "mainClass": "setBits",
+            "projectName": "c++_7751b3ea"
+        },
+        {
+            "type": "java",
             "name": "Launch Q724",
             "request": "launch",
             "mainClass": "leetcode.Q724",
