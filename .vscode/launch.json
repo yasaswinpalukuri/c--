@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch milestone4",
+            "request": "launch",
+            "mainClass": "milestone4",
+            "projectName": "c--_8ccdbf17"
+        },
+        {
+            "type": "java",
             "name": "Launch setBits",
             "request": "launch",
             "mainClass": "setBits",
