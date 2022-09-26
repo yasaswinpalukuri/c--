@@ -35,7 +35,7 @@ Node* createTree(int parent[], int val[],int n){
             root = ref[i];
         }
         else{
-            ans[i] = isCoPrime(val[parent[i]],ref->data);
+            ans[i] = isCoPrime(val[parent[i]],ref[parent[i]]->data);
             if (ref[parent[i]]->left == NULL) ref[parent[i]]->left = ref[i];
             else ref[parent[i]]->right = ref[i];
         }
