@@ -6,10 +6,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch capgemini",
+            "name": "Launch milestone4",
             "request": "launch",
-            "mainClass": "capgemini",
-            "projectName": "c++_7751b3ea"
+            "mainClass": "milestone4",
+            "projectName": "c--_8ccdbf17"
         },
         {
             "type": "java",
