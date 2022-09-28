@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch capgemini",
+            "request": "launch",
+            "mainClass": "capgemini",
+            "projectName": "c++_7751b3ea"
+        },
+        {
+            "type": "java",
             "name": "Launch setBits",
             "request": "launch",
             "mainClass": "setBits",
