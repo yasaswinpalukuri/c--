@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch barclays",
+            "request": "launch",
+            "mainClass": "barclays",
+            "projectName": "c++_7751b3ea"
+        },
+        {
+            "type": "java",
             "name": "Launch milestone4",
             "request": "launch",
             "mainClass": "milestone4",
