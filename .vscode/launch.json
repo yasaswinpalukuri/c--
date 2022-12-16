@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Edo",
+            "request": "launch",
+            "mainClass": "Edo",
+            "projectName": "c++_7751b3ea"
+        },
+        {
+            "type": "java",
             "name": "Launch wiley",
             "request": "launch",
             "mainClass": "wiley",
