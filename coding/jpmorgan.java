@@ -23,5 +23,23 @@ public class jpmorgan{
         int d=scan.nextInt();
         // if(isPossible(a,b,c,d)) System.out.println("Yes");
         // else System.out.println("No");
-     }
+    }
+
+
+    public static boolean isPrime(int n){
+        if(n < 2) return false;
+        for(int i=2;i<=n/2;i++) if(n%i == 0) return false;
+        return true;
+    }
+    public static void largestPrimeNumber(List<List<Integer>> matrix) {
+        int ans = 0, n = matrix.size();
+        for(int i=0;i<n;i++){
+            if(isPrime(matrix.get(i).get(i))) ans = Math.max(ans,matrix.get(i).get(i));
+            if(isPrime(matrix.get(i).get(n-i-1))) ans = Math.max(ans,matrix.get(i).get(n-i-1));
+        }
+        if(ans == 0) System.out.println(ans);
+        else System.out.println("No prime number available");
+    }
+
+
 }
