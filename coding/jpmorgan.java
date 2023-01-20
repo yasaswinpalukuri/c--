@@ -21,6 +21,7 @@ public class jpmorgan{
         int b=scan.nextInt();
         int c=scan.nextInt();
         int d=scan.nextInt();
+        System.out.println(isPossible(a,b,c,d));
         // if(isPossible(a,b,c,d)) System.out.println("Yes");
         // else System.out.println("No");
     }
