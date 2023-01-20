@@ -1,39 +1,8 @@
 import java.util.*;
 
 public class MyClass {
-        static Scanner scan = new Scanner(System.in);
-    public static void main(String args[]) {
-        int n = scan.nextInt();
-        List<Integer> al = new ArrayList<Integer>();
-        int k;
-        for(int i=0;i<n;i++){
-            k = scan.nextInt();
-            al.add(k);
-        }
-        k = scan.nextInt();
-        System.out.println("count subarrays:"+countSubarrays(al,k));
-        int m = scan.nextInt();
-        List<String> sl = new ArrayList<>();
-        for(int i=0;i<m;i++){
-            sl.add(scan.next());
-        }
-        m = scan.nextInt();
-        List<Integer> rep = new ArrayList<>();
-        for(int i=0;i<m;i++){
-            rep.add(scan.nextInt());
-        }
-        System.out.println("balancedOrNot:"+balancedOrNot(sl,rep));
-        
-        String s = scan.next();
-        String[] str= s.split(" ");
-        StringBuffer sb = new StringBuffer();
-        for(int i=0;i<str.length;i++){
-            sb.append(str[i].charAt(0));
-            sb.append(".");
-        }
-        sb.append(str[str.length-1]);
-        System.out.println(sb);
-    }
+    static Scanner scan = new Scanner(System.in);
+    
     
     // static long countSubarrays(List<Integer> num,int k){
     //     int s = 0, e = 0;
@@ -123,5 +92,37 @@ public class MyClass {
         }
         
         return (r / 2 + n % 2);
+    }
+    public static void main(String args[]) {
+        int n = scan.nextInt();
+        List<Integer> al = new ArrayList<Integer>();
+        int k;
+        for(int i=0;i<n;i++){
+            k = scan.nextInt();
+            al.add(k);
+        }
+        k = scan.nextInt();
+        System.out.println("count subarrays:"+countSubarrays(al,k));
+        int m = scan.nextInt();
+        List<String> sl = new ArrayList<>();
+        for(int i=0;i<m;i++){
+            sl.add(scan.next());
+        }
+        m = scan.nextInt();
+        List<Integer> rep = new ArrayList<>();
+        for(int i=0;i<m;i++){
+            rep.add(scan.nextInt());
+        }
+        System.out.println("balancedOrNot:"+balancedOrNot(sl,rep));
+        
+        String s = scan.next();
+        String[] str= s.split(" ");
+        StringBuffer sb = new StringBuffer();
+        for(int i=0;i<str.length;i++){
+            sb.append(str[i].charAt(0));
+            sb.append(".");
+        }
+        sb.append(str[str.length-1]);
+        System.out.println(sb);
     }
 }
