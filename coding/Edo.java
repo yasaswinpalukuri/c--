@@ -6,6 +6,8 @@ public class Edo {
         System.out.println(reverse("is3 sentence1 This4 a2"));
         System.out.println(reverse("Me4 Myself3 and2 i1"));
         System.out.println(countStrings("abcdee"));
+        System.out.println(NoOfSum(4,new int[]{1,2,3,5}));
+        System.out.println(NoOfSum(3,new int[]{1,2,3,5}));
     }   
 
     public static String reverse(String s){
@@ -35,5 +37,26 @@ public class Edo {
             ch.clear();
         }
         return ans;
+    }
+
+    // public static void main(String[] args){
+    //     Scanner scan = new Scanner(System.in);
+    //     int t = scan.nextInt();
+    //     int a[] = new int[]{1,2,3,5};
+    //     System.out.println("The total number of ways to get crakers "+NoOfSum(t, a));
+    // }
+
+    //No of ways to get a sum of n with given set of numbers
+    static int NoOfSum(int target, int[] a){
+        int n = a.length;
+        int[][] dp = new int[n+1][target+1];
+        for(int i=0;i<=n;i++) dp[i][0] = 1;
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=target;j++){
+                if(j>=a[i-1]) dp[i][j] = dp[i-1][j] + dp[i][j-a[i-1]];
+                else dp[i][j] = dp[i-1][j];
+            }
+        }
+        return dp[n][target];
     }
 }
