@@ -256,7 +256,7 @@ public class milestone4{
         int ans = 0;
         int[] a = new int[input4];
         for(int i=0;i<input4;i++) a[i] = input1[i] + input2[i] + input3[i];
-
+        // NOT COMPLETED NEED TO ANSWER THE QUESTION
         return ans;
     }
 
