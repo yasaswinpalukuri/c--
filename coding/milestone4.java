@@ -108,7 +108,7 @@ public class milestone4{
         // for(int i=0;i<10;i++) System.out.print(a[i] + " ");
         // System.out.println("max = " + ma + " min = " + mi);
 
-        for(int i=9;i>=0;i--) if(a[i] >=1) {pin = pin*10 + i; break;}
+        for(int i=9;i>=0;i--) if(a[i] >=1) {pin = pin*10 + i;break;}
         for(int i=0;i<10;i++) if(a[i] >= 1) {pin = pin*10 + i;break;}
         for(int i=9;i>=0;i--) if(a[i] == ma) {pin = pin*10 + i;break;}
         for(int i=0;i<10;i++) if(a[i] == mi) {pin = pin*10 + i;break;}
