@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "milestone4",
+            "request": "launch",
+            "mainClass": "milestone4",
+            "projectName": "c--_17aea424"
+        },
+        {
+            "type": "java",
             "name": "round828",
             "request": "launch",
             "mainClass": "round828",
