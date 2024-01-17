@@ -1,6 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// This is the code for Trie DataStructure
+
+// Structure of a Trie Node
 class Trie
 {
 public:
@@ -12,6 +15,7 @@ public:
     }
 };
 
+// Function to insert a word
 void insertWord(Trie* r,string s){
     Trie* t = r;
     for(char c:s){
@@ -22,6 +26,7 @@ void insertWord(Trie* r,string s){
     t->isEOW = true;
 }
 
+// Function to search a word
 bool search(Trie* r,string s){
     if(r == nullptr) return false;
     Trie* t = r;
@@ -33,11 +38,15 @@ bool search(Trie* r,string s){
     return t->isEOW;
 }
 
+
+// Function to check if the node is empty
 bool isEmpty(Trie* r){
     for(int i=0;i<26;i++) if(r->next[i]) return false;
     return true;
 }
 
+
+// Function to check and delete a word
 Trie* deleteWord(Trie* r, string s, int d = 0){
     if (!r) return nullptr;
     if (d == s.size()) {
@@ -57,6 +66,7 @@ Trie* deleteWord(Trie* r, string s, int d = 0){
     return r;
 }
 
+// Function to display all the words
 void display(Trie* r, char str[], int l){
     if (r->isEOW){
         str[l] = '\0';
@@ -70,7 +80,7 @@ void display(Trie* r, char str[], int l){
     }
 }
 
-
+// Main funtion or the call by menu
 int main(){
     Trie* r = new Trie();
     do{
