@@ -12,5 +12,4 @@ int main(){
         insertWord(r,read);
     }
     MyReadFile.close();
-
 }
