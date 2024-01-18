@@ -19,6 +19,7 @@ def decode(message_file):
         # If the pyramid is complete, decode the message
         if len(pyramid) == pyramid[-1][0]:
             decoded_words.append(pyramid[-1][1])
+            print("decodeed:"+decoded_message)
             pyramid = []
 
     # Combine the decoded words into a string
@@ -29,3 +30,17 @@ def decode(message_file):
 message_file = 'A:\my repo\c--\coding\coding_qual_input.txt'
 result = decode(message_file)
 print(result)
+
+
+
+"""
+          1
+      /        \
+     2           3
+   /   \       /   \
+  4     5     6     7
+ / \   / \   / \   / \
+8  9  10 11 12 13 14 15
+    
+1,3,7,15
+"""
