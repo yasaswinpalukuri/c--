@@ -81,6 +81,7 @@ void display(Trie* r, char str[], int l){
 }
 
 // Main funtion or the call by menu
+
 int main(){
     Trie* r = new Trie();
     do{
