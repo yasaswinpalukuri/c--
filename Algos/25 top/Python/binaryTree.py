@@ -269,7 +269,7 @@ def main():
     '''
 
     while True:
-        print("\n\nSBinary Tree Operations:")
+        print("\n\nBinary Tree Operations:")
         print("1. Insert")
         print("2. Delete")
         print("3. Search")
