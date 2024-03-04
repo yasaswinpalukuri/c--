@@ -49,4 +49,6 @@ def rabinKarp(text, patt):
 # Testing the algorithm
 text = "AABAACAADAABAABA"
 patt = "AABA"
-print(rabinKarp(text, patt)) # Output: [0, 9, 12]
+print("Text is:",text,"\nPattern is:",patt)
+occurences = rabinKarp(text, patt)
+print("There are a total of",len(occurences),"occurences of the pattern in the text at the following positions:",occurences)
