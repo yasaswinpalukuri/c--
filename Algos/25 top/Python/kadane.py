@@ -54,6 +54,8 @@ def maxSubArraySumPrint(a, size):
 
 
 a = [-2, -3, 4, -1, -2, 1, 5, -3]
-
+b = [1,2,3,4,4,6,7,-1,2,-3,4,8,0,0,0,100]
 print("Maximum contiguous sum is", maxSubArraySum(a, len(a)))
 maxSubArraySumPrint(a, len(a))
+print("Maximum contiguous sum is", maxSubArraySum(b, len(b)))
+maxSubArraySumPrint(b, len(b))
