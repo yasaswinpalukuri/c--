@@ -2,6 +2,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "matrixMultiplication",
+            "request": "launch",
+            "mainClass": "matrixMultiplication",
+            "projectName": "c--_17aea424"
+        },
+        {
             "name": "(Windows) Launch",
             "type": "cppvsdbg",
             "request": "launch",
