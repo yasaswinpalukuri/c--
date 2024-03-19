@@ -10,12 +10,50 @@ public class matrixMultiplication {
         int[][] a = new int[n][m]; // Matrix
         int[][] b = new int[m][n]; // Tranpose Matrix
         
+        /*
+        t = 1
+        n = 2
+        m = 3
+
+        Matrix:
+        [1 2 3]
+        [4 5 6]
+
+        Transpose Matrix:
+        [1 4]
+        [2 5]
+        [3 6]
+
+        a(0,0) b(0,0) a[i][j-1] = b[j-1][i] = t {i=0,j=0}
+        a(0,1) b(1,0) a[i][j-1] = b[j-1][i] = t {i=0,j=1}
+        a(0,2) b(2,0) a[i][j-1] = b[j-1][i] = t {i=0,j=2}
+
+        a(1,0) b(0,1) a[i][j-1] = b[j-1][i] = t {i=1,j=0}
+        a(1,1) b(1,1) a[i][j-1] = b[j-1][i] = t {i=1,j=1}
+        a(1,2) b(2,1) a[i][j-1] = b[j-1][i] = t {i=1,j=2}
+
+        for(int i=0;i<n;i++) for(int j=1;j<=m;j++) a[i][j-1] = b[j-1][i] = t++;
+
+        i = 0
+        j = 1
+        a[0][0] = b[0][0] = 1
+        j = 2
+        a[0][1] = b[1][0] = 2
+        j = 3
+        a[0][2] = b[2][0] = 3
+
+        i = 1
+        j = 1
+        a[1][0] = b[0][1] = 4
+        j = 2
+        a[1][1] = b[1][1] = 5
+        j = 3
+        a[1][2] = b[2][1] = 6
+
+        */
         // Creating an matrix and it's transpose with given initial value.
-        for(int i=0;i<n;i++) for(int j=1;j<=m;j++){
-            a[i][j-1] = t;
-            b[j-1][i] = t;
-            t++;
-        }
+        for(int i=0;i<n;i++) for(int j=1;j<=m;j++) a[i][j-1] = b[j-1][i] = t++;
+        
         
         // Matrix filled with values with given initial value.
         System.out.print("Matrix:\n");
@@ -26,8 +64,8 @@ public class matrixMultiplication {
         
         // Tranpose Matrix filled with values with the given initial value.
         System.out.print("Transpose Matrix:\n");
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++) System.out.print(b[i][j] + " ");
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++) System.out.print(b[i][j] + " ");
             System.out.println();
         }
         
