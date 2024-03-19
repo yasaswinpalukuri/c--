@@ -55,14 +55,14 @@ public class matrixMultiplication {
         for(int i=0;i<n;i++) for(int j=1;j<=m;j++) a[i][j-1] = b[j-1][i] = t++;
         
         
-        // Matrix filled with values with given initial value.
+        // Matrix(a[n][m]) filled with values with given initial value.
         System.out.print("Matrix:\n");
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++) System.out.print(a[i][j] + " ");
             System.out.println();
         }
         
-        // Tranpose Matrix filled with values with the given initial value.
+        // Tranpose Matrix(b[m][n]) filled with values with the given initial value.
         System.out.print("Transpose Matrix:\n");
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++) System.out.print(b[i][j] + " ");
