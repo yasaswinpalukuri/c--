@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "jpmorgan",
+            "request": "launch",
+            "mainClass": "jpmorgan",
+            "projectName": "c--_17aea424"
+        },
+        {
+            "type": "java",
             "name": "matrixMultiplication",
             "request": "launch",
             "mainClass": "matrixMultiplication",
