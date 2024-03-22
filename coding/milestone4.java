@@ -3,19 +3,22 @@ import java.util.*;
 public class milestone4{
     static Scanner scan =  new Scanner(System.in);
     public static void main(String args[]){
-        // System.out.print("Enter n:"); int n = scan.nextInt();
-        // int a[] = new int[n];
-        // System.out.print("Enter Array:"); for(int i=0;i<n;i++) a[i] = scan.nextInt();
-        // System.out.println("PositionBasedSum:"+PositionBasedSum(a,n));
-        // System.out.println("sumOfPrimeIndexValues:"+sumOfPrimeIndexValues(a,n));
-        // System.out.println("stringDecoder:"+stringDecoder("0010001010000"));
-        // System.out.println("findSumOfPrimes:"+findSumOfPrimes(a,n));
-        // int k[] = {15,16,1,-2,-13,61,11,4,3,19,-4,17,-3,90,-65,67,12,0,13,2,3,43,21,-17,2,42};
-        // System.out.println("findStringWeight:"+findStringWeight(k,"Wipro Limited"));
-        // System.out.println("findPin:" + findPin(8530,5620,7532));
-        // System.out.println("totalHillWeight : " + totalHillWeight(5,10,2));
-        // System.out.println("find2Password : " + find2Password(new int[]{12,2,36,10,217,36,5,36,15,10},10));
-        // System.out.println("find3Password : " + find3Password(new int[]{12,2,36,10,217,36,5,36,15,10},10));
+
+        System.out.print("Enter n:"); int n = scan.nextInt();
+        int a[] = new int[n];
+
+        System.out.print("Enter Array:"); for(int i=0;i<n;i++) a[i] = scan.nextInt();
+        System.out.println("findRepArray:"+findRepArray(a,n));
+        System.out.println("PositionBasedSum:"+PositionBasedSum(a,n));
+        System.out.println("sumOfPrimeIndexValues:"+sumOfPrimeIndexValues(a,n));
+        System.out.println("stringDecoder:"+stringDecoder("0010001010000"));
+        System.out.println("findSumOfPrimes:"+findSumOfPrimes(a,n));
+        int k[] = {15,16,1,-2,-13,61,11,4,3,19,-4,17,-3,90,-65,67,12,0,13,2,3,43,21,-17,2,42};
+        System.out.println("findStringWeight:"+findStringWeight(k,"Wipro Limited"));
+        System.out.println("findPin:" + findPin(8530,5620,7532));
+        System.out.println("totalHillWeight : " + totalHillWeight(5,10,2));
+        System.out.println("find2Password : " + find2Password(new int[]{12,2,36,10,217,36,5,36,15,10},10));
+        System.out.println("find3Password : " + find3Password(new int[]{12,2,36,10,217,36,5,36,15,10},10));
         System.out.println("findDashes : " + findDashes(new String[]{".-.-.--",".-.-.-.-.-","...---.-"}));
     }
 
