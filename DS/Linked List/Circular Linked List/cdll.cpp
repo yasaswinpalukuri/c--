@@ -3,7 +3,8 @@ using namespace std;
 
 
 //Double Circular Linked List
-public class CDLLNode{
+class CDLLNode{
+    public:
     int d;
     CDLLNode *next,*prev;
     CDLLNode(){}
@@ -46,7 +47,7 @@ CDLLNode* sortedInsert(CDLLNode* h,int x){
     CDLLNode* nn = new CDLLNode(x);
     CDLLNode *p = nullptr, *c = h;
     while(c){
-        if(c.getD() > c) break;
+        if(c->d > x) break;
         p = c;
         c = c -> next;
     }
@@ -104,7 +105,7 @@ CDLLNode* deleteNode(CDLLNode* h, int x){
     return h;
 }
 
-int size(CDLLNode* h){
+int length(CDLLNode* h){
     if(h == NULL) return 0;
     int size = 1;
     CDLLNode* t = h;
@@ -118,8 +119,8 @@ int size(CDLLNode* h){
 
 
 int main(){
-    CDLLNode *h=nullptr;
-    CDLLNode *l=nullptr;
+    CDLLNode* h = nullptr;
+    CDLLNode* l = nullptr;
     do{
         cout<<"Welcome to Circular Double Linked List\n";
         cout<<"1. Insert Node\n";
@@ -156,7 +157,7 @@ int main(){
                 h = deleteNode(h,x);
                 break;
             case 6:
-                cout<<"Size of the list is: "<<size(h)<<'\n';
+                cout<<"Size of the list is: "<<length(h)<<'\n';
                 break;
             case 7:
                 exit(0);
