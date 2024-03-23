@@ -130,11 +130,11 @@ int main(){
         cout<<"6. Size\n";
         cout<<"7. Exit\n";
         cout<<"Enter your choice: ";
-        int ch; cin>>ch;
+        int ch; cin>>ch; int x;
         switch(ch){
             case 1:
                 cout<<"Enter the element to insert: ";
-                int x; cin>>x;
+                cin>>x;
                 h = insertNode(h,x);
                 break;
             case 2:
@@ -144,7 +144,7 @@ int main(){
                 break;
             case 3:
                 cout<<"Enter the element to insert: ";
-                int x; cin>>x;
+                cin>>x;
                 h = sortedInsert(h,x);
                 break;
             case 4:
@@ -152,7 +152,7 @@ int main(){
                 break;
             case 5:
                 cout<<"Enter the element to delete: ";
-                int x; cin>>x;
+                cin>>x;
                 h = deleteNode(h,x);
                 break;
             case 6:
