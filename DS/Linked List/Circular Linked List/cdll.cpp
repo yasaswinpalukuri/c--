@@ -7,12 +7,14 @@ class CDLLNode{
     public:
     int d;
     CDLLNode *next,*prev;
-    CDLLNode(){}
-    CDLLNode(int d){
-        this->d = d;
+    CDLLNode(){
         next = prev = nullptr;
     }
-}
+    CDLLNode(int d){
+        this -> d = d;
+        next = prev = nullptr;
+    }
+};
 
 CDLLNode* insertNode(CDLLNode* h, int x){
     if(h == nullptr){
