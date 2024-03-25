@@ -73,12 +73,13 @@ CDLLNode* sortedInsert(CDLLNode* h,int x){
 void display(CDLLNode* h){
     if(h == nullptr) return;
     CDLLNode* t = h;
+    cout<<"First Node:";
     while(t){
         cout<<t->d<<" ";
-        if(t -> next == h) break;
+        if(t -> next->next == h) break;
         t = t -> next;
     }
-    cout<<'\n';
+    cout<<'\n'<<"Last Node: "<<t->next->d<<'\n';
 }
 
 CDLLNode* deleteNode(CDLLNode* h, int x){
