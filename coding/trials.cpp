@@ -43,6 +43,24 @@ Node* createTree(int parent[], int val[],int n){
     return root;
 }
 
+bool IsPrime(int n){
+    if(n < 2) return false;
+    for(int i=2;i<=n/2;i++) if(n%i == 0) return false;
+    return true;
+}
+
+void largestPrimeNumber(vector<vector<int>> mat){
+    int ans = 0,n = mat.size();
+    for(int i=0;i<n;i++){
+        if(IsPrime(mat[i][i])) ans = max(ans,mat[i][i]);
+        if(IsPrime(mat[i][n-i-1])) ans = max(ans,mat[i][n-i-1]);
+    }
+    if(ans) cout<<ans;
+    else cout<<"No prime number available";
+}
+
+
+
 int main() {
     // int n; cin>>n;
     // int p[n],val[n];
@@ -59,21 +77,4 @@ int main() {
     Node* r = createTree(p,val,5);
 
     return 0;
-}
-
-
-bool IsPrime(int n){
-    if(n < 2) return false;
-    for(int i=2;i<=n/2;i++) if(n%i == 0) return false;
-    return true;
-}
-
-void largestPrimeNumber(vector<vector<int>> mat){
-    int ans = 0,n = mat.size();
-    for(int i=0;i<n;i++){
-        if(IsPrime(mat[i][i])) ans = max(ans,mat[i][i]);
-        if(IsPrime(mat[i][n-i-1])) ans = max(ans,mat[i][n-i-1]);
-    }
-    if(ans) cout<<ans;
-    else cout<<"No prime number available";
 }
