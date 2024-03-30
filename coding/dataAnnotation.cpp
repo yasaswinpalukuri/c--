@@ -9,16 +9,8 @@ int main(){
     string read;
     int key; string value;
     while (getline(MyReadFile, read)){
-        // if (sscanf(read.c_str(), "%d %s", &key, &value[0]) == 2) cout << "Key : " << key << ", Value: " << value << endl;
-        // cout << read << "\n";
-
         stringstream iss(read);
-        if (iss >> key >> value) {
-            // Printing in the desired format
-            cout << "Key : " << key << ", Value:" << value << endl;
-        } else {
-            cerr << "Error: Invalid line format" << endl;
-        }
+        if (iss >> key >> value) cout << "Key : " << key << ", Value:" << value << endl;
     }
     MyReadFile.close();
 
