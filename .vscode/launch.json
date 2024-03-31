@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "accenture",
+            "request": "launch",
+            "mainClass": "accenture",
+            "projectName": "c--_17aea424"
+        },
+        {
+            "type": "java",
             "name": "jpmorgan",
             "request": "launch",
             "mainClass": "jpmorgan",
