@@ -43,12 +43,14 @@ int main(){
     i = 4 -> pow(2,4) + i = 16 => wrong approach => 15 -> 10+5
 
     So, the appoach is add the number to next consecutive number
+    
     j=1;
     i=1;
     while(i <= maxValue){
         ss += m[i] + " ";
         i += ++j;
     }
+
     */
     
     string ss = "";
