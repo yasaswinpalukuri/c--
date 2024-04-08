@@ -190,8 +190,10 @@ def city_country(city,country):
 def make_album(arname,aralbum,count=None):
     return dict(name=arname,album=aralbum,songs=count)
 
+def make_album(arname,aralbum,count=None):
+    return dict(name=arname,album=aralbum,songs=count)
 
-def week5():
+def week5P1():
     # 4-1
     pizza = list(['cheese','veggie','pepperoni'])
     print("4-1")
@@ -306,9 +308,282 @@ def week5():
     m = (make_album("Columbia","Sri Lanka"))
     d = d | m
     print(d)
-    
-    
     print(make_album("Vizag","India",2))
+
+    # 8-8
+    print("8-8")
+    while True:
+        print("Hello would you like to enter the details(y/n):")
+        ch = input()
+        if ch == 'n' or ch == 'N':
+            break
+        print("Enter the name of an album:")
+        name = input()
+        print("Enter the album name:")
+        album = input()
+        print("Enter the no.of songs if known:")
+        no = input()
+        print(make_album(name,album,no))
+
+def check(s1,s2):
+    return s1 == s2   
+
+def hit53(clr):
+    if clr == 'green':
+        print("Player earned 5 points")
+
+def hit54(clr):
+    if clr == 'green':
+        print("Player earned 5 points")
+    else:
+        print("Player earned 10 points")
+
+def hit55(clr):
+    if clr == 'green':
+        print("Player earned 5 points")
+    elif clr == 'yellow':
+        print("Player earned 10 points")
+    else:
+        print("Player earned 15 points")
+
+def week5P2():
+    # 5-1
+    print("5-1")
+        
+    car = 'TOYOTA'
+    print("actual value in 'car'=",car)
+    print("1. car == 'TOYOTA'? I predict 'True'.")
+    print(check(car,'TOYOTA'))
+    print("2. car == 'BMW'? I predict 'False'.")
+    print(check(car,'BMW'))
+    
+    car = 'BMW'
+    print("actual value in 'car'=",car)
+    print("3. car == 'BMW'? I predict 'True'.")
+    print(check(car,'BMW'))
+    print("4. car == 'AUDI'? I predict 'False'.")
+    print(check(car,'AUDI'))
+    
+    car = 'AUDI'
+    print("actual value in 'car'=",car)
+    print("5. car == 'AUDI'? I predict 'True'.")
+    print(check(car,'AUDI'))
+    print("6. car == 'KIA'? I predict 'False'.")
+    print(check(car,'KIA'))
+    
+    car = 'KIA'
+    print("actual value in 'car'=",car)
+    print("7. car == 'KIA'? I predict 'True'.")
+    print(check(car,'KIA'))
+    print("8. car == 'HYUNDAI'? I predict 'False'.")
+    print(check(car,'HYUNDAI'))
+    
+    car = 'HYUNDAI'
+    print("actual value in 'car'=",car)
+    print("9. car == 'HYUNDAI'? I predict 'True'.")
+    print(check(car,'HYUNDAI'))
+    print("10. car == 'LEXUS'? I predict 'False'.")
+    print(check(car,'LEXUS'))
+
+
+    # 5-2
+    car = "KIA"
+    print("actual value in 'car'=",car)
+    print("Checking equality and inquality:\nChecking 'car',\"KIA\":",end=" ")
+    print(car == "KIA")
+    print("Checking 'car',\"kia\":",end = " ")
+    print(car == "kia")
+    
+    print("\nConverting 'car' to lower case.")
+    car = car.lower()
+    print("Updated 'car' value is:",car)
+    print("Checking equality and inquality:\nChecking 'car',\"KIA\":",end=" ")
+    print(car == "KIA")
+    print("Checking 'car',\"kia\":",end = " ")
+    print(car == "kia")
+    
+    n = 10
+    print("\nChecking equality and inquality for numerical variables with operators:")
+    print("Value of 'n' = ",n)
+    print("Checking if 'n' is 10:",end=" ")
+    if n == 10:
+        print("Yes")
+    else:
+        print("No")
+    
+    print("Checking if 'n' is not 10:",end=" ")    
+    if n != 10:
+        print("Yes")
+    else:
+        print("No")
+        
+    print("Checking if 'n' is greater than 5:",end=" ")
+    if n > 5:
+        print("Yes")
+    else:
+        print("No")
+    
+    print("Checking if 'n' is less than 20:",end=" ")
+    if n < 20:
+        print("Yes")
+    else:
+        print("No")
+    
+    print("Checking if 'n' is greater than or equal to 10:",end=" ")
+    if n >= 10:
+        print("Yes")
+    else:
+        print("No")
+    
+    print("Checking if 'n' is less than or equal to 10:",end=" ")
+    if n <= 10:
+        print("Yes")
+    else:
+        print("No")
+        
+        
+    print("\nChecking equality and inquality for numerical variables with 'or' and 'and' operators:")
+    print("Checking if 'n' is greater than 5 and less than 20:",end=" ")
+    if n > 5 and n < 20:
+        print("Yes")
+    else:
+        print("No")
+        
+    print("Checking if 'n' is 10 or 20:",end=" ")
+    if n == 10 or n == 20:
+        print("Yes")
+    else:
+        print("No")
+        
+    l = [1,2,3,4,5]
+    print("\nChecking if values are present in the list or not",l,":")
+    print("Checking if 5 is in the list:",end=" ")
+    if 5 in l: 
+        print("Yes")
+    else:
+        print("No")
+    print("Checking if 10 is in the list:",end=" ")
+    if 10 in l: 
+        print("Yes")
+    else:
+        print("No")
+
+    # 5-3
+    print("5-3")
+    hit53("green")
+    hit53("yellow")
+
+    # 5-4
+    print("5-4")            
+    hit54("green")
+    hit54("yellow")
+
+    # 5-5
+    print("5-5")
+    hit55("green")
+    hit55("yellow")
+    hit55("red")
+
+    # 5-6
+    print("5-6")
+    age = 22
+
+    if age < 2:
+        print("Baby")
+    elif age >= 2 and age < 4:
+        print("Toddler")
+    elif age >= 4 and age < 13:
+        print("Kid")
+    elif age >= 13 and age < 20:
+        print("Teenager")
+    elif age >= 20 and age < 65:
+        print("Adult")
+    else:
+        print("Elder")
+
+    # 5-7
+    print("5-7")
+    l = list(['mango','orange','apple'])
+
+    if 'apple' in l:
+        print("you really like apple.")
+    if 'guava' in l:
+        print("you really like guava.")
+    if 'orange' in l:
+        print("you really like orange.")
+    if 'grapes' in l:
+        print("you really like grapes.")
+    if 'Watermelon' in l:
+        print("you really like watermelon.")
+
+
+    # 5-8
+    print("5-8")
+    
+    users = list(['yash','admin','sai','suptha','lalith'])
+    
+    for l in users:
+        if l == 'admin':
+            print("Hello admin, would you like to check status of others.")
+        else:
+            print(f'Hello {l}, Welcome your logged in')
+
+
+    #5-9
+    print("5-9")
+    
+    l = list(['yash','admin','sai',''])
+    l.clear()
+    if len(l) == 0:
+        print("We need to find some users!!!!")
+
+    # 5-10
+    print("5-10")
+
+    users = list(['yash','admin','sai','suptha','lalith'])
+    new_users = list(['hello','hi','SAI','siva','LaLiTh'])
+
+    u = [i for i in users]
+    for i in u:
+        i = i.lower()
+        
+    for l in new_users:
+        # print(l)
+        if l.lower() in u:
+            print("Please select new username")
+        else:
+            print("username avaialble")
+    
+    #5-11
+    print("5-11")
+
+    l = [i for i in range(1,10)]
+    print("Printing in same line:")
+    for i in l:
+        if i == 1:
+            print("1st",end=' ')
+        elif i == 2:
+            print("2nd",end=" ")
+        elif i == 3:
+            print("3rd",end=" ")
+        else:
+            print(str(i)+"th",end=' ')
+            
+            
+            
+    print("\nPrinting in new line each case:")
+    for i in l:
+        if i == 1:
+            print("1st")
+        elif i == 2:
+            print("2nd")
+        elif i == 3:
+            print("3rd")
+        else:
+            print(str(i)+"th")
+
+
+    
 
 def week8():
     return
@@ -319,19 +594,22 @@ def main():
         print("===Python Programming Solutions===")
         print("1. Week 3")
         print("2. Week 4")
-        print("3. Week 5")
-        print("4. Week 8")
-        print("5. Exit")
+        print("3. Week 5 Part 1")
+        print("4. Week 5 Part 2")
+        print("5. Week 8")
+        print("6. Exit")
         ch = int(input("Enter your choice: "))
         if ch == 1:
             week3()
         elif ch == 2:
             week4()
         elif ch == 3:
-            week5()
+            week5P1()
         elif ch == 4:
-            week8()
+            week5P2()
         elif ch == 5:
+            week8()
+        elif ch == 6:
             break
         else:
             print("Invalid choice. Please try again.")
