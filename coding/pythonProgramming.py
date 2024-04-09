@@ -584,9 +584,166 @@ def week5P2():
 
 
     
+# Function to print the length of string
+def lengthOfStringWithLenFunc(s):
+    return len(s)
+def lengthOfStringWithForLoop(s):
+    l = 0
+    for c in s:
+        l+=1
+    return l
+
+# using dictionary to find frequencies of characters in a string
+def charFrequency(s):
+    freqDict = {}
+    for c in s:
+        if c not in freqDict:
+            freqDict.setdefault(c,1)
+        else:
+            freqDict[c]+=1
+    
+    return freqDict
+
+def printFreq(freq):
+    print("Key","Value")
+    for key, value in freq.items():
+        print(key,"\t",value)
+
+def word_frequency_analysis(s):
+    # Preprocessing
+    print("Preprocessing")
+    print("Given string:",s)
+    print("Converting string to lowercase and removing spaces and non alphabetic characters")
+    print("Firstly separating the words by spaces to process them separately")
+    words = s.split()
+    print("Words after splitting:",words)
+    
+    # Word Extraction
+    print("\n\nWord Extraction")
+    # using casefold to maintain unicode characters intact
+    l = []
+    # for w in words:
+    #     w1 = w.casefold()
+    #     print(w,"after casefold():",w1)
+    #     # Dropping characters that are not alphabets
+    #     for c in w:
+    #         if c.isalpha():
+    #             continue
+    #         else:
+    #             print("Removing",c)
+    #             w1 = w1.replace(c,'')
+    #             print(w1)
+    #             
+    #     l.append(w1)
+        
+    i = 0
+    while i < len(words):
+        print()
+        w1 = words[i].casefold()
+        print(words[i],"after casefold():",w1)
+        # Dropping characters that are not alphabets
+        print("Word is:",w1)
+        for c in words[i]:
+            if c.isalpha():
+                continue
+            else:
+                print("Removing",c)
+                w1 = w1.replace(c,'')
+                print(w1)
+        print("Word after changing characters:",w1)
+        l.append(w1)
+        i+=1
+
+    print("Words after changing:",l)
+    
+    # Frequency Analysis
+    print("\n\nFrequency Analysis")
+    print("Frequency of words:")
+    freqWordDict = {}
+    for w in l:
+        if w not in freqWordDict:
+            freqWordDict.setdefault(w,1)
+        else:
+            freqWordDict[w]+=1
+    
+    print("Words frequency:",freqWordDict)
+    
+    # Unique Letter Count
+    print("\n\nUnique Letter Count")
+    print("Frequency of words to unique characters in it:")
+    freqCharDict = {}
+    for w in l:
+            freqCharDict.setdefault(w,len(set(w)))
+    
+    print("Dictionary containing Word to Unique Characters count:",freqCharDict)
+    
+    # Return Data
+    print("\n\nReturning data:",end="")
+    print([freqWordDict,freqCharDict])
+    return [freqWordDict,freqCharDict]
+       
 
 def week8():
-    return
+    s = "Yasaswin" # length is 8
+    print(lengthOfStringWithLenFunc(s))
+    print(lengthOfStringWithForLoop(s))
+
+    s = "ABCDEF,abcedf.GHI.ghi"
+    frequecies = charFrequency(s)
+    print("Frequencies of characters in",s,"is:")
+    printFreq(frequecies)
+
+    s = "yasaswin"
+    print("Using captialize() function")
+    print("Using capitalize() on",s,"gives:",s.capitalize())
+
+    print("\n\nUsing casefold(), lower() and upper() functions")
+    check = "STAß"
+    print("Using casefold on",check,"gives:",check.casefold())
+    print("Using lower() on",check,"gives:",check.lower())
+    print("Using upper() on",check,"gives:",check.upper())
+
+    print("\n\nUsing count() function")
+    print("Using count() on",s,"for 'a':",s.count('a'))
+
+    print("\n\nUsing find() and index() functions")
+    print("Checking for 'a'")
+    print("Using find() on",s,"gives:",s.find('a'))
+    print("Using index() on",s,"gives:",s.index('a'))
+    print("Checking for 'A'")
+    print("Using find() on",s,"gives:",s.find('A'))
+    print("Using index() on",s,"gives:",end="")
+    try:
+        print(s.index('A'))
+    except Exception as error:
+        print(type(error).__name__)
+    
+
+    print("\n\nUsing startswith() and endswith() functions")
+    print("Using stratswith() on",s,"for 'y':",s.startswith('y'))
+    print("Using stratswith() on",s,"for 'a':",s.startswith('a'))
+    print("Using endswith() on",s,"for 'n':",s.endswith('n'))
+    print("Using endswith() on",s,"for 's':",s.endswith('s'))
+
+    print("\n\nUsing format() and format_map() functions")
+    text = "Hello, {} and {}"
+    print("Using format() on",text,"with Yasaswin and Siva:\t",text.format("Yasaswin","Siva"))
+    t = "Hello, {a} and {b}, {c}"
+    val = {'a':"Yasaswin", 'b':"Siva", 'c':"Welcome both of you"}
+    print("Using format_map() on",t,"with",val,"as map for values:\t",t.format_map(val))
+
+    # Converting temprature from F to C
+    # Formula is F = C x (9/5) + 32
+
+    f = float(input("Enter the fahrenheit temperature:"))
+
+    c = (f - 32) * 5/9
+    print("Relation between Fahrenheit & Celsius is F = C x (9/5) + 32")
+    print("Temperature in Fahrenheit is:",str(f))
+    print("Temperature in Celsius is:",str(c))
+
+    word_frequency_analysis("yaSA8swIN i.S 'a St/uD\ent oF AiMt In lambt|on")
+
 
 
 def main():
