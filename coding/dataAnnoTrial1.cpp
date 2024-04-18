@@ -16,7 +16,7 @@ bool compareWordInfo(const WordInfo &a, const WordInfo &b) {
 }
 
 int main() {
-    ifstream inputFile("coding_qual_input_new.txt"); // Update the file name as needed
+    ifstream inputFile("coding_qual_input_new.txt");
     if (!inputFile.is_open()) {
         cerr << "Error: Unable to open input file." << endl;
         return 1;

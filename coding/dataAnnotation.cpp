@@ -10,7 +10,7 @@ int main(){
     int key; string value;
     map<int, string> m;
     int maxValue = 0;
-    while (getline(MyReadFile, read)){
+    while(getline(MyReadFile, read)){
         stringstream iss(read);
         if (iss >> key >> value){
             // cout << "Key : " << key << ", Value:" << value << endl;

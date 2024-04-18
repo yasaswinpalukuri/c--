@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "dataAnnotation",
+            "request": "launch",
+            "mainClass": "dataAnnotation",
+            "projectName": "c--_17aea424"
+        },
+        {
+            "type": "java",
             "name": "accenture",
             "request": "launch",
             "mainClass": "accenture",
