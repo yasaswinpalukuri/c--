@@ -8,18 +8,21 @@ public class Codes {
         
     }
     static public boolean validPath(int n, int[][] edges, int source, int destination) {
-        int i = source;
-        HashMap<Integer,List<Integer>> hm = new HashMap<>();
-        for(int s=0;s<edges.length;s++){
-            hm.put(edges[s][0],hm.getOrDefault(i, new List<Integer>()).add(edges[s][1]));
-            // hm.put(edges[s][1],hm.get(i).add(edges[s][0]));
-            hm.put(edges[s][1],hm.getOrDefault(i, new List<Integer>()).add(edges[s][0]));
+        if(edges.length == 0) return true;
+        boolean[] visited = new boolean[n];
+        boolean flag = true;
+        visited[source] = true;
+        while(flag){
+            flag = false;
+            for(int[] edge : edges){
+                if(visited[edge[0]] != visited[edge[1]]){
+                    visited[edge[0]] = true;
+                    visited[edge[1]] = true;
+                    flag = true;
+                }
+                if(visited[destination]) return true;
+            }
         }
-        // while( i!= destination){
-        //     if(hm.containsKey(i)) i = hm.get(i);
-        //     else return false;
-        // }
-        System.out.println(hm);
-        return true;
+        return false;
     }
 }
