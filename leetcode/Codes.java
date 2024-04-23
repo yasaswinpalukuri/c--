@@ -8,7 +8,7 @@ public class Codes {
             System.out.println("----MENU----");
             System.out.println("1. Valid Path");
             System.out.println("2. Minimum Height Trees");
-            System.out.println("404. Exit");
+            System.out.println("8888. Exit");
             System.out.print("Enter your choice: ");
             int ch = scan.nextInt();
             switch(ch){
@@ -42,7 +42,7 @@ public class Codes {
                     }
                     System.out.println(findMinHeightTrees(n, edges));
                     break;
-                case 404:
+                case 8888:
                     System.exit(0);
                     break;
                 default:
