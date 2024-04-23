@@ -7,7 +7,8 @@ public class Codes {
         do{
             System.out.println("----MENU----");
             System.out.println("1. Valid Path");
-            System.out.println("2. Exit");
+            System.out.println("2. Minimum Height Trees");
+            System.out.println("404. Exit");
             System.out.print("Enter your choice: ");
             int ch = scan.nextInt();
             switch(ch){
@@ -29,6 +30,19 @@ public class Codes {
                     System.out.println(validPath(n, edges, source, destination));
                     break;
                 case 2:
+                    System.out.print("Enter the number of nodes: ");
+                    n = scan.nextInt();
+                    System.out.print("Enter the number of edges: ");
+                    m = scan.nextInt();
+                    edges = new int[m][2];
+                    for(int i=0; i<m; i++){
+                        System.out.print("Enter the edge " + (i+1) + ": ");
+                        edges[i][0] = scan.nextInt();
+                        edges[i][1] = scan.nextInt();
+                    }
+                    System.out.println(findMinHeightTrees(n, edges));
+                    break;
+                case 404:
                     System.exit(0);
                     break;
                 default:
@@ -54,5 +68,50 @@ public class Codes {
             }
         }
         return false;
+    }
+
+    static public List<Integer> findMinHeightTrees(int n, int[][] edges) {
+        List<Integer> result = new ArrayList<>();
+        if (n == 1) {
+            result.add(0);
+            return result;
+        }
+        
+        List<List<Integer>> adjList = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            adjList.add(new ArrayList<>());
+        }
+        
+        int[] degree = new int[n];
+        
+        for (int[] edge : edges) {
+            adjList.get(edge[0]).add(edge[1]);
+            adjList.get(edge[1]).add(edge[0]);
+            degree[edge[0]]++;
+            degree[edge[1]]++;
+        }
+        
+        Queue<Integer> leaves = new LinkedList<>();
+        for (int i = 0; i < n; i++) {
+            if (degree[i] == 1) {
+                leaves.offer(i);
+            }
+        }
+        
+        while (n > 2) {
+            int size = leaves.size();
+            n -= size;
+            for (int i = 0; i < size; i++) {
+                int leaf = leaves.poll();
+                for (int neighbor : adjList.get(leaf)) {
+                    if (--degree[neighbor] == 1) {
+                        leaves.offer(neighbor);
+                    }
+                }
+            }
+        }
+        
+        result.addAll(leaves);
+        return result;
     }
 }
