@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Codes",
+            "request": "launch",
+            "mainClass": "leetcode.Codes",
+            "projectName": "c--_17aea424"
+        },
+        {
+            "type": "java",
             "name": "dataAnnotation",
             "request": "launch",
             "mainClass": "dataAnnotation",

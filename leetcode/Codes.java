@@ -1,6 +1,5 @@
 package leetcode;
 import java.util.*;
-import java.io.*;
 
 public class Codes {
     static Scanner scan = new Scanner(System.in);
@@ -37,7 +36,7 @@ public class Codes {
             }
         }while(true);
     }
-    
+
     static public boolean validPath(int n, int[][] edges, int source, int destination) {
         if(edges.length == 0) return true;
         boolean[] visited = new boolean[n];
