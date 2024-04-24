@@ -8,6 +8,7 @@ public class Codes {
             System.out.println("----MENU----");
             System.out.println("1. Valid Path");
             System.out.println("2. Minimum Height Trees");
+            System.out.println("3. N-th Tribonacci Number");
             System.out.println("8888. Exit");
             System.out.print("Enter your choice: ");
             int ch = scan.nextInt();
@@ -41,6 +42,11 @@ public class Codes {
                         edges[i][1] = scan.nextInt();
                     }
                     System.out.println(findMinHeightTrees(n, edges));
+                    break;
+                case 3:
+                    System.out.print("Enter the value of n: ");
+                    n = scan.nextInt();
+                    System.out.println(tribonacci(n));
                     break;
                 case 8888:
                     System.exit(0);
@@ -113,5 +119,22 @@ public class Codes {
         
         result.addAll(leaves);
         return result;
+    }
+
+    static public int tribonacci(int n) {
+        if(n == 0) return 0;
+        else if(n == 1 || n ==2) return 1;
+        int t1 = 0;
+        int t2 = 1;
+        int t3 = 1;
+        n-=3;
+        while(n>=0){
+            int t4 = t3+t2+t1;
+            t1 = t2;
+            t2 = t3;
+            t3 = t4;
+            n--;
+        }
+        return t3;
     }
 }
