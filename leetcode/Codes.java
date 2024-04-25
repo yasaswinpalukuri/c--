@@ -9,6 +9,7 @@ public class Codes {
             System.out.println("1. Valid Path");
             System.out.println("2. Minimum Height Trees");
             System.out.println("3. N-th Tribonacci Number");
+            System.out.println("4. Longest Ideal String");
             System.out.println("8888. Exit");
             System.out.print("Enter your choice: ");
             int ch = scan.nextInt();
@@ -47,6 +48,13 @@ public class Codes {
                     System.out.print("Enter the value of n: ");
                     n = scan.nextInt();
                     System.out.println(tribonacci(n));
+                    break;
+                case 4:
+                    System.out.print("Enter the string: ");
+                    String s = scan.next();
+                    System.out.print("Enter the value of k: ");
+                    int k = scan.nextInt();
+                    System.out.println(longestIdealString(s, k));
                     break;
                 case 8888:
                     System.exit(0);
@@ -136,5 +144,27 @@ public class Codes {
             n--;
         }
         return t3;
+    }
+
+    static public int longestIdealString(String s, int k) {
+        int N = s.length();
+        int[] dp = new int[26];
+
+        int res = 0;
+        // Updating dp with the i-th character
+        for (int i = 0; i < N; i++) {
+            int curr = s.charAt(i) - 'a';
+            int best = 0;
+            for (int prev = 0; prev < 26; prev++) {
+                if (Math.abs(prev - curr) <= k) {
+                    best = Math.max(best, dp[prev]);
+                }
+            }
+
+            // Appending s[i] to the previous longest ideal subsequence allowed
+            dp[curr] = Math.max(dp[curr], best + 1);
+            res = Math.max(res, dp[curr]);
+        }
+        return res;
     }
 }
