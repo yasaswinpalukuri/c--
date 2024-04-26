@@ -10,6 +10,7 @@ public class Codes {
             System.out.println("2. Minimum Height Trees");
             System.out.println("3. N-th Tribonacci Number");
             System.out.println("4. Longest Ideal String");
+            System.out.println("5. Minimum Falling Path Sum");
             System.out.println("8888. Exit");
             System.out.print("Enter your choice: ");
             int ch = scan.nextInt();
@@ -55,6 +56,20 @@ public class Codes {
                     System.out.print("Enter the value of k: ");
                     int k = scan.nextInt();
                     System.out.println(longestIdealString(s, k));
+                    break;
+                case 5:
+                    System.out.print("Enter the number of rows: ");
+                    int rows = scan.nextInt();
+                    System.out.print("Enter the number of columns: ");
+                    int cols = scan.nextInt();
+                    int[][] grid = new int[rows][cols];
+                    for(int i=0; i<rows; i++){
+                        for(int j=0; j<cols; j++){
+                            System.out.print("Enter the value at " + i + ", " + j + ": ");
+                            grid[i][j] = scan.nextInt();
+                        }
+                    }
+                    System.out.println(minFallingPathSum(grid));
                     break;
                 case 8888:
                     System.exit(0);
@@ -166,5 +181,33 @@ public class Codes {
             res = Math.max(res, dp[curr]);
         }
         return res;
+    }
+    
+    static public int minFallingPathSum(int[][] grid) {
+        int n = grid.length;
+        if (n == 1)
+            return grid[0][0];
+
+        int l[] = new int[n];
+        int r[] = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int d = Integer.MAX_VALUE;
+                if (j > 0) d = Math.min(d, l[j - 1]);
+                if (j < n - 1) d = Math.min(d, r[j + 1]);
+                grid[i][j] += d;
+            }
+
+            l[0] = grid[i][0];
+            for (int j = 1; j < n; j++)
+                l[j] = Math.min(l[j - 1], grid[i][j]);
+
+            r[n - 1] = grid[i][n - 1];
+            for (int j = n - 2; j >= 0; j--)
+                r[j] = Math.min(r[j + 1], grid[i][j]);
+        }
+
+        return l[n - 1];
     }
 }
