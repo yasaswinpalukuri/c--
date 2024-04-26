@@ -120,6 +120,7 @@ public class Codes {
             degree[edge[1]]++;
         }
         
+        // queue.offer => is used to verify if the queue is full or not and then inserts the element, if full it return false.
         Queue<Integer> leaves = new LinkedList<>();
         for (int i = 0; i < n; i++) {
             if (degree[i] == 1) {
