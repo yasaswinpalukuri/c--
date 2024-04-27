@@ -11,6 +11,7 @@ public class Codes {
             System.out.println("3. N-th Tribonacci Number");
             System.out.println("4. Longest Ideal String");
             System.out.println("5. Minimum Falling Path Sum");
+            System.out.println("6. Freedom Trail");
             System.out.println("8888. Exit");
             System.out.print("Enter your choice: ");
             int ch = scan.nextInt();
@@ -70,6 +71,13 @@ public class Codes {
                         }
                     }
                     System.out.println(minFallingPathSum(grid));
+                    break;
+                case 6:
+                    System.out.print("Enter the ring: ");
+                    String ring = scan.next();
+                    System.out.print("Enter the key: ");
+                    String key = scan.next();
+                    System.out.println(findRotateSteps(ring, key));
                     break;
                 case 8888:
                     System.exit(0);
@@ -210,5 +218,41 @@ public class Codes {
         }
 
         return l[n - 1];
+    }
+
+    // 514. Freedom Trail - Hard
+    /*
+    First Example:
+    Input: ring = "godding", key = "gd"
+    Output: 4
+
+    2nd Example:
+    Input: ring = "godding", key = "godding"
+    Output: 13
+     */
+    static public int findRotateSteps(String ring, String key) {
+        char[] r = ring.toCharArray();
+        List<Integer>[] positions = new List[26];
+        for (int i = 0; i < r.length; i++) {
+            int c = r[i] - 'a';
+            if (positions[c] == null) positions[c] = new ArrayList<>();
+            positions[c].add(i);
+        }
+        int[][] dp = new int[key.length()][r.length];
+        return FindRotationStepsHelper(0, 0, positions, key.toCharArray(), r, dp);
+    }
+
+    static int FindRotationStepsHelper(int index, int pos, List<Integer>[] positions, char[] key, char[] ring, int[][] dp) {
+        if (index == key.length) return 0;
+        if (dp[index][pos] > 0) return dp[index][pos];
+        char target = key[index];
+        List<Integer> possiblePositions = positions[target - 'a'];
+        int minSteps = Integer.MAX_VALUE;
+        for (int nextPos : possiblePositions) {
+            int steps = Math.min(Math.abs(nextPos - pos), ring.length - Math.abs(nextPos - pos));
+            int totalSteps = steps + FindRotationStepsHelper(index + 1, nextPos, positions, key, ring, dp);
+            minSteps = Math.min(minSteps, totalSteps);
+        }
+        return dp[index][pos] = minSteps + 1;
     }
 }
