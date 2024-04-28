@@ -12,6 +12,7 @@ public class Codes {
             System.out.println("4. Longest Ideal String");
             System.out.println("5. Minimum Falling Path Sum");
             System.out.println("6. Freedom Trail");
+            System.out.println("7. Sum of Distances in Tree");
             System.out.println("8888. Exit");
             System.out.print("Enter your choice: ");
             int ch = scan.nextInt();
@@ -78,6 +79,19 @@ public class Codes {
                     System.out.print("Enter the key: ");
                     String key = scan.next();
                     System.out.println(findRotateSteps(ring, key));
+                    break;
+                case 7:
+                    System.out.print("Enter the number of nodes: ");
+                    n = scan.nextInt();
+                    System.out.print("Enter the number of edges: ");
+                    m = scan.nextInt();
+                    edges = new int[m][2];
+                    for(int i=0; i<m; i++){
+                        System.out.print("Enter the edge " + (i+1) + ": ");
+                        edges[i][0] = scan.nextInt();
+                        edges[i][1] = scan.nextInt();
+                    }
+                    System.out.println(Arrays.toString(sumOfDistancesInTree(n, edges)));
                     break;
                 case 8888:
                     System.exit(0);
@@ -255,5 +269,58 @@ public class Codes {
             minSteps = Math.min(minSteps, totalSteps);
         }
         return dp[index][pos] = minSteps + 1;
+    }
+
+
+    // 834. Sum of Distances in Tree - Hard
+    /* 
+     * Input: N = 6, edges = [[0,1],[0,2],[2,3],[2,4],[2,5]]
+     * Output: [8,12,6,10,10,10]
+     * 
+     * Input: N = 1, edges = []
+     * Output: [0]
+     * 
+     * Input: N = 2, edges = [[1,0]]
+     * Output: [1,1]
+    */
+    static public int[] sumOfDistancesInTree(int n, int[][] edges) {
+        // build graph and declare results
+        final ArrayList<Integer>[] graph = new ArrayList[n];
+        final int[] count = new int[n];
+        Arrays.fill(count, 1);
+        final int[] answer = new int[n];
+        for (int i = 0; i < graph.length; i++) {
+            graph[i] = new ArrayList<>();
+        }
+        for (int[] edge : edges) {
+            graph[edge[0]].add(edge[1]);
+            graph[edge[1]].add(edge[0]);
+        }
+
+        postOrder(0, -1, graph, count, answer);
+        // after postOrder, only answer[root] is correct, so do preOrder to update answer
+        preOrder(0, -1, graph, count, answer, n);
+
+        return answer;
+    }
+
+    // set count et subTreeSum, here use answer[]
+    static public void postOrder(int node, int parent, ArrayList<Integer>[] graph, int[] count, int[] answer) {
+        for (int child : graph[node]) {
+            if (child != parent) {
+                postOrder(child, node, graph, count, answer);
+                count[node] += count[child];
+                answer[node] += answer[child] + count[child];
+            }
+        }
+    }
+
+    static public void preOrder(int node, int parent, ArrayList<Integer>[] graph, int[] count, int[] answer, int n) {
+        for (int child : graph[node]) {
+            if (child != parent) {
+                answer[child] = answer[node] + (n - count[child]) - count[child];
+                preOrder(child, node, graph, count, answer, n);
+            }
+        }
     }
 }
