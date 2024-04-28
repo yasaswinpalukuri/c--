@@ -322,4 +322,56 @@ public class Codes {
             }
         }
     }
+
+    // 752. Open the Lock - Medium
+    /*
+       Input: deadends = ["0201","0101","0102","1212","2002"], target = "0202"
+        Output: 6
+        Explanation: 
+        A sequence of valid moves would be "0000" -> "1000" -> "1100" -> "1200" -> "1201" -> "1202" -> "0202".
+        Note that a sequence like "0000" -> "0001" -> "0002" -> "0102" -> "0202" would be invalid,
+        because the wheels of the lock become stuck after the display becomes the dead end "0102".
+     */
+    static public int openLock(String[] deadends, String target) {
+        Set<String> seen = new HashSet<>(Arrays.asList(deadends));
+        if (seen.contains("0000"))
+          return -1;
+        if (target.equals("0000"))
+          return 0;
+    
+        int ans = 0;
+        Queue<String> q = new ArrayDeque<>(Arrays.asList("0000"));
+    
+        while (!q.isEmpty()) {
+          ++ans;
+          for (int sz = q.size(); sz > 0; --sz) {
+            StringBuilder sb = new StringBuilder(q.poll());
+            for (int i = 0; i < 4; ++i) {
+              final char cache = sb.charAt(i);
+              // Increase the i-th digit by 1.
+              sb.setCharAt(i, sb.charAt(i) == '9' ? '0' : (char) (sb.charAt(i) + 1));
+              String word = sb.toString();
+              if (word.equals(target))
+                return ans;
+              if (!seen.contains(word)) {
+                q.offer(word);
+                seen.add(word);
+              }
+              sb.setCharAt(i, cache);
+              // Decrease the i-th digit by 1.
+              sb.setCharAt(i, sb.charAt(i) == '0' ? '9' : (char) (sb.charAt(i) - 1));
+              word = sb.toString();
+              if (word.equals(target))
+                return ans;
+              if (!seen.contains(word)) {
+                q.offer(word);
+                seen.add(word);
+              }
+              sb.setCharAt(i, cache);
+            }
+          }
+        }
+    
+        return -1;
+      }
 }
