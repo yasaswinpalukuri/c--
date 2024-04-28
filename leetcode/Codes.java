@@ -387,4 +387,14 @@ public class Codes {
     
         return -1;
       }
+
+    // 58. Length of Last Word - Easy
+    /*
+        Input: s = "Hello World"
+        Output: 5
+    */
+    static public int lengthOfLastWord(String s) {
+        String[] ss = s.split(" ");
+        return ss[ss.length-1].length();
+    }
 }
