@@ -13,6 +13,7 @@ public class Codes {
             System.out.println("5. Minimum Falling Path Sum");
             System.out.println("6. Freedom Trail");
             System.out.println("7. Sum of Distances in Tree");
+            System.out.println("8. Open the Lock");
             System.out.println("8888. Exit");
             System.out.print("Enter your choice: ");
             int ch = scan.nextInt();
@@ -92,6 +93,18 @@ public class Codes {
                         edges[i][1] = scan.nextInt();
                     }
                     System.out.println(Arrays.toString(sumOfDistancesInTree(n, edges)));
+                    break;
+                case 8:
+                    System.out.print("Enter the number of deadends: ");
+                    int num = scan.nextInt();
+                    String[] deadends = new String[num];
+                    for(int i=0; i<num; i++){
+                        System.out.print("Enter the deadend " + (i+1) + ": ");
+                        deadends[i] = scan.next();
+                    }
+                    System.out.print("Enter the target: ");
+                    String target = scan.next();
+                    System.out.println(openLock(deadends, target));
                     break;
                 case 8888:
                     System.exit(0);
