@@ -232,6 +232,7 @@ public class Codes {
      */
     static public int findRotateSteps(String ring, String key) {
         char[] r = ring.toCharArray();
+        @SuppressWarnings("unchecked")
         List<Integer>[] positions = new List[26];
         for (int i = 0; i < r.length; i++) {
             int c = r[i] - 'a';
