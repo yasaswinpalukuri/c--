@@ -1,6 +1,6 @@
 package leetcode;
 import java.util.*;
-
+@SuppressWarnings("unchecked")
 public class Codes {
     static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
