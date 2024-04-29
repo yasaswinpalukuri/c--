@@ -14,6 +14,8 @@ public class Codes {
             System.out.println("6. Freedom Trail");
             System.out.println("7. Sum of Distances in Tree");
             System.out.println("8. Open the Lock");
+            System.out.println("9. Length of Last Word");
+            System.out.println("10. Minimum Number of Operations to Make Array XOR Equal to K");
             System.out.println("8888. Exit");
             System.out.print("Enter your choice: ");
             int ch = scan.nextInt();
@@ -105,6 +107,11 @@ public class Codes {
                     System.out.print("Enter the target: ");
                     String target = scan.next();
                     System.out.println(openLock(deadends, target));
+                    break;
+                case 9:
+                    System.out.print("Enter the string: ");
+                    s = scan.next();
+                    System.out.println(lengthOfLastWord(s));
                     break;
                 case 8888:
                     System.exit(0);
