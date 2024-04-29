@@ -1,7 +1,7 @@
 package leetcode;
 import java.util.*;
 
-public class validNumber65 {
+public class validNumber {
     static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
         System.out.println("Question 65 - Hard");
