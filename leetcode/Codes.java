@@ -1,6 +1,7 @@
 package leetcode;
 import java.util.*;
 @SuppressWarnings("unchecked")
+// This consists of answers to some of the April leetcode daily challenge problems
 public class Codes {
     static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
