@@ -123,7 +123,7 @@ public class Codes {
                     }
                     System.out.print("Enter the value of k: ");
                     int kXor = scan.nextInt();
-                    System.out.println(minOperations(nums, kXor));
+                    System.out.println(minOperationsArrayXorToK(nums, kXor));
                     break;
                 case 8888:
                     System.exit(0);
@@ -432,7 +432,7 @@ public class Codes {
         F:  1 1 1 1 => 4
         So, minimum 4 operations are required to make the array XOR equal to 11.
     */
-    static public int minOperations(int[] nums, int k) {
+    static public int minOperationsArrayXorToK(int[] nums, int k) {
         int ans = 0;
         
         for(int i=0;i<=20;i++){
