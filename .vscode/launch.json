@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "validNumber65",
+            "request": "launch",
+            "mainClass": "leetcode.validNumber65",
+            "projectName": "c--_17aea424"
+        },
+        {
+            "type": "java",
             "name": "Codes",
             "request": "launch",
             "mainClass": "leetcode.Codes",
