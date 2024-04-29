@@ -17,6 +17,7 @@ public class Codes {
             System.out.println("8. Open the Lock");
             System.out.println("9. Length of Last Word");
             System.out.println("10. Minimum Number of Operations to Make Array XOR Equal to K");
+            System.out.println("11. Isomorphic Strings");
             System.out.println("8888. Exit");
             System.out.print("Enter your choice: ");
             int ch = scan.nextInt();
@@ -125,6 +126,13 @@ public class Codes {
                     System.out.print("Enter the value of k: ");
                     int kXor = scan.nextInt();
                     System.out.println(minOperationsArrayXorToK(nums, kXor));
+                    break;
+                case 11:
+                    System.out.print("Enter the first string: ");
+                    String s1 = scan.next();
+                    System.out.print("Enter the second string: ");
+                    String s2 = scan.next();
+                    System.out.println(isIsomorphic(s1, s2));
                     break;
                 case 8888:
                     System.exit(0);
