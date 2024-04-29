@@ -113,6 +113,18 @@ public class Codes {
                     s = scan.next();
                     System.out.println(lengthOfLastWord(s));
                     break;
+                case 10:
+                    System.out.print("Enter the number of elements: ");
+                    num = scan.nextInt();
+                    int[] nums = new int[num];
+                    for(int i=0; i<num; i++){
+                        System.out.print("Enter the element " + (i+1) + ": ");
+                        nums[i] = scan.nextInt();
+                    }
+                    System.out.print("Enter the value of k: ");
+                    int kXor = scan.nextInt();
+                    System.out.println(minOperations(nums, kXor));
+                    break;
                 case 8888:
                     System.exit(0);
                     break;
