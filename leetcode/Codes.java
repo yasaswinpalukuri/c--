@@ -397,4 +397,34 @@ public class Codes {
         String[] ss = s.split(" ");
         return ss[ss.length-1].length();
     }
+
+
+    // 2997. Minimum Number of Operations to Make Array XOR Equal to K - Medium
+    /*
+        Input: nums = [1,2,3,4], k = 11
+        Output: 4
+        1 : 0 0 0 1
+        2 : 0 0 1 0
+        3 : 0 0 1 1
+        4 : 0 1 0 0
+        -----------
+        11: 1 0 1 1
+        -----------
+        F:  1 1 1 1 => 4
+        So, minimum 4 operations are required to make the array XOR equal to 11.
+    */
+    static public int minOperations(int[] nums, int k) {
+        int ans = 0;
+        
+        for(int i=0;i<=20;i++){
+            int xor = 0;
+            for(int e:nums){
+                int bit = (1<<i) & e;
+                xor ^= bit; 
+            }
+            int kbit = (1<<i) & k;
+            if(kbit != xor) ans++;
+        }
+        return ans;
+    }
 }
