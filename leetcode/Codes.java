@@ -1,7 +1,28 @@
 package leetcode;
 import java.util.*;
-@SuppressWarnings("unchecked")
-// This consists of answers to some of the April leetcode daily challenge problems
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+ }
+
+ class Pair{
+    int first;
+    int second;
+    Pair(int first, int second){
+        this.first = first;
+        this.second = second;
+    }
+}
+ 
 public class Codes {
     static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
@@ -22,6 +43,7 @@ public class Codes {
             System.out.println("13. Find All Groups of Farmland");
             System.out.println("14. Number of Islands");
             System.out.println("15. Island Perimeter");
+            System.out.println("16. Smallest String Starting From Leaf");
             System.out.println("8888. Exit");
             System.out.print("Enter your choice: ");
             int ch = scan.nextInt();
@@ -185,6 +207,18 @@ public class Codes {
                     }
                     System.out.println(islandPerimeter(gridPerimeter));
                     break;
+                case 16:
+                    System.out.print("Enter the number of nodes: ");
+                    n = scan.nextInt();
+                    TreeNode root = new TreeNode();
+                    System.out.print("Enter the value of the root: ");
+                    root.val = scan.nextInt();
+                    System.out.print("Enter the value of the left child of the root: ");
+                    root.left = new TreeNode(scan.nextInt());
+                    System.out.print("Enter the value of the right child of the root: ");
+                    root.right = new TreeNode(scan.nextInt());
+                    System.out.println(smallestFromLeaf(root));
+                    break;
                 case 8888:
                     System.exit(0);
                     break;
@@ -336,6 +370,7 @@ public class Codes {
     Input: ring = "godding", key = "godding"
     Output: 13
      */
+    @SuppressWarnings("unchecked")
     static public int findRotateSteps(String ring, String key) {
         char[] r = ring.toCharArray();
         List<Integer>[] positions = new List[26];
@@ -376,6 +411,7 @@ public class Codes {
     */
     static public int[] sumOfDistancesInTree(int n, int[][] edges) {
         // build graph and declare results
+        @SuppressWarnings("unchecked")
         final ArrayList<Integer>[] graph = new ArrayList[n];
         final int[] count = new int[n];
         Arrays.fill(count, 1);
@@ -643,14 +679,7 @@ public class Codes {
         }
         return ans;
     }
-    static class Pair{
-        int first;
-        int second;
-        Pair(int first, int second){
-            this.first = first;
-            this.second = second;
-        }
-    }
+
     static void bfsNumIslands(char[][] grid,int i,int j,boolean[][] visited){
         Queue<Pair> q = new LinkedList<Pair>();
         visited[i][j]=true;
@@ -697,5 +726,33 @@ public class Codes {
             }
         }
         return per;
+    }
+
+    // 988. Smallest String Starting From Leaf - Medium
+    /*
+     * Input: root = [0,1,2,3,4,3,4]
+     * Output: "dba"
+     */
+    
+    static public String smallestFromLeaf(TreeNode root) {
+        StringBuilder smallest = new StringBuilder();
+        dfsSmallestFromLeaf(root, new StringBuilder(), smallest);
+        return smallest.toString();
+    }
+    
+    static private void dfsSmallestFromLeaf(TreeNode node, StringBuilder path, StringBuilder smallest) {
+        if (node == null) return;
+        path.append((char)('a' + node.val));
+        if (node.left == null && node.right == null) {
+            String currentString = path.reverse().toString();
+            if (smallest.length() == 0 || currentString.compareTo(smallest.toString()) < 0) {
+                smallest.setLength(0);
+                smallest.append(currentString);
+            }
+            path.reverse();
+        }
+        dfsSmallestFromLeaf(node.left, path, smallest);
+        dfsSmallestFromLeaf(node.right, path, smallest);
+        path.setLength(path.length() - 1);
     }
 }
