@@ -20,6 +20,8 @@ public class Codes {
             System.out.println("11. Isomorphic Strings");
             System.out.println("12. Number of Wonderful Substrings");
             System.out.println("13. Find All Groups of Farmland");
+            System.out.println("14. Number of Islands");
+            System.out.println("15. Island Perimeter");
             System.out.println("8888. Exit");
             System.out.print("Enter your choice: ");
             int ch = scan.nextInt();
@@ -154,6 +156,34 @@ public class Codes {
                         }
                     }
                     System.out.println(Arrays.deepToString(findFarmland(land)));
+                    break;
+                case 14:
+                    System.out.print("Enter the number of rows: ");
+                    rows = scan.nextInt();
+                    System.out.print("Enter the number of columns: ");
+                    cols = scan.nextInt();
+                    char[][] gridIslands = new char[rows][cols];
+                    for(int i=0; i<rows; i++){
+                        for(int j=0; j<cols; j++){
+                            System.out.print("Enter the value at " + i + ", " + j + ": ");
+                            gridIslands[i][j] = scan.next().charAt(0);
+                        }
+                    }
+                    System.out.println(numIslands(gridIslands));
+                    break;
+                case 15:
+                    System.out.print("Enter the number of rows: ");
+                    rows = scan.nextInt();
+                    System.out.print("Enter the number of columns: ");
+                    cols = scan.nextInt();
+                    int[][] gridPerimeter = new int[rows][cols];
+                    for(int i=0; i<rows; i++){
+                        for(int j=0; j<cols; j++){
+                            System.out.print("Enter the value at " + i + ", " + j + ": ");
+                            gridPerimeter[i][j] = scan.nextInt();
+                        }
+                    }
+                    System.out.println(islandPerimeter(gridPerimeter));
                     break;
                 case 8888:
                     System.exit(0);
@@ -588,5 +618,84 @@ public class Codes {
         }
 
         return new int[]{minRow, minCol, maxRow, maxCol};
+    }
+
+    // 200 - Number of Islands - Medium
+    /*
+     * Input: grid = [
+     * ["1","1","1","1","0"],
+     * ["1","1","0","1","0"],
+     * ["1","1","0","0","0"],
+     * ["0","0","0","0","0"]
+     * ]
+     * Output: 1
+     */
+    static public int numIslands(char[][] grid) {
+        int ans=0;
+        boolean[][] visited = new boolean[grid.length][grid[0].length];
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[0].length;j++){
+                if(!visited[i][j] && grid[i][j]=='1'){
+                    bfsNumIslands(grid, i, j, visited);
+                    ans++;
+                }
+            }
+        }
+        return ans;
+    }
+    static class Pair{
+        int first;
+        int second;
+        Pair(int first, int second){
+            this.first = first;
+            this.second = second;
+        }
+    }
+    static void bfsNumIslands(char[][] grid,int i,int j,boolean[][] visited){
+        Queue<Pair> q = new LinkedList<Pair>();
+        visited[i][j]=true;
+        q.add(new Pair(i,j));
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
+        while(!q.isEmpty()){
+            int r = q.peek().first;
+            int c = q.peek().second;
+            q.remove();
+            for(int k=0;k<4;k++){
+                int rowNum = r + dx[k];
+                int colNum = c + dy[k];
+                if(0<=rowNum && rowNum<grid.length && colNum>=0 && colNum<grid[0].length && grid[rowNum][colNum]=='1' && visited[rowNum][colNum]==false){
+                    visited[rowNum][colNum]=true;
+                    q.add(new Pair(rowNum,colNum));
+                }
+            }
+        }
+    }
+
+    // 463 - Island Perimeter - Easy
+    /*
+     * Input: grid = [
+     * [0,1,0,0],
+     * [1,1,1,0],
+     * [0,1,0,0],
+     * [1,1,0,0]
+     * ]
+     * Output: 16
+     */
+    static public int islandPerimeter(int[][] grid) {
+        int r = grid.length;
+        int c = grid[0].length;
+        int per = 0;
+        for(int i=0; i<r; i++) {
+            for(int j=0; j<c; j++) {
+                if(grid[i][j] == 1) {
+                    if((i-1) < 0 || grid[i-1][j] == 0) per++;
+                    if((j-1) < 0 || grid[i][j-1] == 0) per++;
+                    if((i+1) >= r || grid[i+1][j] == 0) per++;
+                    if((j+1) >= c || grid[i][j+1] == 0) per++;
+                }
+            }
+        }
+        return per;
     }
 }
