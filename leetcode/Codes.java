@@ -18,6 +18,7 @@ public class Codes {
             System.out.println("9. Length of Last Word");
             System.out.println("10. Minimum Number of Operations to Make Array XOR Equal to K");
             System.out.println("11. Isomorphic Strings");
+            System.out.println("12. Number of Wonderful Substrings");
             System.out.println("8888. Exit");
             System.out.print("Enter your choice: ");
             int ch = scan.nextInt();
@@ -133,6 +134,11 @@ public class Codes {
                     System.out.print("Enter the second string: ");
                     String s2 = scan.next();
                     System.out.println(isIsomorphic(s1, s2));
+                    break;
+                case 12:
+                    System.out.print("Enter the string: ");
+                    s = scan.next();
+                    System.out.println(wonderfulSubstrings(s));
                     break;
                 case 8888:
                     System.exit(0);
@@ -486,6 +492,32 @@ public class Codes {
         }
         
         return true;
+    }
+
+    // 1915 - Number of Wonderful Substrings - Medium
+    /*
+     * Input: word = "aba"
+     * Output: 4
+     */
+
+    static public long wonderfulSubstrings(String word) {
+        int n = word.length();
+        long count = 0;
+        long[] freq = new long[(1 << 10) + 1];
+        freq[0] = 1;
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            int mask = (1 << (word.charAt(i) - 'a'));
+            res ^= mask;
+            int chkMask = 1;
+            count += freq[res];
+            for (int j = 1; j <= 10; j++) {
+                count += freq[chkMask ^ res];
+                chkMask <<= 1;
+            }
+            freq[res]++;
+        }
+        return count;
     }
     
 }
