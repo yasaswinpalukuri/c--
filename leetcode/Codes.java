@@ -44,6 +44,7 @@ public class Codes {
             System.out.println("14. Number of Islands");
             System.out.println("15. Island Perimeter");
             System.out.println("16. Smallest String Starting From Leaf");
+            System.out.println("17. Add One Row to Tree");
             System.out.println("8888. Exit");
             System.out.print("Enter your choice: ");
             int ch = scan.nextInt();
@@ -754,5 +755,32 @@ public class Codes {
         dfsSmallestFromLeaf(node.left, path, smallest);
         dfsSmallestFromLeaf(node.right, path, smallest);
         path.setLength(path.length() - 1);
+    }
+
+    // 623 - Add One Row to Tree - Medium
+    /*
+     * Input: root = [4,2,6,3,1,5], v = 1, d = 2
+     * Output: [4,1,1,2,null,null,6,3,1,5]
+     */
+    static public TreeNode addOneRow(TreeNode root, int val, int depth) {
+        if(root==null){
+            return root;
+        }
+        if(depth==1){
+            TreeNode temp = new TreeNode(val);
+            temp.left = root;
+            root = temp;
+        }
+        if(depth-1==1){
+            TreeNode temp = new TreeNode(val);
+            temp.left = root.left;
+            root.left = temp;
+            TreeNode temp1 = new TreeNode(val);
+            temp1.right = root.right;
+            root.right = temp1;
+        }
+        addOneRow(root.left,val,depth-1);
+        addOneRow(root.right,val,depth-1);
+        return root;
     }
 }
