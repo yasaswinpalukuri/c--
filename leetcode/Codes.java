@@ -220,6 +220,22 @@ public class Codes {
                     root.right = new TreeNode(scan.nextInt());
                     System.out.println(smallestFromLeaf(root));
                     break;
+                case 17:
+                    System.out.print("Enter the number of nodes: ");
+                    n = scan.nextInt();
+                    root = new TreeNode();
+                    System.out.print("Enter the value of the root: ");
+                    root.val = scan.nextInt();
+                    System.out.print("Enter the value of the left child of the root: ");
+                    root.left = new TreeNode(scan.nextInt());
+                    System.out.print("Enter the value of the right child of the root: ");
+                    root.right = new TreeNode(scan.nextInt());
+                    System.out.print("Enter the value to be added: ");
+                    int val = scan.nextInt();
+                    System.out.print("Enter the depth: ");
+                    int depth = scan.nextInt();
+                    System.out.println(addOneRow(root, val, depth));
+                    break;
                 case 8888:
                     System.exit(0);
                     break;
