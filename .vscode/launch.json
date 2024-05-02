@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MayDailyProblems",
+            "request": "launch",
+            "mainClass": "leetcode.MayDailyProblems",
+            "projectName": "c--_17aea424"
+        },
+        {
+            "type": "java",
             "name": "validNumber65",
             "request": "launch",
             "mainClass": "leetcode.validNumber65",
