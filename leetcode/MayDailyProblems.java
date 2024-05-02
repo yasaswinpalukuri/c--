@@ -88,5 +88,28 @@ public class MayDailyProblems {
     Output: -1
     Explanation: There is no a single valid k, we return -1.
     */
-    
+    // Here I am inputing three methods for this problem.
+    // Method 1: Using HashSet
+
+    // Method 2: Using Sorting
+
+    // Method 3: Using Two Pointers
+    static public int findMaxK2Pointers(int[] nums) {
+        Arrays.sort(nums);
+        int left = 0, right = nums.length - 1;
+        int maxK = Integer.MIN_VALUE;
+        while (left < right) {
+            int sum = nums[left] + nums[right];
+            if (sum == 0) {
+                maxK = Math.max(maxK, nums[right]);
+                left++;
+                right--;
+            } else if (sum < 0) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        return maxK != Integer.MIN_VALUE ? maxK : -1;
+    }
 }
