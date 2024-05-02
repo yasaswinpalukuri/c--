@@ -90,9 +90,30 @@ public class MayDailyProblems {
     */
     // Here I am inputing three methods for this problem.
     // Method 1: Using HashSet
-
+    static public int findMaxK(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            set.add(num);
+        }
+        int maxK = Integer.MIN_VALUE;
+        for (int num : nums) {
+            if (set.contains(-num)) {
+                maxK = Math.max(maxK, num);
+            }
+        }
+        return maxK != Integer.MIN_VALUE ? maxK : -1;
+    }
     // Method 2: Using Sorting
-
+    static public int findMaxKSorting(int[] nums) {
+        Arrays.sort(nums);
+        int maxK = Integer.MIN_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            if (Arrays.binarySearch(nums, -nums[i]) >= 0) {
+                maxK = Math.max(maxK, nums[i]);
+            }
+        }
+        return maxK != Integer.MIN_VALUE ? maxK : -1;
+    }
     // Method 3: Using Two Pointers
     static public int findMaxK2Pointers(int[] nums) {
         Arrays.sort(nums);
