@@ -9,8 +9,10 @@ public class MayDailyProblems {
         System.out.println("This is Yasaswin Palukuri, with solutions to the Daily Problems of May 2024");
         System.out.println("So, without any further ado, let's get started");
         do{
-            System.out.println("Enter the day of the problem you want the answer for:");
+            System.out.println("Enter the day of the problem you want the answer for or 88 to Exit:");
             System.out.println("Day 1: Reverse Prefix of Word");
+            System.out.println("Day 2: Largest Positive Integer That Exists With Its Negative");
+            System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
                 case 1:
@@ -18,6 +20,10 @@ public class MayDailyProblems {
                     String word = scan.next();
                     char ch = scan.next().charAt(0);
                     System.out.println("The word after reversing the prefix of the character is: " + reversePrefix(word, ch));
+                    break;
+                case 88:
+                    System.out.println("Thank you for using the May Daily Leetcode Problems");
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Sorry, the problem for the day you entered is not available");
