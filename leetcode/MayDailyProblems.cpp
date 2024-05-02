@@ -48,7 +48,29 @@ int main() {
     return 0;
 }
 
-// Function to reverse the prefix of a word until a specified character
+
+
+// 2000 May 1: Reverse Prefix of Word - Easy
+/*
+Example 1:
+
+Input: word = "abcdefd", ch = "d"
+Output: "dcbaefd"
+Explanation: The first occurrence of "d" is at index 3. 
+Reverse the part of word from 0 to 3 (inclusive), the resulting string is "dcbaefd".
+
+Example 2:
+Input: word = "xyxzxe", ch = "z"
+Output: "zxyxxe"
+Explanation: The first and only occurrence of "z" is at index 3.
+Reverse the part of word from 0 to 3 (inclusive), the resulting string is "zxyxxe".
+
+Example 3:
+Input: word = "abcd", ch = "z"
+Output: "abcd"
+Explanation: "z" does not exist in word.
+You should not do any reverse operation, the resulting string is "abcd".
+*/
 string reversePrefix(string word, char ch) {
     int index = word.find(ch);
     if(index != string::npos) {
@@ -57,7 +79,7 @@ string reversePrefix(string word, char ch) {
     return word;
 }
 
-// Function to find the largest positive integer that exists with its negative
+
 int findMaxK(vector<int>& nums) {
     unordered_set<int> set(nums.begin(), nums.end());
     int maxK = INT_MIN;
@@ -69,7 +91,7 @@ int findMaxK(vector<int>& nums) {
     return maxK != INT_MIN ? maxK : -1;
 }
 
-// Function to find the largest positive integer that exists with its negative using sorting
+
 int findMaxKSorting(vector<int>& nums) {
     sort(nums.begin(), nums.end());
     int maxK = INT_MIN;
@@ -81,7 +103,7 @@ int findMaxKSorting(vector<int>& nums) {
     return maxK != INT_MIN ? maxK : -1;
 }
 
-// Function to find the largest positive integer that exists with its negative using two pointers
+
 int findMaxK2Pointers(vector<int>& nums) {
     sort(nums.begin(), nums.end());
     int left = 0, right = nums.size() - 1;
