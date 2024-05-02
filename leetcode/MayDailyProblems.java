@@ -21,6 +21,18 @@ public class MayDailyProblems {
                     char ch = scan.next().charAt(0);
                     System.out.println("The word after reversing the prefix of the character is: " + reversePrefix(word, ch));
                     break;
+                case 2:
+                    System.out.println("Enter the number of elements in the array:");
+                    int n = scan.nextInt();
+                    int[] nums = new int[n];
+                    System.out.println("Enter the elements of the array:");
+                    for (int i = 0; i < n; i++) {
+                        nums[i] = scan.nextInt();
+                    }
+                    System.out.println("The largest positive integer that exists with its negative is(Using HashSet): " + findMaxK(nums));
+                    System.out.println("The largest positive integer that exists with its negative is(Using Arrays.sort and Arrays.binarySearch): " + findMaxKSorting(nums));
+                    System.out.println("The largest positive integer that exists with its negative is(Using Two Pointer Technique): " + findMaxK2Pointers(nums));
+                    break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems");
                     System.exit(0);
