@@ -79,7 +79,25 @@ string reversePrefix(string word, char ch) {
     return word;
 }
 
-
+// 2441 - Largest Positive Integer That Exists With Its Negative - Easy
+/*
+Example 1:
+Input: nums = [-1,2,-3,3]
+Output: 3
+Explanation: 3 is the only valid k we can find in the array.
+   
+Example 2:
+Input: nums = [-1,10,6,7,-7,1]
+Output: 7
+Explanation: Both 1 and 7 have their corresponding negative values in the array. 7 has a larger value.
+    
+Example 3:
+Input: nums = [-10,8,6,7,-2,-3]
+Output: -1
+Explanation: There is no a single valid k, we return -1.
+*/
+// Here I am inputing three methods for this problem.
+// Method 1: Using HashSet
 int findMaxK(vector<int>& nums) {
     unordered_set<int> set(nums.begin(), nums.end());
     int maxK = INT_MIN;
@@ -91,7 +109,7 @@ int findMaxK(vector<int>& nums) {
     return maxK != INT_MIN ? maxK : -1;
 }
 
-
+// Method 2: Using Sorting
 int findMaxKSorting(vector<int>& nums) {
     sort(nums.begin(), nums.end());
     int maxK = INT_MIN;
@@ -103,7 +121,7 @@ int findMaxKSorting(vector<int>& nums) {
     return maxK != INT_MIN ? maxK : -1;
 }
 
-
+// Method 3: Using Two Pointers
 int findMaxK2Pointers(vector<int>& nums) {
     sort(nums.begin(), nums.end());
     int left = 0, right = nums.size() - 1;
