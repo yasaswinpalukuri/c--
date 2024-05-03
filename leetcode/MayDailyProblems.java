@@ -12,6 +12,7 @@ public class MayDailyProblems {
             System.out.println("Enter the day of the problem you want the answer for or 88 to Exit:");
             System.out.println("Day 1: Reverse Prefix of Word");
             System.out.println("Day 2: Largest Positive Integer That Exists With Its Negative");
+            System.out.println("Day 3: Compare Version Numbers");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -32,6 +33,12 @@ public class MayDailyProblems {
                     System.out.println("The largest positive integer that exists with its negative is(Using HashSet): " + findMaxK(nums));
                     System.out.println("The largest positive integer that exists with its negative is(Using Arrays.sort and Arrays.binarySearch): " + findMaxKSorting(nums));
                     System.out.println("The largest positive integer that exists with its negative is(Using Two Pointer Technique): " + findMaxK2Pointers(nums));
+                    break;
+                case 3:
+                    System.out.println("Enter the two version numbers you want to compare:");
+                    String version1 = scan.next();
+                    String version2 = scan.next();
+                    System.out.println("The comparison of the two version numbers is: " + compareVersion(version1, version2));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems");
@@ -163,4 +170,19 @@ public class MayDailyProblems {
     Output: -1
     Explanation: version1's revision 0 is "0", while version2's revision 0 is "1". 0 < 1, so version1 < version2.
     */
+    static public int compareVersion(String version1, String version2) {
+        String[] v1 = version1.split("\\.");
+        String[] v2 = version2.split("\\.");
+        for(int i=0;i<Math.max(v1.length,v2.length);i++){
+            int num1 = i<v1.length ? Integer.parseInt(v1[i]) : 0;
+            int num2 = i<v2.length ? Integer.parseInt(v2[i]) : 0;
+            if(num1<num2){
+                return -1;
+            }
+            if(num1>num2){
+                return 1;
+            }
+        }
+        return 0;
+    }
 }
