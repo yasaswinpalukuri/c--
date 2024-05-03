@@ -8,14 +8,15 @@ int findMaxKSorting(vector<int>& nums);
 int findMaxK2Pointers(vector<int>& nums);
 
 int main() {
-    cout << "Welcome to May Daily Leetcode Problems" << '\n';
-    cout << "This is Yasaswin Palukuri, with solutions to the Daily Problems of May 2024" << '\n';
-    cout << "So, without any further ado, let's get started" << '\n';
+    cout << "Welcome to May Daily Leetcode Problems\n";
+    cout << "This is Yasaswin Palukuri, with solutions to the Daily Problems of May 2024\n";
+    cout << "So, without any further ado, let's get started\n";
 
     do{
-        cout << "Enter the day of the problem you want the answer for or 88 to Exit:" << '\n';
-        cout << "Day 1: Reverse Prefix of Word" << '\n';
-        cout << "Day 2: Largest Positive Integer That Exists With Its Negative" << '\n';
+        cout << "Enter the day of the problem you want the answer for or 88 to Exit:\n";
+        cout << "Day 1: Reverse Prefix of Word\n";
+        cout << "Day 2: Largest Positive Integer That Exists With Its Negative\n";
+        cout<<"Day 3: Compare Version Numbers\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         switch(day){
@@ -50,7 +51,7 @@ int main() {
 
 
 
-// 2000 May 1: Reverse Prefix of Word - Easy
+// Day 1: Reverse Prefix of Word - Q2000(Easy)
 /*
 Example 1:
 
@@ -79,7 +80,7 @@ string reversePrefix(string word, char ch) {
     return word;
 }
 
-// 2441 - Largest Positive Integer That Exists With Its Negative - Easy
+// Day 2: Largest Positive Integer That Exists With Its Negative - Q2441(Easy)
 /*
 Example 1:
 Input: nums = [-1,2,-3,3]
@@ -140,3 +141,22 @@ int findMaxK2Pointers(vector<int>& nums) {
     }
     return maxK != INT_MIN ? maxK : -1;
 }
+
+
+// Day 3: Compare Version Numbers - Q165(Medium)
+/*
+Example 1:
+Input: version1 = "1.01", version2 = "1.001"
+Output: 0
+Explanation: Ignoring leading zeroes, both "01" and "001" represent the same integer "1".
+    
+Example 2:
+Input: version1 = "1.0", version2 = "1.0.0"
+Output: 0
+Explanation: version1 does not specify revision 2, which means it is treated as "0".
+
+Example 3:
+Input: version1 = "0.1", version2 = "1.1"
+Output: -1
+Explanation: version1's revision 0 is "0", while version2's revision 0 is "1". 0 < 1, so version1 < version2.
+*/
