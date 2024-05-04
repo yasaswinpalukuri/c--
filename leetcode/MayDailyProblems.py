@@ -134,7 +134,7 @@ def main():
         day = int(input())
         
         if day == 88:
-            print("Thank you for using the May Daily Leetcode Problems")
+            print("Thank you for using the May Daily Leetcode Problems :)")
             break
         
         if day == 1:
