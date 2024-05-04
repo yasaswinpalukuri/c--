@@ -182,6 +182,10 @@ def main():
             version1 = input("Enter the first version number: ")
             version2 = input("Enter the second version number: ")
             print("The comparison of the two version numbers is:", sol.compareVersion(version1, version2))
+        elif day == 4:
+            people = list(map(int, input("Enter the weights of the people: ").split()))
+            limit = int(input("Enter the weight limit of the boat: "))
+            print("The number of boats required to save all the people is:", sol.numRescueBoats(people, limit))
         else:
             print("Sorry, the problem for the day you entered is not available")
 
