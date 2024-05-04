@@ -13,6 +13,7 @@ public class MayDailyProblems {
             System.out.println("Day 1: Reverse Prefix of Word");
             System.out.println("Day 2: Largest Positive Integer That Exists With Its Negative");
             System.out.println("Day 3: Compare Version Numbers");
+            System.out.println("Day 4: Boats to Save People");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -39,6 +40,16 @@ public class MayDailyProblems {
                     String version1 = scan.next();
                     String version2 = scan.next();
                     System.out.println("The comparison of the two version numbers is: " + compareVersion(version1, version2));
+                    break;
+                case 4:
+                    System.out.println("Enter the number of people and the limit of the boat:");
+                    int n1 = scan.nextInt();
+                    int[] people = new int[n1];
+                    for (int i = 0; i < n1; i++) {
+                        people[i] = scan.nextInt();
+                    }
+                    int limit = scan.nextInt();
+                    System.out.println("The number of boats required to save the people is: " + numRescueBoats(people, limit));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -203,4 +214,15 @@ public class MayDailyProblems {
     Output: 4
     Explanation: 4 boats (3), (3), (4), (5)
     */
+
+    static public int numRescueBoats(int[] p, int limit) {
+        Arrays.sort(p);
+        int l = 0, ans = 0, r = p.length-1;
+        while(l <= r){
+            ans++;
+            if(p[l] + p[r] <= limit) l++;
+            r--;
+        }
+        return ans;
+    }
 }
