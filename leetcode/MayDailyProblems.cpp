@@ -145,6 +145,16 @@ class Solutions{
     Output: 4
     Explanation: 4 boats (3), (3), (4), (5)
     */
+    int numRescueBoats(vector<int>& p, int limit) {
+        sort(p.begin(),p.end());
+        int l=0,ans=0,r=p.size()-1;
+        while(l <= r){
+            ans++;
+            if(p[l] + p[r] <= limit) l++;
+            r--;
+        }
+        return ans;
+    }
 };
 
 int main() {
@@ -157,6 +167,7 @@ int main() {
         cout << "Day 1: Reverse Prefix of Word\n";
         cout << "Day 2: Largest Positive Integer That Exists With Its Negative\n";
         cout << "Day 3: Compare Version Numbers\n";
+        cout << "Day 4: Boats to Save People\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -184,6 +195,15 @@ int main() {
                 string version1, version2;
                 cin >> version1 >> version2;
                 cout << "The comparison of the two version numbers is: " << sol.compareVersion(version1, version2) << '\n';
+                break;
+            }
+            case 4:{
+                cout << "Enter the number of people and the limit of the boat:" << '\n';
+                int n, limit; cin >> n >> limit;
+                vector<int> people(n);
+                cout << "Enter the weights of the people:" << '\n';
+                for (int i = 0; i < n; i++) cin >> people[i];
+                cout << "The number of boats required to save the people is: " << sol.numRescueBoats(people, limit) << '\n';
                 break;
             }
             case 88:
