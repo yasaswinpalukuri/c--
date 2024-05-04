@@ -169,7 +169,7 @@ int main() {
                 break;
             }
             case 88:
-                cout << "Thank you for using the May Daily Leetcode Problems\n";
+                cout << "Thank you for using the May Daily Leetcode Problems :)\n";
                 return 0;
             default:
                 cout << "Sorry, the problem for the day you entered is not available\n";
