@@ -41,7 +41,7 @@ public class MayDailyProblems {
                     System.out.println("The comparison of the two version numbers is: " + compareVersion(version1, version2));
                     break;
                 case 88:
-                    System.out.println("Thank you for using the May Daily Leetcode Problems");
+                    System.out.println("Thank you for using the May Daily Leetcode Problems :)");
                     System.exit(0);
                     break;
                 default:
