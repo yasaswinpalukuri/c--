@@ -194,6 +194,7 @@ int main() {
         cout << "Day 2: Largest Positive Integer That Exists With Its Negative\n";
         cout << "Day 3: Compare Version Numbers\n";
         cout << "Day 4: Boats to Save People\n";
+        cout << "Day 5: Delete Node in a Linked List\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -230,6 +231,31 @@ int main() {
                 cout << "Enter the weights of the people:" << '\n';
                 for (int i = 0; i < n; i++) cin >> people[i];
                 cout << "The number of boats required to save the people is: " << sol.numRescueBoats(people, limit) << '\n';
+                break;
+            }
+            case 5:{
+                cout << "Enter the number of elements in the linked list:" << '\n';
+                int n; cin >> n;
+                cout << "Enter the elements of the linked list:" << '\n';
+                int val; cin >> val;
+                Solutions::ListNode* head = new Solutions::ListNode(val);
+                Solutions::ListNode* temp = head;
+                for (int i = 1; i < n; i++) {
+                    cin >> val;
+                    temp->next = new Solutions::ListNode(val);
+                    temp = temp->next;
+                }
+                cout << "Enter the value of the node you want to delete:" << '\n';
+                int nodeVal; cin >> nodeVal;
+                Solutions::ListNode* node = head;
+                while (node->val != nodeVal) node = node->next;
+                sol.deleteNode(node);
+                cout << "The linked list after deleting the node is: ";
+                while (head != nullptr) {
+                    cout << head->val << " ";
+                    head = head->next;
+                }
+                cout << '\n';
                 break;
             }
             case 88:
