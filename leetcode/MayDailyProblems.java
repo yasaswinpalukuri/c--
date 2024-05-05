@@ -60,6 +60,29 @@ public class MayDailyProblems {
                     System.out.println("The number of boats required to save the people is: " + numRescueBoats(people, limit));
                     break;
                 case 5:
+                    System.out.println("Enter the number of elements in the linked list:");
+                    int n2 = scan.nextInt();
+                    System.out.println("Enter the elements of the linked list:");
+                    ListNode head = new MayDailyProblems().new ListNode(scan.nextInt());
+                    ListNode temp = head;
+                    for (int i = 1; i < n2; i++) {
+                        temp.next = new MayDailyProblems().new ListNode(scan.nextInt());
+                        temp = temp.next;
+                    }
+                    System.out.println("Enter the node value you want to delete:");
+                    int nodeVal = scan.nextInt();
+                    ListNode node = head;
+                    while (node.val != nodeVal) {
+                        node = node.next;
+                    }
+                    deleteNode(node);
+                    System.out.println("The linked list after deleting the node is:");
+                    while (head != null) {
+                        System.out.print(head.val + " ");
+                        head = head.next;
+                    }
+                    System.out.println();
+                    break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
                     System.exit(0);
