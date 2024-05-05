@@ -3,6 +3,13 @@ import java.util.*;
 
 // This File consists of all the problems solved in May Daily Leetcode Challenge 2024
 public class MayDailyProblems {
+    class ListNode{
+        int val;
+        ListNode next;
+        ListNode(int val){
+            this.val = val;
+        }
+    }
     static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
         System.out.println("Welcome to May Daily Leetcode Problems");
@@ -14,6 +21,7 @@ public class MayDailyProblems {
             System.out.println("Day 2: Largest Positive Integer That Exists With Its Negative");
             System.out.println("Day 3: Compare Version Numbers");
             System.out.println("Day 4: Boats to Save People");
+            System.out.println("Day 5: Delete Node in a Linked List");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -51,6 +59,7 @@ public class MayDailyProblems {
                     int limit = scan.nextInt();
                     System.out.println("The number of boats required to save the people is: " + numRescueBoats(people, limit));
                     break;
+                case 5:
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
                     System.exit(0);
@@ -224,5 +233,22 @@ public class MayDailyProblems {
             r--;
         }
         return ans;
+    }
+
+    // Day 5: Delete Node in a Linked List - Q237(Easy)
+    /*
+    Example 1:
+    Input: head = [4,5,1,9], node = 5
+    Output: [4,1,9]
+    Explanation: You are given the second node with value 5, the linked list should become 4 -> 1 -> 9 after calling your function.
+
+    Example 2:
+    Input: head = [4,5,1,9], node = 1
+    Output: [4,5,9]
+    Explanation: You are given the third node with value 1, the linked list should become 4 -> 5 -> 9 after calling your function.
+    */
+    static public void deleteNode(ListNode node) {
+        node.val = node.next.val;
+        node.next = node.next.next;
     }
 }
