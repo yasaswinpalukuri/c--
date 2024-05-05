@@ -1,6 +1,10 @@
 class Solutions:
     def __init__(self):
         pass
+    class ListNode(object):
+        def __init__(self, x):
+            self.val = x
+            self.next = None
 
     # Day 1: Reverse Prefix of Word - Q2000(Easy)
     '''
@@ -157,7 +161,7 @@ class Solutions:
     Output: [4,5,9]
     Explanation: You are given the third node with value 1, the linked list should become 4 -> 5 -> 9 after calling your function.
     '''
-    def deleteNode(self, node):
+    def deleteNode(self, node: ListNode):
         node.val = node.next.val
         node.next = node.next.next
 
@@ -174,6 +178,8 @@ def main():
         print("Day 1: Reverse Prefix of Word")
         print("Day 2: Largest Positive Integer That Exists With Its Negative")
         print("Day 3: Compare Version Numbers")
+        print("Day 4: Boats to Save People")
+        print("Day 5: Delete Node in a Linked List")
         print("88: Exit")
         
         day = int(input())
@@ -202,6 +208,26 @@ def main():
             people = list(map(int, input("Enter the weights of the people: ").split()))
             limit = int(input("Enter the weight limit of the boat: "))
             print("The number of boats required to save all the people is:", sol.numRescueBoats(people, limit))
+        elif day == 5:
+            nodes = list(map(int, input("Enter the elements of the linked list: ").split()))
+            head = sol.ListNode(nodes[0])
+            node = head
+            for i in nodes[1:]:
+                inode = sol.ListNode(i)
+                node.next = inode
+                node = node.next
+            delNode = int(input("Enter the value of the node to be deleted: "))
+            d = head
+            while d:
+                if d.val == delNode:
+                    break
+                d = d.next
+            sol.deleteNode(d)
+            print("The linked list after deleting the node is:",end=" ")
+            while head:
+                print(head.val, end=" ")
+                head = head.next
+            print()
         else:
             print("Sorry, the problem for the day you entered is not available")
 
