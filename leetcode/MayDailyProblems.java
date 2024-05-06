@@ -22,6 +22,7 @@ public class MayDailyProblems {
             System.out.println("Day 3: Compare Version Numbers");
             System.out.println("Day 4: Boats to Save People");
             System.out.println("Day 5: Delete Node in a Linked List");
+            System.out.println("Day 6: Remove Nodes From Linked List");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -80,6 +81,24 @@ public class MayDailyProblems {
                     while (head != null) {
                         System.out.print(head.val + " ");
                         head = head.next;
+                    }
+                    System.out.println();
+                    break;
+                case 6:
+                    System.out.println("Enter the number of elements in the linked list:");
+                    int n3 = scan.nextInt();
+                    System.out.println("Enter the elements of the linked list:");
+                    ListNode head1 = new MayDailyProblems().new ListNode(scan.nextInt());
+                    ListNode temp1 = head1;
+                    for (int i = 1; i < n3; i++) {
+                        temp1.next = new MayDailyProblems().new ListNode(scan.nextInt());
+                        temp1 = temp1.next;
+                    }
+                    ListNode res = removeNodes(head1);
+                    System.out.println("The linked list after removing the nodes is:");
+                    while (res != null) {
+                        System.out.print(res.val + " ");
+                        res = res.next;
                     }
                     System.out.println();
                     break;
