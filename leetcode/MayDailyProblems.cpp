@@ -3,6 +3,7 @@ using namespace std;
 
 //Class containing the solutions of the Daily Problems of May 2024
 class Solutions{
+    public:
     class ListNode {
         public:
         int val;
@@ -12,7 +13,6 @@ class Solutions{
             this->next = nullptr;
         }
     };
-    public:
     // Day 1: Reverse Prefix of Word - Q2000(Easy)
     /*
     Example 1:
@@ -235,6 +235,7 @@ int main() {
         cout << "Day 3: Compare Version Numbers\n";
         cout << "Day 4: Boats to Save People\n";
         cout << "Day 5: Delete Node in a Linked List\n";
+        cout << "Day 6: Remove Nodes From Linked List\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -298,6 +299,27 @@ int main() {
                 cout << '\n';
                 break;
             }
+            case 6:{
+                cout << "Enter the number of elements in the linked list:" << '\n';
+                int n; cin >> n;
+                cout << "Enter the elements of the linked list:" << '\n';
+                int val; cin >> val;
+                Solutions::ListNode* head = new Solutions::ListNode(val);
+                Solutions::ListNode* temp = head;
+                for (int i = 1; i < n; i++) {
+                    cin >> val;
+                    temp->next = new Solutions::ListNode(val);
+                    temp = temp->next;
+                }
+                Solutions::ListNode* newHead = sol.removeNodes(head);
+                cout << "The linked list after removing the nodes is: ";
+                while (newHead != nullptr) {
+                    cout << newHead->val << " ";
+                    newHead = newHead->next;
+                }
+                cout << '\n';
+                break;
+            }            
             case 88:
                 cout << "Thank you for using the May Daily Leetcode Problems :)\n";
                 return 0;
