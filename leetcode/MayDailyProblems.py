@@ -165,6 +165,38 @@ class Solutions:
         node.val = node.next.val
         node.next = node.next.next
 
+    # Day 6: Remove Nodes From Linked List - Q2487(Medium)
+    '''
+    Example 1:
+    Input: head = [5,2,13,3,8]
+    Output: [13,8]
+    Explanation: The nodes that should be removed are 5, 2 and 3.
+    - Node 13 is to the right of node 5.
+    - Node 13 is to the right of node 2.
+    - Node 8 is to the right of node 3.
+
+    Example 2:
+    Input: head = [1,2,3,4,5]
+    Output: [1,2,3,4,5]
+    Explanation: There are no nodes to remove.
+    '''
+    def removeNodes(self, head:ListNode) -> ListNode:
+        cur = head
+        stack = []
+        while cur:
+            while stack and stack[-1].val < cur.val:
+                stack.pop()
+            stack.append(cur)
+            cur = cur.next
+        
+        nxt = None
+        while stack:
+            cur = stack.pop()
+            cur.next = nxt
+            nxt = cur
+        
+        return cur
+
 
 def main():
     print("Welcome to May Daily Leetcode Problems")
