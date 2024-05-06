@@ -212,6 +212,7 @@ def main():
         print("Day 3: Compare Version Numbers")
         print("Day 4: Boats to Save People")
         print("Day 5: Delete Node in a Linked List")
+        print("Day 6: Remove Nodes From Linked List")
         print("88: Exit")
         
         day = int(input())
@@ -256,6 +257,20 @@ def main():
                 d = d.next
             sol.deleteNode(d)
             print("The linked list after deleting the node is:",end=" ")
+            while head:
+                print(head.val, end=" ")
+                head = head.next
+            print()
+        elif day == 6:
+            nodes = list(map(int, input("Enter the elements of the linked list: ").split()))
+            head = sol.ListNode(nodes[0])
+            node = head
+            for i in nodes[1:]:
+                inode = sol.ListNode(i)
+                node.next = inode
+                node = node.next
+            head = sol.removeNodes(head)
+            print("The linked list after removing the nodes is:",end=" ")
             while head:
                 print(head.val, end=" ")
                 head = head.next
