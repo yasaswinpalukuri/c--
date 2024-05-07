@@ -196,6 +196,23 @@ class Solutions:
             nxt = cur
         
         return cur
+    
+    # Day 7: Double a Number Represented as a Linked List - Q2816(Medium)
+    '''
+    Example 1:
+    Input: head = [1,8,9]
+    Output: [3,7,8]
+    Explanation:
+    The figure above corresponds to the given linked list which represents the number 189. 
+    Hence, the returned linked list represents the number 189 * 2 = 378.
+
+    Example 2:
+    Input: head = [1,2,3,4]
+    Output: [2,4,6,8]
+    Explanation:
+    The figure above corresponds to the given linked list which represents the number 1234.
+    Hence, the returned linked list represents the number 1234 * 2 = 2468.
+    '''
 
 
 def main():
@@ -213,6 +230,7 @@ def main():
         print("Day 4: Boats to Save People")
         print("Day 5: Delete Node in a Linked List")
         print("Day 6: Remove Nodes From Linked List")
+        print("Day 7: Double a Number Represented as a Linked List")
         print("88: Exit")
         
         day = int(input())
@@ -274,6 +292,8 @@ def main():
             while head:
                 print(head.val, end=" ")
                 head = head.next
+            print()
+        elif day == 7:
             print()
         else:
             print("Sorry, the problem for the day you entered is not available")
