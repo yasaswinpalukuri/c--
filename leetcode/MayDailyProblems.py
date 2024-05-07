@@ -213,6 +213,22 @@ class Solutions:
     The figure above corresponds to the given linked list which represents the number 1234.
     Hence, the returned linked list represents the number 1234 * 2 = 2468.
     '''
+    def doubleNumber(self, head:ListNode) -> ListNode:
+        cur = head
+        stack = []
+        while cur:
+            while stack and stack[-1].val < cur.val:
+                stack.pop()
+            stack.append(cur)
+            cur = cur.next
+        
+        nxt = None
+        while stack:
+            cur = stack.pop()
+            cur.next = nxt
+            nxt = cur
+        
+        return cur
 
 
 def main():
@@ -294,6 +310,18 @@ def main():
                 head = head.next
             print()
         elif day == 7:
+            nodes = list(map(int, input("Enter the elements of the linked list: ").split()))
+            head = sol.ListNode(nodes[0])
+            node = head
+            for i in nodes[1:]:
+                inode = sol.ListNode(i)
+                node.next = inode
+                node = node.next
+            head = sol.doubleNumber(head)
+            print("The linked list after doubling the number is:",end=" ")
+            while head:
+                print(head.val, end=" ")
+                head = head.next
             print()
         else:
             print("Sorry, the problem for the day you entered is not available")
