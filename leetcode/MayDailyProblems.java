@@ -23,6 +23,7 @@ public class MayDailyProblems {
             System.out.println("Day 4: Boats to Save People");
             System.out.println("Day 5: Delete Node in a Linked List");
             System.out.println("Day 6: Remove Nodes From Linked List");
+            System.out.println("Day 7: Double a Number Represented as a Linked List");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -101,6 +102,8 @@ public class MayDailyProblems {
                         res = res.next;
                     }
                     System.out.println();
+                    break;
+                case 7:
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -331,4 +334,22 @@ public class MayDailyProblems {
         
         return cur;
     }
+
+
+    // Day 7: Double a Number Represented as a Linked List - Q2816(Medium)
+    /*
+    Example 1:
+    Input: head = [1,8,9]
+    Output: [3,7,8]
+    Explanation:
+    The figure above corresponds to the given linked list which represents the number 189. 
+    Hence, the returned linked list represents the number 189 * 2 = 378.
+
+    Example 2:
+    Input: head = [1,2,3,4]
+    Output: [2,4,6,8]
+    Explanation:
+    The figure above corresponds to the given linked list which represents the number 1234.
+    Hence, the returned linked list represents the number 1234 * 2 = 2468.
+    */
 }
