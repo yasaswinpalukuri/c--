@@ -238,6 +238,28 @@ class Solutions{
     The figure above corresponds to the given linked list which represents the number 1234.
     Hence, the returned linked list represents the number 1234 * 2 = 2468.
     */
+    ListNode* doubleNumber(ListNode* head) {
+        ListNode* cur = head;
+        stack<ListNode*> stack;
+        
+        while (cur != nullptr) {
+            while (!stack.empty() && stack.top()->val < cur->val) {
+                stack.pop();
+            }
+            stack.push(cur);
+            cur = cur->next;
+        }
+        
+        ListNode* nxt = nullptr;
+        while (!stack.empty()) {
+            cur = stack.top();
+            stack.pop();
+            cur->next = nxt;
+            nxt = cur;
+        }
+        
+        return cur;
+    }
 };
 
 int main() {
@@ -339,6 +361,24 @@ int main() {
                 break;
             }
             case 7:{
+                cout << "Enter the number of elements in the linked list:" << '\n';
+                int n; cin >> n;
+                cout << "Enter the elements of the linked list:" << '\n';
+                int val; cin >> val;
+                Solutions::ListNode* head = new Solutions::ListNode(val);
+                Solutions::ListNode* temp = head;
+                for (int i = 1; i < n; i++) {
+                    cin >> val;
+                    temp->next = new Solutions::ListNode(val);
+                    temp = temp->next;
+                }
+                Solutions::ListNode* newHead = sol.doubleNumber(head);
+                cout << "The linked list after doubling the number is: ";
+                while (newHead != nullptr) {
+                    cout << newHead->val << " ";
+                    newHead = newHead->next;
+                }
+                cout << '\n';
                 break;
             }            
             case 88:
