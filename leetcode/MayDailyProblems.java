@@ -107,6 +107,15 @@ public class MayDailyProblems {
                     System.out.println();
                     break;
                 case 7:
+                    System.out.println("Enter the number of elements in the linked list:");
+                    int n4 = scan.nextInt();
+                    System.out.println("Enter the elements of the linked list:");
+                    ListNode head2 = new MayDailyProblems().new ListNode(scan.nextInt());
+                    ListNode temp2 = head2;
+                    for (int i = 1; i < n4; i++) {
+                        temp2.next = new MayDailyProblems().new ListNode(scan.nextInt());
+                        temp2 = temp2.next;
+                    }
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
