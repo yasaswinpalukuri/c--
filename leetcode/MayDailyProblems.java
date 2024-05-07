@@ -9,6 +9,9 @@ public class MayDailyProblems {
         ListNode(int val){
             this.val = val;
         }
+        ListNode(int val, ListNode next){
+            this.val = val; this.next = next;
+        }
     }
     static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
@@ -352,4 +355,18 @@ public class MayDailyProblems {
     The figure above corresponds to the given linked list which represents the number 1234.
     Hence, the returned linked list represents the number 1234 * 2 = 2468.
     */
+    static public ListNode doubleIt(ListNode head) {
+        if (head.val > 4) {
+            head = new MayDailyProblems().new ListNode(0, head);
+        }
+        ListNode temp = head;
+        while (temp != null) {
+            temp.val = (temp.val * 2) % 10;
+            if (temp.next != null && temp.next.val > 4) {
+                temp.val++;
+            }
+            temp = temp.next;
+        }
+        return head;
+    }
 }
