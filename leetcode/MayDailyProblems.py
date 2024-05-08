@@ -242,6 +242,20 @@ class Solutions:
     Output: ["Gold Medal","5","Bronze Medal","Silver Medal","4"]
     Explanation: The placements are [1st, 5th, 3rd, 2nd, 4th].
     '''
+    def findRelativeRanks(self, score):
+        n = len(score)
+        rank = sorted(range(n), key=lambda x: score[x], reverse=True)
+        res = [0] * n
+        for i in range(n):
+            if i == 0:
+                res[rank[i]] = "Gold Medal"
+            elif i == 1:
+                res[rank[i]] = "Silver Medal"
+            elif i == 2:
+                res[rank[i]] = "Bronze Medal"
+            else:
+                res[rank[i]] = str(i+1)
+        return res
 
 
 def main():
