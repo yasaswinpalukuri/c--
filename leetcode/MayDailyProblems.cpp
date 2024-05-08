@@ -423,7 +423,9 @@ int main() {
                 cout << "Enter the scores of the players:" << '\n';
                 for (int i = 0; i < n; i++) cin >> scores[i];
                 vector<string> ranks = sol.findRelativeRanks(scores);
-                cout << "The relative ranks of the players are: ";
+                cout << "Scores of the players: ";
+                for (int i = 0; i < n; i++) cout << scores[i] << " ";
+                cout << "\nThe relative ranks of the players are: ";
                 for (string rank : ranks) cout << rank << " ";
                 cout << '\n';
                 break;
