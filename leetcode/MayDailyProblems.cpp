@@ -274,6 +274,26 @@ class Solutions{
     Output: ["Gold Medal","5","Bronze Medal","Silver Medal","4"]
     Explanation: The placements are [1st, 5th, 3rd, 2nd, 4th].
     */
+    vector<string> findRelativeRanks(vector<int>& score) {
+        vector<pair<int, int>> ranks;
+        for (int i = 0; i < score.size(); i++) {
+            ranks.push_back({score[i], i});
+        }
+        sort(ranks.begin(), ranks.end(), greater<pair<int, int>>());
+        vector<string> res(score.size());
+        for (int i = 0; i < ranks.size(); i++) {
+            if (i == 0) {
+                res[ranks[i].second] = "Gold Medal";
+            } else if (i == 1) {
+                res[ranks[i].second] = "Silver Medal";
+            } else if (i == 2) {
+                res[ranks[i].second] = "Bronze Medal";
+            } else {
+                res[ranks[i].second] = to_string(i + 1);
+            }
+        }
+        return res;
+    }
 };
 
 int main() {
