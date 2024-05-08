@@ -260,6 +260,20 @@ class Solutions{
         
         return cur;
     }
+
+
+    // Day 8: Relative Ranks - Q506(Easy)
+    /*
+    Example 1:
+    Input: score = [5,4,3,2,1]
+    Output: ["Gold Medal","Silver Medal","Bronze Medal","4","5"]
+    Explanation: The placements are [1st, 2nd, 3rd, 4th, 5th].
+
+    Example 2:
+    Input: score = [10,3,8,9,4]
+    Output: ["Gold Medal","5","Bronze Medal","Silver Medal","4"]
+    Explanation: The placements are [1st, 5th, 3rd, 2nd, 4th].
+    */
 };
 
 int main() {
@@ -276,6 +290,7 @@ int main() {
         cout << "Day 5: Delete Node in a Linked List\n";
         cout << "Day 6: Remove Nodes From Linked List\n";
         cout << "Day 7: Double a Number Represented as a Linked List\n";
+        cout << "Day 8: Relative Ranks\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -380,7 +395,19 @@ int main() {
                 }
                 cout << '\n';
                 break;
-            }            
+            }
+            case 8:{
+                cout << "Enter the number of scores:" << '\n';
+                int n; cin >> n;
+                vector<int> scores(n);
+                cout << "Enter the scores of the players:" << '\n';
+                for (int i = 0; i < n; i++) cin >> scores[i];
+                vector<string> ranks = sol.findRelativeRanks(scores);
+                cout << "The relative ranks of the players are: ";
+                for (string rank : ranks) cout << rank << " ";
+                cout << '\n';
+                break;
+            }       
             case 88:
                 cout << "Thank you for using the May Daily Leetcode Problems :)\n";
                 return 0;
