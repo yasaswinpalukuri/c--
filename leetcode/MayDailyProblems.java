@@ -402,4 +402,26 @@ public class MayDailyProblems {
     Output: ["Gold Medal","5","Bronze Medal","Silver Medal","4"]
     Explanation: The placements are [1st, 5th, 3rd, 2nd, 4th].
     */
+    static public String[] findRelativeRanks(int[] score) {
+        int n = score.length;
+        String[] res = new String[n];
+        int[] temp = Arrays.copyOf(score, n);
+        Arrays.sort(temp);
+        Map<Integer, String> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            if (i == n - 1) {
+                map.put(temp[i], "Gold Medal");
+            } else if (i == n - 2) {
+                map.put(temp[i], "Silver Medal");
+            } else if (i == n - 3) {
+                map.put(temp[i], "Bronze Medal");
+            } else {
+                map.put(temp[i], String.valueOf(n - i));
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            res[i] = map.get(score[i]);
+        }
+        return res;
+    }
 }
