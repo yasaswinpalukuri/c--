@@ -27,6 +27,7 @@ public class MayDailyProblems {
             System.out.println("Day 5: Delete Node in a Linked List");
             System.out.println("Day 6: Remove Nodes From Linked List");
             System.out.println("Day 7: Double a Number Represented as a Linked List");
+            System.out.println("Day 8: Relative Ranks");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -116,6 +117,15 @@ public class MayDailyProblems {
                         temp2.next = new MayDailyProblems().new ListNode(scan.nextInt());
                         temp2 = temp2.next;
                     }
+                    break;
+                case 8:
+                    System.out.println("Enter the number of elements in the array:");
+                    int n5 = scan.nextInt();
+                    int[] score = new int[n5];
+                    System.out.println("Enter the elements of the array:");
+                    for (int i = 0; i < n5; i++) score[i] = scan.nextInt();
+                    System.out.println("The scores are: " + Arrays.toString(score));
+                    System.out.println("The relative ranks of the scores are: " + Arrays.toString(findRelativeRanks(score)));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -378,4 +388,18 @@ public class MayDailyProblems {
         }
         return head;
     }
+
+
+    // Day 8: Relative Ranks - Q506(Easy)
+    /*
+    Example 1:
+    Input: score = [5,4,3,2,1]
+    Output: ["Gold Medal","Silver Medal","Bronze Medal","4","5"]
+    Explanation: The placements are [1st, 2nd, 3rd, 4th, 5th].
+
+    Example 2:
+    Input: score = [10,3,8,9,4]
+    Output: ["Gold Medal","5","Bronze Medal","Silver Medal","4"]
+    Explanation: The placements are [1st, 5th, 3rd, 2nd, 4th].
+    */
 }
