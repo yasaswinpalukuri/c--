@@ -256,6 +256,25 @@ class Solutions:
             else:
                 res[rank[i]] = str(i+1)
         return res
+    
+    # Day 9: Maximize Happiness of Selected Children - Q3075(Medium)
+    '''
+    Example 1:
+    Input: happiness = [1,2,3], k = 2
+    Output: 4
+    Explanation: We can pick 2 children in the following way:
+    - Pick the child with the happiness value == 3. The happiness value of the remaining children becomes [0,1].
+    - Pick the child with the happiness value == 1. The happiness value of the remaining child becomes [0]. Note that the happiness value cannot become less than 0.
+    The sum of the happiness values of the selected children is 3 + 1 = 4.
+
+    Example 2:
+    Input: happiness = [1,2,3,4], k = 2
+    Output: 6
+    Explanation: We can pick 2 children in the following way:
+    - Pick the child with the happiness value == 4. The happiness value of the remaining children becomes [0,1,2].
+    - Pick the child with the happiness value == 2. The happiness value of the remaining children becomes [0,1].
+    The sum of the happiness values of the selected children is 4 + 2 = 6.
+    '''
 
 
 def main():
@@ -275,6 +294,7 @@ def main():
         print("Day 6: Remove Nodes From Linked List")
         print("Day 7: Double a Number Represented as a Linked List")
         print("Day 8: Relative Ranks")
+        print("Day 9: Maximize Happiness of Selected Children")
         print("88: Exit")
         
         day = int(input())
