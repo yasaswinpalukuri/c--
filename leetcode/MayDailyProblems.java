@@ -28,6 +28,7 @@ public class MayDailyProblems {
             System.out.println("Day 6: Remove Nodes From Linked List");
             System.out.println("Day 7: Double a Number Represented as a Linked List");
             System.out.println("Day 8: Relative Ranks");
+            System.out.println("Day 9: Maximize Happiness of Selected Children");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -453,7 +454,12 @@ public class MayDailyProblems {
     - Pick the child with the happiness value == 2. The happiness value of the remaining children becomes [0,1].
     The sum of the happiness values of the selected children is 4 + 2 = 6.
     */
-    static public long maximumHappinessSum(int[] happiness, int k) {
-        
+    static public long maximumHappinessSum(int[] h, int k) {
+        Arrays.sort(h);
+        int n = h.length;
+        long ans = 0;
+        for(int i=0;i<k;i++) h[n-i-1] = Math.max(0, h[n-i-1]-i);
+        for(int i=0;i<k;i++) ans += h[n-i-1];
+        return ans;
     }
 }
