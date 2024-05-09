@@ -275,6 +275,14 @@ class Solutions:
     - Pick the child with the happiness value == 2. The happiness value of the remaining children becomes [0,1].
     The sum of the happiness values of the selected children is 4 + 2 = 6.
     '''
+    def maximizeHappiness(self, h, k):
+        n = len(h)
+        h.sort()
+        sum = 0
+        for i in range(k):
+            h[n-i-1] = max(h[n-i-1]-i,0)
+            sum += h[n-i-1]
+        return sum
 
 
 def main():
@@ -376,6 +384,10 @@ def main():
             print("The scores of the players are:", scores)
             print("The relative ranks of the players are:")
             print(sol.findRelativeRanks(scores))
+        elif day == 9:
+            happiness = list(map(int, input("Enter the happiness values of the children: ").split()))
+            k = int(input("Enter the number of children to be picked: "))
+            print("The maximum happiness of the selected children is:", sol.maximizeHappiness(happiness, k))
         else:
             print("Sorry, the problem for the day you entered is not available")
 
