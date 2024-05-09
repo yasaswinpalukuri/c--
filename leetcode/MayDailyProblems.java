@@ -127,6 +127,16 @@ public class MayDailyProblems {
                     System.out.println("The scores are: " + Arrays.toString(score));
                     System.out.println("The relative ranks of the scores are: " + Arrays.toString(findRelativeRanks(score)));
                     break;
+                case 9:
+                    System.out.println("Enter the number of elements in the array:");
+                    int n6 = scan.nextInt();
+                    int[] happiness = new int[n6];
+                    System.out.println("Enter the elements of the array:");
+                    for (int i = 0; i < n6; i++) happiness[i] = scan.nextInt();
+                    System.out.println("Enter the number of children you want to select:");
+                    int k = scan.nextInt();
+                    System.out.println("The maximum happiness of the selected children is: " + findMaxK(happiness));
+                    break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
                     System.exit(0);
@@ -424,4 +434,23 @@ public class MayDailyProblems {
         }
         return res;
     }
+
+    // Day 9: Maximize Happiness of Selected Children - Q3075(Medium)
+    /*
+    Example 1:
+    Input: happiness = [1,2,3], k = 2
+    Output: 4
+    Explanation: We can pick 2 children in the following way:
+    - Pick the child with the happiness value == 3. The happiness value of the remaining children becomes [0,1].
+    - Pick the child with the happiness value == 1. The happiness value of the remaining child becomes [0]. Note that the happiness value cannot become less than 0.
+    The sum of the happiness values of the selected children is 3 + 1 = 4.
+
+    Example 2:
+    Input: happiness = [1,2,3,4], k = 2
+    Output: 6
+    Explanation: We can pick 2 children in the following way:
+    - Pick the child with the happiness value == 4. The happiness value of the remaining children becomes [0,1,2].
+    - Pick the child with the happiness value == 2. The happiness value of the remaining children becomes [0,1].
+    The sum of the happiness values of the selected children is 4 + 2 = 6.
+    */
 }

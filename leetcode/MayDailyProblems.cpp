@@ -314,6 +314,39 @@ class Solutions{
     The sum of the happiness values of the selected children is 4 + 2 = 6.
     */
     int maximizeHappiness(vector<int>& h, int k) {
+        /*
+            [1,4,5,3,6,7] => happiness 
+            n = 6
+            k = 1,2,3
+
+            k = 1
+            Max happiness = 7 => [1-1,3-1,4-1,5-1,6-1] => [0,2,3,4,5] 
+
+            k = 2
+            Max happiness = 7 => [1-1,3-1,4-1,5-1,6-1] => [0,2,3,4,5]
+                            +
+                            5 => [0-1,2-1,3-1,4-1] => [-1,1,2,3] => [0,1,2,3]
+                           ---
+                            12
+
+            k = 3
+            Max happiness = 7 => [1-1,3-1,4-1,5-1,6-1] => [0,2,3,4,5]
+                            +
+                            5 => [0-1,2-1,3-1,4-1] => [-1,1,2,3] => [0,1,2,3]
+                            +
+                            3 => [0-1,1-1,2-1] => [-1,0,1] => [0,0,1]
+                           ---
+                            15
+
+
+            [1,2,3] => n =3
+            k = 2
+
+            k = 1 => [1,2,3] -> ans = 3 => [1-1,2-1] => [0,1]
+            k = 2 => [0,1] -> ans = 3 + 1 => [0-1] => [0]
+
+            ans = 4
+        */
         int n = h.size();
         sort(h.begin(), h.end());
         for(int i=0;i<k;i++) h[n-i-1] = max(0,h[n-i-1]-i);
