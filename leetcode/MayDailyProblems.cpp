@@ -294,6 +294,25 @@ class Solutions{
         }
         return res;
     }
+
+    // Day 9: Maximize Happiness of Selected Children - Q3075(Medium)
+    /*
+    Example 1:
+    Input: happiness = [1,2,3], k = 2
+    Output: 4
+    Explanation: We can pick 2 children in the following way:
+    - Pick the child with the happiness value == 3. The happiness value of the remaining children becomes [0,1].
+    - Pick the child with the happiness value == 1. The happiness value of the remaining child becomes [0]. Note that the happiness value cannot become less than 0.
+    The sum of the happiness values of the selected children is 3 + 1 = 4.
+
+    Example 2:
+    Input: happiness = [1,2,3,4], k = 2
+    Output: 6
+    Explanation: We can pick 2 children in the following way:
+    - Pick the child with the happiness value == 4. The happiness value of the remaining children becomes [0,1,2].
+    - Pick the child with the happiness value == 2. The happiness value of the remaining children becomes [0,1].
+    The sum of the happiness values of the selected children is 4 + 2 = 6.
+    */
 };
 
 int main() {
@@ -311,6 +330,7 @@ int main() {
         cout << "Day 6: Remove Nodes From Linked List\n";
         cout << "Day 7: Double a Number Represented as a Linked List\n";
         cout << "Day 8: Relative Ranks\n";
+        cout << "Day 9: Maximize Happiness of Selected Children\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -429,7 +449,16 @@ int main() {
                 for (string rank : ranks) cout << rank << " ";
                 cout << '\n';
                 break;
-            }       
+            }
+            case 9:{
+                cout << "Enter the number of children and the value of k:" << '\n';
+                int n, k; cin >> n >> k;
+                vector<int> happiness(n);
+                cout << "Enter the happiness values of the children:" << '\n';
+                for (int i = 0; i < n; i++) cin >> happiness[i];
+                cout << "The maximum happiness of the selected children is: " << sol.maximizeHappiness(happiness, k) << '\n';
+                break;
+            }
             case 88:
                 cout << "Thank you for using the May Daily Leetcode Problems :)\n";
                 return 0;
