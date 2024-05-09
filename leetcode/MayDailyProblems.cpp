@@ -313,6 +313,12 @@ class Solutions{
     - Pick the child with the happiness value == 2. The happiness value of the remaining children becomes [0,1].
     The sum of the happiness values of the selected children is 4 + 2 = 6.
     */
+    int maximizeHappiness(vector<int>& h, int k) {
+        int n = h.size();
+        sort(h.begin(), h.end());
+        for(int i=0;i<k;i++) h[n-i-1] = max(0,h[n-i-1]-i);
+        return accumulate(h.end()-k,h.end(),0);
+    }
 };
 
 int main() {
