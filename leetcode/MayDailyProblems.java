@@ -135,7 +135,7 @@ public class MayDailyProblems {
                     for (int i = 0; i < n6; i++) happiness[i] = scan.nextInt();
                     System.out.println("Enter the number of children you want to select:");
                     int k = scan.nextInt();
-                    System.out.println("The maximum happiness of the selected children is: " + findMaxK(happiness));
+                    System.out.println("The maximum happiness of the selected children is: " + maximumHappinessSum(happiness, k));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -453,4 +453,7 @@ public class MayDailyProblems {
     - Pick the child with the happiness value == 2. The happiness value of the remaining children becomes [0,1].
     The sum of the happiness values of the selected children is 4 + 2 = 6.
     */
+    static public long maximumHappinessSum(int[] happiness, int k) {
+        
+    }
 }
