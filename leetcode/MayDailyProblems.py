@@ -1,3 +1,6 @@
+import heapq
+
+
 class Solutions:
     def __init__(self):
         pass
@@ -297,6 +300,24 @@ class Solutions:
     Input: arr = [1,7], k = 1
     Output: [1,7]
     '''
+    def kthSmallestPrimeFraction(self, arr, k):
+        pq = []
+        def compare(a, b):
+            return a[0] - b[0]
+        for i in range(len(arr)):
+            heapq.heappush(pq, ((arr[i] / arr[-1]), i, len(arr) - 1))
+        for _ in range(k - 1):
+            cur = heapq.heappop(pq)
+            numerator_index = cur[1]
+            denominator_index = cur[2] - 1
+            if denominator_index > numerator_index:
+                heapq.heappush(pq, (
+                    (arr[numerator_index] / arr[denominator_index]), 
+                    numerator_index, 
+                    denominator_index
+                ))
+        result = heapq.heappop(pq)
+        return [arr[result[1]], arr[result[2]]]
 
 
 
@@ -318,6 +339,7 @@ def main():
         print("Day 7: Double a Number Represented as a Linked List")
         print("Day 8: Relative Ranks")
         print("Day 9: Maximize Happiness of Selected Children")
+        print("Day 10: K-th Smallest Prime Fraction")
         print("88: Exit")
         
         day = int(input())
@@ -404,7 +426,9 @@ def main():
             k = int(input("Enter the number of children to be picked: "))
             print("The maximum happiness of the selected children is:", sol.maximizeHappiness(happiness, k))
         elif day == 10:
-            
+            arr = list(map(int, input("Enter the elements of the array: ").split()))
+            k = int(input("Enter the value of k: "))
+            print("The k-th smallest prime fraction is:", sol.kthSmallestPrimeFraction(arr, k))
         else:
             print("Sorry, the problem for the day you entered is not available")
 
