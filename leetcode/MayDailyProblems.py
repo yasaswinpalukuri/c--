@@ -283,6 +283,21 @@ class Solutions:
             h[n-i-1] = max(h[n-i-1]-i,0)
             sum += h[n-i-1]
         return sum
+    
+    # Day 10: K-th Smallest Prime Fraction - Q786(Medium)
+    '''
+    Example 1:
+    Input: arr = [1,2,3,5], k = 3
+    Output: [2,5]
+    Explanation: The fractions to be considered in sorted order are:
+    1/5, 1/3, 2/5, 1/2, 3/5, and 2/3.
+    The third fraction is 2/5.
+    
+    Example 2:
+    Input: arr = [1,7], k = 1
+    Output: [1,7]
+    '''
+
 
 
 def main():
@@ -388,6 +403,8 @@ def main():
             happiness = list(map(int, input("Enter the happiness values of the children: ").split()))
             k = int(input("Enter the number of children to be picked: "))
             print("The maximum happiness of the selected children is:", sol.maximizeHappiness(happiness, k))
+        elif day == 10:
+            
         else:
             print("Sorry, the problem for the day you entered is not available")
 
