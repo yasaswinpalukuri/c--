@@ -367,6 +367,18 @@ class Solutions{
     Input: arr = [1,7], k = 1
     Output: [1,7]
     */
+   vector<int> kthSmallestPrimeFraction(vector<int>& arr, int k) {
+        priority_queue<pair<double, pair<int, int>>> pq;
+        for (int i = 0; i < arr.size(); i++) pq.push({-1.0 * arr[i] / arr.back(), {i, arr.size() - 1}});
+        while (--k > 0) {
+            pair<int, int> cur = pq.top().second;
+            pq.pop();
+            cur.second--;
+            pq.push({-1.0 * arr[cur.first] / arr[cur.second],{cur.first, cur.second}});
+        }
+        pair<int, int> result = pq.top().second;
+        return {arr[result.first], arr[result.second]};
+    }
 };
 
 int main() {
@@ -515,7 +527,14 @@ int main() {
                 break;
             }
             case 10:{
-
+                cout << "Enter the number of elements in the array and the value of k:" << '\n';
+                int n, k; cin >> n >> k;
+                vector<int> arr(n);
+                cout << "Enter the elements of the array:" << '\n';
+                for (int i = 0; i < n; i++) cin >> arr[i];
+                vector<int> fraction = sol.kthSmallestPrimeFraction(arr, k);
+                cout << "The k-th smallest prime fraction is: " << fraction[0] << "/" << fraction[1] << '\n';
+                break;
             }
             case 88:
                 cout << "Thank you for using the May Daily Leetcode Problems :)\n";
