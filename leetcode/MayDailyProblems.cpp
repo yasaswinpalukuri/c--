@@ -352,6 +352,21 @@ class Solutions{
         for(int i=0;i<k;i++) h[n-i-1] = max(0,h[n-i-1]-i);
         return accumulate(h.end()-k,h.end(),0);
     }
+
+
+    // Day 10: K-th Smallest Prime Fraction - Q786(Medium)
+    /*
+    Example 1:
+    Input: arr = [1,2,3,5], k = 3
+    Output: [2,5]
+    Explanation: The fractions to be considered in sorted order are:
+    1/5, 1/3, 2/5, 1/2, 3/5, and 2/3.
+    The third fraction is 2/5.
+    
+    Example 2:
+    Input: arr = [1,7], k = 1
+    Output: [1,7]
+    */
 };
 
 int main() {
@@ -370,6 +385,7 @@ int main() {
         cout << "Day 7: Double a Number Represented as a Linked List\n";
         cout << "Day 8: Relative Ranks\n";
         cout << "Day 9: Maximize Happiness of Selected Children\n";
+        cout << "Day 10: K-th Smallest Prime Fraction\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -497,6 +513,9 @@ int main() {
                 for (int i = 0; i < n; i++) cin >> happiness[i];
                 cout << "The maximum happiness of the selected children is: " << sol.maximizeHappiness(happiness, k) << '\n';
                 break;
+            }
+            case 10:{
+
             }
             case 88:
                 cout << "Thank you for using the May Daily Leetcode Problems :)\n";
