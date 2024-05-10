@@ -140,7 +140,15 @@ public class MayDailyProblems {
                     System.out.println("The maximum happiness of the selected children is: " + maximumHappinessSum(happiness, k));
                     break;
                 case 10:
-                
+                    System.out.println("Enter the number of elements in the array:");
+                    int n7 = scan.nextInt();
+                    int[] arr = new int[n7];
+                    System.out.println("Enter the elements of the array:");
+                    for (int i = 0; i < n7; i++) arr[i] = scan.nextInt();
+                    System.out.println("Enter the value of k:");
+                    int k1 = scan.nextInt();
+                    System.out.println("The k-th smallest prime fraction is: " + Arrays.toString(kthSmallestPrimeFraction(arr, k1)));
+                    break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
                     System.exit(0);
@@ -479,4 +487,28 @@ public class MayDailyProblems {
     Input: arr = [1,7], k = 1
     Output: [1,7]
     */
+    static public int[] kthSmallestPrimeFraction(int[] arr, int k){
+        PriorityQueue<double[]> pq = new PriorityQueue<>((a, b) -> Double.compare(b[0], a[0]));
+        for (int i = 0; i < arr.length; i++) {
+            pq.offer(new double[] {
+                -1.0 * arr[i] / arr[arr.length - 1], 
+                i, 
+                arr.length - 1
+            });
+        }
+        while (--k > 0) {
+            double[] cur = pq.poll();
+            int numeratorIndex = (int) cur[1];
+            int denominatorIndex = (int) cur[2] - 1;
+            if (denominatorIndex > numeratorIndex) {
+                pq.offer(new double[] {
+                        -1.0 * arr[numeratorIndex] / arr[denominatorIndex], 
+                        numeratorIndex, 
+                        denominatorIndex
+                });
+            }
+        }
+        double[] result = pq.poll();
+        return new int[]{arr[(int) result[1]], arr[(int) result[2]]};
+    }
 }
