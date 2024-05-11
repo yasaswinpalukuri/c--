@@ -379,6 +379,20 @@ class Solutions{
         pair<int, int> result = pq.top().second;
         return {arr[result.first], arr[result.second]};
     }
+
+
+    // Day 11: Minimum Cost to Hire K Workers - Q857(Hard)
+    /*
+    Example 1:
+    Input: quality = [10,20,5], wage = [70,50,30], k = 2
+    Output: 105.00000
+    Explanation: We pay 70 to 0th worker and 35 to 2nd worker.
+    
+    Example 2:
+    Input: quality = [3,1,10,10,1], wage = [4,8,2,2,7], k = 3
+    Output: 30.66667
+    Explanation: We pay 4 to 0th worker, 13.33333 to 2nd and 3rd workers separately.
+    */
 };
 
 int main() {
@@ -398,6 +412,7 @@ int main() {
         cout << "Day 8: Relative Ranks\n";
         cout << "Day 9: Maximize Happiness of Selected Children\n";
         cout << "Day 10: K-th Smallest Prime Fraction\n";
+        cout << "Day 11: Minimum Cost to Hire K Workers\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -534,6 +549,17 @@ int main() {
                 for (int i = 0; i < n; i++) cin >> arr[i];
                 vector<int> fraction = sol.kthSmallestPrimeFraction(arr, k);
                 cout << "The k-th smallest prime fraction is: " << fraction[0] << "/" << fraction[1] << '\n';
+                break;
+            }
+            case 11:{
+                cout << "Enter the number of workers and the value of k:" << '\n';
+                int n, k; cin >> n >> k;
+                vector<int> quality(n), wage(n);
+                cout << "Enter the quality of the workers:" << '\n';
+                for (int i = 0; i < n; i++) cin >> quality[i];
+                cout << "Enter the wage of the workers:" << '\n';
+                for (int i = 0; i < n; i++) cin >> wage[i];
+                cout << "The minimum cost to hire k workers is: " << sol.minCostToHireWorkers(quality, wage, k) << '\n';
                 break;
             }
             case 88:
