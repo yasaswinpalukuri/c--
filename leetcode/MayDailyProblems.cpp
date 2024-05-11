@@ -393,6 +393,29 @@ class Solutions{
     Output: 30.66667
     Explanation: We pay 4 to 0th worker, 13.33333 to 2nd and 3rd workers separately.
     */
+    double minCostToHireWorkers(vector<int>& quality, vector<int>& wage, int k) {
+        int n = quality.size();
+        vector<pair<double, int>> workers;
+        for (int i = 0; i < n; i++) {
+            workers.push_back({(double)wage[i] / quality[i], quality[i]});
+        }
+        sort(workers.begin(), workers.end());
+        double res = DBL_MAX;
+        int sum = 0;
+        priority_queue<int> pq;
+        for (int i = 0; i < n; i++) {
+            sum += workers[i].second;
+            pq.push(workers[i].second);
+            if (pq.size() > k) {
+                sum -= pq.top();
+                pq.pop();
+            }
+            if (pq.size() == k) {
+                res = min(res, sum * workers[i].first);
+            }
+        }
+        return res;
+    }
 };
 
 int main() {
