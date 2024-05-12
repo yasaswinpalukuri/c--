@@ -332,7 +332,19 @@ class Solutions:
     Explanation: We pay 4 to 0th worker, 13.33333 to 2nd and 3rd workers separately.
     '''
     def mincostToHireWorkers(self, quality, wage, k):
-
+        n = len(quality)
+        workers = sorted([(w/q, q) for w, q in zip(wage, quality)])
+        res = float('inf')
+        qsum = 0
+        heap = []
+        for r, q in workers:
+            qsum += q
+            heapq.heappush(heap, -q)
+            if len(heap) > k:
+                qsum += heapq.heappop(heap)
+            if len(heap) == k:
+                res = min(res, qsum*r)
+        return res
 
 
 
