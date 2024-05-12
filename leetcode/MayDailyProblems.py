@@ -360,8 +360,22 @@ class Solutions:
     Output: [[2,2,2],[2,2,2],[2,2,2]]
     Explanation: Notice that the 2 is contained within every contiguous 3 x 3 matrix in grid.
     '''
+    def find_max(self, grid, x, y):
+        max_element = 0
+        for i in range(x, x + 3):
+            for j in range(y, y + 3):
+                max_element = max(max_element, grid[i][j])
+        
+        return max_element
 
-
+    def largestLocal(self, grid):
+        N = len(grid)
+        max_local = [[0] * (N - 2) for _ in range(N - 2)]
+        for i in range(N - 2):
+            for j in range(N - 2):
+                max_local[i][j] = self.find_max(grid, i, j)
+        
+        return max_local
 
 
 def main():
@@ -384,6 +398,7 @@ def main():
         print("Day 9: Maximize Happiness of Selected Children")
         print("Day 10: K-th Smallest Prime Fraction")
         print("Day 11: Minimum Cost to Hire K Workers")
+        print("Day 12: Largest Local Values in a Matrix")
         print("88: Exit")
         
         day = int(input())
@@ -479,6 +494,13 @@ def main():
             k = int(input("Enter the number of workers to be hired: "))
             print("The minimum cost to hire k workers is:", sol.mincostToHireWorkers(quality, wage, k))
         elif day == 12:
+            grid = []
+            n = int(input("Enter the number of rows & columns in the matrix: "))
+            print("Enter the elements of the matrix row by row:")
+            for _ in range(n):
+                grid.append(list(map(int, input().split())))
+            print("The largest local values in the matrix are:")
+            print(sol.largestLocal(grid))
         else:
             print("Sorry, the problem for the day you entered is not available")
 
