@@ -165,6 +165,17 @@ public class MayDailyProblems {
                     System.out.println("The minimum cost to hire the workers is: " + minCostToHireWorkers(quality, wage, k2));
                     break;
                 case 12:
+                    System.out.println("Enter the number of rows and columns in the matrix:");
+                    int n12 = scan.nextInt();
+                    int[][] grid = new int[n12][n12];
+                    System.out.println("Enter the elements of the matrix:");
+                    for (int i = 0; i < n12; i++) {
+                        for (int j = 0; j < n12; j++) {
+                            grid[i][j] = scan.nextInt();
+                        }
+                    }
+                    System.out.println("The largest local values in the matrix are: " + Arrays.deepToString(largestLocal(grid)));
+                    break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
                     System.exit(0);
@@ -579,6 +590,23 @@ public class MayDailyProblems {
     Explanation: Notice that the 2 is contained within every contiguous 3 x 3 matrix in grid.
     */
     static public int[][] largestLocal(int[][] grid) {
-         
+        int n = grid.length;
+        int[][] res = new int[n - 2][n - 2];
+
+        for(int i = 1; i < n - 1; ++i) {
+            for(int j = 1; j < n - 1; ++j) {
+                int temp = 0;
+
+                for(int k = i - 1; k <= i + 1; ++k) {
+                    for(int l = j - 1; l <= j + 1; ++l) {
+                        temp = Math.max(temp, grid[k][l]);
+                    }
+                }
+
+                res[i - 1][j - 1] = temp;
+            }
+        }
+
+        return res;
     }
 }
