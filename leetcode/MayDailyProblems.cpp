@@ -431,6 +431,27 @@ class Solutions{
     Output: [[2,2,2],[2,2,2],[2,2,2]]
     Explanation: Notice that the 2 is contained within every contiguous 3 x 3 matrix in grid.
     */
+    int findMax(vector<vector<int>>& grid, int x, int y) {
+        int maxElement = 0;
+        for (int i = x; i < x + 3; i++) {
+            for (int j = y; j < y + 3; j++) {
+                maxElement = max(maxElement, grid[i][j]);
+            }
+        }
+        return maxElement;
+    }
+
+    vector<vector<int>> largestLocal(vector<vector<int>>& grid) {
+        int N = grid.size();
+        vector<vector<int>> maxLocal(N - 2, vector<int>(N - 2, 0));
+        for (int i = 0; i < N - 2; i++) {
+            for (int j = 0; j < N - 2; j++) {
+                maxLocal[i][j] = findMax(grid, i, j);
+            }
+        }
+        
+        return maxLocal;
+    }
 };
 
 int main() {
@@ -602,6 +623,23 @@ int main() {
                 break;
             }
             case 12:{
+                cout << "Enter the number of rows and columns in the matrix:" << '\n';
+                int n; cin >> n;
+                vector<vector<int>> grid(n, vector<int>(n));
+                cout << "Enter the elements of the matrix:" << '\n';
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        cin >> grid[i][j];
+                    }
+                }
+                vector<vector<int>> maxLocal = sol.largestLocal(grid);
+                cout << "The largest local values in the matrix are:" << '\n';
+                for (int i = 0; i < n - 2; i++) {
+                    for (int j = 0; j < n - 2; j++) {
+                        cout << maxLocal[i][j] << " ";
+                    }
+                    cout << '\n';
+                }
                 break;
             }
             case 88:
