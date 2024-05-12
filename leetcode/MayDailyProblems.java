@@ -151,7 +151,18 @@ public class MayDailyProblems {
                     System.out.println("The k-th smallest prime fraction is: " + Arrays.toString(kthSmallestPrimeFraction(arr, k1)));
                     break;
                 case 11:
-
+                    System.out.println("Enter the number of workers:");
+                    int n8 = scan.nextInt();
+                    int[] quality = new int[n8];
+                    int[] wage = new int[n8];
+                    System.out.println("Enter the quality of the workers:");
+                    for (int i = 0; i < n8; i++) quality[i] = scan.nextInt();
+                    System.out.println("Enter the wage of the workers:");
+                    for (int i = 0; i < n8; i++) wage[i] = scan.nextInt();
+                    System.out.println("Enter the number of workers you want to hire:");
+                    int k2 = scan.nextInt();
+                    System.out.println("The minimum cost to hire the workers is: " + minCostToHireWorkers(quality, wage, k2));
+                    break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
                     System.exit(0);
