@@ -416,6 +416,21 @@ class Solutions{
         }
         return res;
     }
+
+    // Day 12: Largest Local Values in a Matrix - Q2373(Easy)
+    /*
+    Example 1:
+    Input: grid = [[9,9,8,1],[5,6,2,6],[8,2,6,4],[6,2,2,2]]
+    Output: [[9,9],[8,6]]
+    Explanation: The diagram above shows the original matrix and the generated matrix.
+    Notice that each value in the generated matrix corresponds to the largest value of a contiguous 3 x 3 matrix in grid.
+    
+    
+    Example 2:
+    Input: grid = [[1,1,1,1,1],[1,1,1,1,1],[1,1,2,1,1],[1,1,1,1,1],[1,1,1,1,1]]
+    Output: [[2,2,2],[2,2,2],[2,2,2]]
+    Explanation: Notice that the 2 is contained within every contiguous 3 x 3 matrix in grid.
+    */
 };
 
 int main() {
@@ -436,6 +451,7 @@ int main() {
         cout << "Day 9: Maximize Happiness of Selected Children\n";
         cout << "Day 10: K-th Smallest Prime Fraction\n";
         cout << "Day 11: Minimum Cost to Hire K Workers\n";
+        cout << "Day 12: Largest Local Values in a Matrix\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -583,6 +599,9 @@ int main() {
                 cout << "Enter the wage of the workers:" << '\n';
                 for (int i = 0; i < n; i++) cin >> wage[i];
                 cout << "The minimum cost to hire k workers is: " << sol.minCostToHireWorkers(quality, wage, k) << '\n';
+                break;
+            }
+            case 12:{
                 break;
             }
             case 88:
