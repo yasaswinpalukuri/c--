@@ -31,6 +31,7 @@ public class MayDailyProblems {
             System.out.println("Day 9: Maximize Happiness of Selected Children");
             System.out.println("Day 10: K-th Smallest Prime Fraction");
             System.out.println("Day 11: Minimum Cost to Hire K Workers");
+            System.out.println("Day 12: Largest Local Values in a Matrix");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -163,6 +164,7 @@ public class MayDailyProblems {
                     int k2 = scan.nextInt();
                     System.out.println("The minimum cost to hire the workers is: " + minCostToHireWorkers(quality, wage, k2));
                     break;
+                case 12:
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
                     System.exit(0);
@@ -560,5 +562,23 @@ public class MayDailyProblems {
             }
         }
         return ans;
+    }
+
+    // Day 12: Largest Local Values in a Matrix - Q2373(Easy)
+    /*
+    Example 1:
+    Input: grid = [[9,9,8,1],[5,6,2,6],[8,2,6,4],[6,2,2,2]]
+    Output: [[9,9],[8,6]]
+    Explanation: The diagram above shows the original matrix and the generated matrix.
+    Notice that each value in the generated matrix corresponds to the largest value of a contiguous 3 x 3 matrix in grid.
+    
+    
+    Example 2:
+    Input: grid = [[1,1,1,1,1],[1,1,1,1,1],[1,1,2,1,1],[1,1,1,1,1],[1,1,1,1,1]]
+    Output: [[2,2,2],[2,2,2],[2,2,2]]
+    Explanation: Notice that the 2 is contained within every contiguous 3 x 3 matrix in grid.
+    */
+    static public int[][] largestLocal(int[][] grid) {
+         
     }
 }
