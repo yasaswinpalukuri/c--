@@ -30,6 +30,7 @@ public class MayDailyProblems {
             System.out.println("Day 8: Relative Ranks");
             System.out.println("Day 9: Maximize Happiness of Selected Children");
             System.out.println("Day 10: K-th Smallest Prime Fraction");
+            System.out.println("Day 11: Minimum Cost to Hire K Workers");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -149,6 +150,8 @@ public class MayDailyProblems {
                     int k1 = scan.nextInt();
                     System.out.println("The k-th smallest prime fraction is: " + Arrays.toString(kthSmallestPrimeFraction(arr, k1)));
                     break;
+                case 11:
+
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
                     System.exit(0);
@@ -510,5 +513,41 @@ public class MayDailyProblems {
         }
         double[] result = pq.poll();
         return new int[]{arr[(int) result[1]], arr[(int) result[2]]};
+    }
+
+
+    // Day 11: Minimum Cost to Hire K Workers - Q857(Hard)
+    /*
+    Example 1:
+    Input: quality = [10,20,5], wage = [70,50,30], k = 2
+    Output: 105.00000
+    Explanation: We pay 70 to 0th worker and 35 to 2nd worker.
+    
+    Example 2:
+    Input: quality = [3,1,10,10,1], wage = [4,8,2,2,7], k = 3
+    Output: 30.66667
+    Explanation: We pay 4 to 0th worker, 13.33333 to 2nd and 3rd workers separately.
+    */
+    static public double minCostToHireWorkers(int[] quality, int[] wage, int k) {
+        int n = quality.length;
+        double[][] workers = new double[n][2];
+        for (int i = 0; i < n; i++) {
+            workers[i] = new double[]{(double) wage[i] / quality[i], (double) quality[i]};
+        }
+        Arrays.sort(workers, (a, b) -> Double.compare(a[0], b[0]));
+        double ans = Double.MAX_VALUE;
+        double sum = 0;
+        PriorityQueue<Double> pq = new PriorityQueue<>((a, b) -> Double.compare(b, a));
+        for (double[] worker : workers) {
+            sum += worker[1];
+            pq.offer(worker[1]);
+            if (pq.size() > k) {
+                sum -= pq.poll();
+            }
+            if (pq.size() == k) {
+                ans = Math.min(ans, sum * worker[0]);
+            }
+        }
+        return ans;
     }
 }
