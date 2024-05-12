@@ -345,6 +345,22 @@ class Solutions:
             if len(heap) == k:
                 res = min(res, qsum*r)
         return res
+    
+    # Day 12: Largest Local Values in a Matrix - Q2373(Easy)
+    '''
+    Example 1:
+    Input: grid = [[9,9,8,1],[5,6,2,6],[8,2,6,4],[6,2,2,2]]
+    Output: [[9,9],[8,6]]
+    Explanation: The diagram above shows the original matrix and the generated matrix.
+    Notice that each value in the generated matrix corresponds to the largest value of a contiguous 3 x 3 matrix in grid.
+    
+    
+    Example 2:
+    Input: grid = [[1,1,1,1,1],[1,1,1,1,1],[1,1,2,1,1],[1,1,1,1,1],[1,1,1,1,1]]
+    Output: [[2,2,2],[2,2,2],[2,2,2]]
+    Explanation: Notice that the 2 is contained within every contiguous 3 x 3 matrix in grid.
+    '''
+
 
 
 
@@ -462,6 +478,7 @@ def main():
             wage = list(map(int, input("Enter the wages of the workers: ").split()))
             k = int(input("Enter the number of workers to be hired: "))
             print("The minimum cost to hire k workers is:", sol.mincostToHireWorkers(quality, wage, k))
+        elif day == 12:
         else:
             print("Sorry, the problem for the day you entered is not available")
 
