@@ -318,6 +318,21 @@ class Solutions:
                 ))
         result = heapq.heappop(pq)
         return [arr[result[1]], arr[result[2]]]
+    
+    # Day 11: Minimum Cost to Hire K Workers - Q857(Hard)
+    '''
+    Example 1:
+    Input: quality = [10,20,5], wage = [70,50,30], k = 2
+    Output: 105.00000
+    Explanation: We pay 70 to 0th worker and 35 to 2nd worker.
+    
+    Example 2:
+    Input: quality = [3,1,10,10,1], wage = [4,8,2,2,7], k = 3
+    Output: 30.66667
+    Explanation: We pay 4 to 0th worker, 13.33333 to 2nd and 3rd workers separately.
+    '''
+    def mincostToHireWorkers(self, quality, wage, k):
+
 
 
 
@@ -340,6 +355,7 @@ def main():
         print("Day 8: Relative Ranks")
         print("Day 9: Maximize Happiness of Selected Children")
         print("Day 10: K-th Smallest Prime Fraction")
+        print("Day 11: Minimum Cost to Hire K Workers")
         print("88: Exit")
         
         day = int(input())
@@ -429,6 +445,11 @@ def main():
             arr = list(map(int, input("Enter the elements of the array: ").split()))
             k = int(input("Enter the value of k: "))
             print("The k-th smallest prime fraction is:", sol.kthSmallestPrimeFraction(arr, k))
+        elif day == 11:
+            quality = list(map(int, input("Enter the qualities of the workers: ").split()))
+            wage = list(map(int, input("Enter the wages of the workers: ").split()))
+            k = int(input("Enter the number of workers to be hired: "))
+            print("The minimum cost to hire k workers is:", sol.mincostToHireWorkers(quality, wage, k))
         else:
             print("Sorry, the problem for the day you entered is not available")
 
