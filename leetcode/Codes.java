@@ -46,6 +46,7 @@ public class Codes {
             System.out.println("16. Smallest String Starting From Leaf");
             System.out.println("17. Add One Row to Tree");
             System.out.println("18. Minimum Path Sum");
+            System.out.println("19. Maximum Depth of Binary Tree");
             System.out.println("8888. Exit");
             System.out.print("Enter your choice: ");
             int ch = scan.nextInt();
@@ -250,6 +251,22 @@ public class Codes {
                         }
                     }
                     System.out.println("So, the Minimum Path Sum from (0,0) to (m-1,n-1) is: "+minPathSum(gridSum));
+                    break;
+                case 19:
+                    // input: [3,9,20,null,null,15,7]
+                    System.out.print("Enter the values of nodes for the binary tree (separated by spaces, use 'null' for empty nodes): ");
+                    String inputLine = scan.nextLine();
+                    String[] inputStr = inputLine.split(" ");
+                    Integer[] input = new Integer[inputStr.length];
+                    for (int i = 0; i < inputStr.length; i++) {
+                        if (!inputStr[i].isEmpty() && !inputStr[i].equals("null")) {
+                            input[i] = Integer.parseInt(inputStr[i]);
+                        } else {
+                            input[i] = null;
+                        }
+                    }
+                    root = createTree(input);
+                    System.out.println("Depth of the binary tree: " + maxDepth(root));
                     break;
                 case 8888:
                     System.exit(0);
@@ -845,5 +862,42 @@ public class Codes {
             }
         }
         return dp[m-1][n-1];
+    }
+
+    // Maximum Depth of Binary Tree - Q104(Easy)
+    /*
+    Example 1:
+    Input: root = [3,9,20,null,null,15,7]
+    Output: 3
+    
+    Example 2:
+    Input: root = [1,null,2]
+    Output: 2
+    */
+
+    static public TreeNode createTree(Integer[] input) {
+        if (input == null || input.length == 0) return null;
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        TreeNode root = new TreeNode(input[0]);
+        queue.offer(root);
+
+        for (int i = 1; i < input.length; i += 2) {
+            TreeNode current = queue.poll();
+            if (input[i] != null) {
+                current.left = new TreeNode(input[i]);
+                queue.offer(current.left);
+            }
+            if (i + 1 < input.length && input[i + 1] != null) {
+                current.right = new TreeNode(input[i + 1]);
+                queue.offer(current.right);
+            }
+        }
+
+        return root;
+    }
+    static public int maxDepth(TreeNode root) {
+        if(root == null) return 0;
+        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
     }
 }
