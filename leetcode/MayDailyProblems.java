@@ -32,6 +32,7 @@ public class MayDailyProblems {
             System.out.println("Day 10: K-th Smallest Prime Fraction");
             System.out.println("Day 11: Minimum Cost to Hire K Workers");
             System.out.println("Day 12: Largest Local Values in a Matrix");
+            System.out.println("Day 13: Score After Flipping Matrix");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -175,6 +176,18 @@ public class MayDailyProblems {
                         }
                     }
                     System.out.println("The largest local values in the matrix are: " + Arrays.deepToString(largestLocal(grid)));
+                    break;
+                case 13:
+                    System.out.println("Enter the number of rows and columns in the matrix:");
+                    int n13 = scan.nextInt();
+                    int[][] grid1 = new int[n13][n13];
+                    System.out.println("Enter the elements of the matrix:");
+                    for (int i = 0; i < n13; i++) {
+                        for (int j = 0; j < n13; j++) {
+                            grid1[i][j] = scan.nextInt();
+                        }
+                    }
+                    System.out.println("The score after flipping the matrix is: " + matrixScore(grid1));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -608,5 +621,22 @@ public class MayDailyProblems {
         }
 
         return res;
+    }
+
+
+
+    // Day 13: Score After Flipping Matrix - Q861(Medium)
+    /*
+    Example 1:
+    Input: grid = [[0,0,1,1],[1,0,1,0],[1,1,0,0]]
+    Output: 39
+    Explanation: 0b1111 + 0b1001 + 0b1111 = 15 + 9 + 15 = 39
+
+    Example 2:
+    Input: grid = [[0]]
+    Output: 1
+    */
+    static public int matrixScore(int[][] grid) {
+        
     }
 }
