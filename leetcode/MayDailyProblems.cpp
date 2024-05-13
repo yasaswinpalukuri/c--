@@ -452,6 +452,21 @@ class Solutions{
         
         return maxLocal;
     }
+
+
+    // Day 13: Score After Flipping Matrix - Q861(Medium)
+    /*
+    Example 1:
+    Input: grid = [[0,0,1,1],[1,0,1,0],[1,1,0,0]]
+    Output: 39
+    Explanation: 0b1111 + 0b1001 + 0b1111 = 15 + 9 + 15 = 39
+
+    Example 2:
+    Input: grid = [[0]]
+    Output: 1
+    */
+    int matrixScore(vector<vector<int>>& grid) {
+    }
 };
 
 int main() {
@@ -473,6 +488,7 @@ int main() {
         cout << "Day 10: K-th Smallest Prime Fraction\n";
         cout << "Day 11: Minimum Cost to Hire K Workers\n";
         cout << "Day 12: Largest Local Values in a Matrix\n";
+        cout << "Day 13: Score After Flipping Matrix\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -640,6 +656,19 @@ int main() {
                     }
                     cout << '\n';
                 }
+                break;
+            }
+            case 13:{
+                cout << "Enter the number of rows and columns in the matrix:" << '\n';
+                int n; cin >> n;
+                vector<vector<int>> grid(n, vector<int>(n));
+                cout << "Enter the elements of the matrix:" << '\n';
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        cin >> grid[i][j];
+                    }
+                }
+                cout << "The score after flipping the matrix is: " << sol.matrixScore(grid) << '\n';
                 break;
             }
             case 88:
