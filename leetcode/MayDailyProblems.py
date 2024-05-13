@@ -377,6 +377,19 @@ class Solutions:
         
         return max_local
 
+    # Day 13: Score After Flipping Matrix - Q861(Medium)
+    '''
+    Example 1:
+    Input: grid = [[0,0,1,1],[1,0,1,0],[1,1,0,0]]
+    Output: 39
+    Explanation: 0b1111 + 0b1001 + 0b1111 = 15 + 9 + 15 = 39
+
+    Example 2:
+    Input: grid = [[0]]
+    Output: 1
+    '''
+    def matrixScore(self, grid):
+
 
 def main():
     print("Welcome to May Daily Leetcode Problems")
@@ -399,6 +412,7 @@ def main():
         print("Day 10: K-th Smallest Prime Fraction")
         print("Day 11: Minimum Cost to Hire K Workers")
         print("Day 12: Largest Local Values in a Matrix")
+        print("Day 13: Score After Flipping Matrix")
         print("88: Exit")
         
         day = int(input())
@@ -501,6 +515,13 @@ def main():
                 grid.append(list(map(int, input().split())))
             print("The largest local values in the matrix are:")
             print(sol.largestLocal(grid))
+        elif day == 13:
+            grid = []
+            n = int(input("Enter the number of rows & columns in the matrix: "))
+            print("Enter the elements of the matrix row by row:")
+            for _ in range(n):
+                grid.append(list(map(int, input().split())))
+            print("The score after flipping the matrix is:", sol.matrixScore(grid))
         else:
             print("Sorry, the problem for the day you entered is not available")
 
