@@ -637,6 +637,22 @@ public class MayDailyProblems {
     Output: 1
     */
     static public int matrixScore(int[][] grid) {
-        
+        int n = grid.length, m = grid[0].length;
+        for (int i = 0; i < n; i++) {
+            if (grid[i][0] == 0) {
+                for (int j = 0; j < m; j++) {
+                    grid[i][j] ^= 1;
+                }
+            }
+        }
+        int res = 0;
+        for (int j = 0; j < m; j++) {
+            int cnt = 0;
+            for (int i = 0; i < n; i++) {
+                cnt += grid[i][j];
+            }
+            res += Math.max(cnt, n - cnt) * (1 << (m - j - 1));
+        }
+        return res;
     }
 }
