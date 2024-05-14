@@ -403,6 +403,28 @@ class Solutions:
 
         return score
 
+    # Day 14: Path with Maximum Gold - Q1219(Medium)
+    '''
+    Example 1:
+    Input: grid = [[0,6,0],[5,8,7],[0,9,0]]
+    Output: 24
+    Explanation:
+    [[0,6,0],
+    [5,8,7],
+    [0,9,0]]
+    Path to get the maximum gold, 9 -> 8 -> 7.
+    
+    Example 2:
+    Input: grid = [[1,0,7],[2,0,6],[3,4,5],[0,3,0],[9,0,20]]
+    Output: 28
+    Explanation:
+    [[1,0,7],
+    [2,0,6],
+    [3,4,5],
+    [0,3,0],
+    [9,0,20]]
+    Path to get the maximum gold, 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7.
+    '''
 
 def main():
     print("Welcome to May Daily Leetcode Problems")
@@ -426,6 +448,7 @@ def main():
         print("Day 11: Minimum Cost to Hire K Workers")
         print("Day 12: Largest Local Values in a Matrix")
         print("Day 13: Score After Flipping Matrix")
+        print("Day 14: Path with Maximum Gold")
         print("88: Exit")
         
         day = int(input())
@@ -535,6 +558,14 @@ def main():
             for _ in range(n):
                 grid.append(list(map(int, input().split())))
             print("The score after flipping the matrix is:", sol.matrixScore(grid))
+        elif day == 14:
+            grid = []
+            m = int(input("Enter the number of rows in the grid: "))
+            n = int(input("Enter the number of columns in the grid: "))
+            print("Enter the elements of the grid row by row:")
+            for _ in range(m):
+                grid.append(list(map(int, input().split())))
+            print("The maximum gold that can be collected is:", sol.getMaximumGold(grid))
         else:
             print("Sorry, the problem for the day you entered is not available")
 
