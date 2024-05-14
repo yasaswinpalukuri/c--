@@ -482,6 +482,30 @@ class Solutions{
         }
         return score;
     }
+
+
+    // Day 14: Path with Maximum Gold - Q1219(Medium)
+    /*
+    Example 1:
+    Input: grid = [[0,6,0],[5,8,7],[0,9,0]]
+    Output: 24
+    Explanation:
+    [[0,6,0],
+    [5,8,7],
+    [0,9,0]]
+    Path to get the maximum gold, 9 -> 8 -> 7.
+    
+    Example 2:
+    Input: grid = [[1,0,7],[2,0,6],[3,4,5],[0,3,0],[9,0,20]]
+    Output: 28
+    Explanation:
+    [[1,0,7],
+    [2,0,6],
+    [3,4,5],
+    [0,3,0],
+    [9,0,20]]
+    Path to get the maximum gold, 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7.
+    */
 };
 
 int main() {
@@ -504,6 +528,7 @@ int main() {
         cout << "Day 11: Minimum Cost to Hire K Workers\n";
         cout << "Day 12: Largest Local Values in a Matrix\n";
         cout << "Day 13: Score After Flipping Matrix\n";
+        cout << "Day 14: Path with Maximum Gold\n"
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -684,6 +709,19 @@ int main() {
                     }
                 }
                 cout << "The score after flipping the matrix is: " << sol.matrixScore(grid) << '\n';
+                break;
+            }
+            case 14:{
+                cout << "Enter the number of rows and columns in the matrix:" << '\n';
+                int n; cin >> n;
+                vector<vector<int>> grid(n, vector<int>(n));
+                cout << "Enter the elements of the matrix:" << '\n';
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        cin >> grid[i][j];
+                    }
+                }
+                cout << "The maximum gold that can be obtained is: " << sol.getMaximumGold(grid) << '\n';
                 break;
             }
             case 88:
