@@ -33,6 +33,7 @@ public class MayDailyProblems {
             System.out.println("Day 11: Minimum Cost to Hire K Workers");
             System.out.println("Day 12: Largest Local Values in a Matrix");
             System.out.println("Day 13: Score After Flipping Matrix");
+            System.out.println("Day 14: Path with Maximum Gold");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -189,6 +190,19 @@ public class MayDailyProblems {
                     }
                     System.out.println("The score after flipping the matrix is: " + matrixScore(grid1));
                     break;
+                case 14:
+                    System.out.println("Enter the number of rows in the matrix:");
+                    int m14 = scan.nextInt();
+                    System.out.println("Enter the number of columns in the matrix:");
+                    int n14 = scan.nextInt();
+                    int[][] grid2 = new int[m14][n14];
+                    System.out.println("Enter the elements of the matrix:");
+                    for (int i = 0; i < m14; i++) {
+                        for (int j = 0; j < n14; j++) {
+                            grid2[i][j] = scan.nextInt();
+                        }
+                    }
+                    System.out.println("The maximum gold that can be obtained is: " + getMaximumGold(grid2));
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
                     System.exit(0);
@@ -654,5 +668,31 @@ public class MayDailyProblems {
             res += Math.max(cnt, n - cnt) * (1 << (m - j - 1));
         }
         return res;
+    }
+
+    // Day 14: Path with Maximum Gold - Q1219(Medium)
+    /*
+    Example 1:
+    Input: grid = [[0,6,0],[5,8,7],[0,9,0]]
+    Output: 24
+    Explanation:
+    [[0,6,0],
+    [5,8,7],
+    [0,9,0]]
+    Path to get the maximum gold, 9 -> 8 -> 7.
+    
+    Example 2:
+    Input: grid = [[1,0,7],[2,0,6],[3,4,5],[0,3,0],[9,0,20]]
+    Output: 28
+    Explanation:
+    [[1,0,7],
+    [2,0,6],
+    [3,4,5],
+    [0,3,0],
+    [9,0,20]]
+    Path to get the maximum gold, 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7.
+    */
+    static public int getMaximumGold(int[][] grid) {
+        return -1;
     }
 }
