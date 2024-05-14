@@ -506,6 +506,31 @@ class Solutions{
     [9,0,20]]
     Path to get the maximum gold, 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7.
     */
+    int getMaximumGold(vector<vector<int>>& grid) {
+        int rows = grid.size();
+        int cols = grid[0].size();
+        int maxGold = 0;
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) maxGold = max(maxGold, dfsBacktrack(grid, rows, cols, row, col));
+        }
+        return maxGold;
+    }
+    const vector<int> DIRECTIONS = {0, 1, 0, -1, 0};
+    int dfsBacktrack(vector<vector<int>>& grid, int rows, int cols, int row,int col){
+        if (row < 0 || col < 0 || row == rows || col == cols ||
+            grid[row][col] == 0) {
+            return 0;
+        }
+        int maxGold = 0;
+        int originalVal = grid[row][col];
+        grid[row][col] = 0;
+        for (int direction = 0; direction < 4; direction++) {
+            maxGold =
+                max(maxGold,dfsBacktrack(grid, rows, cols, DIRECTIONS[direction] + row,DIRECTIONS[direction + 1] + col));
+        }
+        grid[row][col] = originalVal;
+        return maxGold + originalVal;
+    }
 };
 
 int main() {
@@ -528,7 +553,7 @@ int main() {
         cout << "Day 11: Minimum Cost to Hire K Workers\n";
         cout << "Day 12: Largest Local Values in a Matrix\n";
         cout << "Day 13: Score After Flipping Matrix\n";
-        cout << "Day 14: Path with Maximum Gold\n"
+        cout << "Day 14: Path with Maximum Gold\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -712,12 +737,14 @@ int main() {
                 break;
             }
             case 14:{
-                cout << "Enter the number of rows and columns in the matrix:" << '\n';
+                cout << "Enter the number of rows in the matrix:" << '\n';
                 int n; cin >> n;
-                vector<vector<int>> grid(n, vector<int>(n));
+                cout << "Enter the number of columns in the matrix:" << '\n';
+                int m; cin >> m;
+                vector<vector<int>> grid(n, vector<int>(m));
                 cout << "Enter the elements of the matrix:" << '\n';
                 for (int i = 0; i < n; i++) {
-                    for (int j = 0; j < n; j++) {
+                    for (int j = 0; j < m; j++) {
                         cin >> grid[i][j];
                     }
                 }
