@@ -531,6 +531,31 @@ class Solutions{
         grid[row][col] = originalVal;
         return maxGold + originalVal;
     }
+
+    // Day 15: Find the Safest Path in a Grid - Q2812(Medium)
+    /*
+    Example 1:
+    Input: grid = [[1,0,0],[0,0,0],[0,0,1]]
+    Output: 0
+    Explanation: All paths from (0, 0) to (n - 1, n - 1) go through the thieves in cells (0, 0) and (n - 1, n - 1).
+    
+    
+    Example 2:
+    Input: grid = [[0,0,1],[0,0,0],[0,0,0]]
+    Output: 2
+    Explanation: The path depicted in the picture above has a safeness factor of 2 since:
+    - The closest cell of the path to the thief at cell (0, 2) is cell (0, 0). The distance between them is | 0 - 0 | + | 0 - 2 | = 2.
+    It can be shown that there are no other paths with a higher safeness factor.
+    
+
+    Example 3:
+    Input: grid = [[0,0,0,1],[0,0,0,0],[0,0,0,0],[1,0,0,0]]
+    Output: 2
+    Explanation: The path depicted in the picture above has a safeness factor of 2 since:
+    - The closest cell of the path to the thief at cell (0, 3) is cell (1, 2). The distance between them is | 0 - 1 | + | 3 - 2 | = 2.
+    - The closest cell of the path to the thief at cell (3, 0) is cell (3, 2). The distance between them is | 3 - 3 | + | 0 - 2 | = 2.
+    It can be shown that there are no other paths with a higher safeness factor.
+    */
 };
 
 int main() {
@@ -554,6 +579,7 @@ int main() {
         cout << "Day 12: Largest Local Values in a Matrix\n";
         cout << "Day 13: Score After Flipping Matrix\n";
         cout << "Day 14: Path with Maximum Gold\n";
+        cout << "Day 15: Find the Safest Path in a Grid\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -749,6 +775,19 @@ int main() {
                     }
                 }
                 cout << "The maximum gold that can be obtained is: " << sol.getMaximumGold(grid) << '\n';
+                break;
+            }
+            case 15:{
+                cout << "Enter the number of rows in the matrix:" << '\n';
+                int n; cin >> n;
+                vector<vector<int>> grid(n, vector<int>(n));
+                cout << "Enter the elements of the matrix:" << '\n';
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        cin >> grid[i][j];
+                    }
+                }
+                cout << "The safest path in the grid is: " << sol.findSafestPath(grid) << '\n';
                 break;
             }
             case 88:
