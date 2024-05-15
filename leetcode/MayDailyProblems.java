@@ -206,18 +206,18 @@ public class MayDailyProblems {
                     System.out.println("The maximum gold that can be obtained is: " + getMaximumGold(grid2));
                     break;
                 case 15:
-                    System.out.println("Enter the number of rows in the matrix:");
-                    int m15 = scan.nextInt();
-                    System.out.println("Enter the number of columns in the matrix:");
+                    System.out.println("Enter the number of rows in the grid:");
                     int n15 = scan.nextInt();
-                    int[][] grid3 = new int[m15][n15];
-                    System.out.println("Enter the elements of the matrix:");
-                    for (int i = 0; i < m15; i++) {
+                    List<List<Integer>> grid3 = new ArrayList<>();
+                    System.out.println("Enter the elements of the grid:");
+                    for (int i = 0; i < n15; i++) {
+                        List<Integer> row = new ArrayList<>();
                         for (int j = 0; j < n15; j++) {
-                            grid3[i][j] = scan.nextInt();
+                            row.add(scan.nextInt());
                         }
+                        grid3.add(row);
                     }
-                    System.out.println("The safest path in the grid is: " + maximumSafenessFactor(grid3));
+                    System.out.println("The maximum safeness factor of the path is: " + maximumSafenessFactor(grid3));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -762,4 +762,88 @@ public class MayDailyProblems {
     - The closest cell of the path to the thief at cell (3, 0) is cell (3, 2). The distance between them is | 3 - 3 | + | 0 - 2 | = 2.
     It can be shown that there are no other paths with a higher safeness factor.
     */
+    static final int[][] dir = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+
+    static public int maximumSafenessFactor(List<List<Integer>> grid) {
+        int n = grid.size();
+        int[][] mat = new int[n][n];
+        Queue<int[]> multiSourceQueue = new LinkedList<>();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid.get(i).get(j) == 1) {
+                    multiSourceQueue.add(new int[]{i, j});
+                    mat[i][j] = 0;
+                } else {
+                    mat[i][j] = -1;
+                }
+            }
+        }
+        while (!multiSourceQueue.isEmpty()) {
+            int size = multiSourceQueue.size();
+            while (size-- > 0) {
+                int[] curr = multiSourceQueue.poll();
+                for (int[] d : dir) {
+                    int di = curr[0] + d[0];
+                    int dj = curr[1] + d[1];
+                    int val = mat[curr[0]][curr[1]];
+                    if (isValidCell(mat, di, dj) && mat[di][dj] == -1) {
+                        mat[di][dj] = val + 1;
+                        multiSourceQueue.add(new int[]{di, dj});
+                    }
+                }
+            }
+        }
+        int start = 0;
+        int end = 0;
+        int res = -1;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                end = Math.max(end, mat[i][j]);
+            }
+        }
+
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (isValidSafeness(mat, mid)) {
+                res = mid; 
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+        return res;
+    }
+
+    static private boolean isValidSafeness(int[][] grid, int minSafeness) {
+        int n = grid.length;
+        if (grid[0][0] < minSafeness || grid[n - 1][n - 1] < minSafeness) {
+            return false;
+        }
+
+        Queue<int[]> traversalQueue = new LinkedList<>();
+        traversalQueue.add(new int[]{0, 0});
+        boolean[][] visited = new boolean[n][n];
+        visited[0][0] = true;
+        while (!traversalQueue.isEmpty()) {
+            int[] curr = traversalQueue.poll();
+            if (curr[0] == n - 1 && curr[1] == n - 1) {
+                return true;
+            }
+            for (int[] d : dir) {
+                int di = curr[0] + d[0];
+                int dj = curr[1] + d[1];
+                if (isValidCell(grid, di, dj) && !visited[di][dj] && grid[di][dj] >= minSafeness) {
+                    visited[di][dj] = true;
+                    traversalQueue.add(new int[]{di, dj});
+                }
+            }
+        }
+
+        return false;
+    }
+
+    static private boolean isValidCell(int[][] mat, int i, int j) {
+        int n = mat.length;
+        return i >= 0 && j >= 0 && i < n && j < n;
+    }
 }
