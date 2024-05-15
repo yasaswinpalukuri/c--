@@ -34,6 +34,7 @@ public class MayDailyProblems {
             System.out.println("Day 12: Largest Local Values in a Matrix");
             System.out.println("Day 13: Score After Flipping Matrix");
             System.out.println("Day 14: Path with Maximum Gold");
+            System.out.println("Day 15: Find the Safest Path in a Grid");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -203,6 +204,20 @@ public class MayDailyProblems {
                         }
                     }
                     System.out.println("The maximum gold that can be obtained is: " + getMaximumGold(grid2));
+                    break;
+                case 15:
+                    System.out.println("Enter the number of rows in the matrix:");
+                    int m15 = scan.nextInt();
+                    System.out.println("Enter the number of columns in the matrix:");
+                    int n15 = scan.nextInt();
+                    int[][] grid3 = new int[m15][n15];
+                    System.out.println("Enter the elements of the matrix:");
+                    for (int i = 0; i < m15; i++) {
+                        for (int j = 0; j < n15; j++) {
+                            grid3[i][j] = scan.nextInt();
+                        }
+                    }
+                    System.out.println("The safest path in the grid is: " + maximumSafenessFactor(grid3));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -721,4 +736,30 @@ public class MayDailyProblems {
         grid[row][col] = originalVal;
         return maxGold + originalVal;
     }
+
+
+    // Day 15: Find the Safest Path in a Grid - Q2812(Medium)
+    /*
+    Example 1:
+    Input: grid = [[1,0,0],[0,0,0],[0,0,1]]
+    Output: 0
+    Explanation: All paths from (0, 0) to (n - 1, n - 1) go through the thieves in cells (0, 0) and (n - 1, n - 1).
+    
+    
+    Example 2:
+    Input: grid = [[0,0,1],[0,0,0],[0,0,0]]
+    Output: 2
+    Explanation: The path depicted in the picture above has a safeness factor of 2 since:
+    - The closest cell of the path to the thief at cell (0, 2) is cell (0, 0). The distance between them is | 0 - 0 | + | 0 - 2 | = 2.
+    It can be shown that there are no other paths with a higher safeness factor.
+    
+
+    Example 3:
+    Input: grid = [[0,0,0,1],[0,0,0,0],[0,0,0,0],[1,0,0,0]]
+    Output: 2
+    Explanation: The path depicted in the picture above has a safeness factor of 2 since:
+    - The closest cell of the path to the thief at cell (0, 3) is cell (1, 2). The distance between them is | 0 - 1 | + | 3 - 2 | = 2.
+    - The closest cell of the path to the thief at cell (3, 0) is cell (3, 2). The distance between them is | 3 - 3 | + | 0 - 2 | = 2.
+    It can be shown that there are no other paths with a higher safeness factor.
+    */
 }
