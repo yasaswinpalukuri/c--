@@ -221,7 +221,13 @@ public class MayDailyProblems {
                     System.out.println("The maximum safeness factor of the path is: " + maximumSafenessFactor(grid3));
                     break;
                 case 16:
-                
+                    // Day 16
+                    System.out.println("Enter the root value:");
+                    int rootValue = scan.nextInt();
+                    TreeNode root = new TreeNode(rootValue);
+                    buildTree(scan, root);
+                    System.out.println("The boolean evaluation of the binary tree is: " + evaluateTree(root));
+                    break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
                     System.exit(0);
@@ -881,4 +887,49 @@ public class MayDailyProblems {
     Output: false
     Explanation: The root node is a leaf node and it evaluates to false, so we return false.
     */
+    static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode() {}
+        TreeNode(int val) { this.val = val; }
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+    }
+    public static void buildTree(Scanner scanner, TreeNode node) {
+        System.out.println("Does " + node.val + " have a left child? (y/n)");
+        String choice = scanner.next();
+        if (choice.equals("y")) {
+            System.out.println("Enter the value for the left child of " + node.val + ":");
+            int leftValue = scanner.nextInt();
+            node.left = new TreeNode(leftValue);
+            buildTree(scanner, node.left);
+        }
+        System.out.println("Does " + node.val + " have a right child? (y/n)");
+        choice = scanner.next();
+        if (choice.equals("y")) {
+            System.out.println("Enter the value for the right child of " + node.val + ":");
+            int rightValue = scanner.nextInt();
+            node.right = new TreeNode(rightValue);
+            buildTree(scanner, node.right);
+        }
+    }
+    static public boolean evaluateTree(TreeNode root) {
+        if (root.left == null && root.right == null) {
+            return root.val != 0;
+        }
+        boolean evaluateLeftSubtree = evaluateTree(root.left);
+        boolean evaluateRightSubtree = evaluateTree(root.right);
+        boolean evaluateRoot;
+        if (root.val == 2) {
+            evaluateRoot = evaluateLeftSubtree | evaluateRightSubtree;
+        } else {
+            evaluateRoot = evaluateLeftSubtree & evaluateRightSubtree;
+        }
+
+        return evaluateRoot;
+    }
 }
