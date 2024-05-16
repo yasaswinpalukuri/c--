@@ -10,6 +10,12 @@ class Solutions:
             self.val = x
             self.next = None
 
+    class TreeNode:
+        def __init__(self, x):
+            self.val = x
+            self.left = None
+            self.right = None
+
     # Day 1: Reverse Prefix of Word - Q2000(Easy)
     '''
     Example 1:
@@ -572,6 +578,20 @@ class Solutions:
     Output: false
     Explanation: The root node is a leaf node and it evaluates to false, so we return false.
     '''
+    def evaluateTree(self, root:TreeNode) -> bool:
+        if not root.left and not root.right:
+            # Handles the case for leaf nodes.
+            return root.val != 0
+
+        # Store the evaluations for the left subtree and right subtree.
+        evaluate_left_subtree = self.evaluateTree(root.left)
+        evaluate_right_subtree = self.evaluateTree(root.right)
+        if root.val == 2:
+            evaluate_root = evaluate_left_subtree or evaluate_right_subtree
+        else:
+            evaluate_root = evaluate_left_subtree and evaluate_right_subtree
+
+        return evaluate_root
 
 
 def main():
@@ -598,6 +618,7 @@ def main():
         print("Day 13: Score After Flipping Matrix")
         print("Day 14: Path with Maximum Gold")
         print("Day 15: Find the Safest Path in a Grid")
+        print("Day 16: Evaluate Boolean Binary Tree")
         print("88: Exit")
         
         day = int(input())
@@ -723,7 +744,12 @@ def main():
                 grid.append(list(map(int, input().split())))
             print("The safest path in the grid is:", sol.maximumSafenessFactor(grid))
         elif day == 16:
-            
+            root = sol.TreeNode(2)
+            root.left = sol.TreeNode(1)
+            root.right = sol.TreeNode(3)
+            root.right.left = sol.TreeNode(0)
+            root.right.right = sol.TreeNode(1)
+            print("The evaluation of the boolean binary tree is:", sol.evaluateTree(root))
         else:
             print("Sorry, the problem for the day you entered is not available")
 
