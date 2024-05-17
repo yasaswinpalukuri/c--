@@ -732,6 +732,15 @@ class Solutions{
     Input: root = [1,3,3,3,2], target = 3
     Output: [1,3,null,null,2]
     */
+    TreeNode* removeLeafNodes(TreeNode* root, int target) {
+        if (root == nullptr) return nullptr;
+        root->left = removeLeafNodes(root->left, target);
+        root->right = removeLeafNodes(root->right, target);
+        if (root->left == nullptr && root->right == nullptr && root->val == target) {
+            return nullptr;
+        }
+        return root;
+    }
 };
 
 int main() {
