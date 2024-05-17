@@ -592,6 +592,24 @@ class Solutions:
             evaluate_root = evaluate_left_subtree and evaluate_right_subtree
 
         return evaluate_root
+    
+    # Day 17: Delete Leaves With a Given Value - Q1325(Medium)
+    '''
+    Given a binary tree root and an integer target, delete all the leaf nodes with value target.
+    Note that once you delete a leaf node with value target, if its parent node becomes a leaf node and has the value target, 
+    it should also be deleted (you need to continue doing that until you cannot).
+
+    Example 1:
+    Input: root = [1,2,3,2,null,2,4], target = 2
+    Output: [1,null,3,null,4]
+    Explanation: Leaf nodes in green with value (target = 2) are removed.
+    After removing, new nodes become leaf nodes with value (target = 2).
+    
+    Example 2:
+    Input: root = [1,3,3,3,2], target = 3
+    Output: [1,3,null,null,2]
+    '''
+
 
 
 def main():
@@ -619,6 +637,7 @@ def main():
         print("Day 14: Path with Maximum Gold")
         print("Day 15: Find the Safest Path in a Grid")
         print("Day 16: Evaluate Boolean Binary Tree")
+        print("Day 17: Delete Leaves With a Given Value")
         print("88: Exit")
         
         day = int(input())
@@ -750,6 +769,16 @@ def main():
             root.right.left = sol.TreeNode(0)
             root.right.right = sol.TreeNode(1)
             print("The evaluation of the boolean binary tree is:", sol.evaluateTree(root))
+        elif day == 17:
+            root = sol.TreeNode(1)
+            root.left = sol.TreeNode(2)
+            root.right = sol.TreeNode(3)
+            root.left.left = sol.TreeNode(2)
+            root.left.right = sol.TreeNode(2)
+            root.right.left = sol.TreeNode(0)
+            root.right.right = sol.TreeNode(1)
+            target = 2
+            print("The tree after deleting the leaves with the value target is:", sol.removeLeafNodes(root, target))
         else:
             print("Sorry, the problem for the day you entered is not available")
 
