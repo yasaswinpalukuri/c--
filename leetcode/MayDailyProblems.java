@@ -36,6 +36,7 @@ public class MayDailyProblems {
             System.out.println("Day 14: Path with Maximum Gold");
             System.out.println("Day 15: Find the Safest Path in a Grid");
             System.out.println("Day 16: Evaluate Boolean Binary Tree");
+            System.out.println("Day 17: Delete Leaves With a Given Value");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -227,6 +228,17 @@ public class MayDailyProblems {
                     TreeNode root = new TreeNode(rootValue);
                     buildTree(scan, root);
                     System.out.println("The boolean evaluation of the binary tree is: " + evaluateTree(root));
+                    break;
+                case 17:
+                    // Day 17
+                    System.out.println("Enter the root value:");
+                    int rootValue1 = scan.nextInt();
+                    TreeNode root1 = new TreeNode(rootValue1);
+                    buildTree(scan, root1);
+                    System.out.println("Enter the value of the node you want to delete:");
+                    int target = scan.nextInt();
+                    System.out.println("The tree after deleting the leaves with the given value is: ");
+                    printTree(removeLeafNodes(root1, target));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -931,5 +943,35 @@ public class MayDailyProblems {
         }
 
         return evaluateRoot;
+    }
+
+
+
+    // Day 17: Delete Leaves With a Given Value - Q1325(Medium)
+    /*
+    Given a binary tree root and an integer target, delete all the leaf nodes with value target.
+    Note that once you delete a leaf node with value target, if its parent node becomes a leaf node and has the value target, 
+    it should also be deleted (you need to continue doing that until you cannot).
+
+    Example 1:
+    Input: root = [1,2,3,2,null,2,4], target = 2
+    Output: [1,null,3,null,4]
+    Explanation: Leaf nodes in green with value (target = 2) are removed.
+    After removing, new nodes become leaf nodes with value (target = 2).
+    
+    Example 2:
+    Input: root = [1,3,3,3,2], target = 3
+    Output: [1,3,null,null,2]
+    */
+    public static void printTree(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        System.out.print(root.val + " ");
+        printTree(root.left);
+        printTree(root.right);
+    }
+    static public TreeNode removeLeafNodes(TreeNode root, int target) {
+        
     }
 }
