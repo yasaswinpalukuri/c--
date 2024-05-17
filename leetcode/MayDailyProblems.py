@@ -609,6 +609,14 @@ class Solutions:
     Input: root = [1,3,3,3,2], target = 3
     Output: [1,3,null,null,2]
     '''
+    def removeLeafNodes(self, root:TreeNode, target:int) -> TreeNode:
+        if not root:
+            return None
+        root.left = self.removeLeafNodes(root.left, target)
+        root.right = self.removeLeafNodes(root.right, target)
+        if not root.left and not root.right and root.val == target:
+            return None
+        return root
 
 
 
