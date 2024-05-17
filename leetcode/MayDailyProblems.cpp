@@ -715,6 +715,23 @@ class Solutions{
             return evaluateRoot;
     }
     
+
+    // Day 17: Delete Leaves With a Given Value - Q1325(Medium)
+    /*
+    Given a binary tree root and an integer target, delete all the leaf nodes with value target.
+    Note that once you delete a leaf node with value target, if its parent node becomes a leaf node and has the value target, 
+    it should also be deleted (you need to continue doing that until you cannot).
+
+    Example 1:
+    Input: root = [1,2,3,2,null,2,4], target = 2
+    Output: [1,null,3,null,4]
+    Explanation: Leaf nodes in green with value (target = 2) are removed.
+    After removing, new nodes become leaf nodes with value (target = 2).
+    
+    Example 2:
+    Input: root = [1,3,3,3,2], target = 3
+    Output: [1,3,null,null,2]
+    */
 };
 
 int main() {
@@ -740,6 +757,7 @@ int main() {
         cout << "Day 14: Path with Maximum Gold\n";
         cout << "Day 15: Find the Safest Path in a Grid\n";
         cout << "Day 16: Evaluate Boolean Binary Tree\n";
+        cout << "Day 17: Delete Leaves With a Given Value\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -975,6 +993,48 @@ int main() {
                     i++;
                 }
                 cout << "The boolean result of evaluating the root node is: " << sol.evaluateTree(root) << '\n';
+                break;
+            }
+            case 17:{
+                cout << "Enter the number of nodes in the binary tree:" << '\n';
+                int n; cin >> n;
+                cout << "Enter the values of the nodes in the binary tree:" << '\n';
+                vector<int> nodes(n);
+                for (int i = 0; i < n; i++) cin >> nodes[i];
+                Solutions::TreeNode* root = new Solutions::TreeNode(nodes[0]);
+                queue<Solutions::TreeNode*> q;
+                q.push(root);
+                int i = 1;
+                while (!q.empty() && i < n) {
+                    Solutions::TreeNode* node = q.front();
+                    q.pop();
+                    if (nodes[i] != -1) {
+                        node->left = new Solutions::TreeNode(nodes[i]);
+                        q.push(node->left);
+                    }
+                    i++;
+                    if (i < n && nodes[i] != -1) {
+                        node->right = new Solutions::TreeNode(nodes[i]);
+                        q.push(node->right);
+                    }
+                    i++;
+                }
+                cout << "Enter the value of the target node:" << '\n';
+                int target; cin >> target;
+                Solutions::TreeNode* newRoot = sol.removeLeafNodes(root, target);
+                cout << "The binary tree after deleting the leaf nodes with value target is: ";
+                queue<Solutions::TreeNode*> q1;
+                q1.push(newRoot);
+                while (!q1.empty()) {
+                    Solutions::TreeNode* node = q1.front();
+                    q1.pop();
+                    if (node != nullptr) {
+                        cout << node->val << " ";
+                        q1.push(node->left);
+                        q1.push(node->right);
+                    }
+                }
+                cout << '\n';
                 break;
             }
             case 88:
