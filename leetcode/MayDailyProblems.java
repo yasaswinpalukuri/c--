@@ -237,8 +237,9 @@ public class MayDailyProblems {
                     buildTree(scan, root1);
                     System.out.println("Enter the value of the node you want to delete:");
                     int target = scan.nextInt();
-                    System.out.println("The tree after deleting the leaves with the given value is: ");
+                    System.out.print("The tree after deleting the leaves with the given value is: ");
                     printTree(removeLeafNodes(root1, target));
+                    System.out.println();
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -972,6 +973,12 @@ public class MayDailyProblems {
         printTree(root.right);
     }
     static public TreeNode removeLeafNodes(TreeNode root, int target) {
-        
+        if (root == null) return null;
+        root.left = removeLeafNodes(root.left, target);
+        root.right = removeLeafNodes(root.right, target);
+        if (root.left == null && root.right == null && root.val == target) {
+            return null;
+        }
+        return root;
     }
 }
