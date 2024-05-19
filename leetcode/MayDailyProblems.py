@@ -656,6 +656,40 @@ class Solutions:
 
         return self.moves
     
+    # Day 19: Find the Maximum Sum of Node Values - Q3068(Hard)
+    '''
+    There exists an undirected tree with n nodes numbered 0 to n - 1. 
+    You are given a 0-indexed 2D integer array edges of length n - 1, where edges[i] = [ui, vi] indicates that there is an edge between nodes ui and vi in the tree. 
+    You are also given a positive integer k, and a 0-indexed array of non-negative integers nums of length n, where nums[i] represents the value of the node numbered i.
+
+    Alice wants the sum of values of tree nodes to be maximum, for which Alice can perform the following operation any number of times (including zero) on the tree:
+
+    Choose any edge [u, v] connecting the nodes u and v, and update their values as follows:
+    nums[u] = nums[u] XOR k
+    nums[v] = nums[v] XOR k
+    Return the maximum possible sum of the values Alice can achieve by performing the operation any number of times.
+    '''
+    # def maxSumOfNodes(self, index, isEven, nums, k, memo):
+    #     if index == len(nums):
+    #         # If the operation is performed on an odd number of elements return INT_MIN
+    #         return 0 if isEven == 1 else -float("inf")
+    #     if memo[index][isEven] != -1:
+    #         return memo[index][isEven]
+
+    #     # No operation performed on the element
+    #     noXorDone = nums[index] + self.maxSumOfNodes(index + 1, isEven, nums, k, memo)
+    #     # XOR operation is performed on the element
+    #     xorDone = (nums[index] ^ k) + self.maxSumOfNodes(
+    #         index + 1, isEven ^ 1, nums, k, memo
+    #     )
+
+    #     # Memoize and return the result
+    #     memo[index][isEven] = max(xorDone, noXorDone)
+    #     return memo[index][isEven]
+
+    def maximumValueSum(self, nums: list[int], k: int, edges: list[list[int]]) -> int:
+        memo = [[-1] * 2 for _ in range(len(nums))]
+        return self.maxSumOfNodes(0, 1, nums, k, memo)
 
 
 
@@ -686,6 +720,7 @@ def main():
         print("Day 16: Evaluate Boolean Binary Tree")
         print("Day 17: Delete Leaves With a Given Value")
         print("Day 18: Distribute Coins in Binary Tree")
+        print("Day 19: Find the Maximum Sum of Node Values")
         print("88: Exit")
         
         day = int(input())
@@ -832,6 +867,23 @@ def main():
             root.left = sol.TreeNode(0)
             root.right = sol.TreeNode(0)
             print("The minimum number of moves required to make every node have exactly one coin is:", sol.distributeCoins(root))
+        elif day == 19:
+            n = int(input("Enter the number of nodes in the tree:"))
+            nums = [0] * n
+            print("Enter the values of the nodes in the tree:")
+            nums = list(map(int, input().split()))
+
+            k = int(input("Enter the value of k:"))
+            
+            print()
+            e = int(input("Enter the number of edges in the tree:"))
+            
+            edges = []
+            print("Enter the edges of the tree:")
+            for i in range(e):
+                u,v = map(int, input().split())
+                edges.append([u, v])
+            print("The maximum possible sum of the values Alice can achieve is:", sol.maximumValueSum(nums, k, edges))
         else:
             print("Sorry, the problem for the day you entered is not available")
 
