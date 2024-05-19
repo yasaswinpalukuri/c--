@@ -37,6 +37,7 @@ public class MayDailyProblems {
             System.out.println("Day 15: Find the Safest Path in a Grid");
             System.out.println("Day 16: Evaluate Boolean Binary Tree");
             System.out.println("Day 17: Delete Leaves With a Given Value");
+            System.out.println("Day 18: Distribute Coins in Binary Tree");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -240,6 +241,13 @@ public class MayDailyProblems {
                     System.out.print("The tree after deleting the leaves with the given value is: ");
                     printTree(removeLeafNodes(root1, target));
                     System.out.println();
+                    break;
+                case 18:
+                    System.out.println("Enter the root value:");
+                    int rootValue2 = scan.nextInt();
+                    TreeNode root2 = new TreeNode(rootValue2);
+                    buildTree(scan, root2);
+                    System.out.println("The minimum number of moves required to distribute the coins in the binary tree is: " + distributeCoins(root2));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -981,4 +989,47 @@ public class MayDailyProblems {
         }
         return root;
     }
+
+
+
+    // Day 18: Distribute Coins in Binary Tree - Q979(Medium)
+    /*
+    You are given the root of a binary tree with n nodes where each node in the tree has node.val coins. There are n coins in total throughout the whole tree.
+
+    In one move, we may choose two adjacent nodes and move one coin from one node to another. A move may be from parent to child, or from child to parent.
+
+    Return the minimum number of moves required to make every node have exactly one coin.
+
+    Example 1:
+    Input: root = [3,0,0]
+    Output: 2
+    Explanation: From the root of the tree, we move one coin to its left child, and one coin to its right child.
+
+    Example 2:
+    Input: root = [0,3,0]
+    Output: 3
+    Explanation: From the root of the tree, we move one coin to the root's right child, and two coins to the root's left child.
+    */
+    static int moves;
+
+    static public int distributeCoins(TreeNode root) {
+        moves = 0;
+        dfsDay18(root);
+        return moves;
+    }
+
+    // static public int dfsDay18(TreeNode current) {
+    //     if (current == null)
+    //         return 0;
+
+    //     // Calculate the coins each subtree has available to exchange
+    //     int leftCoins = dfsDay18(current.left);
+    //     int rightCoins = dfsDay18(current.right);
+
+    //     // Add the total number of exchanges to moves
+    //     moves += Math.abs(leftCoins) + Math.abs(rightCoins);
+
+    //     // The number of coins current has available to exchange
+    //     return (current.val - 1) + leftCoins + rightCoins;
+    // }
 }
