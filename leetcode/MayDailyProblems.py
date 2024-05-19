@@ -636,7 +636,26 @@ class Solutions:
     Output: 3
     Explanation: From the root of the tree, we move one coin to the root's right child, and two coins to the root's left child.
     '''
-    def distributeCoins(self, root:TreeNode) -> int:
+    def distributeCoins(self, root: TreeNode) -> int:
+        self.moves = 0
+
+        def dfs(current):
+            if current == None: return 0
+
+            # Calculate the coins each subtree has available to exchange
+            left_coins = dfs(current.left)
+            right_coins = dfs(current.right)
+
+            # Add the total number of exchanges to moves
+            self.moves += abs(left_coins) + abs(right_coins)
+
+            # The number of coins current has available to exchange
+            return (current.val - 1) + left_coins + right_coins
+
+        dfs(root)
+
+        return self.moves
+    
 
 
 
