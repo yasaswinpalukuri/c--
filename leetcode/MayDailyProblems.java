@@ -251,6 +251,25 @@ public class MayDailyProblems {
                     System.out.println("The minimum number of moves required to distribute the coins in the binary tree is: " + distributeCoins(root2));
                     break;
                 case 19:
+                    System.out.println("Enter the number of nodes in the tree:");
+                    int n19 = scan.nextInt();
+                    int[] nums19 = new int[n19];
+                    System.out.println("Enter the values of the nodes in the tree:");
+                    for (int i = 0; i < n19; i++) {
+                        nums19[i] = scan.nextInt();
+                    }
+                    System.out.println("Enter the value of k:");
+                    int k19 = scan.nextInt();
+            
+                    System.out.println("Enter the number of edges in the tree:");
+                    int e = scan.nextInt();
+                    System.out.println("Enter the edges of the tree:");
+                    int[][] edges19 = new int[e][2];
+                    for (int i = 0; i < e; i++) {
+                        edges19[i][0] = scan.nextInt();
+                        edges19[i][1] = scan.nextInt();
+                    }
+                    System.out.println("The maximum sum of node values is: " + maximumValueSum(nums19, k19, edges19));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -1052,6 +1071,30 @@ public class MayDailyProblems {
     Return the maximum possible sum of the values Alice can achieve by performing the operation any number of times.
     */
     static public long maximumValueSum(int[] nums, int k, int[][] edges) {
-        
+        long[][] memo = new long[nums.length][2];
+        for (long[] row : memo) {
+            Arrays.fill(row, -1);
+        }
+        return maxSumOfNodes(0, 1, nums, k, memo);
+    }
+
+    static private long maxSumOfNodes(int index, int isEven, int[] nums, int k,
+            long[][] memo) {
+        if (index == nums.length) {
+            // If the operation is performed on an odd number of elements return
+            // INT_MIN
+            return isEven == 1 ? 0 : Integer.MIN_VALUE;
+        }
+        if (memo[index][isEven] != -1) {
+            return memo[index][isEven];
+        }
+        // No operation performed on the element
+        long noXorDone = nums[index] + maxSumOfNodes(index + 1, isEven, nums, k, memo);
+        // XOR operation is performed on the element
+        long xorDone = (nums[index] ^ k) +
+                maxSumOfNodes(index + 1, isEven ^ 1, nums, k, memo);
+
+        // Memoize and return the result
+        return memo[index][isEven] = Math.max(xorDone, noXorDone);
     }
 }
