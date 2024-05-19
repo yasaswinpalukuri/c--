@@ -617,6 +617,26 @@ class Solutions:
         if not root.left and not root.right and root.val == target:
             return None
         return root
+    
+    # Day 18: Distribute Coins in Binary Tree - Q979(Medium)
+    '''
+    You are given the root of a binary tree with n nodes where each node in the tree has node.val coins. There are n coins in total throughout the whole tree.
+
+    In one move, we may choose two adjacent nodes and move one coin from one node to another. A move may be from parent to child, or from child to parent.
+
+    Return the minimum number of moves required to make every node have exactly one coin.
+
+    Example 1:
+    Input: root = [3,0,0]
+    Output: 2
+    Explanation: From the root of the tree, we move one coin to its left child, and one coin to its right child.
+
+    Example 2:
+    Input: root = [0,3,0]
+    Output: 3
+    Explanation: From the root of the tree, we move one coin to the root's right child, and two coins to the root's left child.
+    '''
+    def distributeCoins(self, root:TreeNode) -> int:
 
 
 
@@ -646,6 +666,7 @@ def main():
         print("Day 15: Find the Safest Path in a Grid")
         print("Day 16: Evaluate Boolean Binary Tree")
         print("Day 17: Delete Leaves With a Given Value")
+        print("Day 18: Distribute Coins in Binary Tree")
         print("88: Exit")
         
         day = int(input())
@@ -787,6 +808,11 @@ def main():
             root.right.right = sol.TreeNode(1)
             target = 2
             print("The tree after deleting the leaves with the value target is:", sol.removeLeafNodes(root, target))
+        elif day == 18:
+            root = sol.TreeNode(3)
+            root.left = sol.TreeNode(0)
+            root.right = sol.TreeNode(0)
+            print("The minimum number of moves required to make every node have exactly one coin is:", sol.distributeCoins(root))
         else:
             print("Sorry, the problem for the day you entered is not available")
 
