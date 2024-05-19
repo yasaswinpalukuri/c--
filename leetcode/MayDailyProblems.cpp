@@ -742,7 +742,46 @@ class Solutions{
         return root;
     }
 
-    // Day 18: Find the Maximum Sum of Node Values - Q3068(Hard)
+    // Day 18: Distribute Coins in Binary Tree - Q979(Medium)
+    /*
+    You are given the root of a binary tree with n nodes where each node in the tree has node.val coins. There are n coins in total throughout the whole tree.
+
+    In one move, we may choose two adjacent nodes and move one coin from one node to another. A move may be from parent to child, or from child to parent.
+
+    Return the minimum number of moves required to make every node have exactly one coin.
+
+    Example 1:
+    Input: root = [3,0,0]
+    Output: 2
+    Explanation: From the root of the tree, we move one coin to its left child, and one coin to its right child.
+
+    Example 2:
+    Input: root = [0,3,0]
+    Output: 3
+    Explanation: From the root of the tree, we move one coin to the root's right child, and two coins to the root's left child.
+    */
+    int distributeCoins(TreeNode* root) {
+        moves = 0;
+        dfs(root);
+        return moves;
+    }
+
+    int moves;
+    int dfs(TreeNode* current) {
+        if (current == nullptr) return 0;
+
+        // Calculate the coins each subtree has available to exchange
+        int leftCoins = dfs(current->left);
+        int rightCoins = dfs(current->right);
+
+        // Add the total number of exchanges to moves
+        moves += abs(leftCoins) + abs(rightCoins);
+
+        // The number of coins current has available to exchange
+        return (current->val - 1) + leftCoins + rightCoins;
+    }
+
+    // Day 19: Find the Maximum Sum of Node Values - Q3068(Hard)
     /*
     There exists an undirected tree with n nodes numbered 0 to n - 1. 
     You are given a 0-indexed 2D integer array edges of length n - 1, where edges[i] = [ui, vi] indicates that there is an edge between nodes ui and vi in the tree. 
@@ -755,9 +794,28 @@ class Solutions{
     nums[v] = nums[v] XOR k
     Return the maximum possible sum of the values Alice can achieve by performing the operation any number of times.
     */
-    long long maximumValueSum(vector<int>& nums, int k, vector<vector<int>>& edges) {
-        
-    }
+//     long long maximumValueSum(vector<int>& nums, int k,vector<vector<int>>& edges) {
+//         vector<vector<long long>> memo(nums.size(), vector<long long>(2, -1));
+//         return maxSumOfNodes(0, 1, nums, k, memo);
+//     }
+
+//     long long maxSumOfNodes(int index, int isEven, vector<int>& nums, int k,
+//                             vector<vector<long long>>& memo) {
+//         if (index == nums.size()) {
+//             // If the operation is performed on an odd number of elements return
+//             // INT_MIN
+//             return isEven == 1 ? 0 : INT_MIN;
+//         }
+//         if (memo[index][isEven] != -1) {
+//             return memo[index][isEven];
+//         }
+//         long long noXorDone =
+//             nums[index] + maxSumOfNodes(index + 1, isEven, nums, k, memo);
+//         long long xorDone = (nums[index] ^ k) +
+//                             maxSumOfNodes(index + 1, isEven ^ 1, nums, k, memo);
+
+//         return memo[index][isEven] = max(xorDone, noXorDone);
+//     }
 };
 
 int main() {
@@ -784,6 +842,7 @@ int main() {
         cout << "Day 15: Find the Safest Path in a Grid\n";
         cout << "Day 16: Evaluate Boolean Binary Tree\n";
         cout << "Day 17: Delete Leaves With a Given Value\n";
+        cout << "Day 18: Distribute Coins in Binary Tree\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -1064,6 +1123,30 @@ int main() {
                 break;
             }
             case 18:{
+                cout << "Enter the number of nodes in the binary tree:" << '\n';
+                int n; cin >> n;
+                cout << "Enter the values of the nodes in the binary tree:" << '\n';
+                vector<int> nodes(n);
+                for (int i = 0; i < n; i++) cin >> nodes[i];
+                Solutions::TreeNode* root = new Solutions::TreeNode(nodes[0]);
+                queue<Solutions::TreeNode*> q;
+                q.push(root);
+                int i = 1;
+                while (!q.empty() && i < n) {
+                    Solutions::TreeNode* node = q.front();
+                    q.pop();
+                    if (nodes[i] != -1) {
+                        node->left = new Solutions::TreeNode(nodes[i]);
+                        q.push(node->left);
+                    }
+                    i++;
+                    if (i < n && nodes[i] != -1) {
+                        node->right = new Solutions::TreeNode(nodes[i]);
+                        q.push(node->right);
+                    }
+                    i++;
+                }
+                cout << "The minimum number of moves required to make every node have exactly one coin is: " << sol.distributeCoins(root) << '\n';
                 break;
             }
             case 88:
