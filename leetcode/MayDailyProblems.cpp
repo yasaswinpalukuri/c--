@@ -781,19 +781,7 @@ class Solutions{
         return (current->val - 1) + leftCoins + rightCoins;
     }
 
-    // Day 19: Find the Maximum Sum of Node Values - Q3068(Hard)
-    /*
-    There exists an undirected tree with n nodes numbered 0 to n - 1. 
-    You are given a 0-indexed 2D integer array edges of length n - 1, where edges[i] = [ui, vi] indicates that there is an edge between nodes ui and vi in the tree. 
-    You are also given a positive integer k, and a 0-indexed array of non-negative integers nums of length n, where nums[i] represents the value of the node numbered i.
-
-    Alice wants the sum of values of tree nodes to be maximum, for which Alice can perform the following operation any number of times (including zero) on the tree:
-
-    Choose any edge [u, v] connecting the nodes u and v, and update their values as follows:
-    nums[u] = nums[u] XOR k
-    nums[v] = nums[v] XOR k
-    Return the maximum possible sum of the values Alice can achieve by performing the operation any number of times.
-    */
+    
 //     long long maximumValueSum(vector<int>& nums, int k,vector<vector<int>>& edges) {
 //         vector<vector<long long>> memo(nums.size(), vector<long long>(2, -1));
 //         return maxSumOfNodes(0, 1, nums, k, memo);
@@ -816,6 +804,19 @@ class Solutions{
 
 //         return memo[index][isEven] = max(xorDone, noXorDone);
 //     }
+// Day 19: Find the Maximum Sum of Node Values - Q3068(Hard)
+    /*
+    There exists an undirected tree with n nodes numbered 0 to n - 1. 
+    You are given a 0-indexed 2D integer array edges of length n - 1, where edges[i] = [ui, vi] indicates that there is an edge between nodes ui and vi in the tree. 
+    You are also given a positive integer k, and a 0-indexed array of non-negative integers nums of length n, where nums[i] represents the value of the node numbered i.
+
+    Alice wants the sum of values of tree nodes to be maximum, for which Alice can perform the following operation any number of times (including zero) on the tree:
+
+    Choose any edge [u, v] connecting the nodes u and v, and update their values as follows:
+    nums[u] = nums[u] XOR k
+    nums[v] = nums[v] XOR k
+    Return the maximum possible sum of the values Alice can achieve by performing the operation any number of times.
+    */
 };
 
 int main() {
@@ -843,6 +844,7 @@ int main() {
         cout << "Day 16: Evaluate Boolean Binary Tree\n";
         cout << "Day 17: Delete Leaves With a Given Value\n";
         cout << "Day 18: Distribute Coins in Binary Tree\n";
+        cout << "Day 19: Find the Maximum Sum of Node Values\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -1147,6 +1149,24 @@ int main() {
                     i++;
                 }
                 cout << "The minimum number of moves required to make every node have exactly one coin is: " << sol.distributeCoins(root) << '\n';
+                break;
+            }
+            case 19:{
+                cout << "Enter the number of nodes in the binary tree:" << '\n';
+                int n; cin >> n;
+                cout << "Enter the values of the nodes in the binary tree:" << '\n';
+                vector<int> nodes(n);
+                for (int i = 0; i < n; i++) cin >> nodes[i];
+                cout << "Enter the value of k:" << '\n';
+                int k; cin >> k;
+                cout << "Enter the number of edges in the tree:" << '\n';
+                int m; cin >> m;
+                vector<vector<int>> edges(m, vector<int>(2));
+                cout << "Enter the edges of the tree:" << '\n';
+                for (int i = 0; i < m; i++) {
+                    cin >> edges[i][0] >> edges[i][1];
+                }
+                cout << "The maximum sum of node values is: " << sol.maximumValueSum(nodes, k, edges) << '\n';
                 break;
             }
             case 88:
