@@ -1018,18 +1018,18 @@ public class MayDailyProblems {
         return moves;
     }
 
-    // static public int dfsDay18(TreeNode current) {
-    //     if (current == null)
-    //         return 0;
+    static public int dfsDay18(TreeNode current) {
+        if (current == null)
+            return 0;
 
-    //     // Calculate the coins each subtree has available to exchange
-    //     int leftCoins = dfsDay18(current.left);
-    //     int rightCoins = dfsDay18(current.right);
+        // Calculate the coins each subtree has available to exchange
+        int leftCoins = dfsDay18(current.left);
+        int rightCoins = dfsDay18(current.right);
 
-    //     // Add the total number of exchanges to moves
-    //     moves += Math.abs(leftCoins) + Math.abs(rightCoins);
+        // Add the total number of exchanges to moves
+        moves += Math.abs(leftCoins) + Math.abs(rightCoins);
 
-    //     // The number of coins current has available to exchange
-    //     return (current.val - 1) + leftCoins + rightCoins;
-    // }
+        // The number of coins current has available to exchange
+        return (current.val - 1) + leftCoins + rightCoins;
+    }
 }
