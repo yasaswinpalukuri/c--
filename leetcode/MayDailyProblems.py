@@ -690,6 +690,20 @@ class Solutions:
     def maximumValueSum(self, nums: list[int], k: int, edges: list[list[int]]) -> int:
         memo = [[-1] * 2 for _ in range(len(nums))]
         return self.maxSumOfNodes(0, 1, nums, k, memo)
+    
+
+    # Day 20: Sum of All Subset XOR Totals - Q1863(Easy)
+    '''
+    The XOR total of an array is defined as the bitwise XOR of all its elements, or 0 if the array is empty.
+
+    For example, the XOR total of the array [2,5,6] is 2 XOR 5 XOR 6 = 1.
+    Given an array nums, return the sum of all XOR totals for every subset of nums. 
+
+    Note: Subsets with the same elements should be counted multiple times.
+
+    An array a is a subset of an array b if a can be obtained from b by deleting some (possibly zero) elements of b.
+    '''
+    def subsetXORSum(self, nums: list[int]) -> int:
 
 
 
@@ -721,6 +735,7 @@ def main():
         print("Day 17: Delete Leaves With a Given Value")
         print("Day 18: Distribute Coins in Binary Tree")
         print("Day 19: Find the Maximum Sum of Node Values")
+        print("Day 20: Sum of All Subset XOR Totals")
         print("88: Exit")
         
         day = int(input())
@@ -883,6 +898,9 @@ def main():
                 u,v = map(int, input().split())
                 edges.append([u, v])
             print("The maximum possible sum of the values Alice can achieve is:", sol.maximumValueSum(nums, k, edges))
+        elif day == 20:
+            nums = list(map(int, input("Enter the elements of the array: ").split()))
+            print("The sum of all XOR totals for every subset of nums is:", sol.subsetXORSum(nums))
         else:
             print("Sorry, the problem for the day you entered is not available")
 
