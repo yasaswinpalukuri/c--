@@ -1122,17 +1122,17 @@ public class MayDailyProblems {
     An array a is a subset of an array b if a can be obtained from b by deleting some (possibly zero) elements of b.
     */
     static public int subsetXORSum(int[] nums) {
-        // int n = nums.length;
-        // int sum = 0;
-        // for (int i = 0; i < (1 << n); i++) {
-        //     int xor = 0;
-        //     for (int j = 0; j < n; j++) {
-        //         if ((i & (1 << j)) > 0) {
-        //             xor ^= nums[j];
-        //         }
-        //     }
-        //     sum += xor;
-        // }
-        // return sum;
+        int n = nums.length;
+        int sum = 0;
+        for (int i = 0; i < (1 << n); i++) {
+            int xor = 0;
+            for (int j = 0; j < n; j++) {
+                if ((i & (1 << j)) > 0) {
+                    xor ^= nums[j];
+                }
+            }
+            sum += xor;
+        }
+        return sum;
     }
 }
