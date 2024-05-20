@@ -704,7 +704,14 @@ class Solutions:
     An array a is a subset of an array b if a can be obtained from b by deleting some (possibly zero) elements of b.
     '''
     def subsetXORSum(self, nums: list[int]) -> int:
-
+        res = 0
+        for i in range(1 << len(nums)):
+            xor = 0
+            for j in range(len(nums)):
+                if i & (1 << j):
+                    xor ^= nums[j]
+            res += xor
+        return res
 
 
 def main():
