@@ -830,18 +830,18 @@ class Solutions{
     An array a is a subset of an array b if a can be obtained from b by deleting some (possibly zero) elements of b.
     */
     int subsetXORSum(vector<int>& nums) {
-        // int n = nums.size();
-        // int total = 0;
-        // for (int i = 0; i < (1 << n); i++) {
-        //     int xorSum = 0;
-        //     for (int j = 0; j < n; j++) {
-        //         if (i & (1 << j)) {
-        //             xorSum ^= nums[j];
-        //         }
-        //     }
-        //     total += xorSum;
-        // }
-        // return total;
+        int n = nums.size();
+        int total = 0;
+        for (int i = 0; i < (1 << n); i++) {
+            int xorSum = 0;
+            for (int j = 0; j < n; j++) {
+                if (i & (1 << j)) {
+                    xorSum ^= nums[j];
+                }
+            }
+            total += xorSum;
+        }
+        return total;
     }
 };
 
