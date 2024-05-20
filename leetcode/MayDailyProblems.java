@@ -39,6 +39,7 @@ public class MayDailyProblems {
             System.out.println("Day 17: Delete Leaves With a Given Value");
             System.out.println("Day 18: Distribute Coins in Binary Tree");
             System.out.println("Day 19: Find the Maximum Sum of Node Values");
+            System.out.println("Day 20: Sum of All Subset XOR Totals");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -270,6 +271,16 @@ public class MayDailyProblems {
                         edges19[i][1] = scan.nextInt();
                     }
                     System.out.println("The maximum sum of node values is: " + maximumValueSum(nums19, k19, edges19));
+                    break;
+                case 20:
+                    System.out.println("Enter the number of elements in the array:");
+                    int n20 = scan.nextInt();
+                    int[] nums20 = new int[n20];
+                    System.out.println("Enter the elements of the array:");
+                    for (int i = 0; i < n20; i++) {
+                        nums20[i] = scan.nextInt();
+                    }
+                    System.out.println("The sum of all subset XOR totals is: " + subsetXORSum(nums20));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -1096,5 +1107,32 @@ public class MayDailyProblems {
 
         // Memoize and return the result
         return memo[index][isEven] = Math.max(xorDone, noXorDone);
+    }
+
+
+    // Day 20: Sum of All Subset XOR Totals - Q1863(Easy)
+    /*
+    The XOR total of an array is defined as the bitwise XOR of all its elements, or 0 if the array is empty.
+
+    For example, the XOR total of the array [2,5,6] is 2 XOR 5 XOR 6 = 1.
+    Given an array nums, return the sum of all XOR totals for every subset of nums. 
+
+    Note: Subsets with the same elements should be counted multiple times.
+
+    An array a is a subset of an array b if a can be obtained from b by deleting some (possibly zero) elements of b.
+    */
+    static public int subsetXORSum(int[] nums) {
+        // int n = nums.length;
+        // int sum = 0;
+        // for (int i = 0; i < (1 << n); i++) {
+        //     int xor = 0;
+        //     for (int j = 0; j < n; j++) {
+        //         if ((i & (1 << j)) > 0) {
+        //             xor ^= nums[j];
+        //         }
+        //     }
+        //     sum += xor;
+        // }
+        // return sum;
     }
 }
