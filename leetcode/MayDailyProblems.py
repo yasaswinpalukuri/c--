@@ -727,13 +727,13 @@ class Solutions:
         Output: [[],[0]]
     '''
     def subsets(self, nums: list[int]) -> list[list[int]]:
-        # res = []
-        # def backtrack(start, path):
-        #     res.append(path)
-        #     for i in range(start, len(nums)):
-        #         backtrack(i + 1, path + [nums[i]])
-        # backtrack(0, [])
-        # return res
+        res = []
+        def backtrack(start, path):
+            res.append(path)
+            for i in range(start, len(nums)):
+                backtrack(i + 1, path + [nums[i]])
+        backtrack(0, [])
+        return res
     
 
 
