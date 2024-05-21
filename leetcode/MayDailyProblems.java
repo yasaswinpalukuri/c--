@@ -40,6 +40,7 @@ public class MayDailyProblems {
             System.out.println("Day 18: Distribute Coins in Binary Tree");
             System.out.println("Day 19: Find the Maximum Sum of Node Values");
             System.out.println("Day 20: Sum of All Subset XOR Totals");
+            System.out.println("Day 21: Subsets");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -281,6 +282,16 @@ public class MayDailyProblems {
                         nums20[i] = scan.nextInt();
                     }
                     System.out.println("The sum of all subset XOR totals is: " + subsetXORSum(nums20));
+                    break;
+                case 21:
+                    System.out.println("Enter the number of elements in the array:");
+                    int n21 = scan.nextInt();
+                    int[] nums21 = new int[n21];
+                    System.out.println("Enter the elements of the array:");
+                    for (int i = 0; i < n21; i++) {
+                        nums21[i] = scan.nextInt();
+                    }
+                    System.out.println("The subsets of the array are: " + subsets(nums21));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -1134,5 +1145,33 @@ public class MayDailyProblems {
             sum += xor;
         }
         return sum;
+    }
+
+
+    // Day 21: Subsets - Q78(Medium)
+    /*
+        Given an integer array nums of unique elements, return all possible subsets(the power set).
+        The solution set must not contain duplicate subsets. Return the solution in any order.
+        Example 1:
+        Input: nums = [1,2,3]
+        Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+
+        Example 2:
+
+        Input: nums = [0]
+        Output: [[],[0]]
+    */
+    static public List<List<Integer>> subsets(int[] nums) {
+        // List<List<Integer>> res = new ArrayList<>();
+        // res.add(new ArrayList<>());
+        // for (int num : nums) {
+        //     int size = res.size();
+        //     for (int i = 0; i < size; i++) {
+        //         List<Integer> subset = new ArrayList<>(res.get(i));
+        //         subset.add(num);
+        //         res.add(subset);
+        //     }
+        // }
+        // return res;
     }
 }
