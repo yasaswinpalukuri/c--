@@ -859,18 +859,18 @@ class Solutions{
         Output: [[],[0]]
     */
     vector<vector<int>> subsets(vector<int>& nums) {
-        // vector<vector<int>> res;
-        // vector<int> subset;
-        // backtrack(res, subset, nums, 0);
-        // return res;
+        vector<vector<int>> res;
+        vector<int> subset;
+        backtrack(res, subset, nums, 0);
+        return res;
     }
     void backtrack(vector<vector<int>>& res, vector<int>& subset, vector<int>& nums, int start) {
-        // res.push_back(subset);
-        // for (int i = start; i < nums.size(); i++) {
-        //     subset.push_back(nums[i]);
-        //     backtrack(res, subset, nums, i + 1);
-        //     subset.pop_back();
-        // }
+        res.push_back(subset);
+        for (int i = start; i < nums.size(); i++) {
+            subset.push_back(nums[i]);
+            backtrack(res, subset, nums, i + 1);
+            subset.pop_back();
+        }
     }
 };
 
@@ -1242,11 +1242,11 @@ int main() {
                 cout << "Enter the elements of the array:" << '\n';
                 for (int i = 0; i < n; i++) cin >> nums[i];
                 vector<vector<int>> subsets = sol.subsets(nums);
-                cout << "The subsets of the array are:" << '\n';
+                cout << "The subsets of the array are:" << "\n[";
                 for (vector<int> subset : subsets) {
                     cout << "[";
-                    for (int num : subset) cout << num << " ";
-                    cout << "]";
+                    for (int num : subset) cout << num << ",";
+                    cout << "\b]\n";
                 }
                 cout << '\n';
                 break;
