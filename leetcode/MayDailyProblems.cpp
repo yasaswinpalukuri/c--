@@ -843,6 +843,35 @@ class Solutions{
         }
         return total;
     }
+
+
+    // Day 21: Subsets - Q78(Medium)
+    /*
+        Given an integer array nums of unique elements, return all possible subsets(the power set).
+        The solution set must not contain duplicate subsets. Return the solution in any order.
+        Example 1:
+        Input: nums = [1,2,3]
+        Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+
+        Example 2:
+
+        Input: nums = [0]
+        Output: [[],[0]]
+    */
+    vector<vector<int>> subsets(vector<int>& nums) {
+        // vector<vector<int>> res;
+        // vector<int> subset;
+        // backtrack(res, subset, nums, 0);
+        // return res;
+    }
+    void backtrack(vector<vector<int>>& res, vector<int>& subset, vector<int>& nums, int start) {
+        // res.push_back(subset);
+        // for (int i = start; i < nums.size(); i++) {
+        //     subset.push_back(nums[i]);
+        //     backtrack(res, subset, nums, i + 1);
+        //     subset.pop_back();
+        // }
+    }
 };
 
 int main() {
@@ -872,6 +901,7 @@ int main() {
         cout << "Day 18: Distribute Coins in Binary Tree\n";
         cout << "Day 19: Find the Maximum Sum of Node Values\n";
         cout << "Day 20: Sum of All Subset XOR Totals\n";
+        cout << "Day 21: Subsets\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -1203,6 +1233,22 @@ int main() {
                 cout << "Enter the elements of the array:" << '\n';
                 for (int i = 0; i < n; i++) cin >> nums[i];
                 cout << "The sum of all XOR totals for every subset of nums is: " << sol.subsetXORSum(nums) << '\n';
+                break;
+            }
+            case 21:{
+                cout << "Enter the number of elements in the array:" << '\n';
+                int n; cin >> n;
+                vector<int> nums(n);
+                cout << "Enter the elements of the array:" << '\n';
+                for (int i = 0; i < n; i++) cin >> nums[i];
+                vector<vector<int>> subsets = sol.subsets(nums);
+                cout << "The subsets of the array are:" << '\n';
+                for (vector<int> subset : subsets) {
+                    cout << "[";
+                    for (int num : subset) cout << num << " ";
+                    cout << "]";
+                }
+                cout << '\n';
                 break;
             }
             case 88:
