@@ -712,6 +712,29 @@ class Solutions:
                     xor ^= nums[j]
             res += xor
         return res
+    
+    # Day 21: Subsets - Q78(Medium)
+    '''
+        Given an integer array nums of unique elements, return all possible subsets(the power set).
+        The solution set must not contain duplicate subsets. Return the solution in any order.
+        Example 1:
+        Input: nums = [1,2,3]
+        Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+
+        Example 2:
+
+        Input: nums = [0]
+        Output: [[],[0]]
+    '''
+    def subsets(self, nums: list[int]) -> list[list[int]]:
+        # res = []
+        # def backtrack(start, path):
+        #     res.append(path)
+        #     for i in range(start, len(nums)):
+        #         backtrack(i + 1, path + [nums[i]])
+        # backtrack(0, [])
+        # return res
+    
 
 
 def main():
@@ -743,6 +766,7 @@ def main():
         print("Day 18: Distribute Coins in Binary Tree")
         print("Day 19: Find the Maximum Sum of Node Values")
         print("Day 20: Sum of All Subset XOR Totals")
+        print("Day 21: Subsets")
         print("88: Exit")
         
         day = int(input())
@@ -908,6 +932,9 @@ def main():
         elif day == 20:
             nums = list(map(int, input("Enter the elements of the array: ").split()))
             print("The sum of all XOR totals for every subset of nums is:", sol.subsetXORSum(nums))
+        elif day == 21:
+            nums = list(map(int, input("Enter the elements of the array: ").split()))
+            print("The power set of the array is:", sol.subsets(nums))
         else:
             print("Sorry, the problem for the day you entered is not available")
 
