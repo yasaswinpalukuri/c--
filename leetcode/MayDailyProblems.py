@@ -751,6 +751,8 @@ class Solutions:
     def partition(self, s: str) -> list[list[str]]:
         def is_palindrome(sub):
             return sub == sub[::-1]
+            # [::-1] helps with checking string from -1 to 0
+            # [:-1] it is substring from 0 to -1
 
         def backtrack(start, path):
             if start == len(s):
