@@ -735,6 +735,21 @@ class Solutions:
         backtrack(0, [])
         return res
     
+    # Day 22: Palindrome Partitoning - Q131(Medium)
+    '''
+        Given a string s, partition s such that every substring of the partition is a palindrome
+        Return all possible palindrome partitioning of s.
+
+        Example 1:
+        Input: s = "aab"
+        Output: [["a","a","b"],["aa","b"]]
+        
+        Example 2:
+        Input: s = "a"
+        Output: [["a"]]
+    '''
+    def partition(self, s: str) -> list[list[str]]:
+
 
 
 def main():
@@ -767,6 +782,7 @@ def main():
         print("Day 19: Find the Maximum Sum of Node Values")
         print("Day 20: Sum of All Subset XOR Totals")
         print("Day 21: Subsets")
+        print("Day 22: Palindrome Partitoning")
         print("88: Exit")
         
         day = int(input())
@@ -935,6 +951,9 @@ def main():
         elif day == 21:
             nums = list(map(int, input("Enter the elements of the array: ").split()))
             print("The power set of the array is:", sol.subsets(nums))
+        elif day == 22:
+            s = input("Enter the string: ")
+            print("The palindrome partitioning of the string is:", sol.partition(s))
         else:
             print("Sorry, the problem for the day you entered is not available")
 
