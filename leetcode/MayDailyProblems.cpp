@@ -872,6 +872,23 @@ class Solutions{
             subset.pop_back();
         }
     }
+
+
+    // Day 22: Palindrome Partitoning - Q131(Medium)
+    /*
+        Given a string s, partition s such that every substring of the partition is a palindrome
+        Return all possible palindrome partitioning of s.
+
+        Example 1:
+        Input: s = "aab"
+        Output: [["a","a","b"],["aa","b"]]
+        
+        Example 2:
+        Input: s = "a"
+        Output: [["a"]]
+    */
+    vector<vector<string>> partition(string s){
+            }
 };
 
 int main() {
@@ -902,6 +919,7 @@ int main() {
         cout << "Day 19: Find the Maximum Sum of Node Values\n";
         cout << "Day 20: Sum of All Subset XOR Totals\n";
         cout << "Day 21: Subsets\n";
+        cout << "Day 22: Palindrome Partitoning\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -1249,6 +1267,18 @@ int main() {
                     cout << "\b]\n";
                 }
                 cout << '\n';
+                break;
+            }
+            case 22:{
+                cout << "Enter the string:" << '\n';
+                string s; cin >> s;
+                vector<vector<string>> partitions = sol.partition(s);
+                cout << "The palindrome partitioning of the string is:" << '\n';
+                for (vector<string> partition : partitions) {
+                    cout << "[";
+                    for (string str : partition) cout << str << ",";
+                    cout << "\b]\n";
+                }
                 break;
             }
             case 88:
