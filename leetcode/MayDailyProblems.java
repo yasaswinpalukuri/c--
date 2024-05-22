@@ -293,14 +293,9 @@ public class MayDailyProblems {
                     System.out.println("The subsets of the array are: " + subsets(nums21));
                     break;
                 case 22:
-                    System.out.println("Enter the number of elements in the array:");
-                    int n22 = scan.nextInt();
-                    int[] nums22 = new int[n22];
-                    System.out.println("Enter the elements of the array:");
-                    for (int i = 0; i < n22; i++) {
-                        nums22[i] = scan.nextInt();
-                    }
-                    System.out.println("The palindrome partitioning of the array is: " + partition(nums22));
+                    System.out.println("Enter the string:");
+                    String s22 = scan.next();
+                    System.out.println("The palindrome partitioning of the array is: " + partition(s22));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -1199,6 +1194,29 @@ public class MayDailyProblems {
         Output: [["a"]]
     */
     static public List<List<String>> partition(String s) {
-        
+        List<List<String>> res = new ArrayList<>();
+        backtrack(res, new ArrayList<>(), s, 0);
+        return res;
+    }
+    static public void backtrack(List<List<String>> res, List<String> temp, String s, int start) {
+        if (start == s.length()) {
+            res.add(new ArrayList<>(temp));
+            return;
+        }
+        for (int i = start; i < s.length(); i++) {
+            if (isPalindrome(s, start, i)) {
+                temp.add(s.substring(start, i + 1));
+                backtrack(res, temp, s, i + 1);
+                temp.remove(temp.size() - 1);
+            }
+        }
+    }
+    static public boolean isPalindrome(String s, int low, int high) {
+        while (low < high) {
+            if (s.charAt(low++) != s.charAt(high--)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
