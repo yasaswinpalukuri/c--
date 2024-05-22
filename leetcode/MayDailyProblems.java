@@ -41,6 +41,7 @@ public class MayDailyProblems {
             System.out.println("Day 19: Find the Maximum Sum of Node Values");
             System.out.println("Day 20: Sum of All Subset XOR Totals");
             System.out.println("Day 21: Subsets");
+            System.out.println("Day 22: Palindrome Partitioning");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -226,7 +227,6 @@ public class MayDailyProblems {
                     System.out.println("The maximum safeness factor of the path is: " + maximumSafenessFactor(grid3));
                     break;
                 case 16:
-                    // Day 16
                     System.out.println("Enter the root value:");
                     int rootValue = scan.nextInt();
                     TreeNode root = new TreeNode(rootValue);
@@ -234,7 +234,6 @@ public class MayDailyProblems {
                     System.out.println("The boolean evaluation of the binary tree is: " + evaluateTree(root));
                     break;
                 case 17:
-                    // Day 17
                     System.out.println("Enter the root value:");
                     int rootValue1 = scan.nextInt();
                     TreeNode root1 = new TreeNode(rootValue1);
@@ -292,6 +291,16 @@ public class MayDailyProblems {
                         nums21[i] = scan.nextInt();
                     }
                     System.out.println("The subsets of the array are: " + subsets(nums21));
+                    break;
+                case 22:
+                    System.out.println("Enter the number of elements in the array:");
+                    int n22 = scan.nextInt();
+                    int[] nums22 = new int[n22];
+                    System.out.println("Enter the elements of the array:");
+                    for (int i = 0; i < n22; i++) {
+                        nums22[i] = scan.nextInt();
+                    }
+                    System.out.println("The palindrome partitioning of the array is: " + partition(nums22));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -1173,5 +1182,23 @@ public class MayDailyProblems {
             }
         }
         return res;
+    }
+
+
+    // Day 22: Palindrome Partitoning - Q131(Medium)
+    /*
+        Given a string s, partition s such that every substring of the partition is a palindrome
+        Return all possible palindrome partitioning of s.
+
+        Example 1:
+        Input: s = "aab"
+        Output: [["a","a","b"],["aa","b"]]
+        
+        Example 2:
+        Input: s = "a"
+        Output: [["a"]]
+    */
+    static public List<List<String>> partition(String s) {
+        
     }
 }
