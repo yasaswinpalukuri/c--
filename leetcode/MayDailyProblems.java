@@ -1255,35 +1255,35 @@ public class MayDailyProblems {
         It can be proved that there is only 1 beautiful subset in the array [1].
     */
     static public int beautifulSubsets(int[] nums, int k) {
-        // int totalCount = 1;
-        // Map<Integer, Map<Integer, Integer>> freqMap = new TreeMap<>();
-        // for (int num : nums) {
-        //     int remainder = num % k;
-        // freqMap.computeIfAbsent(remainder, x -> new TreeMap<>())
-        //     .merge(num, 1, Integer::sum);
-        // }
-        // for (Map.Entry<Integer, Map<Integer, Integer>> entry : freqMap.entrySet()) {
-        //     int n = entry.getValue().size();
+        int totalCount = 1;
+        Map<Integer, Map<Integer, Integer>> freqMap = new TreeMap<>();
+        for (int num : nums) {
+            int remainder = num % k;
+        freqMap.computeIfAbsent(remainder, x -> new TreeMap<>())
+            .merge(num, 1, Integer::sum);
+        }
+        for (Map.Entry<Integer, Map<Integer, Integer>> entry : freqMap.entrySet()) {
+            int n = entry.getValue().size();
 
-        //     List<Map.Entry<Integer, Integer>> subsets = new ArrayList<>(entry.getValue().entrySet());
+            List<Map.Entry<Integer, Integer>> subsets = new ArrayList<>(entry.getValue().entrySet());
             
-        //     int[] counts = new int[n + 1];
-        //     counts[n] = 1;
-        //     for (int i = n - 1; i >= 0; i--) {
-        //         int skip = counts[i + 1];
-        //         int take = (1 << subsets.get(i).getValue()) - 1;
-        //         if (i + 1 < n && subsets.get(i + 1).getKey()
-        //                 - subsets.get(i).getKey() == k) {
-        //             take *= counts[i + 2];
-        //         } else {
-        //             take *= counts[i + 1];
-        //         }
-        //         counts[i] = skip + take; 
-        //     }
+            int[] counts = new int[n + 1];
+            counts[n] = 1;
+            for (int i = n - 1; i >= 0; i--) {
+                int skip = counts[i + 1];
+                int take = (1 << subsets.get(i).getValue()) - 1;
+                if (i + 1 < n && subsets.get(i + 1).getKey()
+                        - subsets.get(i).getKey() == k) {
+                    take *= counts[i + 2];
+                } else {
+                    take *= counts[i + 1];
+                }
+                counts[i] = skip + take; 
+            }
 
-        //     totalCount *= counts[0];
-        // }
+            totalCount *= counts[0];
+        }
 
-        // return totalCount - 1;
+        return totalCount - 1;
     }
 }
