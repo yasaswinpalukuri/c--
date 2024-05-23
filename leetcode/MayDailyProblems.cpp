@@ -915,6 +915,56 @@ class Solutions{
         }
         return true;
     }
+
+    // Day 23: The Number of Beautiful Subsets - Q2597(Medium)
+    /*
+        You are given an array nums of positive integers and a positive integer k.
+        A subset of nums is beautiful if it does not contain two integers with an absolute difference equal to k.
+        Return the number of non-empty beautiful subsets of the array nums.
+        A subset of nums is an array that can be obtained by deleting some (possibly none) elements from nums.
+        Two subsets are different if and only if the chosen indices to delete are different.
+
+        Example 1:
+        Input: nums = [2,4,6], k = 2
+        Output: 4
+        Explanation: The beautiful subsets of the array nums are: [2], [4], [6], [2, 6].
+        It can be proved that there are only 4 beautiful subsets in the array [2,4,6].
+        
+        Example 2:
+        Input: nums = [1], k = 1
+        Output: 1
+        Explanation: The beautiful subset of the array nums is [1].
+        It can be proved that there is only 1 beautiful subset in the array [1].
+    */
+    int beautifulSubsets(vector<int>& nums, int k) {
+        // int totalCount = 1;
+        // map<int, map<int, int>> freqMap;
+        // for (int& num : nums) {
+        //     freqMap[num % k][num]++;
+        // }
+        // for (auto& fr : freqMap) {
+        //     vector<pair<int, int>> subsets(fr.second.begin(), fr.second.end());
+        //     totalCount *= countBeautifulSubsets(subsets, subsets.size(), k, 0);
+        // }
+
+        // return totalCount - 1;
+    }
+
+    int countBeautifulSubsets(vector<pair<int, int>>& subsets, int numSubsets,int difference, int i){
+        // if (i == numSubsets) {
+        //     return 1;
+        // }
+        // int skip = countBeautifulSubsets(subsets, numSubsets, difference, i + 1);
+        // int take = (1 << subsets[i].second) - 1;
+        // if (i + 1 < numSubsets &&
+        //     subsets[i + 1].first - subsets[i].first == difference) {
+        //     take *= countBeautifulSubsets(subsets, numSubsets, difference, i + 2);
+        // } else {
+        //     take *= countBeautifulSubsets(subsets, numSubsets, difference, i + 1);
+        // }
+
+        // return skip + take;
+    }
 };
 
 int main() {
@@ -946,6 +996,7 @@ int main() {
         cout << "Day 20: Sum of All Subset XOR Totals\n";
         cout << "Day 21: Subsets\n";
         cout << "Day 22: Palindrome Partitoning\n";
+        cout << "Day 23: The Number of Beautiful Subsets\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -1305,6 +1356,15 @@ int main() {
                     for (string str : partition) cout << str << ",";
                     cout << "\b]\n";
                 }
+                break;
+            }
+            case 23:{
+                cout << "Enter the number of elements in the array and the value of k:" << '\n';
+                int n, k; cin >> n >> k;
+                vector<int> nums(n);
+                cout << "Enter the elements of the array:" << '\n';
+                for (int i = 0; i < n; i++) cin >> nums[i];
+                cout << "The number of non-empty beautiful subsets of the array nums is: " << sol.beautifulSubsets(nums, k) << '\n';
                 break;
             }
             case 88:
