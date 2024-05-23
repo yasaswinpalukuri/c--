@@ -42,6 +42,7 @@ public class MayDailyProblems {
             System.out.println("Day 20: Sum of All Subset XOR Totals");
             System.out.println("Day 21: Subsets");
             System.out.println("Day 22: Palindrome Partitioning");
+            System.out.println("Day 23: The Number of Beautiful Subsets");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -296,6 +297,18 @@ public class MayDailyProblems {
                     System.out.println("Enter the string:");
                     String s22 = scan.next();
                     System.out.println("The palindrome partitioning of the array is: " + partition(s22));
+                    break;
+                case 23:
+                    System.out.println("Enter the number of elements in the array:");
+                    int n23 = scan.nextInt();
+                    int[] nums23 = new int[n23];
+                    System.out.println("Enter the elements of the array:");
+                    for (int i = 0; i < n23; i++) {
+                        nums23[i] = scan.nextInt();
+                    }
+                    System.out.println("Enter the value of k:");
+                    int k23 = scan.nextInt();
+                    System.out.println("The number of beautiful subsets is: " + beautifulSubsets(nums23, k23));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -1218,5 +1231,59 @@ public class MayDailyProblems {
             }
         }
         return true;
+    }
+
+
+    // Day 23: The Number of Beautiful Subsets - Q2597(Medium)
+    /*
+        You are given an array nums of positive integers and a positive integer k.
+        A subset of nums is beautiful if it does not contain two integers with an absolute difference equal to k.
+        Return the number of non-empty beautiful subsets of the array nums.
+        A subset of nums is an array that can be obtained by deleting some (possibly none) elements from nums.
+        Two subsets are different if and only if the chosen indices to delete are different.
+
+        Example 1:
+        Input: nums = [2,4,6], k = 2
+        Output: 4
+        Explanation: The beautiful subsets of the array nums are: [2], [4], [6], [2, 6].
+        It can be proved that there are only 4 beautiful subsets in the array [2,4,6].
+        
+        Example 2:
+        Input: nums = [1], k = 1
+        Output: 1
+        Explanation: The beautiful subset of the array nums is [1].
+        It can be proved that there is only 1 beautiful subset in the array [1].
+    */
+    static public int beautifulSubsets(int[] nums, int k) {
+        // int totalCount = 1;
+        // Map<Integer, Map<Integer, Integer>> freqMap = new TreeMap<>();
+        // for (int num : nums) {
+        //     int remainder = num % k;
+        // freqMap.computeIfAbsent(remainder, x -> new TreeMap<>())
+        //     .merge(num, 1, Integer::sum);
+        // }
+        // for (Map.Entry<Integer, Map<Integer, Integer>> entry : freqMap.entrySet()) {
+        //     int n = entry.getValue().size();
+
+        //     List<Map.Entry<Integer, Integer>> subsets = new ArrayList<>(entry.getValue().entrySet());
+            
+        //     int[] counts = new int[n + 1];
+        //     counts[n] = 1;
+        //     for (int i = n - 1; i >= 0; i--) {
+        //         int skip = counts[i + 1];
+        //         int take = (1 << subsets.get(i).getValue()) - 1;
+        //         if (i + 1 < n && subsets.get(i + 1).getKey()
+        //                 - subsets.get(i).getKey() == k) {
+        //             take *= counts[i + 2];
+        //         } else {
+        //             take *= counts[i + 1];
+        //         }
+        //         counts[i] = skip + take; 
+        //     }
+
+        //     totalCount *= counts[0];
+        // }
+
+        // return totalCount - 1;
     }
 }
