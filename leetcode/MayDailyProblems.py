@@ -765,6 +765,29 @@ class Solutions:
         result = []
         backtrack(0, [])
         return result
+    
+    # Day 23: The Number of Beautiful Subsets - Q2597(Medium)
+    '''
+        You are given an array nums of positive integers and a positive integer k.
+        A subset of nums is beautiful if it does not contain two integers with an absolute difference equal to k.
+        Return the number of non-empty beautiful subsets of the array nums.
+        A subset of nums is an array that can be obtained by deleting some (possibly none) elements from nums.
+        Two subsets are different if and only if the chosen indices to delete are different.
+
+        Example 1:
+        Input: nums = [2,4,6], k = 2
+        Output: 4
+        Explanation: The beautiful subsets of the array nums are: [2], [4], [6], [2, 6].
+        It can be proved that there are only 4 beautiful subsets in the array [2,4,6].
+        
+        Example 2:
+        Input: nums = [1], k = 1
+        Output: 1
+        Explanation: The beautiful subset of the array nums is [1].
+        It can be proved that there is only 1 beautiful subset in the array [1].
+    '''
+    def countBeautifulSubsets(self, nums: list[int], k: int) -> int:
+
 
 
 
@@ -800,6 +823,7 @@ def main():
         print("Day 20: Sum of All Subset XOR Totals")
         print("Day 21: Subsets")
         print("Day 22: Palindrome Partitoning")
+        print("Day 23: The Number of Beautiful Subsets")
         print("88: Exit")
         
         day = int(input())
@@ -971,6 +995,10 @@ def main():
         elif day == 22:
             s = input("Enter the string: ")
             print("The palindrome partitioning of the string is:", sol.partition(s))
+        elif day == 23:
+            nums = list(map(int, input("Enter the elements of the array: ").split()))
+            k = int(input("Enter the value of k: "))
+            print("The number of non-empty beautiful subsets of the array nums is:", sol.countBeautifulSubsets(nums, k))
         else:
             print("Sorry, the problem for the day you entered is not available")
 
