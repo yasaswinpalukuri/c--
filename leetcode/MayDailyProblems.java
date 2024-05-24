@@ -326,11 +326,9 @@ public class MayDailyProblems {
                     for (int i = 0; i < n25; i++) {
                         letters24[i] = scan.next().charAt(0);
                     }
-                    System.out.println("Enter the number of scores:");
-                    int n26 = scan.nextInt();
-                    int[] scores24 = new int[n26];
+                    int[] scores24 = new int[26];
                     System.out.println("Enter the scores:");
-                    for (int i = 0; i < n26; i++) {
+                    for (int i = 0; i < 26; i++) {
                         scores24[i] = scan.nextInt();
                     }
                     System.out.println("The maximum score words formed by the letters is: " + maxScoreWords(words24, letters24, scores24));
@@ -1346,17 +1344,37 @@ public class MayDailyProblems {
         Letter "e" can only be used once.
     */
     static public int maxScoreWords(String[] words, char[] letters, int[] score) {
-        // int[] freq = new int[26];
-        // for (char letter : letters) {
-        //     freq[letter - 'a']++;
-        // }
-        // int n = words.length;
-        // int[] wordScores = new int[n];
-        // for (int i = 0; i < n; i++) {
-        //     for (char ch : words[i].toCharArray()) {
-        //         wordScores[i] += score[ch - 'a'];
-        //     }
-        // }
-        // return backtrack(words, freq, wordScores, score, 0);
+        int[] freq = new int[26];
+        for (char letter : letters) {
+            freq[letter - 'a']++;
+        }
+        int n = words.length;
+        int[] wordScores = new int[n];
+        for (int i = 0; i < n; i++) {
+            for (char ch : words[i].toCharArray()) {
+                wordScores[i] += score[ch - 'a'];
+            }
+        }
+        return backtrack(words, freq, wordScores, score, 0);
+    }
+    static private int backtrack(String[] words, int[] freq, int[] wordScores, int[] score, int index) {
+        if (index == words.length) {
+            return 0;
+        }
+        int maxScore = 0;
+        int[] newFreq = Arrays.copyOf(freq, freq.length);
+        boolean isValid = true;
+        for (char ch : words[index].toCharArray()) {
+            newFreq[ch - 'a']--;
+            if (newFreq[ch - 'a'] < 0) {
+                isValid = false;
+                break;
+            }
+        }
+        if (isValid) {
+            maxScore = Math.max(maxScore, wordScores[index] + backtrack(words, newFreq, wordScores, score, index + 1));
+        }
+        maxScore = Math.max(maxScore, backtrack(words, freq, wordScores, score, index + 1));
+        return maxScore;
     }
 }
