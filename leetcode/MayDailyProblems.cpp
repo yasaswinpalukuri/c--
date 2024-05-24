@@ -965,6 +965,52 @@ class Solutions{
 
         return skip + take;
     }
+
+
+    // Day 24: Maximum Score Words Formed by Letters - Q1255(Hard)
+    /*
+        Given a list of words, list of  single letters (might be repeating) and score of every character.
+
+        Return the maximum score of any valid set of words formed by using the given letters (words[i] cannot be used two or more times).
+
+        It is not necessary to use all characters in letters and each letter can only be used once. Score of letters 'a', 'b', 'c', ... ,'z' is given by score[0], score[1], ... , score[25] respectively.
+
+        
+
+        Example 1:
+        Input: words = ["dog","cat","dad","good"], letters = ["a","a","c","d","d","d","g","o","o"], score = [1,0,9,5,0,0,3,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0]
+        Output: 23
+        Explanation:
+        Score  a=1, c=9, d=5, g=3, o=2
+        Given letters, we can form the words "dad" (5+1+5) and "good" (3+2+2+5) with a score of 23.
+        Words "dad" and "dog" only get a score of 21.
+        
+        Example 2:
+        Input: words = ["xxxz","ax","bx","cx"], letters = ["z","a","b","c","x","x","x"], score = [4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,10]
+        Output: 27
+        Explanation:
+        Score  a=4, b=4, c=4, x=5, z=10
+        Given letters, we can form the words "ax" (4+5), "bx" (4+5) and "cx" (4+5) with a score of 27.
+        Word "xxxz" only get a score of 25.
+        
+        Example 3:
+        Input: words = ["leetcode"], letters = ["l","e","t","c","o","d"], score = [0,0,1,1,1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0]
+        Output: 0
+        Explanation:
+        Letter "e" can only be used once.
+    */
+    int maxScoreWords(vector<string>& words, vector<char>& letters, vector<int>& score) {
+        int W = words.size();
+        maxScore = 0;
+        freq = vector<int>(26, 0);
+        vector<int> subsetLetters = vector<int>(26, 0);
+        // Count how many times each letter occurs
+        for (char c : letters) {
+            freq[c - 'a']++;
+        }
+        check(W - 1, words, score, subsetLetters, 0);
+        return maxScore;
+    }
 };
 
 int main() {
@@ -997,6 +1043,7 @@ int main() {
         cout << "Day 21: Subsets\n";
         cout << "Day 22: Palindrome Partitoning\n";
         cout << "Day 23: The Number of Beautiful Subsets\n";
+        cout << "Day 24: Maximum Score Words Formed by Letters\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -1365,6 +1412,23 @@ int main() {
                 cout << "Enter the elements of the array:" << '\n';
                 for (int i = 0; i < n; i++) cin >> nums[i];
                 cout << "The number of non-empty beautiful subsets of the array nums is: " << sol.beautifulSubsets(nums, k) << '\n';
+                break;
+            }
+            case 24:{
+                cout << "Enter the number of words in the list:" << '\n';
+                int n; cin >> n;
+                vector<string> words(n);
+                cout << "Enter the words in the list:" << '\n';
+                for (int i = 0; i < n; i++) cin >> words[i];
+                cout << "Enter the number of letters in the list:" << '\n';
+                int m; cin >> m;
+                vector<char> letters(m);
+                cout << "Enter the letters in the list:" << '\n';
+                for (int i = 0; i < m; i++) cin >> letters[i];
+                cout << "Enter the number of scores:" << '\n';
+                vector<int> scores(26);
+                for (int i = 0; i < 26; i++) cin >> scores[i];
+                cout << "The maximum score of any valid set of words formed by using the given letters is: " << sol.maxScoreWords(words, letters, scores) << '\n';
                 break;
             }
             case 88:
