@@ -43,6 +43,7 @@ public class MayDailyProblems {
             System.out.println("Day 21: Subsets");
             System.out.println("Day 22: Palindrome Partitioning");
             System.out.println("Day 23: The Number of Beautiful Subsets");
+            System.out.println("Day 24: Maximum Score Words Formed by Letters");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -309,6 +310,30 @@ public class MayDailyProblems {
                     System.out.println("Enter the value of k:");
                     int k23 = scan.nextInt();
                     System.out.println("The number of beautiful subsets is: " + beautifulSubsets(nums23, k23));
+                    break;
+                case 24:
+                    System.out.println("Enter the number of words:");
+                    int n24 = scan.nextInt();
+                    String[] words24 = new String[n24];
+                    System.out.println("Enter the words:");
+                    for (int i = 0; i < n24; i++) {
+                        words24[i] = scan.next();
+                    }
+                    System.out.println("Enter the number of letters:");
+                    int n25 = scan.nextInt();
+                    char[] letters24 = new char[n25];
+                    System.out.println("Enter the letters:");
+                    for (int i = 0; i < n25; i++) {
+                        letters24[i] = scan.next().charAt(0);
+                    }
+                    System.out.println("Enter the number of scores:");
+                    int n26 = scan.nextInt();
+                    int[] scores24 = new int[n26];
+                    System.out.println("Enter the scores:");
+                    for (int i = 0; i < n26; i++) {
+                        scores24[i] = scan.nextInt();
+                    }
+                    System.out.println("The maximum score words formed by the letters is: " + maxScoreWords(words24, letters24, scores24));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -1321,17 +1346,17 @@ public class MayDailyProblems {
         Letter "e" can only be used once.
     */
     static public int maxScoreWords(String[] words, char[] letters, int[] score) {
-        int[] freq = new int[26];
-        for (char letter : letters) {
-            freq[letter - 'a']++;
-        }
-        int n = words.length;
-        int[] wordScores = new int[n];
-        for (int i = 0; i < n; i++) {
-            for (char ch : words[i].toCharArray()) {
-                wordScores[i] += score[ch - 'a'];
-            }
-        }
-        return backtrack(words, freq, wordScores, score, 0);
+        // int[] freq = new int[26];
+        // for (char letter : letters) {
+        //     freq[letter - 'a']++;
+        // }
+        // int n = words.length;
+        // int[] wordScores = new int[n];
+        // for (int i = 0; i < n; i++) {
+        //     for (char ch : words[i].toCharArray()) {
+        //         wordScores[i] += score[ch - 'a'];
+        //     }
+        // }
+        // return backtrack(words, freq, wordScores, score, 0);
     }
 }
