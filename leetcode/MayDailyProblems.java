@@ -13,6 +13,38 @@ public class MayDailyProblems {
             this.val = val; this.next = next;
         }
     }
+    class TrieNode {
+
+        boolean isEnd;
+        TrieNode[] children;
+    
+        TrieNode() {
+            isEnd = false;
+            children = new TrieNode[26];
+        }
+    }
+    
+    class Trie {
+    
+        TrieNode root;
+    
+        Trie() {
+            root = new TrieNode();
+        }
+    
+        void insert(String word) {
+            TrieNode node = root;
+            for (char c : word.toCharArray()) {
+                int index = c - 'a';
+                if (node.children[index] == null) {
+                    node.children[index] = new TrieNode();
+                }
+                node = node.children[index];
+            }
+            node.isEnd = true;
+        }
+    }
+    
     static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
         System.out.println("Welcome to May Daily Leetcode Problems");
@@ -1376,5 +1408,37 @@ public class MayDailyProblems {
         }
         maxScore = Math.max(maxScore, backtrack(words, freq, wordScores, score, index + 1));
         return maxScore;
+    }
+
+
+    // Day 25: Word Break II - Q14(Hard)
+    /*
+        Given a string s and a dictionary of strings wordDict, add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences in any order.
+
+        Note that the same word in the dictionary may be reused multiple times in the segmentation.
+
+        Example 1:
+        Input: s = "catsanddog", wordDict = ["cat","cats","and","sand","dog"]
+        Output: ["cats and dog","cat sand dog"]
+        
+        Example 2:
+        Input: s = "pineapplepenapple", wordDict = ["apple","pen","applepen","pine","pineapple"]
+        Output: ["pine apple pen apple","pineapple pen apple","pine applepen apple"]
+        Explanation: Note that you are allowed to reuse a dictionary word.
+        
+        Example 3:
+        Input: s = "catsandog", wordDict = ["cats","dog","sand","and","cat"]
+        Output: []
+
+        Constraints:
+        1 <= s.length <= 20
+        1 <= wordDict.length <= 1000
+        1 <= wordDict[i].length <= 10
+        s and wordDict[i] consist of only lowercase English letters.
+        All the strings of wordDict are unique.
+        Input is generated in a way that the length of the answer doesn't exceed 10^5.
+    */
+    static public List<String> wordBreak(String s, List<String> wordDict) {
+        
     }
 }
