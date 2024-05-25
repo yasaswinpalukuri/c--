@@ -1072,6 +1072,68 @@ class Solutions{
             totalScore -= score[c];
         }
     }
+
+
+    // Day 25: Word Break II - Q14(Hard)
+    /*
+        Given a string s and a dictionary of strings wordDict, add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences in any order.
+
+        Note that the same word in the dictionary may be reused multiple times in the segmentation.
+
+        Example 1:
+        Input: s = "catsanddog", wordDict = ["cat","cats","and","sand","dog"]
+        Output: ["cats and dog","cat sand dog"]
+        
+        Example 2:
+        Input: s = "pineapplepenapple", wordDict = ["apple","pen","applepen","pine","pineapple"]
+        Output: ["pine apple pen apple","pineapple pen apple","pine applepen apple"]
+        Explanation: Note that you are allowed to reuse a dictionary word.
+        
+        Example 3:
+        Input: s = "catsandog", wordDict = ["cats","dog","sand","and","cat"]
+        Output: []
+
+        Constraints:
+        1 <= s.length <= 20
+        1 <= wordDict.length <= 1000
+        1 <= wordDict[i].length <= 10
+        s and wordDict[i] consist of only lowercase English letters.
+        All the strings of wordDict are unique.
+        Input is generated in a way that the length of the answer doesn't exceed 10^5.
+    */
+    vector<string> wordBreak(string s, vector<string>& wordDict) {
+        // Trie trie;
+        // for (string word : wordDict) {
+        //     trie.insert(word);
+        // }
+        // unordered_map<int, vector<string>> dp;
+        // for (int startIdx = s.size(); startIdx >= 0; startIdx--) {
+        //     vector<string> validSentences;
+        //     TrieNode* currentNode = trie.root;
+        //     for (int endIdx = startIdx; endIdx < s.size(); endIdx++) {
+        //         char c = s[endIdx];
+        //         int index = c - 'a';
+        //         if (!currentNode->children[index]) {
+        //             break;
+        //         }
+        //         currentNode = currentNode->children[index];
+        //         if (currentNode->isEnd) {
+        //             string currentWord =
+        //                 s.substr(startIdx, endIdx - startIdx + 1);
+        //             if (endIdx == s.size() - 1) {
+        //                 validSentences.push_back(currentWord);
+        //             } else {
+        //                 for (string sentence : dp[endIdx + 1]) {
+        //                     validSentences.push_back(currentWord + " " +
+        //                                              sentence);
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     dp[startIdx] = validSentences;
+        // }
+        // return dp[0];
+    }
 };
 
 int main() {
@@ -1105,6 +1167,7 @@ int main() {
         cout << "Day 22: Palindrome Partitoning\n";
         cout << "Day 23: The Number of Beautiful Subsets\n";
         cout << "Day 24: Maximum Score Words Formed by Letters\n";
+        cout << "Day 25: Word Break II\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -1490,6 +1553,19 @@ int main() {
                 vector<int> scores(26);
                 for (int i = 0; i < 26; i++) cin >> scores[i];
                 cout << "The maximum score of any valid set of words formed by using the given letters is: " << sol.maxScoreWords(words, letters, scores) << '\n';
+                break;
+            }
+            case 25:{
+                cout << "Enter the string:" << '\n';
+                string s; cin >> s;
+                cout << "Enter the number of words in the dictionary:" << '\n';
+                int n; cin >> n;
+                vector<string> wordDict(n);
+                cout << "Enter the words in the dictionary:" << '\n';
+                for (int i = 0; i < n; i++) cin >> wordDict[i];
+                vector<string> sentences = sol.wordBreak(s, wordDict);
+                cout << "The possible sentences formed by adding spaces in s are:" << '\n';
+                for (string sentence : sentences) cout << sentence << '\n';
                 break;
             }
             case 88:
