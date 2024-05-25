@@ -366,6 +366,18 @@ public class MayDailyProblems {
                     }
                     System.out.println("The maximum score words formed by the letters is: " + maxScoreWords(words24, letters24, scores24));
                     break;
+                case 25:
+                    System.out.println("Enter the string:");
+                    String s25 = scan.next();
+                    System.out.println("Enter the number of words:");
+                    int n26 = scan.nextInt();
+                    List<String> wordDict = new ArrayList<>();
+                    System.out.println("Enter the words:");
+                    for (int i = 0; i < n26; i++) {
+                        wordDict.add(scan.next());
+                    }
+                    System.out.println("The word break II is: " + wordBreak(s25, wordDict));
+                    break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
                     System.exit(0);
@@ -1440,6 +1452,41 @@ public class MayDailyProblems {
         Input is generated in a way that the length of the answer doesn't exceed 10^5.
     */
     static public List<String> wordBreak(String s, List<String> wordDict) {
-        
+        MayDailyProblems.Trie trie = new MayDailyProblems().new Trie();
+        for (String word : wordDict) {
+            trie.insert(word);
+        }
+        Map<Integer, List<String>> dp = new HashMap<>();
+        for (int startIdx = s.length(); startIdx >= 0; startIdx--) {
+            List<String> validSentences = new ArrayList<>();
+            TrieNode currentNode = trie.root;
+            for (int endIdx = startIdx; endIdx < s.length(); endIdx++) {
+                char c = s.charAt(endIdx);
+                int index = c - 'a';
+                if (currentNode.children[index] == null) {
+                    break;
+                }
+                currentNode = currentNode.children[index];
+                if (currentNode.isEnd) {
+                    String currentWord = s.substring(startIdx, endIdx + 1);
+                    if (endIdx == s.length() - 1) {
+                        validSentences.add(currentWord);
+                    } else {
+                        List<String> sentencesFromNextIndex = dp.get(
+                            endIdx + 1
+                        );
+                        if (sentencesFromNextIndex != null) {
+                            for (String sentence : sentencesFromNextIndex) {
+                                validSentences.add(
+                                    currentWord + " " + sentence
+                                );
+                            }
+                        }
+                    }
+                }
+            }
+            dp.put(startIdx, validSentences);
+        }
+        return dp.getOrDefault(0, new ArrayList<>());
     }
 }
