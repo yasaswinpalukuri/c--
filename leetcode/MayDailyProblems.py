@@ -1,6 +1,7 @@
 import heapq
 from collections import deque
 from collections import defaultdict
+from __main__ import TrieNode
 
 
 class Solutions:
@@ -16,6 +17,46 @@ class Solutions:
             self.val = x
             self.left = None
             self.right = None
+
+    class TrieNode:
+        def __init__(self):
+            self.isEnd = False
+            self.children = [None] * 26  # For lowercase English letters
+
+    class TrieNode:
+        def __init__(self):
+            self.children = {}
+            self.is_end_of_word = False
+
+    class Trie:
+        def __init__(self):
+            self.root = TrieNode()
+
+        def insert(self, word):
+            node = self.root
+            for char in word:
+                if char not in node.children:
+                    node.children[char] = TrieNode()
+                node = node.children[char]
+            node.is_end_of_word = True
+
+        def search(self, word):
+            node = self.root
+            for char in word:
+                if char not in node.children:
+                    return False
+                node = node.children[char]
+            return node.is_end_of_word
+
+        def startsWith(self, prefix):
+            node = self.root
+            for char in prefix:
+                if char not in node.children:
+                    return False
+                node = node.children[char]
+            return True
+
+
 
     # Day 1: Reverse Prefix of Word - Q2000(Easy)
     '''
@@ -886,6 +927,83 @@ class Solutions:
 
         check(W - 1, words, score, subset_letters, 0)
         return self.max_score
+    
+    # Day 25: Word Break II - Q14(Hard)
+    '''
+        Given a string s and a dictionary of strings wordDict, add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences in any order.
+
+        Note that the same word in the dictionary may be reused multiple times in the segmentation.
+
+        Example 1:
+        Input: s = "catsanddog", wordDict = ["cat","cats","and","sand","dog"]
+        Output: ["cats and dog","cat sand dog"]
+        
+        Example 2:
+        Input: s = "pineapplepenapple", wordDict = ["apple","pen","applepen","pine","pineapple"]
+        Output: ["pine apple pen apple","pineapple pen apple","pine applepen apple"]
+        Explanation: Note that you are allowed to reuse a dictionary word.
+        
+        Example 3:
+        Input: s = "catsandog", wordDict = ["cats","dog","sand","and","cat"]
+        Output: []
+
+        Constraints:
+        1 <= s.length <= 20
+        1 <= wordDict.length <= 1000
+        1 <= wordDict[i].length <= 10
+        s and wordDict[i] consist of only lowercase English letters.
+        All the strings of wordDict are unique.
+        Input is generated in a way that the length of the answer doesn't exceed 10^5.
+    '''
+    def wordBreak(self, s: str, wordDict: list[str]) -> list[str]:
+        # Build the Trie from the word dictionary
+        # trie = Solutions.Trie()
+        # for word in wordDict:
+        #     trie.insert(word)
+
+        # # Map to store results of subproblems
+        # dp = {}
+
+        # # Iterate from the end of the string to the beginning
+        # for start_idx in range(len(s), -1, -1):
+        #     # List to store valid sentences starting from start_idx
+        #     valid_sentences = []
+
+        #     # Initialize current node to the root of the trie
+        #     current_node = trie.root
+
+        #     # Iterate from start_idx to the end of the string
+        #     for end_idx in range(start_idx, len(s)):
+        #         char = s[end_idx]
+        #         index = ord(char) - ord("a")
+
+        #         # Check if the current character exists in the trie
+        #         if not current_node.children[index]:
+        #             break
+
+        #         # Move to the next node in the trie
+        #         current_node = current_node.children[index]
+
+        #         # Check if we have found a valid word
+        #         if current_node.isEnd:
+        #             current_word = s[start_idx : end_idx + 1]
+
+        #             # If it's the last word, add it as a valid sentence
+        #             if end_idx == len(s) - 1:
+        #                 valid_sentences.append(current_word)
+        #             else:
+        #                 # If it's not the last word, append it to each sentence formed by the remaining substring
+        #                 sentences_from_next_index = dp.get(end_idx + 1, [])
+        #                 for sentence in sentences_from_next_index:
+        #                     valid_sentences.append(
+        #                         current_word + " " + sentence
+        #                     )
+
+        #     # Store the valid sentences in dp
+        #     dp[start_idx] = valid_sentences
+
+        # # Return the sentences formed from the entire string
+        # return dp.get(0, [])
 
 
 
