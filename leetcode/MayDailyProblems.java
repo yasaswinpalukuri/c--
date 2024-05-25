@@ -76,6 +76,7 @@ public class MayDailyProblems {
             System.out.println("Day 22: Palindrome Partitioning");
             System.out.println("Day 23: The Number of Beautiful Subsets");
             System.out.println("Day 24: Maximum Score Words Formed by Letters");
+            System.out.println("Day 25: Word Break II");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
