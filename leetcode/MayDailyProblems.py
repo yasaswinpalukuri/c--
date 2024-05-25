@@ -1,7 +1,6 @@
 import heapq
 from collections import deque
 from collections import defaultdict
-from __main__ import TrieNode
 
 
 class Solutions:
@@ -30,13 +29,13 @@ class Solutions:
 
     class Trie:
         def __init__(self):
-            self.root = TrieNode()
+            self.root = Solutions.TrieNode()
 
         def insert(self, word):
             node = self.root
             for char in word:
                 if char not in node.children:
-                    node.children[char] = TrieNode()
+                    node.children[char] = Solutions.TrieNode()
                 node = node.children[char]
             node.is_end_of_word = True
 
@@ -956,39 +955,19 @@ class Solutions:
         Input is generated in a way that the length of the answer doesn't exceed 10^5.
     '''
     def wordBreak(self, s: str, wordDict: list[str]) -> list[str]:
-        # trie = Solutions.Trie()
-        # for word in wordDict:
-        #     trie.insert(word)
+        
+        def backtrack(index, curr):
+            if index == n:
+                res.append(curr)
+                return
+            for i in range(index, n):
+                if s[index:i+1] in wordDict: backtrack(i+1, curr + s[index:i+1] + (" " if i < n-1 else ""))
+        
+        res = []
+        n = len(s)
+        backtrack(0, "")
 
-        # dp = {}
-
-        # for start_idx in range(len(s), -1, -1):
-        #     valid_sentences = []
-
-        #     current_node = trie.root
-
-        #     for end_idx in range(start_idx, len(s)):
-        #         char = s[end_idx]
-        #         index = ord(char) - ord("a")
-
-        #         if not current_node.children[index]:
-        #             break
-
-        #         current_node = current_node.children[index]
-
-        #         if current_node.isEnd:
-        #             current_word = s[start_idx : end_idx + 1]
-
-        #             if end_idx == len(s) - 1:
-        #                 valid_sentences.append(current_word)
-        #             else:
-        #                 sentences_from_next_index = dp.get(end_idx + 1, [])
-        #                 for sentence in sentences_from_next_index:
-        #                     valid_sentences.append(
-        #                         current_word + " " + sentence
-        #                     )
-        #     dp[start_idx] = valid_sentences
-        # return dp.get(0, [])
+        return res
 
 
 
