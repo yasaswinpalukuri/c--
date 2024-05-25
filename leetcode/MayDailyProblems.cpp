@@ -13,6 +13,36 @@ class Solutions{
             this->next = nullptr;
         }
     };
+    class TrieNode {
+    public:
+        bool isEnd;
+        TrieNode* children[26];
+
+        TrieNode() {
+            isEnd = false;
+            for (int i = 0; i < 26; i++) {
+                children[i] = nullptr;
+            }
+        }
+    };
+    class Trie {
+    public:
+        TrieNode* root;
+
+        Trie() { root = new TrieNode(); }
+
+        void insert(string word) {
+            TrieNode* node = root;
+            for (char c : word) {
+                int index = c - 'a';
+                if (!node->children[index]) {
+                    node->children[index] = new TrieNode();
+                }
+                node = node->children[index];
+            }
+            node->isEnd = true;
+        }
+    };
 
     // class TreeNode{
     //     public:
