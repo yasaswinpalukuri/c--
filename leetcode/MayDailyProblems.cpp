@@ -1102,37 +1102,37 @@ class Solutions{
         Input is generated in a way that the length of the answer doesn't exceed 10^5.
     */
     vector<string> wordBreak(string s, vector<string>& wordDict) {
-        // Trie trie;
-        // for (string word : wordDict) {
-        //     trie.insert(word);
-        // }
-        // unordered_map<int, vector<string>> dp;
-        // for (int startIdx = s.size(); startIdx >= 0; startIdx--) {
-        //     vector<string> validSentences;
-        //     TrieNode* currentNode = trie.root;
-        //     for (int endIdx = startIdx; endIdx < s.size(); endIdx++) {
-        //         char c = s[endIdx];
-        //         int index = c - 'a';
-        //         if (!currentNode->children[index]) {
-        //             break;
-        //         }
-        //         currentNode = currentNode->children[index];
-        //         if (currentNode->isEnd) {
-        //             string currentWord =
-        //                 s.substr(startIdx, endIdx - startIdx + 1);
-        //             if (endIdx == s.size() - 1) {
-        //                 validSentences.push_back(currentWord);
-        //             } else {
-        //                 for (string sentence : dp[endIdx + 1]) {
-        //                     validSentences.push_back(currentWord + " " +
-        //                                              sentence);
-        //                 }
-        //             }
-        //         }
-        //     }
-        //     dp[startIdx] = validSentences;
-        // }
-        // return dp[0];
+        Trie trie;
+        for (string word : wordDict) {
+            trie.insert(word);
+        }
+        unordered_map<int, vector<string>> dp;
+        for (int startIdx = s.size(); startIdx >= 0; startIdx--) {
+            vector<string> validSentences;
+            TrieNode* currentNode = trie.root;
+            for (int endIdx = startIdx; endIdx < s.size(); endIdx++) {
+                char c = s[endIdx];
+                int index = c - 'a';
+                if (!currentNode->children[index]) {
+                    break;
+                }
+                currentNode = currentNode->children[index];
+                if (currentNode->isEnd) {
+                    string currentWord =
+                        s.substr(startIdx, endIdx - startIdx + 1);
+                    if (endIdx == s.size() - 1) {
+                        validSentences.push_back(currentWord);
+                    } else {
+                        for (string sentence : dp[endIdx + 1]) {
+                            validSentences.push_back(currentWord + " " +
+                                                     sentence);
+                        }
+                    }
+                }
+            }
+            dp[startIdx] = validSentences;
+        }
+        return dp[0];
     }
 };
 
