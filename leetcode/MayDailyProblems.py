@@ -956,53 +956,38 @@ class Solutions:
         Input is generated in a way that the length of the answer doesn't exceed 10^5.
     '''
     def wordBreak(self, s: str, wordDict: list[str]) -> list[str]:
-        # Build the Trie from the word dictionary
         # trie = Solutions.Trie()
         # for word in wordDict:
         #     trie.insert(word)
 
-        # # Map to store results of subproblems
         # dp = {}
 
-        # # Iterate from the end of the string to the beginning
         # for start_idx in range(len(s), -1, -1):
-        #     # List to store valid sentences starting from start_idx
         #     valid_sentences = []
 
-        #     # Initialize current node to the root of the trie
         #     current_node = trie.root
 
-        #     # Iterate from start_idx to the end of the string
         #     for end_idx in range(start_idx, len(s)):
         #         char = s[end_idx]
         #         index = ord(char) - ord("a")
 
-        #         # Check if the current character exists in the trie
         #         if not current_node.children[index]:
         #             break
 
-        #         # Move to the next node in the trie
         #         current_node = current_node.children[index]
 
-        #         # Check if we have found a valid word
         #         if current_node.isEnd:
         #             current_word = s[start_idx : end_idx + 1]
 
-        #             # If it's the last word, add it as a valid sentence
         #             if end_idx == len(s) - 1:
         #                 valid_sentences.append(current_word)
         #             else:
-        #                 # If it's not the last word, append it to each sentence formed by the remaining substring
         #                 sentences_from_next_index = dp.get(end_idx + 1, [])
         #                 for sentence in sentences_from_next_index:
         #                     valid_sentences.append(
         #                         current_word + " " + sentence
         #                     )
-
-        #     # Store the valid sentences in dp
         #     dp[start_idx] = valid_sentences
-
-        # # Return the sentences formed from the entire string
         # return dp.get(0, [])
 
 
@@ -1040,6 +1025,7 @@ def main():
         print("Day 22: Palindrome Partitoning")
         print("Day 23: The Number of Beautiful Subsets")
         print("Day 24: Maximum Score Words Formed by Letters")
+        print("Day 25: Word Break II")
         print("88: Exit")
         
         day = int(input())
@@ -1220,6 +1206,10 @@ def main():
             letters = list(map(str, input("Enter the letters: ").split()))
             score = list(map(int, input("Enter the scores of the characters: ").split()))
             print("The maximum score of any valid set of words formed by using the given letters is:", sol.maxScoreWords(words, letters, score))
+        elif day == 25:
+            s = input("Enter the string: ")
+            wordDict = list(map(str, input("Enter the words in the dictionary: ").split()))
+            print("The possible sentences formed by the string are:", sol.wordBreak(s, wordDict))
         else:
             print("Sorry, the problem for the day you entered is not available")
 
