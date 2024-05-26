@@ -1068,6 +1068,7 @@ def main():
             word = input("Enter the word: ")
             ch = input("Enter the character you want to reverse the prefix of: ")
             print("The word after reversing the prefix of the character is:", sol.reversePrefix(word, ch))
+
         elif day == 2:
             n = int(input("Enter the number of elements in the array: "))
             nums = []
@@ -1076,14 +1077,17 @@ def main():
             print("The largest positive integer that exists with its negative is (Using HashSet):", sol.findMaxK(nums))
             print("The largest positive integer that exists with its negative is (Using Sorting):", sol.findMaxKSorting(nums))
             print("The largest positive integer that exists with its negative is (Using Two Pointer Technique):", sol.findMaxK2Pointers(nums))
+
         elif day == 3:
             version1 = input("Enter the first version number: ")
             version2 = input("Enter the second version number: ")
             print("The comparison of the two version numbers is:", sol.compareVersion(version1, version2))
+
         elif day == 4:
             people = list(map(int, input("Enter the weights of the people: ").split()))
             limit = int(input("Enter the weight limit of the boat: "))
             print("The number of boats required to save all the people is:", sol.numRescueBoats(people, limit))
+
         elif day == 5:
             nodes = list(map(int, input("Enter the elements of the linked list: ").split()))
             head = sol.ListNode(nodes[0])
@@ -1104,6 +1108,7 @@ def main():
                 print(head.val, end=" ")
                 head = head.next
             print()
+
         elif day == 6:
             nodes = list(map(int, input("Enter the elements of the linked list: ").split()))
             head = sol.ListNode(nodes[0])
@@ -1118,6 +1123,7 @@ def main():
                 print(head.val, end=" ")
                 head = head.next
             print()
+
         elif day == 7:
             nodes = list(map(int, input("Enter the elements of the linked list: ").split()))
             head = sol.ListNode(nodes[0])
@@ -1132,24 +1138,29 @@ def main():
                 print(head.val, end=" ")
                 head = head.next
             print()
+
         elif day == 8:
             scores = list(map(int, input("Enter the scores of the players: ").split()))
             print("The scores of the players are:", scores)
             print("The relative ranks of the players are:")
             print(sol.findRelativeRanks(scores))
+
         elif day == 9:
             happiness = list(map(int, input("Enter the happiness values of the children: ").split()))
             k = int(input("Enter the number of children to be picked: "))
             print("The maximum happiness of the selected children is:", sol.maximizeHappiness(happiness, k))
+
         elif day == 10:
             arr = list(map(int, input("Enter the elements of the array: ").split()))
             k = int(input("Enter the value of k: "))
             print("The k-th smallest prime fraction is:", sol.kthSmallestPrimeFraction(arr, k))
+
         elif day == 11:
             quality = list(map(int, input("Enter the qualities of the workers: ").split()))
             wage = list(map(int, input("Enter the wages of the workers: ").split()))
             k = int(input("Enter the number of workers to be hired: "))
             print("The minimum cost to hire k workers is:", sol.mincostToHireWorkers(quality, wage, k))
+
         elif day == 12:
             grid = []
             n = int(input("Enter the number of rows & columns in the matrix: "))
@@ -1158,6 +1169,7 @@ def main():
                 grid.append(list(map(int, input().split())))
             print("The largest local values in the matrix are:")
             print(sol.largestLocal(grid))
+
         elif day == 13:
             grid = []
             n = int(input("Enter the number of rows & columns in the matrix: "))
@@ -1165,6 +1177,7 @@ def main():
             for _ in range(n):
                 grid.append(list(map(int, input().split())))
             print("The score after flipping the matrix is:", sol.matrixScore(grid))
+
         elif day == 14:
             grid = []
             m = int(input("Enter the number of rows in the grid: "))
@@ -1173,6 +1186,7 @@ def main():
             for _ in range(m):
                 grid.append(list(map(int, input().split())))
             print("The maximum gold that can be collected is:", sol.getMaximumGold(grid))
+
         elif day == 15:
             grid = []
             n = int(input("Enter the number of rows & columns in the grid: "))
@@ -1180,6 +1194,7 @@ def main():
             for _ in range(n):
                 grid.append(list(map(int, input().split())))
             print("The safest path in the grid is:", sol.maximumSafenessFactor(grid))
+
         elif day == 16:
             root = sol.TreeNode(2)
             root.left = sol.TreeNode(1)
@@ -1187,6 +1202,7 @@ def main():
             root.right.left = sol.TreeNode(0)
             root.right.right = sol.TreeNode(1)
             print("The evaluation of the boolean binary tree is:", sol.evaluateTree(root))
+
         elif day == 17:
             root = sol.TreeNode(1)
             root.left = sol.TreeNode(2)
@@ -1197,11 +1213,13 @@ def main():
             root.right.right = sol.TreeNode(1)
             target = 2
             print("The tree after deleting the leaves with the value target is:", sol.removeLeafNodes(root, target))
+
         elif day == 18:
             root = sol.TreeNode(3)
             root.left = sol.TreeNode(0)
             root.right = sol.TreeNode(0)
             print("The minimum number of moves required to make every node have exactly one coin is:", sol.distributeCoins(root))
+
         elif day == 19:
             n = int(input("Enter the number of nodes in the tree:"))
             nums = [0] * n
@@ -1218,31 +1236,39 @@ def main():
                 u,v = map(int, input().split())
                 edges.append([u, v])
             print("The maximum possible sum of the values Alice can achieve is:", sol.maximumValueSum(nums, k, edges))
+
         elif day == 20:
             nums = list(map(int, input("Enter the elements of the array: ").split()))
             print("The sum of all XOR totals for every subset of nums is:", sol.subsetXORSum(nums))
+
         elif day == 21:
             nums = list(map(int, input("Enter the elements of the array: ").split()))
             print("The power set of the array is:", sol.subsets(nums))
+
         elif day == 22:
             s = input("Enter the string: ")
             print("The palindrome partitioning of the string is:", sol.partition(s))
+
         elif day == 23:
             nums = list(map(int, input("Enter the elements of the array: ").split()))
             k = int(input("Enter the value of k: "))
             print("The number of non-empty beautiful subsets of the array nums is:", sol.beautifulSubsets(nums, k))
+
         elif day == 24:
             words = list(map(str, input("Enter the words: ").split()))
             letters = list(map(str, input("Enter the letters: ").split()))
             score = list(map(int, input("Enter the scores of the characters: ").split()))
             print("The maximum score of any valid set of words formed by using the given letters is:", sol.maxScoreWords(words, letters, score))
+
         elif day == 25:
             s = input("Enter the string: ")
             wordDict = list(map(str, input("Enter the words in the dictionary: ").split()))
             print("The possible sentences formed by the string are:", sol.wordBreak(s, wordDict))
+
         elif day == 26:
             n = int(input("Enter the value of n: "))
             print("The number of possible attendance records of length n that make a student eligible for an attendance award is:", sol.checkRecord(n))
+            
         else:
             print("Sorry, the problem for the day you entered is not available")
 
