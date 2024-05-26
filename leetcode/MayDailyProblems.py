@@ -1003,6 +1003,22 @@ class Solutions:
     '''
     def checkRecord(self, n: int) -> int:
         self.comb = [[[-1 for _ in range(3)] for _ in range(2)] for _ in range(n + 1)]
+        def checkCombinations(n:int, a:int,l:int) -> int:
+            if a>=2 or l>= 3:
+                return 0
+            if n == 0:
+                return 1
+            if self.comb[n][a][l] != -1:
+                return self.comb[n][a][l]
+            c = 0
+            c = checkCombinations(n - 1, a, 0)  # "P" case
+            c = (c + checkCombinations(n - 1, a + 1, 0)) % 1000000007  # "A" case
+            c = (c + checkCombinations(n - 1, a, l + 1)) % 1000000007  # "L" case
+            self.comb[n][a][l] = c
+            return c
+        
+        return checkCombinations(n,0,0)
+
 
 
 def main():
