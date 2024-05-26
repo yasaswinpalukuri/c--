@@ -1168,8 +1168,21 @@ class Solutions{
         Constraints:
         1 <= n <= 10^5
     */
+    int mod = 1e9 + 7;
+    vector<vector<vector<int>>> comb;
     int checkRecords(int n){
-
+        comb = vector<vector<vector<int>>>(n + 1, vector<vector<int>>(2, vector<int>(3, -1)));
+        return checkCombinations(n, 0, 0);
+    }
+    int checkCombinations(int n, int a, int l){
+        if(a >= 2 || l >= 3) return 0; // Not selected if there are 2 or more absences or 3 or more consecutive late days
+        if(n == 0) return 1;
+        if(comb[n][a][l] != -1) return comb[n][a][l];
+        int c = 0;
+        c = checkCombinations(n-1,a,0); // "P" case
+        c = (c + checkCombinations(n-1,a+1,0))%1000000007; // "A" case;
+        c = (c + checkCombinations(n-1,a,l+1))%1000000007; // "L" case
+        return comb[n][a][l] = c;
     }
 };
 
