@@ -1529,7 +1529,31 @@ public class MayDailyProblems {
         Constraints:
         1 <= n <= 10^5
     */
+    static List<List<List<Integer>>> comb;
     static public int checkRecord(int n){
-        
-    } 
+        comb = new ArrayList<>(n + 1);
+        for (int i = 0; i <= n; i++) {
+            List<List<Integer>> list2D = new ArrayList<>(2);
+            for (int j = 0; j < 2; j++) {
+                List<Integer> list1D = new ArrayList<>(3);
+                for (int k = 0; k < 3; k++) {
+                    list1D.add(-1);
+                }
+                list2D.add(list1D);
+            }
+            comb.add(list2D);
+        }
+        return checkCombinations(n, 0, 0);
+    }
+    static public int checkCombinations(int n, int a, int l) {
+        if (a >= 2 || l >= 3) return 0;
+        if (n == 0) return 1;
+        if (comb.get(n).get(a).get(l) != -1) return comb.get(n).get(a).get(l);
+        int c = 0;
+        c = checkCombinations(n - 1, a, 0); // "P" case
+        c = (c + checkCombinations(n - 1, a + 1, 0)) % 1000000007; // "A" case
+        c = (c + checkCombinations(n - 1, a, l + 1)) % 1000000007; // "L" case
+        comb.get(n).get(a).set(l, c);
+        return c;
+    }
 }
