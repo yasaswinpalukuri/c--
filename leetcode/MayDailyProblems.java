@@ -77,6 +77,7 @@ public class MayDailyProblems {
             System.out.println("Day 23: The Number of Beautiful Subsets");
             System.out.println("Day 24: Maximum Score Words Formed by Letters");
             System.out.println("Day 25: Word Break II");
+            System.out.println("Day 26: Student Attendance Record II");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -377,6 +378,11 @@ public class MayDailyProblems {
                         wordDict.add(scan.next());
                     }
                     System.out.println("The word break II is: " + wordBreak(s25, wordDict));
+                    break;
+                case 26:
+                    System.out.println("Enter the number of students:");
+                    int n27 = scan.nextInt();
+                    System.out.println("The number of possible attendance records is: " + checkRecord(n27));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -1489,4 +1495,41 @@ public class MayDailyProblems {
         }
         return dp.getOrDefault(0, new ArrayList<>());
     }
+
+
+    // Day 26: Student Attendance Record II - Q552(Hard)
+    /*
+        An attendance record for a student can be represented as a string where each character signifies whether the student was absent, late, or present on that day. The record only contains the following three characters:
+
+        'A': Absent.
+        'L': Late.
+        'P': Present.
+        Any student is eligible for an attendance award if they meet both of the following criteria:
+
+        The student was absent ('A') for strictly fewer than 2 days total.
+        The student was never late ('L') for 3 or more consecutive days.
+        Given an integer n, return the number of possible attendance records of length n that make a student eligible for an attendance award. The answer may be very large, so return it modulo 109 + 7.
+
+        Example 1:
+        Input: n = 2
+        Output: 8
+        Explanation: There are 8 records with length 2 that are eligible for an award:
+        "PP", "AP", "PA", "LP", "PL", "AL", "LA", "LL"
+        Only "AA" is not eligible because there are 2 absences (there need to be fewer than 2).
+        
+        Example 2:
+        Input: n = 1
+        Output: 3
+
+        Example 3:
+        Input: n = 10101
+        Output: 183236316
+        
+
+        Constraints:
+        1 <= n <= 10^5
+    */
+    static public int checkRecord(int n){
+        
+    } 
 }
