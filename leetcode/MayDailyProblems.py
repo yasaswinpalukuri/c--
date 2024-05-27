@@ -1018,6 +1018,45 @@ class Solutions:
             return c
         
         return checkCombinations(n,0,0)
+    
+    # Day 27: Special Array With X Elements Greater Than or Equal X - Q1608(Easy)
+    '''
+        You are given an array nums of non-negative integers. nums is considered special if there exists a number x such that there are exactly x numbers in nums that are greater than or equal to x.
+
+        Notice that x does not have to be an element in nums.
+
+        Return x if the array is special, otherwise, return -1. It can be proven that if nums is special, the value for x is unique.
+
+        Example 1:
+        Input: nums = [3,5]
+        Output: 2
+        Explanation: There are 2 values (3 and 5) that are greater than or equal to 2.
+        
+        Example 2:
+        Input: nums = [0,0]
+        Output: -1
+        Explanation: No numbers fit the criteria for x.
+        If x = 0, there should be 0 numbers >= x, but there are 2.
+        If x = 1, there should be 1 number >= x, but there are 0.
+        If x = 2, there should be 2 numbers >= x, but there are 0.
+        x cannot be greater since there are only 2 numbers in nums.
+        
+        Example 3:
+        Input: nums = [0,4,3,0,4]
+        Output: 3
+        Explanation: There are 3 values that are greater than or equal to 3.
+        
+
+        Constraints:
+        1 <= nums.length <= 100
+        0 <= nums[i] <= 1000
+    '''
+    def specialArray(self, nums: list[int]) -> int:
+        # nums.sort(reverse=True)
+        # for x in range(1, len(nums) + 1):
+        #     if x <= nums[x - 1] and (x == len(nums) or x > nums[x]):
+        #         return x
+        # return -1
 
 
 
@@ -1056,6 +1095,7 @@ def main():
         print("Day 24: Maximum Score Words Formed by Letters")
         print("Day 25: Word Break II")
         print("Day 26: Student Attendance Record II")
+        print("Day 27: Special Array With X Elements Greater Than or Equal X")
         print("88: Exit")
         
         day = int(input())
@@ -1268,6 +1308,10 @@ def main():
         elif day == 26:
             n = int(input("Enter the value of n: "))
             print("The number of possible attendance records of length n that make a student eligible for an attendance award is:", sol.checkRecord(n))
+        
+        elif day == 27:
+            nums = list(map(int, input("Enter the elements of the array: ").split()))
+            print("The special array with x elements greater than or equal x is:", sol.specialArray(nums))
             
         else:
             print("Sorry, the problem for the day you entered is not available")
