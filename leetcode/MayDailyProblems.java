@@ -78,6 +78,7 @@ public class MayDailyProblems {
             System.out.println("Day 24: Maximum Score Words Formed by Letters");
             System.out.println("Day 25: Word Break II");
             System.out.println("Day 26: Student Attendance Record II");
+            System.out.println("Day 27: Special Array With X Elements Greater Than or Equal X");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -371,18 +372,28 @@ public class MayDailyProblems {
                     System.out.println("Enter the string:");
                     String s25 = scan.next();
                     System.out.println("Enter the number of words:");
-                    int n26 = scan.nextInt();
+                    int nw = scan.nextInt();
                     List<String> wordDict = new ArrayList<>();
                     System.out.println("Enter the words:");
-                    for (int i = 0; i < n26; i++) {
+                    for (int i = 0; i < nw; i++) {
                         wordDict.add(scan.next());
                     }
                     System.out.println("The word break II is: " + wordBreak(s25, wordDict));
                     break;
                 case 26:
                     System.out.println("Enter the number of students:");
+                    int n26 = scan.nextInt();
+                    System.out.println("The number of possible attendance records is: " + checkRecord(n26));
+                    break;
+                case 27:
+                    System.out.println("Enter the number of elements in the array:");
                     int n27 = scan.nextInt();
-                    System.out.println("The number of possible attendance records is: " + checkRecord(n27));
+                    int[] nums27 = new int[n27];
+                    System.out.println("Enter the elements of the array:");
+                    for (int i = 0; i < n27; i++) {
+                        nums27[i] = scan.nextInt();
+                    }
+                    System.out.println("The number of special arrays is: " + specialArray(nums27));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -1555,5 +1566,54 @@ public class MayDailyProblems {
         c = (c + checkCombinations(n - 1, a, l + 1)) % 1000000007; // "L" case
         comb.get(n).get(a).set(l, c);
         return c;
+    }
+
+
+    // Day 27: Special Array With X Elements Greater Than or Equal X - Q1608(Easy)
+    /*
+        You are given an array nums of non-negative integers. nums is considered special if there exists a number x such that there are exactly x numbers in nums that are greater than or equal to x.
+
+        Notice that x does not have to be an element in nums.
+
+        Return x if the array is special, otherwise, return -1. It can be proven that if nums is special, the value for x is unique.
+
+        Example 1:
+        Input: nums = [3,5]
+        Output: 2
+        Explanation: There are 2 values (3 and 5) that are greater than or equal to 2.
+        
+        Example 2:
+        Input: nums = [0,0]
+        Output: -1
+        Explanation: No numbers fit the criteria for x.
+        If x = 0, there should be 0 numbers >= x, but there are 2.
+        If x = 1, there should be 1 number >= x, but there are 0.
+        If x = 2, there should be 2 numbers >= x, but there are 0.
+        x cannot be greater since there are only 2 numbers in nums.
+        
+        Example 3:
+        Input: nums = [0,4,3,0,4]
+        Output: 3
+        Explanation: There are 3 values that are greater than or equal to 3.
+        
+
+        Constraints:
+        1 <= nums.length <= 100
+        0 <= nums[i] <= 1000
+    */
+    static public int specialArray(int[] nums) {
+        // int n = nums.length;
+        // int[] count = new int[n + 1];
+        // for (int num : nums) {
+        //     count[Math.min(num, n)]++;
+        // }
+        // int sum = 0;
+        // for (int i = n; i >= 0; i--) {
+        //     sum += count[i];
+        //     if (sum == i) {
+        //         return i;
+        //     }
+        // }
+        // return -1;
     }
 }
