@@ -1052,11 +1052,11 @@ class Solutions:
         0 <= nums[i] <= 1000
     '''
     def specialArray(self, nums: list[int]) -> int:
-        # nums.sort(reverse=True)
-        # for x in range(1, len(nums) + 1):
-        #     if x <= nums[x - 1] and (x == len(nums) or x > nums[x]):
-        #         return x
-        # return -1
+        nums.sort(reverse=True)
+        for x in range(1, len(nums) + 1):
+            if x <= nums[x - 1] and (x == len(nums) or x > nums[x]):
+                return x
+        return -1
 
 
 
@@ -1312,7 +1312,7 @@ def main():
         elif day == 27:
             nums = list(map(int, input("Enter the elements of the array: ").split()))
             print("The special array with x elements greater than or equal x is:", sol.specialArray(nums))
-            
+
         else:
             print("Sorry, the problem for the day you entered is not available")
 
