@@ -1602,18 +1602,18 @@ public class MayDailyProblems {
         0 <= nums[i] <= 1000
     */
     static public int specialArray(int[] nums) {
-        // int n = nums.length;
-        // int[] count = new int[n + 1];
-        // for (int num : nums) {
-        //     count[Math.min(num, n)]++;
-        // }
-        // int sum = 0;
-        // for (int i = n; i >= 0; i--) {
-        //     sum += count[i];
-        //     if (sum == i) {
-        //         return i;
-        //     }
-        // }
-        // return -1;
+        int n = nums.length;
+        int[] count = new int[n + 1];
+        for (int num : nums) {
+            count[Math.min(num, n)]++;
+        }
+        int sum = 0;
+        for (int i = n; i >= 0; i--) {
+            sum += count[i];
+            if (sum == i) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
