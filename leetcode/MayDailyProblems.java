@@ -403,7 +403,7 @@ public class MayDailyProblems {
                     String t28 = scan.next();
                     System.out.println("Enter the maximum cost:");
                     int maxCost = scan.nextInt();
-                    System.out.println("The equal substrings within budget are: " + equalSubstring(s28, t28, maxCost);
+                    System.out.println("The equal substrings within budget are: " + equalSubstring(s28, t28, maxCost));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -1663,24 +1663,24 @@ public class MayDailyProblems {
 
     */
     static public int equalSubstring(String s, String t, int maxCost) {
-        // int n = s.length();
-        // int[] cost = new int[n];
-        // for (int i = 0; i < n; i++) {
-        //     cost[i] = Math.abs(s.charAt(i) - t.charAt(i));
-        // }
-        // int maxLength = 0;
-        // int start = 0;
-        // int end = 0;
-        // int currentCost = 0;
-        // while (end < n) {
-        //     currentCost += cost[end];
-        //     while (currentCost > maxCost) {
-        //         currentCost -= cost[start];
-        //         start++;
-        //     }
-        //     maxLength = Math.max(maxLength, end - start + 1);
-        //     end++;
-        // }
-        // return maxLength;
+        int n = s.length();
+        int[] cost = new int[n];
+        for (int i = 0; i < n; i++) {
+            cost[i] = Math.abs(s.charAt(i) - t.charAt(i));
+        }
+        int maxLength = 0;
+        int start = 0;
+        int end = 0;
+        int currentCost = 0;
+        while (end < n) {
+            currentCost += cost[end];
+            while (currentCost > maxCost) {
+                currentCost -= cost[start];
+                start++;
+            }
+            maxLength = Math.max(maxLength, end - start + 1);
+            end++;
+        }
+        return maxLength;
     }
 }
