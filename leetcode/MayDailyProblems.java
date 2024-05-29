@@ -1628,7 +1628,7 @@ public class MayDailyProblems {
     }
 
 
-    // Day 29: Get Equal Substrings Within Budget - Q1208(Medium)
+    // Day 28: Get Equal Substrings Within Budget - Q1208(Medium)
     /*
         You are given two strings s and t of the same length and an integer maxCost.
 
