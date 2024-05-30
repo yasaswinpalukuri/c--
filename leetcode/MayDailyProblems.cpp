@@ -1758,7 +1758,7 @@ int main() {
                 cout << "Enter the elements of the array:" << '\n';
                 for (int i = 0; i < n; i++) cin >> nums[i];
                 vector<vector<int>> subsets = sol.subsets(nums);
-                cout << "The subsets of the array are:" << "\n[";
+                cout << "The subsets of the array are:" << "\n";
                 for (vector<int> subset : subsets) {
                     cout << "[";
                     for (int num : subset) cout << num << ",";
