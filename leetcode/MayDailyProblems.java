@@ -418,7 +418,7 @@ public class MayDailyProblems {
                     int[] nums30 = new int[n30];
                     System.out.println("Enter the elements of the array:");
                     for (int i = 0; i < n30; i++) nums30[i] = scan.nextInt();
-                    System.out.println("The number of good triplets is: " + countTriplets(nums30));
+                    System.out.println("The number of triplets that can form two arrays of equal XOR is: " + countTriplets(nums30));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -1776,6 +1776,18 @@ public class MayDailyProblems {
         1 <= arr[i] <= pow(10,8)
     */
     static public int countTriplets(int[] arr) {
-        
+        int size = arr.length;
+        int count = 0;
+        int prefix = 0;
+        Map<Integer, Integer> countMap = new HashMap<>();
+        countMap.put(0, 1);
+        Map<Integer, Integer> totalMap = new HashMap<>();
+        for (int i = 0; i < size; ++i) {
+            prefix ^= arr[i];
+            count += countMap.getOrDefault(prefix, 0) * i - totalMap.getOrDefault(prefix, 0);
+            totalMap.put(prefix, totalMap.getOrDefault(prefix, 0) + i + 1);
+            countMap.put(prefix, countMap.getOrDefault(prefix, 0) + 1);
+        }
+        return count;
     }
 }
