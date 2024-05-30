@@ -1148,6 +1148,32 @@ class Solutions:
                 carry = 1
 
         return ans + carry
+    
+    # Day 30: Count Triplets That Can Form Two Arrays of Equal XOR - Q1442(Medium)
+    '''
+        Given an array of integers arr.
+        We want to select three indices i, j and k where (0 <= i < j <= k < arr.length).
+        Let's define a and b as follows:
+        a = arr[i] ^ arr[i + 1] ^ ... ^ arr[j - 1]
+        b = arr[j] ^ arr[j + 1] ^ ... ^ arr[k]
+        Note that ^ denotes the bitwise-xor operation.
+
+        Return the number of triplets (i, j and k) Where a == b.
+
+        Example 1:
+        Input: arr = [2,3,1,6,7]
+        Output: 4
+        Explanation: The triplets are (0,1,2), (0,2,2), (2,3,4) and (2,4,4)
+        
+        Example 2:
+        Input: arr = [1,1,1,1,1]
+        Output: 10
+
+        Constraints:
+        1 <= arr.length <= 300
+        1 <= arr[i] <= pow(10,8)
+    '''
+    def countTriplets(self, arr: list[int]) -> int:
 
 
 
@@ -1189,6 +1215,7 @@ def main():
         print("Day 27: Special Array With X Elements Greater Than or Equal X")
         print("Day 28: Get Equal Substrings Within Budget")
         print("Day 29: Number of Steps to Reduce a Number in Binary Representation to One")
+        print("Day 30: Count Triplets That Can Form Two Arrays of Equal XOR")
         print("88: Exit")
         
         day = int(input())
@@ -1415,6 +1442,11 @@ def main():
         elif day == 29:
             s = input("Enter the binary representation of the number: ")
             print("The number of steps to reduce the number to 1 is:", sol.numSteps(s))
+
+        elif day == 30:
+            arr = list(map(int, input("Enter the elements of the array: ").split()))
+            print("The number of triplets that can form two arrays of equal XOR is:", sol.countTriplets(arr))
+            
         else:
             print("Sorry, the problem for the day you entered is not available")
 
