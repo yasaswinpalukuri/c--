@@ -1341,6 +1341,35 @@ class Solutions{
         }
         return ans + carry;
     }
+
+
+    // Day 30: Count Triplets That Can Form Two Arrays of Equal XOR - Q1442(Medium)
+    /*
+        Given an array of integers arr.
+        We want to select three indices i, j and k where (0 <= i < j <= k < arr.length).
+        Let's define a and b as follows:
+        a = arr[i] ^ arr[i + 1] ^ ... ^ arr[j - 1]
+        b = arr[j] ^ arr[j + 1] ^ ... ^ arr[k]
+        Note that ^ denotes the bitwise-xor operation.
+
+        Return the number of triplets (i, j and k) Where a == b.
+
+        Example 1:
+        Input: arr = [2,3,1,6,7]
+        Output: 4
+        Explanation: The triplets are (0,1,2), (0,2,2), (2,3,4) and (2,4,4)
+        
+        Example 2:
+        Input: arr = [1,1,1,1,1]
+        Output: 10
+
+        Constraints:
+        1 <= arr.length <= 300
+        1 <= arr[i] <= pow(10,8)
+    */
+    int countTriplets(vector<int>& arr){
+
+    }
 };
 
 int main() {
@@ -1379,6 +1408,7 @@ int main() {
         cout << "Day 27: Special Array With X Elements Greater Than or Equal X\n";
         cout << "Day 28: Get Equal Substrings Within Budget\n";
         cout << "Day 29: Number of Steps to Reduce a Number in Binary Representation to One\n";
+        cout << "Day 30: Count Triplets That Can Form Two Arrays of Equal XOR\n";
         cout << "88: Exit" << '\n';
         int day; cin >> day;
         Solutions sol;
@@ -1805,6 +1835,15 @@ int main() {
                 cout << "Enter the binary representation of the integer:" << '\n';
                 string s; cin >> s;
                 cout << "The number of steps to reduce the binary representation of the integer to 1 is: " << sol.numSteps(s) << '\n';
+                break;
+            }
+            case 30:{
+                cout << "Enter the number of elements in the array:" << '\n';
+                int n; cin >> n;
+                vector<int> arr(n);
+                cout << "Enter the elements of the array:" << '\n';
+                for (int i = 0; i < n; i++) cin >> arr[i];
+                cout << "The number of triplets that can form two arrays of equal XOR is: " << sol.countTriplets(arr) << '\n';
                 break;
             }
             case 88:
