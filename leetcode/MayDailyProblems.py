@@ -1174,7 +1174,19 @@ class Solutions:
         1 <= arr[i] <= pow(10,8)
     '''
     def countTriplets(self, arr: list[int]) -> int:
+        size = len(arr)
+        count = 0
+        prefix = 0
+        count_map = defaultdict(int)
+        count_map[0] = 1
+        total_map = defaultdict(int)
+        for i in range(size):
+            prefix ^= arr[i]
+            count += count_map[prefix] * i - total_map[prefix]
+            total_map[prefix] += i + 1
+            count_map[prefix] += 1
 
+        return count
 
 
 def main():
@@ -1446,7 +1458,7 @@ def main():
         elif day == 30:
             arr = list(map(int, input("Enter the elements of the array: ").split()))
             print("The number of triplets that can form two arrays of equal XOR is:", sol.countTriplets(arr))
-            
+
         else:
             print("Sorry, the problem for the day you entered is not available")
 
