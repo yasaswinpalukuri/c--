@@ -1407,7 +1407,20 @@ class Solutions{
         Each integer in nums will appear twice, only two integers will appear once.
     */
     vector<int> singleNumber(vector<int>& nums) {
-        
+        int bitmask = 0;
+        for (int num : nums) {
+            bitmask ^= num;
+        }
+        int diff = bitmask & (-bitmask);
+        vector<int> result(2, 0);
+        for (int num : nums) {
+            if ((diff & num) == 0) {
+                result[0] ^= num;
+            } else {
+                result[1] ^= num;
+            }
+        }
+        return result;
     }
 };
 
@@ -1893,7 +1906,7 @@ int main() {
                 cout << "Enter the elements of the array:" << '\n';
                 for (int i = 0; i < n; i++) cin >> nums[i];
                 vector<int> singleNums = sol.singleNumber(nums);
-                cout << "The two elements that appear only once in the array are: [" << singleNums[0] << "," << singleNums[1] << ']\n';
+                cout << "The two elements that appear only once in the array are: " << singleNums[0] << " " << singleNums[1] << '\n';
                 break;
             }
             case 88:
