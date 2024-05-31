@@ -82,6 +82,7 @@ public class MayDailyProblems {
             System.out.println("Day 28: Get Equal Substrings Within Budget");
             System.out.println("Day 29: Number of Steps to Reduce a Number in Binary Representation to One");
             System.out.println("Day 30: Count Triplets That Can Form Two Arrays of Equal XOR");
+            System.out.println("Day 31: Single Number III");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch(day){
@@ -419,6 +420,14 @@ public class MayDailyProblems {
                     System.out.println("Enter the elements of the array:");
                     for (int i = 0; i < n30; i++) nums30[i] = scan.nextInt();
                     System.out.println("The number of triplets that can form two arrays of equal XOR is: " + countTriplets(nums30));
+                    break;
+                case 31:
+                    System.out.println("Enter the number of elements in the array:");
+                    int n31 = scan.nextInt();
+                    int[] nums31 = new int[n31];
+                    System.out.println("Enter the elements of the array:");
+                    for (int i = 0; i < n31; i++) nums31[i] = scan.nextInt();
+                    System.out.println("The single number III is: " + Arrays.toString(singleNumber(nums31)));
                     break;
                 case 88:
                     System.out.println("Thank you for using the May Daily Leetcode Problems :)");
@@ -1789,5 +1798,35 @@ public class MayDailyProblems {
             countMap.put(prefix, countMap.getOrDefault(prefix, 0) + 1);
         }
         return count;
+    }
+
+
+    // Day 31: Single Number III - Q260(Medium)
+    /*
+        Given an integer array nums, in which exactly two elements appear only once and all the other elements appear exactly twice. 
+        Find the two elements that appear only once. You can return the answer in any order.
+        You must write an algorithm that runs in linear runtime complexity and uses only constant extra space.
+    
+
+        Example 1:
+        Input: nums = [1,2,1,3,2,5]
+        Output: [3,5]
+        Explanation:  [5, 3] is also a valid answer.
+        
+        Example 2:
+        Input: nums = [-1,0]
+        Output: [-1,0]
+        
+        Example 3:
+        Input: nums = [0,1]
+        Output: [1,0]
+
+        Constraints:
+        2 <= nums.length <= 3 * 10^4
+        -2^31 <= nums[i] <= 2^31 - 1
+        Each integer in nums will appear twice, only two integers will appear once.
+    */
+    static public int[] singleNumber(int[] nums){
+
     }
 }
