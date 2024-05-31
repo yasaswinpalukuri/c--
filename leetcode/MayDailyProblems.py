@@ -1214,6 +1214,20 @@ class Solutions:
         Each integer in nums will appear twice, only two integers will appear once.
     '''
     def singleNumber(self, nums: list[int]) -> list[int]:
+        xor = 0
+        for num in nums:
+            xor ^= num
+        mask = 1
+        while xor & mask == 0:
+            mask <<= 1
+        a = 0
+        b = 0
+        for num in nums:
+            if num & mask:
+                a ^= num
+            else:
+                b ^= num
+        return [a, b]
 
 
 def main():
