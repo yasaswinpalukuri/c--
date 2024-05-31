@@ -1187,6 +1187,33 @@ class Solutions:
             count_map[prefix] += 1
 
         return count
+    
+    # Day 31: Single Number III - Q260(Medium)
+    '''
+        Given an integer array nums, in which exactly two elements appear only once and all the other elements appear exactly twice. 
+        Find the two elements that appear only once. You can return the answer in any order.
+        You must write an algorithm that runs in linear runtime complexity and uses only constant extra space.
+    
+
+        Example 1:
+        Input: nums = [1,2,1,3,2,5]
+        Output: [3,5]
+        Explanation:  [5, 3] is also a valid answer.
+        
+        Example 2:
+        Input: nums = [-1,0]
+        Output: [-1,0]
+        
+        Example 3:
+        Input: nums = [0,1]
+        Output: [1,0]
+
+        Constraints:
+        2 <= nums.length <= 3 * 10^4
+        -2^31 <= nums[i] <= 2^31 - 1
+        Each integer in nums will appear twice, only two integers will appear once.
+    '''
+    def singleNumber(self, nums: list[int]) -> list[int]:
 
 
 def main():
@@ -1228,6 +1255,7 @@ def main():
         print("Day 28: Get Equal Substrings Within Budget")
         print("Day 29: Number of Steps to Reduce a Number in Binary Representation to One")
         print("Day 30: Count Triplets That Can Form Two Arrays of Equal XOR")
+        print("Day 31: Single Number III")
         print("88: Exit")
         
         day = int(input())
@@ -1458,6 +1486,10 @@ def main():
         elif day == 30:
             arr = list(map(int, input("Enter the elements of the array: ").split()))
             print("The number of triplets that can form two arrays of equal XOR is:", sol.countTriplets(arr))
+
+        elif day == 31:
+            nums = list(map(int, input("Enter the elements of the array: ").split()))
+            print("The two elements that appear only once are:", sol.singleNumber(nums))
 
         else:
             print("Sorry, the problem for the day you entered is not available")
