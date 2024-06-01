@@ -2,7 +2,7 @@
 using namespace std;
 
 class Solution{
-    private:
+    public:
     // Day 1: Score of a String - Q3110(Easy)
     /*
         You are given a string s. 
@@ -35,34 +35,34 @@ class Solution{
     }
 };
 
-class JuneDailyProblems{
+class JuneDailyProblems: public Solution{
+    public:
     JuneDailyProblems(){
         cout << "Welcome to June Daily Leetcode Problems\n";
         cout << "This is Yasaswin Palukuri, with solutions to the Daily Problems of June 2024\n";
         cout << "So, without any further ado, let's get started\n";
         solutions();
     }
-    private:
     void solutions(){
         Solution s;
         do{
             cout << "Enter the day of the problem you want the answer for or 88 to Exit:\n";
-            cout << "Day 1: Reverse Prefix of Word\n";
+            cout << "Day 1: Score of the String\n";
             cout << "88: Exit" << '\n';
             int day; cin >> day;
             switch(day){
-                case 1:
-                    cout << "Day 1: Reverse Prefix of Word\n";
-                    cout << "Enter the word and the character to reverse the prefix of the word\n";
-                    string word; char ch;
-                    cin >> word >> ch;
-                    cout << "The word after reversing the prefix is: " << s.reversePrefix(word, ch) << '\n';
+                case 1:{
+                    cout << "Enter the word \n";
+                    string word; cin >> word;
+                    cout << "The score of the word "<< word <<" is : " << s.scoreOfString(word) << '\n';
                     break;
-                case 88:
+                }
+                case 88:{
                     cout << "Thank you for using the June Daily Leetcode Problems\n";
                     cout << "Hope you had a great time solving the problems\n";
                     cout << "Have a great day ahead\n";
                     return;
+                }
                 default:
                     cout << "Sorry, the problem for the day you entered is not available\n";
             }
