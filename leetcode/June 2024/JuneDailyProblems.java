@@ -26,15 +26,15 @@ class Solution {
         s consists only of lowercase English letters.
     */
     public int scoreOfString(String s) {
-        // int ans = 0;
-        // for (int i = 1; i < s.length(); i++) {
-        //     ans += Math.abs(s.charAt(i) - s.charAt(i - 1));
-        // }
-        // return ans;
+        int ans = 0;
+        for (int i = 1; i < s.length(); i++) {
+            ans += Math.abs(s.charAt(i) - s.charAt(i - 1));
+        }
+        return ans;
     }
 }
 
-class JuneDailyProblems extends Solution {
+public class JuneDailyProblems extends Solution {
     public JuneDailyProblems() {
         System.out.println("Welcome to June Daily Leetcode Problems");
         System.out.println("This is Yasaswin Palukuri, with solutions to the Daily Problems of June 2024");

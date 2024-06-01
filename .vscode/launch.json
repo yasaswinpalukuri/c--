@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "JuneDailyProblems",
+            "request": "launch",
+            "mainClass": "JuneDailyProblems",
+            "projectName": "c--_17aea424"
+        },
+        {
+            "type": "java",
             "name": "MayDailyProblems",
             "request": "launch",
             "mainClass": "leetcode.MayDailyProblems",
