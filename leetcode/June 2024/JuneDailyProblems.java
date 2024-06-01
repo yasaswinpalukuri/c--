@@ -1,5 +1,44 @@
 import java.util.*;
 
+public class JuneDailyProblems extends Solution {
+    static Scanner scan = new Scanner(System.in);
+    public JuneDailyProblems() {
+        System.out.println("Welcome to June Daily Leetcode Problems");
+        System.out.println("This is Yasaswin Palukuri, with solutions to the Daily Problems of June 2024");
+        System.out.println("So, without any further ado, let's get started");
+        solutions();
+    }
+
+    public void solutions() {
+        Solution s = new Solution();
+        while (true) {
+            System.out.println("Enter the day of the problem you want the answer for or 88 to Exit:");
+            System.out.println("Day 1: Score of the String");
+            System.out.println("88: Exit");
+            int day = scan.nextInt();
+            switch (day) {
+                case 1: {
+                    System.out.println("Enter the word");
+                    String word = scan.next();
+                    System.out.println("The score of the word " + word + " is: " + s.scoreOfString(word));
+                    break;
+                }
+                case 88: {
+                    System.out.println("Thank you for using the June Daily Leetcode Problems");
+                    System.out.println("Hope you had a great time solving the problems");
+                    System.out.println("Have a great day ahead");
+                    return;
+                }
+                default:
+                    System.out.println("Sorry, the problem for the day you entered is not available");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        new JuneDailyProblems();
+    }
+}
 class Solution {
     // Day 1: Score of a String - Q3110(Easy)
     /*
@@ -34,42 +73,4 @@ class Solution {
     }
 }
 
-public class JuneDailyProblems extends Solution {
-    public JuneDailyProblems() {
-        System.out.println("Welcome to June Daily Leetcode Problems");
-        System.out.println("This is Yasaswin Palukuri, with solutions to the Daily Problems of June 2024");
-        System.out.println("So, without any further ado, let's get started");
-        solutions();
-    }
 
-    public void solutions() {
-        Solution s = new Solution();
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.println("Enter the day of the problem you want the answer for or 88 to Exit:");
-            System.out.println("Day 1: Score of the String");
-            System.out.println("88: Exit");
-            int day = scanner.nextInt();
-            switch (day) {
-                case 1: {
-                    System.out.println("Enter the word");
-                    String word = scanner.next();
-                    System.out.println("The score of the word " + word + " is: " + s.scoreOfString(word));
-                    break;
-                }
-                case 88: {
-                    System.out.println("Thank you for using the June Daily Leetcode Problems");
-                    System.out.println("Hope you had a great time solving the problems");
-                    System.out.println("Have a great day ahead");
-                    return;
-                }
-                default:
-                    System.out.println("Sorry, the problem for the day you entered is not available");
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        new JuneDailyProblems();
-    }
-}
