@@ -26,7 +26,8 @@ class Solutions:
         2 <= s.length <= 100
         s consists only of lowercase English letters.
     '''
-    
+    def scoreOfString(self, s: str) -> int:
+        
 
 class JuneDailyProblems(Solutions):
     def __init__(self):
@@ -43,9 +44,12 @@ class JuneDailyProblems(Solutions):
             print("88. Exit")
             day = int(input("Enter your choice: "))
             if day == 1:
-                self.scoreOfString()
+                word = input("Enter the string: ")
+                print("The score of the string is: ", self.scoreOfString(word))
+
             elif day == 88:
-                print("Thank you for using the June Daily Leetcode Problems")
+                print("Thank you for using the June Daily Leetcode Problems:)")
+
             else:
                 print("Invalid Choice. Please try again.")
 
