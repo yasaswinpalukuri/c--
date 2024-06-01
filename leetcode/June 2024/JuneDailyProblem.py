@@ -27,7 +27,10 @@ class Solutions:
         s consists only of lowercase English letters.
     '''
     def scoreOfString(self, s: str) -> int:
-        
+        score = 0
+        for i in range(1, len(s)):
+            score += abs(ord(s[i]) - ord(s[i-1]))
+        return score
 
 class JuneDailyProblems(Solutions):
     def __init__(self):
@@ -40,7 +43,7 @@ class JuneDailyProblems(Solutions):
     def menuDriven(self):
         while(True):
             print("Enter the day of the problem you want the answer for or 88 to Exit:")
-            print("1. Day 1: Score of a String")
+            print("Day 1: Score of a String")
             print("88. Exit")
             day = int(input("Enter your choice: "))
             if day == 1:
@@ -49,17 +52,14 @@ class JuneDailyProblems(Solutions):
 
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
+                break
 
             else:
                 print("Invalid Choice. Please try again.")
 
 
-    def test(self):
-        # Test for Day 1
-        print("Day 1: Score of a String")
-        print("Test 1: ", self.solutions.scoreOfString("hello"))
-        print("Test 2: ", self.solutions.scoreOfString("zaz"))
-
-
 def main():
     juneDailyProblems = JuneDailyProblems()
+
+if __name__ == "__main__":
+    main()
