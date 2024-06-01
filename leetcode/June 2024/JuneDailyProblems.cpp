@@ -29,7 +29,6 @@ class Solution{
         s consists only of lowercase English letters.
     */
     int scoreOfString(string s){
-
     }
 };
 
