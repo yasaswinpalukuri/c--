@@ -25,13 +25,13 @@ class Solution {
         2 <= s.length <= 100
         s consists only of lowercase English letters.
     */
-    // public int scoreOfString(String s) {
-    //     int ans = 0;
-    //     for (int i = 1; i < s.length(); i++) {
-    //         ans += Math.abs(s.charAt(i) - s.charAt(i - 1));
-    //     }
-    //     return ans;
-    // }
+    public int scoreOfString(String s) {
+        // int ans = 0;
+        // for (int i = 1; i < s.length(); i++) {
+        //     ans += Math.abs(s.charAt(i) - s.charAt(i - 1));
+        // }
+        // return ans;
+    }
 }
 
 class JuneDailyProblems extends Solution {
