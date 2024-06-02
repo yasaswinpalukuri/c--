@@ -53,8 +53,8 @@ class Solution{
     
     */
    void reverseString(vector<char>& s) {
-        // int n = s.size();
-        // for(int i=0;i<n/2;i++) swap(s[i],s[n-i-1]);
+        int n = s.size();
+        for(int i=0;i<n/2;i++) swap(s[i],s[n-i-1]);
     }
 };
 
@@ -83,11 +83,12 @@ class JuneDailyProblems: public Solution{
                 }
                 case 2:{
                     cout << "Enter the word \n";
-                    vector<char> word; char c;
-                    while(cin >> c) word.push_back(c);
-                    cout << "The reverse of the word "<< word <<" is : ";
-                    s.reverseString(word);
-                    cout << word << '\n';
+                    string word; cin >> word;
+                    vector<char> le(word.begin(),word.end());
+                    s.reverseString(le);
+                    cout << "The reversed word is : ";
+                    for(auto c:le) cout << c;
+                    cout << '\n';
                     break;
                 }
                 case 88:{
