@@ -5,6 +5,6 @@ Updating comments and printing statement in MayDailyProblems python file.
 
 
 Solution added:
-Added solution and comments to the cpp file for Day 1
-Added solution and comments to the java file for Day 1
-Added solution and comments to the python file for Day 1
+Added solution and comments to the cpp file for Day 2
+Added solution and comments to the java file for Day 2
+Added solution and comments to the python file for Day 2
