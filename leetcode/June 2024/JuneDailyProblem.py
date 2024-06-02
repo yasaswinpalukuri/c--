@@ -32,6 +32,24 @@ class Solutions:
             score += abs(ord(s[i]) - ord(s[i-1]))
         return score
 
+    # Day 2: Reverse String - Q344(Easy)
+    '''
+        Write a function that reverses a string. The input string is given as an array of characters s.
+
+        Example 1:
+        Input: s = ["h","e","l","l","o"]
+        Output: ["o","l","l","e","h"]
+
+        Example 2:
+        Input: s = ["H","a","n","n","a","h"]
+        Output: ["h","a","n","n","a","H"]
+
+        Constraints:
+        1 <= s.length <= 10^5
+        s[i] is a printable ascii character.
+    '''
+    def reverseString(self, s: list):
+
 class JuneDailyProblems(Solutions):
     def __init__(self):
         print("Welcome to June Daily Leetcode Problems")
@@ -44,11 +62,17 @@ class JuneDailyProblems(Solutions):
         while(True):
             print("Enter the day of the problem you want the answer for or 88 to Exit:")
             print("Day 1: Score of a String")
+            print("Day 2: Reverse String")
             print("88. Exit")
             day = int(input("Enter your choice: "))
             if day == 1:
                 word = input("Enter the string: ")
                 print("The score of the string is: ", self.scoreOfString(word))
+            
+            elif day == 2:
+                word = list(input("Enter the string: "))
+                self.reverseString(word)
+                print("The reversed string is: ", word)
 
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
