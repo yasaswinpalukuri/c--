@@ -14,6 +14,7 @@ public class JuneDailyProblems extends Solution {
         while (true) {
             System.out.println("Enter the day of the problem you want the answer for or 88 to Exit:");
             System.out.println("Day 1: Score of the String");
+            System.out.println("Day 2: Reverse String");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch (day) {
@@ -21,6 +22,14 @@ public class JuneDailyProblems extends Solution {
                     System.out.println("Enter the word");
                     String word = scan.next();
                     System.out.println("The score of the word " + word + " is: " + s.scoreOfString(word));
+                    break;
+                }
+                case 2:{
+                    System.out.println("Enter the word");
+                    String word = scan.next();
+                    char[] le = word.toCharArray();
+                    s.reverseString(le);
+                    System.out.println("The reversed word is: " + Arrays.toString(le));
                     break;
                 }
                 case 88: {
@@ -70,6 +79,28 @@ class Solution {
             ans += Math.abs(s.charAt(i) - s.charAt(i - 1));
         }
         return ans;
+    }
+
+
+    // Day 2: Reverse String - Q344(Easy)
+    /*
+        Write a function that reverses a string. The input string is given as an array of characters s.
+
+        Example 1:
+        Input: s = ["h","e","l","l","o"]
+        Output: ["o","l","l","e","h"]
+
+        Example 2:
+        Input: s = ["H","a","n","n","a","h"]
+        Output: ["h","a","n","n","a","H"]
+
+        Constraints:
+        1 <= s.length <= 10^5
+        s[i] is a printable ascii character.
+    
+    */
+    static public void reverseString(char[] s) {
+        
     }
 }
 
