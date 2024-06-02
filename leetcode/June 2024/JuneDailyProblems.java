@@ -9,7 +9,7 @@ public class JuneDailyProblems extends Solution {
         solutions();
     }
 
-    public void solutions() {
+    public static void solutions() {
         Solution s = new Solution();
         while (true) {
             System.out.println("Enter the day of the problem you want the answer for or 88 to Exit:");
@@ -99,8 +99,14 @@ class Solution {
         s[i] is a printable ascii character.
     
     */
-    static public void reverseString(char[] s) {
-        
+    public void reverseString(char[] s) {
+        int l = 0;
+        int r = s.length - 1;
+        for(l = 0; l < r; l++, r--) {
+            char temp = s[l];
+            s[l] = s[r];
+            s[r] = temp;
+        }
     }
 }
 
