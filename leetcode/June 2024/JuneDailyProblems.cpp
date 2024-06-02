@@ -33,6 +33,29 @@ class Solution{
         for(int i=1;i<s.length();i++) ans += abs(s[i]-s[i-1]);
         return ans;
     }
+
+    
+    // Day 2: Reverse String - Q344(Easy)
+    /*
+        Write a function that reverses a string. The input string is given as an array of characters s.
+
+        Example 1:
+        Input: s = ["h","e","l","l","o"]
+        Output: ["o","l","l","e","h"]
+
+        Example 2:
+        Input: s = ["H","a","n","n","a","h"]
+        Output: ["h","a","n","n","a","H"]
+
+        Constraints:
+        1 <= s.length <= 10^5
+        s[i] is a printable ascii character.
+    
+    */
+   void reverseString(vector<char>& s) {
+        // int n = s.size();
+        // for(int i=0;i<n/2;i++) swap(s[i],s[n-i-1]);
+    }
 };
 
 class JuneDailyProblems: public Solution{
@@ -48,6 +71,7 @@ class JuneDailyProblems: public Solution{
         do{
             cout << "Enter the day of the problem you want the answer for or 88 to Exit:\n";
             cout << "Day 1: Score of the String\n";
+            cout << "Day 2: Reverse String\n";
             cout << "88: Exit" << '\n';
             int day; cin >> day;
             switch(day){
@@ -55,6 +79,15 @@ class JuneDailyProblems: public Solution{
                     cout << "Enter the word \n";
                     string word; cin >> word;
                     cout << "The score of the word "<< word <<" is : " << s.scoreOfString(word) << '\n';
+                    break;
+                }
+                case 2:{
+                    cout << "Enter the word \n";
+                    vector<char> word; char c;
+                    while(cin >> c) word.push_back(c);
+                    cout << "The reverse of the word "<< word <<" is : ";
+                    s.reverseString(word);
+                    cout << word << '\n';
                     break;
                 }
                 case 88:{
