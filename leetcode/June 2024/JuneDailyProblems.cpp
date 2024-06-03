@@ -89,6 +89,14 @@ class Solution{
         1 <= s.length, t.length <= 10^5
         s and t consist only of lowercase English letters.
     */
+    int appendCharacters(string s, string t) {
+        int first = 0, longestPrefix = 0;
+        while (first < s.length() && longestPrefix < t.length()) {
+            if (s[first] == t[longestPrefix]) longestPrefix++;
+            first++;
+        }
+        return t.length() - longestPrefix;
+    }
 };
 
 class JuneDailyProblems: public Solution{
