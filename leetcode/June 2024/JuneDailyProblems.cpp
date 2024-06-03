@@ -56,6 +56,39 @@ class Solution{
         int n = s.size();
         for(int i=0;i<n/2;i++) swap(s[i],s[n-i-1]);
     }
+
+
+    // Day 3: Append Characters to String to Make Subsequence - Q2468(Medium)
+    /*
+        You are given two strings s and t consisting of only lowercase English letters.
+
+        Return the minimum number of characters that need to be appended to the end of s so that t becomes a subsequence of s.
+        A subsequence is a string that can be derived from another string by deleting some or no characters without changing the order of the remaining characters.
+
+        Example 1:
+        Input: s = "coaching", t = "coding"
+        Output: 4
+        Explanation: Append the characters "ding" to the end of s so that s = "coachingding".
+        Now, t is a subsequence of s ("coachingding").
+        It can be shown that appending any 3 characters to the end of s will never make t a subsequence.
+        
+        Example 2:
+        Input: s = "abcde", t = "a"
+        Output: 0
+        Explanation: t is already a subsequence of s ("abcde").
+        
+        Example 3:
+        Input: s = "z", t = "abcde"
+        Output: 5
+        Explanation: Append the characters "abcde" to the end of s so that s = "zabcde".
+        Now, t is a subsequence of s ("zabcde").
+        It can be shown that appending any 4 characters to the end of s will never make t a subsequence.
+        
+
+        Constraints:
+        1 <= s.length, t.length <= 10^5
+        s and t consist only of lowercase English letters.
+    */
 };
 
 class JuneDailyProblems: public Solution{
@@ -72,6 +105,7 @@ class JuneDailyProblems: public Solution{
             cout << "Enter the day of the problem you want the answer for or 88 to Exit:\n";
             cout << "Day 1: Score of the String\n";
             cout << "Day 2: Reverse String\n";
+            cout << "Day 3: Append Characters to String to Make Subsequence\n";
             cout << "88: Exit" << '\n';
             int day; cin >> day;
             switch(day){
@@ -89,6 +123,12 @@ class JuneDailyProblems: public Solution{
                     cout << "The reversed word is : ";
                     for(auto c:le) cout << c;
                     cout << '\n';
+                    break;
+                }
+                case 3:{
+                    cout << "Enter the two words\n";
+                    string s1,s2; cin >> s1 >> s2;
+                    cout << "The minimum number of characters that need to be appended to the end of " << s1 << " so that " << s2 << " becomes a subsequence of " << s1 << " is : " << s.appendCharacters(s1,s2) << '\n';
                     break;
                 }
                 case 88:{
