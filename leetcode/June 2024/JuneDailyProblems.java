@@ -15,6 +15,7 @@ public class JuneDailyProblems extends Solution {
             System.out.println("Enter the day of the problem you want the answer for or 88 to Exit:");
             System.out.println("Day 1: Score of the String");
             System.out.println("Day 2: Reverse String");
+            System.out.println("Day 3: Append Characters to String to Make Subsequence");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch (day) {
@@ -30,6 +31,14 @@ public class JuneDailyProblems extends Solution {
                     char[] le = word.toCharArray();
                     s.reverseString(le);
                     System.out.println("The reversed word is: " + Arrays.toString(le));
+                    break;
+                }
+                case 3: {
+                    System.out.println("Enter the first word");
+                    String word1 = scan.next();
+                    System.out.println("Enter the second word");
+                    String word2 = scan.next();
+                    System.out.println("The minimum number of characters that need to be appended to the end of " + word1 + " so that " + word2 + " becomes a subsequence of " + word1 + " is: " + s.appendCharacters(word1, word2));
                     break;
                 }
                 case 88: {
@@ -107,6 +116,49 @@ class Solution {
             s[l] = s[r];
             s[r] = temp;
         }
+    }
+
+
+    // Day 3: Append Characters to String to Make Subsequence - Q2468(Medium)
+    /*
+        You are given two strings s and t consisting of only lowercase English letters.
+
+        Return the minimum number of characters that need to be appended to the end of s so that t becomes a subsequence of s.
+        A subsequence is a string that can be derived from another string by deleting some or no characters without changing the order of the remaining characters.
+
+        Example 1:
+        Input: s = "coaching", t = "coding"
+        Output: 4
+        Explanation: Append the characters "ding" to the end of s so that s = "coachingding".
+        Now, t is a subsequence of s ("coachingding").
+        It can be shown that appending any 3 characters to the end of s will never make t a subsequence.
+        
+        Example 2:
+        Input: s = "abcde", t = "a"
+        Output: 0
+        Explanation: t is already a subsequence of s ("abcde").
+        
+        Example 3:
+        Input: s = "z", t = "abcde"
+        Output: 5
+        Explanation: Append the characters "abcde" to the end of s so that s = "zabcde".
+        Now, t is a subsequence of s ("zabcde").
+        It can be shown that appending any 4 characters to the end of s will never make t a subsequence.
+        
+
+        Constraints:
+        1 <= s.length, t.length <= 10^5
+        s and t consist only of lowercase English letters.
+    */
+    public int appendCharacters(String s, String t) {
+        // int i = 0, j = 0;
+        // while(i < s.length() && j < t.length()) {
+        //     if(s.charAt(i) == t.charAt(j)) {
+        //         j++;
+        //     }
+        //     i++;
+        // }
+        // return t.length() - j;
     }
 }
 
