@@ -119,19 +119,19 @@ class Solutions:
         s consists of lowercase and/or uppercase English letters only.
     '''
     def longestPalindrome(self, s: str) -> int:
-        # freq = {}
-        # for char in s:
-        #     if char in freq:
-        #         freq[char] += 1
-        #     else:
-        #         freq[char] = 1
+        freq = {}
+        for char in s:
+            if char in freq:
+                freq[char] += 1
+            else:
+                freq[char] = 1
         
-        # length = 0
-        # for key in freq:
-        #     length += freq[key] // 2 * 2
-        #     if length % 2 == 0 and freq[key] % 2 == 1:
-        #         length += 1
-        # return length    
+        length = 0
+        for key in freq:
+            length += freq[key] // 2 * 2
+            if length % 2 == 0 and freq[key] % 2 == 1:
+                length += 1
+        return length    
 
 class JuneDailyProblems(Solutions):
     def __init__(self):
@@ -167,7 +167,7 @@ class JuneDailyProblems(Solutions):
             elif day == 4:
                 word = input("Enter the string: ")
                 print("The length of the longest palindrome that can be built with the given string is: ", self.longestPalindrome(word))
-                
+
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
                 break
