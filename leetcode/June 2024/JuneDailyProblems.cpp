@@ -97,6 +97,42 @@ class Solution{
         }
         return t.length() - longestPrefix;
     }
+
+
+    // Day 4: Longest Palindrome - Q409(Easy)
+    /*
+        Given a string s which consists of lowercase or uppercase letters, return the length of the longest palindrome that can be built with those letters.
+
+        Letters are case sensitive, for example, "Aa" is not considered a palindrome here.
+
+        Example 1:
+        Input: s = "abccccdd"
+        Output: 7
+        Explanation:
+        One longest palindrome that can be built is "dccaccd", whose length is 7.
+
+        Example 2:
+        Input: s = "a"
+        Output: 1
+
+        Example 3:
+        Input: s = "bb"
+        Output: 2
+
+        Constraints:
+        1 <= s.length <= 2000
+        s consists of lowercase and/or uppercase English letters only.
+    */
+    int longestPalindrome(string s) {
+        // unordered_map<char,int> mp;
+        // for(auto c:s) mp[c]++;
+        // int ans = 0;
+        // for(auto p:mp){
+        //     ans += p.second/2*2;
+        //     if(ans%2==0 && p.second%2==1) ans++;
+        // }
+        // return ans;
+    }
 };
 
 class JuneDailyProblems: public Solution{
@@ -114,6 +150,7 @@ class JuneDailyProblems: public Solution{
             cout << "Day 1: Score of the String\n";
             cout << "Day 2: Reverse String\n";
             cout << "Day 3: Append Characters to String to Make Subsequence\n";
+            cout << "Day 4: Longest Palindrome\n";
             cout << "88: Exit" << '\n';
             int day; cin >> day;
             switch(day){
@@ -137,6 +174,12 @@ class JuneDailyProblems: public Solution{
                     cout << "Enter the two words\n";
                     string s1,s2; cin >> s1 >> s2;
                     cout << "The minimum number of characters that need to be appended to the end of " << s1 << " so that " << s2 << " becomes a subsequence of " << s1 << " is : " << s.appendCharacters(s1,s2) << '\n';
+                    break;
+                }
+                case 4:{
+                    cout << "Enter the word\n";
+                    string word; cin >> word;
+                    cout << "The length of the longest palindrome that can be built with the word " << word << " is : " << s.longestPalindrome(word) << '\n';
                     break;
                 }
                 case 88:{
