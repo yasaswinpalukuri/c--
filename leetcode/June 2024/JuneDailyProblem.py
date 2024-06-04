@@ -93,7 +93,45 @@ class Solutions:
                 j += 1
             i += 1
         return len(t) - j
+    
+    # Day 4: Longest Palindrome - Q409(Easy)
+    '''
+        Given a string s which consists of lowercase or uppercase letters, return the length of the longest palindrome that can be built with those letters.
+
+        Letters are case sensitive, for example, "Aa" is not considered a palindrome here.
+
+        Example 1:
+        Input: s = "abccccdd"
+        Output: 7
+        Explanation:
+        One longest palindrome that can be built is "dccaccd", whose length is 7.
+
+        Example 2:
+        Input: s = "a"
+        Output: 1
+
+        Example 3:
+        Input: s = "bb"
+        Output: 2
+
+        Constraints:
+        1 <= s.length <= 2000
+        s consists of lowercase and/or uppercase English letters only.
+    '''
+    def longestPalindrome(self, s: str) -> int:
+        # freq = {}
+        # for char in s:
+        #     if char in freq:
+        #         freq[char] += 1
+        #     else:
+        #         freq[char] = 1
         
+        # length = 0
+        # for key in freq:
+        #     length += freq[key] // 2 * 2
+        #     if length % 2 == 0 and freq[key] % 2 == 1:
+        #         length += 1
+        # return length    
 
 class JuneDailyProblems(Solutions):
     def __init__(self):
@@ -109,6 +147,7 @@ class JuneDailyProblems(Solutions):
             print("Day 1: Score of a String")
             print("Day 2: Reverse String")
             print("Day 3: Append Characters to String to Make Subsequence")
+            print("Day 4: Longest Palindrome")
             print("88. Exit")
             day = int(input("Enter your choice: "))
             if day == 1:
@@ -125,6 +164,10 @@ class JuneDailyProblems(Solutions):
                 t = input("Enter the second string: ")
                 print("The minimum number of characters that need to be appended to the end of s so that t becomes a subsequence of s is: ", self.appendChracters(s, t))
 
+            elif day == 4:
+                word = input("Enter the string: ")
+                print("The length of the longest palindrome that can be built with the given string is: ", self.longestPalindrome(word))
+                
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
                 break
