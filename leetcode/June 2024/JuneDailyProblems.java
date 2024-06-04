@@ -16,6 +16,7 @@ public class JuneDailyProblems extends Solution {
             System.out.println("Day 1: Score of the String");
             System.out.println("Day 2: Reverse String");
             System.out.println("Day 3: Append Characters to String to Make Subsequence");
+            System.out.println("Day 4: Longest Palindrome");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch (day) {
@@ -39,6 +40,12 @@ public class JuneDailyProblems extends Solution {
                     System.out.println("Enter the second word");
                     String word2 = scan.next();
                     System.out.println("The minimum number of characters that need to be appended to the end of " + word1 + " so that " + word2 + " becomes a subsequence of " + word1 + " is: " + s.appendCharacters(word1, word2));
+                    break;
+                }
+                case 4: {
+                    System.out.println("Enter the word");
+                    String word = scan.next();
+                    System.out.println("The length of the longest palindrome that can be built with the word " + word + " is: " + s.longestPalindrome(word));
                     break;
                 }
                 case 88: {
@@ -159,6 +166,45 @@ class Solution {
             i++;
         }
         return t.length() - j;
+    }
+
+    // Day 4: Longest Palindrome - Q409(Easy)
+    /*
+        Given a string s which consists of lowercase or uppercase letters, return the length of the longest palindrome that can be built with those letters.
+
+        Letters are case sensitive, for example, "Aa" is not considered a palindrome here.
+
+        Example 1:
+        Input: s = "abccccdd"
+        Output: 7
+        Explanation:
+        One longest palindrome that can be built is "dccaccd", whose length is 7.
+
+        Example 2:
+        Input: s = "a"
+        Output: 1
+
+        Example 3:
+        Input: s = "bb"
+        Output: 2
+
+        Constraints:
+        1 <= s.length <= 2000
+        s consists of lowercase and/or uppercase English letters only.
+    */
+    public int longestPalindrome(String s) {
+        // int[] count = new int[128];
+        // for(char c : s.toCharArray()) {
+        //     count[c]++;
+        // }
+        // int ans = 0;
+        // for(int v : count) {
+        //     ans += v / 2 * 2;
+        //     if(ans % 2 == 0 && v % 2 == 1) {
+        //         ans++;
+        //     }
+        // }
+        // return ans;
     }
 }
 
