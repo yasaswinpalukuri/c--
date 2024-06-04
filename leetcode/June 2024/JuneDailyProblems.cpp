@@ -124,14 +124,14 @@ class Solution{
         s consists of lowercase and/or uppercase English letters only.
     */
     int longestPalindrome(string s) {
-        // unordered_map<char,int> mp;
-        // for(auto c:s) mp[c]++;
-        // int ans = 0;
-        // for(auto p:mp){
-        //     ans += p.second/2*2;
-        //     if(ans%2==0 && p.second%2==1) ans++;
-        // }
-        // return ans;
+        unordered_map<char,int> mp;
+        for(auto c:s) mp[c]++;
+        int ans = 0;
+        for(auto p:mp){
+            ans += p.second/2*2;
+            if(ans%2==0 && p.second%2==1) ans++;
+        }
+        return ans;
     }
 };
 
