@@ -131,7 +131,42 @@ class Solutions:
             length += freq[key] // 2 * 2
             if length % 2 == 0 and freq[key] % 2 == 1:
                 length += 1
-        return length    
+        return length
+
+    # Day 5: Find Common Characters - Q1002(Easy)
+    '''
+        Given an array words of strings made only from lowercase letters, return a list of all characters that show up in all strings within the list (including duplicates). 
+        For example, if a character occurs 3 times in all strings but not 4 times, you need to include that character three times in the final answer.
+
+        You may return the answer in any order.
+
+        Example 1:
+        Input: words = ["bella","label","roller"]
+        Output: ["e","l","l"]
+        
+        Example 2:
+        Input: words = ["cool","lock","cook"]
+        Output: ["c","o"]
+        
+
+        Constraints:
+        1 <= words.length <= 100
+        1 <= words[i].length <= 100
+        words[i] consists of lowercase English letters.
+    '''
+    def commonChars(self, words: list) -> list:
+        # freq = [float('inf')] * 26
+        # for word in words:
+        #     temp = [0] * 26
+        #     for char in word:
+        #         temp[ord(char) - ord('a')] += 1
+        #     for i in range(26):
+        #         freq[i] = min(freq[i], temp[i])
+        
+        # result = []
+        # for i in range(26):
+        #     result.extend([chr(i + ord('a'))] * freq[i])
+        # return result
 
 class JuneDailyProblems(Solutions):
     def __init__(self):
@@ -148,6 +183,7 @@ class JuneDailyProblems(Solutions):
             print("Day 2: Reverse String")
             print("Day 3: Append Characters to String to Make Subsequence")
             print("Day 4: Longest Palindrome")
+            print("Day 5: Find Common Characters")
             print("88. Exit")
             day = int(input("Enter your choice: "))
             if day == 1:
@@ -168,6 +204,10 @@ class JuneDailyProblems(Solutions):
                 word = input("Enter the string: ")
                 print("The length of the longest palindrome that can be built with the given string is: ", self.longestPalindrome(word))
 
+            elif day == 5:
+                words = list(input("Enter the list of words: ").split())
+                print("The list of all characters that show up in all strings within the list is: ", self.commonChars(words))
+                
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
                 break
