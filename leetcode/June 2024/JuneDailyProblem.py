@@ -155,18 +155,18 @@ class Solutions:
         words[i] consists of lowercase English letters.
     '''
     def commonChars(self, words: list) -> list:
-        # freq = [float('inf')] * 26
-        # for word in words:
-        #     temp = [0] * 26
-        #     for char in word:
-        #         temp[ord(char) - ord('a')] += 1
-        #     for i in range(26):
-        #         freq[i] = min(freq[i], temp[i])
+        freq = [float('inf')] * 26
+        for word in words:
+            temp = [0] * 26
+            for char in word:
+                temp[ord(char) - ord('a')] += 1
+            for i in range(26):
+                freq[i] = min(freq[i], temp[i])
         
-        # result = []
-        # for i in range(26):
-        #     result.extend([chr(i + ord('a'))] * freq[i])
-        # return result
+        result = []
+        for i in range(26):
+            result.extend([chr(i + ord('a'))] * freq[i])
+        return result
 
 class JuneDailyProblems(Solutions):
     def __init__(self):
@@ -207,7 +207,7 @@ class JuneDailyProblems(Solutions):
             elif day == 5:
                 words = list(input("Enter the list of words: ").split())
                 print("The list of all characters that show up in all strings within the list is: ", self.commonChars(words))
-                
+
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
                 break
