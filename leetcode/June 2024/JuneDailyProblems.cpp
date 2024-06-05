@@ -133,6 +133,42 @@ class Solution{
         }
         return ans;
     }
+
+
+    // Day 5: Find Common Characters - Q1002(Easy)
+    /*
+        Given an array words of strings made only from lowercase letters, return a list of all characters that show up in all strings within the list (including duplicates). 
+        For example, if a character occurs 3 times in all strings but not 4 times, you need to include that character three times in the final answer.
+
+        You may return the answer in any order.
+
+        Example 1:
+        Input: words = ["bella","label","roller"]
+        Output: ["e","l","l"]
+        
+        Example 2:
+        Input: words = ["cool","lock","cook"]
+        Output: ["c","o"]
+        
+
+        Constraints:
+        1 <= words.length <= 100
+        1 <= words[i].length <= 100
+        words[i] consists of lowercase English letters.
+    */
+    vector<string> commonChars(vector<string>& words) {
+        // vector<int> cnt(26,INT_MAX);
+        // for(auto word:words){
+        //     vector<int> cnt1(26,0);
+        //     for(auto c:word) cnt1[c-'a']++;
+        //     for(int i=0;i<26;i++) cnt[i] = min(cnt[i],cnt1[i]);
+        // }
+        // vector<string> ans;
+        // for(int i=0;i<26;i++){
+        //     for(int j=0;j<cnt[i];j++) ans.push_back(string(1,'a'+i));
+        // }
+        // return ans;
+    }
 };
 
 class JuneDailyProblems: public Solution{
@@ -151,6 +187,7 @@ class JuneDailyProblems: public Solution{
             cout << "Day 2: Reverse String\n";
             cout << "Day 3: Append Characters to String to Make Subsequence\n";
             cout << "Day 4: Longest Palindrome\n";
+            cout << "Day 5: Find Common Characters\n";
             cout << "88: Exit" << '\n';
             int day; cin >> day;
             switch(day){
@@ -180,6 +217,18 @@ class JuneDailyProblems: public Solution{
                     cout << "Enter the word\n";
                     string word; cin >> word;
                     cout << "The length of the longest palindrome that can be built with the word " << word << " is : " << s.longestPalindrome(word) << '\n';
+                    break;
+                }
+                case 5:{
+                    cout << "Enter the number of words\n";
+                    int n; cin >> n;
+                    vector<string> words(n);
+                    cout << "Enter the words\n";
+                    for(int i=0;i<n;i++) cin >> words[i];
+                    vector<string> ans = s.commonChars(words);
+                    cout << "The common characters in the words are : ";
+                    for(auto c:ans) cout << c << " ";
+                    cout << '\n';
                     break;
                 }
                 case 88:{

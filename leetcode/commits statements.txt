@@ -1,7 +1,7 @@
 Adding details of question
-Updating comments and printing statement in MayDailyProblems cpp file.
-Updating comments and printing statement in MayDailyProblems java file.
-Updating comments and printing statement in MayDailyProblems python file.
+Updating comments and printing statement in JuneDailyProblems cpp file.
+Updating comments and printing statement in JuneDailyProblems java file.
+Updating comments and printing statement in JuneDailyProblems python file.
 
 
 Solution added:
