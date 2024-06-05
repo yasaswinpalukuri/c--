@@ -17,6 +17,7 @@ public class JuneDailyProblems extends Solution {
             System.out.println("Day 2: Reverse String");
             System.out.println("Day 3: Append Characters to String to Make Subsequence");
             System.out.println("Day 4: Longest Palindrome");
+            System.out.println("Day 5: Find Common Characters");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch (day) {
@@ -46,6 +47,15 @@ public class JuneDailyProblems extends Solution {
                     System.out.println("Enter the word");
                     String word = scan.next();
                     System.out.println("The length of the longest palindrome that can be built with the word " + word + " is: " + s.longestPalindrome(word));
+                    break;
+                }
+                case 5:{
+                    System.out.println("Enter the number of words");
+                    int n = scan.nextInt();
+                    String[] words = new String[n];
+                    System.out.println("Enter the words");
+                    for(int i = 0; i < n; i++) words[i] = scan.next();
+                    System.out.println("The common characters in the words are: " + s.commonChars(words));
                     break;
                 }
                 case 88: {
@@ -205,6 +215,50 @@ class Solution {
             }
         }
         return ans;
+    }
+
+
+
+    // Day 5: Find Common Characters - Q1002(Easy)
+    /*
+        Given an array words of strings made only from lowercase letters, return a list of all characters that show up in all strings within the list (including duplicates). 
+        For example, if a character occurs 3 times in all strings but not 4 times, you need to include that character three times in the final answer.
+
+        You may return the answer in any order.
+
+        Example 1:
+        Input: words = ["bella","label","roller"]
+        Output: ["e","l","l"]
+        
+        Example 2:
+        Input: words = ["cool","lock","cook"]
+        Output: ["c","o"]
+        
+
+        Constraints:
+        1 <= words.length <= 100
+        1 <= words[i].length <= 100
+        words[i] consists of lowercase English letters.
+    */
+    public List<String> commonChars(String[] words) {
+        // List<String> ans = new ArrayList<>();
+        // int[] minCount = new int[26];
+        // Arrays.fill(minCount, Integer.MAX_VALUE);
+        // for(String word : words) {
+        //     int[] count = new int[26];
+        //     for(char c : word.toCharArray()) {
+        //         count[c - 'a']++;
+        //     }
+        //     for(int i = 0; i < 26; i++) {
+        //         minCount[i] = Math.min(minCount[i], count[i]);
+        //     }
+        // }
+        // for(int i = 0; i < 26; i++) {
+        //     while(minCount[i]-- > 0) {
+        //         ans.add("" + (char)(i + 'a'));
+        //     }
+        // }
+        // return ans;
     }
 }
 
