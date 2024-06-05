@@ -241,24 +241,24 @@ class Solution {
         words[i] consists of lowercase English letters.
     */
     public List<String> commonChars(String[] words) {
-        // List<String> ans = new ArrayList<>();
-        // int[] minCount = new int[26];
-        // Arrays.fill(minCount, Integer.MAX_VALUE);
-        // for(String word : words) {
-        //     int[] count = new int[26];
-        //     for(char c : word.toCharArray()) {
-        //         count[c - 'a']++;
-        //     }
-        //     for(int i = 0; i < 26; i++) {
-        //         minCount[i] = Math.min(minCount[i], count[i]);
-        //     }
-        // }
-        // for(int i = 0; i < 26; i++) {
-        //     while(minCount[i]-- > 0) {
-        //         ans.add("" + (char)(i + 'a'));
-        //     }
-        // }
-        // return ans;
+        List<String> ans = new ArrayList<>();
+        int[] minCount = new int[26];
+        Arrays.fill(minCount, Integer.MAX_VALUE);
+        for(String word : words) {
+            int[] count = new int[26];
+            for(char c : word.toCharArray()) {
+                count[c - 'a']++;
+            }
+            for(int i = 0; i < 26; i++) {
+                minCount[i] = Math.min(minCount[i], count[i]);
+            }
+        }
+        for(int i = 0; i < 26; i++) {
+            while(minCount[i]-- > 0) {
+                ans.add("" + (char)(i + 'a'));
+            }
+        }
+        return ans;
     }
 }
 
