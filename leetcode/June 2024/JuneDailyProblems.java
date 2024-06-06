@@ -18,6 +18,7 @@ public class JuneDailyProblems extends Solution {
             System.out.println("Day 3: Append Characters to String to Make Subsequence");
             System.out.println("Day 4: Longest Palindrome");
             System.out.println("Day 5: Find Common Characters");
+            System.out.println("Day 6: Hand of Straights");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch (day) {
@@ -56,6 +57,17 @@ public class JuneDailyProblems extends Solution {
                     System.out.println("Enter the words");
                     for(int i = 0; i < n; i++) words[i] = scan.next();
                     System.out.println("The common characters in the words are: " + s.commonChars(words));
+                    break;
+                }
+                case 6:{
+                    System.out.println("Enter the number of cards");
+                    int n = scan.nextInt();
+                    int[] cards = new int[n];
+                    System.out.println("Enter the cards");
+                    for(int i = 0; i < n; i++) cards[i] = scan.nextInt();
+                    System.out.println("Enter the group size");
+                    int groupSize = scan.nextInt();
+                    System.out.println("Can the cards be rearranged into groups of " + groupSize + ": " + s.isNStraightHand(cards, groupSize));
                     break;
                 }
                 case 88: {
@@ -259,6 +271,58 @@ class Solution {
             }
         }
         return ans;
+    }
+
+
+    // Day 6: Hand of Straights - Q846(Medium)
+    /*
+        Alice has a hand of cards, given as an array of integers.
+
+        Now she wants to rearrange the cards into groups so that each group is size W, and consists of W consecutive cards.
+
+        Return true if and only if she can.
+
+        Example 1:
+        Input: hand = [1,2,3,6,2,3,4,7,8], W = 3
+        Output: true
+        Explanation: Alice's hand can be rearranged as [1,2,3],[2,3,4],[6,7,8].
+
+        Example 2:
+        Input: hand = [1,2,3,4,5], W = 4
+        Output: false
+        Explanation: Alice's hand can't be rearranged into groups of 4.
+
+        Constraints:
+        1 <= hand.length <= 10000
+        0 <= hand[i] <= 10^9
+        1 <= W <= hand.length
+    */
+    public boolean isNStraightHand(int[] hand, int groupSize) {
+        // if (hand.length % groupSize != 0) {
+        //     return false;
+        // }
+        // Map<Integer, Integer> count = new HashMap<>();
+        // for (int card : hand) {
+        //     count.put(card, count.getOrDefault(card, 0) + 1);
+        // }
+        // int[] sortedKeys = new int[count.size()];
+        // int index = 0;
+        // for (int key : count.keySet()) {
+        //     sortedKeys[index++] = key;
+        // }
+        // Arrays.sort(sortedKeys);
+        // for (int key : sortedKeys) {
+        //     if (count.get(key) > 0) {
+        //         int startCount = count.get(key);
+        //         for (int i = key; i < key + groupSize; i++) {
+        //             if (count.getOrDefault(i, 0) < startCount) {
+        //                 return false;
+        //             }
+        //             count.put(i, count.get(i) - startCount);
+        //         }
+        //     }
+        // }
+        // return true;
     }
 }
 
