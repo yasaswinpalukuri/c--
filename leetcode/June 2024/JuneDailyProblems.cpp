@@ -195,16 +195,16 @@ class Solution{
         1 <= W <= hand.length
     */
     bool isNStraightHand(vector<int>& hand, int W) {
-        // map<int,int> mp;
-        // for(auto h:hand) mp[h]++;
-        // for(auto p:mp){
-        //     if(mp[p.first]>0){
-        //         for(int i=W-1;i>=0;i--){
-        //             if((mp[p.first+i]-=mp[p.first])<0) return false;
-        //         }
-        //     }
-        // }
-        // return true;
+        map<int,int> mp;
+        for(auto h:hand) mp[h]++;
+        for(auto p:mp){
+            if(mp[p.first]>0){
+                for(int i=W-1;i>=0;i--){
+                    if((mp[p.first+i]-=mp[p.first])<0) return false;
+                }
+            }
+        }
+        return true;
     }
 };
 
@@ -277,7 +277,7 @@ class JuneDailyProblems: public Solution{
                     for(int i=0;i<n;i++) cin >> cards[i];
                     cout << "Enter the number of cards in each group\n";
                     int w; cin >> w;
-                    cout << "Is it possible to rearrange the cards into groups of size " << w << " : " << s.isNStraightHand(cards,w) << '\n';
+                    cout << "Is it possible to rearrange the cards into groups of size " << w << " : " << (bool)s.isNStraightHand(cards,w) << '\n';
                     break;
                 }
                 case 88:{
