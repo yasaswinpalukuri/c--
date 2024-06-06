@@ -193,22 +193,22 @@ class Solutions:
         1 <= W <= hand.length
     '''
     def isNStraightHand(self, hand: list, W: int) -> bool:
-        # freq = {}
-        # for card in hand:
-        #     if card in freq:
-        #         freq[card] += 1
-        #     else:
-        #         freq[card] = 1
+        freq = {}
+        for card in hand:
+            if card in freq:
+                freq[card] += 1
+            else:
+                freq[card] = 1
         
-        # for card in sorted(freq):
-        #     if freq[card] > 0:
-        #         for i in range(W - 1, -1, -1):
-        #             if card + i not in freq:
-        #                 return False
-        #             freq[card + i] -= freq[card]
-        #             if freq[card + i] < 0:
-        #                 return False
-        # return True
+        for card in sorted(freq):
+            if freq[card] > 0:
+                for i in range(W - 1, -1, -1):
+                    if card + i not in freq:
+                        return False
+                    freq[card + i] -= freq[card]
+                    if freq[card + i] < 0:
+                        return False
+        return True
 
 class JuneDailyProblems(Solutions):
     def __init__(self):
