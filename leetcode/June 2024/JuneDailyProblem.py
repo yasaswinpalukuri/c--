@@ -167,6 +167,48 @@ class Solutions:
         for i in range(26):
             result.extend([chr(i + ord('a'))] * freq[i])
         return result
+    
+
+    # Day 6: Hand of Straights - Q846(Medium)
+    '''
+        Alice has a hand of cards, given as an array of integers.
+
+        Now she wants to rearrange the cards into groups so that each group is size W, and consists of W consecutive cards.
+
+        Return true if and only if she can.
+
+        Example 1:
+        Input: hand = [1,2,3,6,2,3,4,7,8], W = 3
+        Output: true
+        Explanation: Alice's hand can be rearranged as [1,2,3],[2,3,4],[6,7,8].
+
+        Example 2:
+        Input: hand = [1,2,3,4,5], W = 4
+        Output: false
+        Explanation: Alice's hand can't be rearranged into groups of 4.
+
+        Constraints:
+        1 <= hand.length <= 10000
+        0 <= hand[i] <= 10^9
+        1 <= W <= hand.length
+    '''
+    def isNStraightHand(self, hand: list, W: int) -> bool:
+        # freq = {}
+        # for card in hand:
+        #     if card in freq:
+        #         freq[card] += 1
+        #     else:
+        #         freq[card] = 1
+        
+        # for card in sorted(freq):
+        #     if freq[card] > 0:
+        #         for i in range(W - 1, -1, -1):
+        #             if card + i not in freq:
+        #                 return False
+        #             freq[card + i] -= freq[card]
+        #             if freq[card + i] < 0:
+        #                 return False
+        # return True
 
 class JuneDailyProblems(Solutions):
     def __init__(self):
@@ -184,6 +226,7 @@ class JuneDailyProblems(Solutions):
             print("Day 3: Append Characters to String to Make Subsequence")
             print("Day 4: Longest Palindrome")
             print("Day 5: Find Common Characters")
+            print("Day 6: Hand of Straights")
             print("88. Exit")
             day = int(input("Enter your choice: "))
             if day == 1:
@@ -207,6 +250,11 @@ class JuneDailyProblems(Solutions):
             elif day == 5:
                 words = list(input("Enter the list of words: ").split())
                 print("The list of all characters that show up in all strings within the list is: ", self.commonChars(words))
+
+            elif day == 6:
+                hand = list(map(int, input("Enter the list of integers: ").split()))
+                W = int(input("Enter the value of W: "))
+                print("We can rearrange the given hand of cards into groups of size",W,": ", self.isNStraraightHand(hand, W))
 
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
