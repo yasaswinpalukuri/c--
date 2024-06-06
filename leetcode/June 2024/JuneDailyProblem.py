@@ -253,8 +253,8 @@ class JuneDailyProblems(Solutions):
 
             elif day == 6:
                 hand = list(map(int, input("Enter the list of integers: ").split()))
-                W = int(input("Enter the value of W: "))
-                print("We can rearrange the given hand of cards into groups of size",W,": ", self.isNStraraightHand(hand, W))
+                W = int(input("Enter the value of groupsize: "))
+                print("We can rearrange the given hand of cards into groups of size",W,": ", self.isNStraightHand(hand, W))
 
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
