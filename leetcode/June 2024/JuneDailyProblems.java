@@ -1,5 +1,7 @@
 import java.util.*;
 
+import javax.sound.midi.Soundbank;
+
 public class JuneDailyProblems extends Solution {
     static Scanner scan = new Scanner(System.in);
     public JuneDailyProblems() {
@@ -19,6 +21,7 @@ public class JuneDailyProblems extends Solution {
             System.out.println("Day 4: Longest Palindrome");
             System.out.println("Day 5: Find Common Characters");
             System.out.println("Day 6: Hand of Straights");
+            System.out.println("Day 7: Replace Words");
             System.out.println("88: Exit");
             int day = scan.nextInt();
             switch (day) {
@@ -68,6 +71,17 @@ public class JuneDailyProblems extends Solution {
                     System.out.println("Enter the group size");
                     int groupSize = scan.nextInt();
                     System.out.println("Can the cards be rearranged into groups of " + groupSize + ": " + s.isNStraightHand(cards, groupSize));
+                    break;
+                }
+                case 7:{
+                    System.out.println("Enter the number of words in the dictionary");
+                    int n = scan.nextInt();
+                    List<String> dictionary = new ArrayList<>();
+                    System.out.println("Enter the words in the dictionary");
+                    for(int i = 0; i < n; i++) dictionary.add(scan.next());
+                    System.out.println("Enter the sentence");
+                    String sentence = scan.nextLine();
+                    System.out.println("The sentence after the replacement is: " + s.replaceWords(dictionary, sentence));
                     break;
                 }
                 case 88: {
@@ -321,6 +335,70 @@ class Solution {
             }
         }
         return true;
+    }
+
+
+
+    // Day 7: Replace Words - Q648(Medium)
+    /*
+        In English, we have a concept called root, which can be followed by some other word to form another longer word - let's call this word successor. 
+        For example, when the root "an" is followed by the successor word "other", we can form a new word "another".
+
+        Given a dictionary consisting of many roots and a sentence consisting of words separated by spaces, replace all the successors in the sentence with the root forming it. 
+        If a successor can be replaced by more than one root, replace it with the root that has the shortest length.
+
+        Return the sentence after the replacement.
+
+        Example 1:
+        Input: dictionary = ["cat","bat","rat"], sentence = "the cattle was rattled by the battery"
+        Output: "the cat was rat by the bat"
+        
+        Example 2:
+        Input: dictionary = ["a","b","c"], sentence = "aadsfasf absbs bbab cadsfafs"
+        Output: "a a b c"
+        
+        Example 3:
+        Input: dictionary = ["a", "aa", "aaa", "aaaa"], sentence = "a aa a aaaa aaa aaa aaa aaaaaa bbb baba ababa"
+        Output: "a a a a a a a a bbb baba a"
+        
+        Example 4:
+        Input: dictionary = ["catt","cat","bat","rat"], sentence = "the cattle was rattled by the battery"
+        Output: "the cat was rat by the bat"
+        
+        Example 5:
+        Input: dictionary = ["ac","ab"], sentence = "it is abnormal that this solution is accepted"
+        Output: "it is ab that this solution is ac"
+        
+
+        Constraints:
+        1 <= dictionary.length <= 1000
+        1 <= dictionary[i].length <= 100
+        dictionary[i] consists of only lower-case letters.
+        1 <= sentence.length <= 10^6
+        sentence consists of only lower-case letters and spaces.
+        The number of words in sentence is in the range [1, 1000]
+        The length of each word in sentence is in the range [1, 1000]
+        Each two consecutive words in sentence will be separated by exactly one space.
+        sentence does not have leading or trailing spaces.
+    */
+    public String replaceWords(List<String> dictionary, String sentence) {
+        // String[] wordArray = sentence.split(" ");
+        // Set<String> dictSet = new HashSet<>(dictionary);
+        // for (int i = 0; i < wordArray.length; i++) {
+        //     wordArray[i] = shortestRoot(wordArray[i], dictSet);
+        // }
+
+        // return String.join(" ", wordArray);
+    }
+
+    public String shortestRoot(String word, Set<String> dictSet) {
+        for (int i = 1; i <= word.length(); i++) {
+            String root = word.substring(0, i);
+            if (dictSet.contains(root)) {
+                return root;
+            }
+        }
+        return word;
     }
 }
 
