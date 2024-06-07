@@ -1,7 +1,5 @@
 import java.util.*;
 
-import javax.sound.midi.Soundbank;
-
 public class JuneDailyProblems extends Solution {
     static Scanner scan = new Scanner(System.in);
     public JuneDailyProblems() {
@@ -80,7 +78,7 @@ public class JuneDailyProblems extends Solution {
                     List<String> dictionary = new ArrayList<>();
                     System.out.println("Enter the words in the dictionary");
                     String[] words = scan.next().split(" ");
-                    for(int i = 0; i < words.length; i++) dictionary.add(words[i]);
+                    for(int i = 0; i < n; i++) dictionary.add(words[i]);
                     System.out.println("Enter the sentence");
                     String sentence = scan.nextLine();
                     System.out.println("The sentence after the replacement is: " + s.replaceWords(dictionary, sentence));
