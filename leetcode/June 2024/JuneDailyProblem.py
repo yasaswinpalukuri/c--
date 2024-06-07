@@ -210,6 +210,61 @@ class Solutions:
                         return False
         return True
 
+
+    # Day 7: Replace Words - Q648(Medium)
+    '''
+        In English, we have a concept called root, which can be followed by some other word to form another longer word - let's call this word successor. 
+        For example, when the root "an" is followed by the successor word "other", we can form a new word "another".
+
+        Given a dictionary consisting of many roots and a sentence consisting of words separated by spaces, replace all the successors in the sentence with the root forming it. 
+        If a successor can be replaced by more than one root, replace it with the root that has the shortest length.
+
+        Return the sentence after the replacement.
+
+        Example 1:
+        Input: dictionary = ["cat","bat","rat"], sentence = "the cattle was rattled by the battery"
+        Output: "the cat was rat by the bat"
+        
+        Example 2:
+        Input: dictionary = ["a","b","c"], sentence = "aadsfasf absbs bbab cadsfafs"
+        Output: "a a b c"
+        
+        Example 3:
+        Input: dictionary = ["a", "aa", "aaa", "aaaa"], sentence = "a aa a aaaa aaa aaa aaa aaaaaa bbb baba ababa"
+        Output: "a a a a a a a a bbb baba a"
+        
+        Example 4:
+        Input: dictionary = ["catt","cat","bat","rat"], sentence = "the cattle was rattled by the battery"
+        Output: "the cat was rat by the bat"
+        
+        Example 5:
+        Input: dictionary = ["ac","ab"], sentence = "it is abnormal that this solution is accepted"
+        Output: "it is ab that this solution is ac"
+        
+
+        Constraints:
+        1 <= dictionary.length <= 1000
+        1 <= dictionary[i].length <= 100
+        dictionary[i] consists of only lower-case letters.
+        1 <= sentence.length <= 10^6
+        sentence consists of only lower-case letters and spaces.
+        The number of words in sentence is in the range [1, 1000]
+        The length of each word in sentence is in the range [1, 1000]
+        Each two consecutive words in sentence will be separated by exactly one space.
+        sentence does not have leading or trailing spaces.
+    '''
+    def replaceWords(self, dictionary: list, sentence: str) -> str:
+        # dictionary = set(dictionary)
+        # result = []
+        # for word in sentence.split():
+        #     prefix = ''
+        #     for i in range(len(word)):
+        #         prefix = word[:i]
+        #         if prefix in dictionary:
+        #             break
+        #     result.append(prefix)
+        # return ' '.join(result)
+
 class JuneDailyProblems(Solutions):
     def __init__(self):
         print("Welcome to June Daily Leetcode Problems")
@@ -227,6 +282,7 @@ class JuneDailyProblems(Solutions):
             print("Day 4: Longest Palindrome")
             print("Day 5: Find Common Characters")
             print("Day 6: Hand of Straights")
+            print("Day 7: Replace Words")
             print("88. Exit")
             day = int(input("Enter your choice: "))
             if day == 1:
@@ -255,6 +311,11 @@ class JuneDailyProblems(Solutions):
                 hand = list(map(int, input("Enter the list of integers: ").split()))
                 W = int(input("Enter the value of groupsize: "))
                 print("We can rearrange the given hand of cards into groups of size",W,": ", self.isNStraightHand(hand, W))
+
+            elif day == 7:
+                dictionary = list(input("Enter the list of words: ").split())
+                sentence = input("Enter the sentence: ")
+                print("The sentence after the replacement is: ", self.replaceWords(dictionary, sentence))
 
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
