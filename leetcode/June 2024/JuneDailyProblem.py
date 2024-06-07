@@ -254,16 +254,16 @@ class Solutions:
         sentence does not have leading or trailing spaces.
     '''
     def replaceWords(self, dictionary: list, sentence: str) -> str:
-        # dictionary = set(dictionary)
-        # result = []
-        # for word in sentence.split():
-        #     prefix = ''
-        #     for i in range(len(word)):
-        #         prefix = word[:i]
-        #         if prefix in dictionary:
-        #             break
-        #     result.append(prefix)
-        # return ' '.join(result)
+        dictionary = set(dictionary)
+        result = []
+        for word in sentence.split():
+            prefix = ''
+            for i in range(len(word)):
+                prefix = word[:i]
+                if prefix in dictionary:
+                    break
+            result.append(prefix)
+        return ' '.join(result)
 
 class JuneDailyProblems(Solutions):
     def __init__(self):
