@@ -23,6 +23,7 @@ public class JuneDailyProblems extends Solution {
             System.out.println("Day 6: Hand of Straights");
             System.out.println("Day 7: Replace Words");
             System.out.println("88: Exit");
+            System.out.println("Enter the day of the problem you want the answer for:");
             int day = scan.nextInt();
             switch (day) {
                 case 1: {
@@ -78,7 +79,8 @@ public class JuneDailyProblems extends Solution {
                     int n = scan.nextInt();
                     List<String> dictionary = new ArrayList<>();
                     System.out.println("Enter the words in the dictionary");
-                    for(int i = 0; i < n; i++) dictionary.add(scan.next());
+                    String[] words = scan.next().split(" ");
+                    for(int i = 0; i < words.length; i++) dictionary.add(words[i]);
                     System.out.println("Enter the sentence");
                     String sentence = scan.nextLine();
                     System.out.println("The sentence after the replacement is: " + s.replaceWords(dictionary, sentence));
@@ -382,13 +384,13 @@ class Solution {
         sentence does not have leading or trailing spaces.
     */
     public String replaceWords(List<String> dictionary, String sentence) {
-        // String[] wordArray = sentence.split(" ");
-        // Set<String> dictSet = new HashSet<>(dictionary);
-        // for (int i = 0; i < wordArray.length; i++) {
-        //     wordArray[i] = shortestRoot(wordArray[i], dictSet);
-        // }
+        String[] wordArray = sentence.split(" ");
+        Set<String> dictSet = new HashSet<>(dictionary);
+        for (int i = 0; i < wordArray.length; i++) {
+            wordArray[i] = shortestRoot(wordArray[i], dictSet);
+        }
 
-        // return String.join(" ", wordArray);
+        return String.join(" ", wordArray);
     }
 
     public String shortestRoot(String word, Set<String> dictSet) {
