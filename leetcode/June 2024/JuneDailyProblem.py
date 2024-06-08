@@ -306,18 +306,18 @@ class Solutions:
         1 <= k <= 23^1 - 1
     '''
     def checkSubarraySum(self, nums: list, k: int) -> bool:
-        # prefixSum = 0
-        # prefixSumIndex = {0: -1}
-        # for i in range(len(nums)):
-        #     prefixSum += nums[i]
-        #     if k != 0:
-        #         prefixSum %= k
-        #     if prefixSum in prefixSumIndex:
-        #         if i - prefixSumIndex[prefixSum] > 1:
-        #             return True
-        #     else:
-        #         prefixSumIndex[prefixSum] = i
-        # return False
+        prefixSum = 0
+        prefixSumIndex = {0: -1}
+        for i in range(len(nums)):
+            prefixSum += nums[i]
+            if k != 0:
+                prefixSum %= k
+            if prefixSum in prefixSumIndex:
+                if i - prefixSumIndex[prefixSum] > 1:
+                    return True
+            else:
+                prefixSumIndex[prefixSum] = i
+        return False
 
 class JuneDailyProblems(Solutions):
     def __init__(self):
@@ -375,7 +375,7 @@ class JuneDailyProblems(Solutions):
                 nums = list(map(int, input("Enter the list of integers: ").split()))
                 k = int(input("Enter the value of k: "))
                 print("The given list of integers has a good subarray: ", self.checkSubarraySum(nums, k))
-                
+
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
                 break
