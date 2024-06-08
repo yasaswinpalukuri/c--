@@ -265,6 +265,60 @@ class Solutions:
             result.append(prefix)
         return ' '.join(result)
 
+
+
+    # Day 8: Continuous Subarray Sum - Q523(Medium)
+    '''
+        Given an integer array nums and an integer k, return true if nums has a good subarray or false otherwise.
+
+        A good subarray is a subarray where:
+
+        its length is at least two, and
+        the sum of the elements of the subarray is a multiple of k.
+        Note that:
+
+        A subarray is a contiguous part of the array.
+        An integer x is a multiple of k if there exists an integer n such that x = n * k. 0 is always a multiple of k.
+        
+
+        Example 1:
+
+        Input: nums = [23,2,4,6,7], k = 6
+        Output: true
+        Explanation: [2, 4] is a continuous subarray of size 2 whose elements sum up to 6.
+        Example 2:
+
+        Input: nums = [23,2,6,4,7], k = 6
+        Output: true
+        Explanation: [23, 2, 6, 4, 7] is an continuous subarray of size 5 whose elements sum up to 42.
+        42 is a multiple of 6 because 42 = 7 * 6 and 7 is an integer.
+        Example 3:
+
+        Input: nums = [23,2,6,4,7], k = 13
+        Output: false
+        
+
+        Constraints:
+
+        1 <= nums.length <= 10^5
+        0 <= nums[i] <= 10^9
+        0 <= sum(nums[i]) <= 23^1 - 1
+        1 <= k <= 23^1 - 1
+    '''
+    def checkSubarraySum(self, nums: list, k: int) -> bool:
+        # prefixSum = 0
+        # prefixSumIndex = {0: -1}
+        # for i in range(len(nums)):
+        #     prefixSum += nums[i]
+        #     if k != 0:
+        #         prefixSum %= k
+        #     if prefixSum in prefixSumIndex:
+        #         if i - prefixSumIndex[prefixSum] > 1:
+        #             return True
+        #     else:
+        #         prefixSumIndex[prefixSum] = i
+        # return False
+
 class JuneDailyProblems(Solutions):
     def __init__(self):
         print("Welcome to June Daily Leetcode Problems")
@@ -283,6 +337,7 @@ class JuneDailyProblems(Solutions):
             print("Day 5: Find Common Characters")
             print("Day 6: Hand of Straights")
             print("Day 7: Replace Words")
+            print("Day 8: Continuous Subarray Sum")
             print("88. Exit")
             day = int(input("Enter your choice: "))
             if day == 1:
@@ -316,7 +371,11 @@ class JuneDailyProblems(Solutions):
                 dictionary = list(input("Enter the list of words: ").split())
                 sentence = input("Enter the sentence: ")
                 print("The sentence after the replacement is: ", self.replaceWords(dictionary, sentence))
-
+            elif day == 8:
+                nums = list(map(int, input("Enter the list of integers: ").split()))
+                k = int(input("Enter the value of k: "))
+                print("The given list of integers has a good subarray: ", self.checkSubarraySum(nums, k))
+                
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
                 break
