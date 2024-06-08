@@ -255,9 +255,7 @@ class Solution{
         unordered_set<string> dictSet(dictionary.begin(), dictionary.end());
         string word;
         string newSentence;
-        while (getline(sStream, word, ' ')) {
-            newSentence += shortestRoot(word, dictSet) + " ";
-        }
+        while (getline(sStream, word, ' ')) newSentence += shortestRoot(word, dictSet) + " ";
         newSentence.pop_back();
         return newSentence;
     }
@@ -265,7 +263,7 @@ class Solution{
     string shortestRoot(string word, unordered_set<string> dictSet) {
         for (int i = 1; i <= word.length(); i++) {
             string root = word.substr(0, i);
-            if (dictSet.contains(root)) {
+            if (dictSet.find(root) != dictSet.end()) {
                 return root;
             }
         }
@@ -312,19 +310,19 @@ class Solution{
         1 <= k <= 23^1 - 1
     */
     bool checkSubarraySum(vector<int>& nums, int k) {
-        // int n = nums.size();
-        // if(n<2) return false;
-        // unordered_map<int,int> mp;
-        // mp[0] = -1;
-        // int sum = 0;
-        // for(int i=0;i<n;i++){
-        //     sum += nums[i];
-        //     if(k!=0) sum %= k;
-        //     if(mp.find(sum)!=mp.end()){
-        //         if(i-mp[sum]>1) return true;
-        //     }else mp[sum] = i;
-        // }
-        // return false;
+        int n = nums.size();
+        if(n<2) return false;
+        unordered_map<int,int> mp;
+        mp[0] = -1;
+        int sum = 0;
+        for(int i=0;i<n;i++){
+            sum += nums[i];
+            if(k!=0) sum %= k;
+            if(mp.find(sum)!=mp.end()){
+                if(i-mp[sum]>1) return true;
+            }else mp[sum] = i;
+        }
+        return false;
     }
 };
 
