@@ -349,19 +349,19 @@ class Solution{
         2 <= k <= 104
     */
     int subarraysDivByK(vector<int>& nums, int k) {
-        // int n = nums.size();
-        // if(n==1) return nums[0]%k==0;
-        // unordered_map<int,int> mp;
-        // mp[0] = 1;
-        // int sum = 0, ans = 0;
-        // for(int i=0;i<n;i++){
-        //     sum += nums[i];
-        //     sum %= k;
-        //     if(sum<0) sum += k;
-        //     ans += mp[sum];
-        //     mp[sum]++;
-        // }
-        // return ans;
+        int n = nums.size();
+        if(n==1) return nums[0]%k==0;
+        unordered_map<int,int> mp;
+        mp[0] = 1;
+        int sum = 0, ans = 0;
+        for(int i=0;i<n;i++){
+            sum += nums[i];
+            sum %= k;
+            if(sum<0) sum += k;
+            ans += mp[sum];
+            mp[sum]++;
+        }
+        return ans;
     }
 };
 
