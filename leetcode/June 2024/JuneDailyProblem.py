@@ -318,6 +318,44 @@ class Solutions:
             else:
                 prefixSumIndex[prefixSum] = i
         return False
+    
+
+    # Day 9: Subarray Sums Divisible by K - Q974(Medium)
+    '''
+        Given an integer array nums and an integer k,
+        return the number of non-empty subarrays that have a sum divisible by k.
+        A subarray is a contiguous part of an array.
+
+        Example 1:
+        Input: nums = [4,5,0,-2,-3,1], k = 5
+        Output: 7
+        Explanation: There are 7 subarrays with a sum divisible by k = 5:
+        [4, 5, 0, -2, -3, 1], [5], [5, 0], [5, 0, -2, -3], [0], [0, -2, -3], [-2, -3]
+        
+        
+        Example 2:
+        Input: nums = [5], k = 9
+        Output: 0
+        
+        Constraints:
+        1 <= nums.length <= 3 * 104
+        -104 <= nums[i] <= 104
+        2 <= k <= 104
+    '''
+    def subarraysDivByK(self, nums: list, k: int) -> int:
+        # prefixSum = 0
+        # prefixSumIndex = {0: 1}
+        # count = 0
+        # for i in range(len(nums)):
+        #     prefixSum += nums[i]
+        #     prefixSum %= k
+        #     if prefixSum in prefixSumIndex:
+        #         count += prefixSumIndex[prefixSum]
+        #     if prefixSum in prefixSumIndex:
+        #         prefixSumIndex[prefixSum] += 1
+        #     else:
+        #         prefixSumIndex[prefixSum] = 1
+        # return count
 
 class JuneDailyProblems(Solutions):
     def __init__(self):
@@ -338,6 +376,7 @@ class JuneDailyProblems(Solutions):
             print("Day 6: Hand of Straights")
             print("Day 7: Replace Words")
             print("Day 8: Continuous Subarray Sum")
+            print("Day 9: Subarray Sums Divisible by K")
             print("88. Exit")
             day = int(input("Enter your choice: "))
             if day == 1:
@@ -375,7 +414,12 @@ class JuneDailyProblems(Solutions):
                 nums = list(map(int, input("Enter the list of integers: ").split()))
                 k = int(input("Enter the value of k: "))
                 print("The given list of integers has a good subarray: ", self.checkSubarraySum(nums, k))
-
+            
+            elif day == 9:
+                nums = list(map(int, input("Enter the list of integers: ").split()))
+                k = int(input("Enter the value of k: "))
+                print("The number of non-empty subarrays that have a sum divisible by k is: ", self.subarraysDivByK(nums, k))
+                
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
                 break
