@@ -324,6 +324,45 @@ class Solution{
         }
         return false;
     }
+
+
+    // Day 9: Subarray Sums Divisible by K - Q974(Medium)
+    /*
+        Given an integer array nums and an integer k,
+        return the number of non-empty subarrays that have a sum divisible by k.
+        A subarray is a contiguous part of an array.
+
+        Example 1:
+        Input: nums = [4,5,0,-2,-3,1], k = 5
+        Output: 7
+        Explanation: There are 7 subarrays with a sum divisible by k = 5:
+        [4, 5, 0, -2, -3, 1], [5], [5, 0], [5, 0, -2, -3], [0], [0, -2, -3], [-2, -3]
+        
+        
+        Example 2:
+        Input: nums = [5], k = 9
+        Output: 0
+        
+        Constraints:
+        1 <= nums.length <= 3 * 104
+        -104 <= nums[i] <= 104
+        2 <= k <= 104
+    */
+    int subarraysDivByK(vector<int>& nums, int k) {
+        // int n = nums.size();
+        // if(n==1) return nums[0]%k==0;
+        // unordered_map<int,int> mp;
+        // mp[0] = 1;
+        // int sum = 0, ans = 0;
+        // for(int i=0;i<n;i++){
+        //     sum += nums[i];
+        //     sum %= k;
+        //     if(sum<0) sum += k;
+        //     ans += mp[sum];
+        //     mp[sum]++;
+        // }
+        // return ans;
+    }
 };
 
 class JuneDailyProblems: public Solution{
@@ -346,6 +385,7 @@ class JuneDailyProblems: public Solution{
             cout << "Day 6: Hand of Straights\n";
             cout << "Day 7: Replace Words\n";
             cout << "Day 8: Continuous Subarray Sum\n";
+            cout << "Day 9: Subarrays Divisible by K\n";
             cout << "88: Exit" << '\n';
             int day; cin >> day;
             switch(day){
@@ -420,6 +460,17 @@ class JuneDailyProblems: public Solution{
                     cout << "Enter the value of k\n";
                     int k; cin >> k;
                     cout << "Is there a good subarray in the array : " << (bool)s.checkSubarraySum(nums,k) << '\n';
+                    break;
+                }
+                case 9:{
+                    cout << "Enter the number of elements in the array\n";
+                    int n; cin >> n;
+                    vector<int> nums(n);
+                    cout << "Enter the elements of the array\n";
+                    for(int i=0;i<n;i++) cin >> nums[i];
+                    cout << "Enter the value of k\n";
+                    int k; cin >> k;
+                    cout << "The number of non-empty subarrays that have a sum divisible by " << k << " is : " << s.subarraysDivByK(nums,k) << '\n';
                     break;
                 }
                 case 88:{
