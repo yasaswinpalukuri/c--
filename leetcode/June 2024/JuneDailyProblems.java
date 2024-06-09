@@ -21,6 +21,7 @@ public class JuneDailyProblems extends Solution {
             System.out.println("Day 6: Hand of Straights");
             System.out.println("Day 7: Replace Words");
             System.out.println("Day 8: Continuous Subarray Sum");
+            System.out.println("Day 9: Subarray Sums Divisible by K");
             System.out.println("88: Exit");
             System.out.println("Enter the day of the problem you want the answer for:");
             int day = scan.nextInt();
@@ -94,6 +95,17 @@ public class JuneDailyProblems extends Solution {
                     System.out.println("Enter the value of k");
                     int k = scan.nextInt();
                     System.out.println("Is there a good subarray: " + s.checkSubarraySum(nums, k));
+                    break;
+                }
+                case 9:{
+                    System.out.println("Enter the number of elements in the array");
+                    int n = scan.nextInt();
+                    int[] nums = new int[n];
+                    System.out.println("Enter the elements of the array");
+                    for(int i = 0; i < n; i++) nums[i] = scan.nextInt();
+                    System.out.println("Enter the value of k");
+                    int k = scan.nextInt();
+                    System.out.println("The number of non-empty subarrays that have a sum divisible by k is: " + s.subarraysDivByK(nums, k));
                     break;
                 }
                 case 88: {
@@ -470,6 +482,46 @@ class Solution {
             }
         }
         return false;
+    }
+
+
+
+    // Day 9: Subarray Sums Divisible by K - Q974(Medium)
+    /*
+        Given an integer array nums and an integer k,
+        return the number of non-empty subarrays that have a sum divisible by k.
+        A subarray is a contiguous part of an array.
+
+        Example 1:
+        Input: nums = [4,5,0,-2,-3,1], k = 5
+        Output: 7
+        Explanation: There are 7 subarrays with a sum divisible by k = 5:
+        [4, 5, 0, -2, -3, 1], [5], [5, 0], [5, 0, -2, -3], [0], [0, -2, -3], [-2, -3]
+        
+        
+        Example 2:
+        Input: nums = [5], k = 9
+        Output: 0
+        
+        Constraints:
+        1 <= nums.length <= 3 * 104
+        -104 <= nums[i] <= 104
+        2 <= k <= 104
+    */
+    public int subarraysDivByK(int[] nums, int k) {
+        // Map<Integer, Integer> map = new HashMap<>();
+        // map.put(0, 1);
+        // int sum = 0;
+        // int count = 0;
+        // for (int num : nums) {
+        //     sum = (sum + num) % k;
+        //     if (sum < 0) {
+        //         sum += k;
+        //     }
+        //     count += map.getOrDefault(sum, 0);
+        //     map.put(sum, map.getOrDefault(sum, 0) + 1);
+        // }
+        // return count;
     }
 }
 
