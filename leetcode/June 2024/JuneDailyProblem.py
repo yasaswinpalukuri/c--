@@ -343,19 +343,19 @@ class Solutions:
         2 <= k <= 104
     '''
     def subarraysDivByK(self, nums: list, k: int) -> int:
-        # prefixSum = 0
-        # prefixSumIndex = {0: 1}
-        # count = 0
-        # for i in range(len(nums)):
-        #     prefixSum += nums[i]
-        #     prefixSum %= k
-        #     if prefixSum in prefixSumIndex:
-        #         count += prefixSumIndex[prefixSum]
-        #     if prefixSum in prefixSumIndex:
-        #         prefixSumIndex[prefixSum] += 1
-        #     else:
-        #         prefixSumIndex[prefixSum] = 1
-        # return count
+        prefixSum = 0
+        prefixSumIndex = {0:1}
+        count = 0
+        for i in range(len(nums)):
+            prefixSum += nums[i]
+            prefixSum %= k
+            if prefixSum in prefixSumIndex:
+                count += prefixSumIndex[prefixSum]
+            if prefixSum in prefixSumIndex:
+                prefixSumIndex[prefixSum] += 1
+            else:
+                prefixSumIndex[prefixSum] = 1
+        return count
 
 class JuneDailyProblems(Solutions):
     def __init__(self):
@@ -419,7 +419,7 @@ class JuneDailyProblems(Solutions):
                 nums = list(map(int, input("Enter the list of integers: ").split()))
                 k = int(input("Enter the value of k: "))
                 print("The number of non-empty subarrays that have a sum divisible by k is: ", self.subarraysDivByK(nums, k))
-                
+
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
                 break
