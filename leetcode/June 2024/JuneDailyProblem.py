@@ -397,12 +397,12 @@ class Solutions:
         1 <= heights[i] <= 100
     '''
     def heightChecker(self, heights: list) -> int:
-        # expected = sorted(heights)
-        # count = 0
-        # for i in range(len(heights)):
-        #     if heights[i] != expected[i]:
-        #         count += 1
-        # return count
+        expected = sorted(heights)
+        count = 0
+        for i in range(len(heights)):
+            if heights[i] != expected[i]:
+                count += 1
+        return count
 
 class JuneDailyProblems(Solutions):
     def __init__(self):
@@ -471,7 +471,7 @@ class JuneDailyProblems(Solutions):
             elif day == 10:
                 heights = list(map(int, input("Enter the list of integers: ").split()))
                 print("The number of indices where heights[i] != expected[i] is: ", self.heightChecker(heights))
-                
+
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
                 break
