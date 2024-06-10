@@ -406,11 +406,11 @@ class Solution{
         1 <= heights[i] <= 100
     */
     int heightChecker(vector<int>& heights) {
-        // vector<int> expected = heights;
-        // sort(expected.begin(),expected.end());
-        // int ans = 0;
-        // for(int i=0;i<heights.size();i++) if(heights[i]!=expected[i]) ans++;
-        // return ans;
+        vector<int> expected = heights;
+        sort(expected.begin(),expected.end());
+        int ans = 0;
+        for(int i=0;i<heights.size();i++) if(heights[i]!=expected[i]) ans++;
+        return ans;
     }
 };
 
