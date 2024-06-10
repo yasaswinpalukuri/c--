@@ -22,6 +22,7 @@ public class JuneDailyProblems extends Solution {
             System.out.println("Day 7: Replace Words");
             System.out.println("Day 8: Continuous Subarray Sum");
             System.out.println("Day 9: Subarray Sums Divisible by K");
+            System.out.println("Day 10: Height Checker");
             System.out.println("88: Exit");
             System.out.println("Enter the day of the problem you want the answer for:");
             int day = scan.nextInt();
@@ -106,6 +107,15 @@ public class JuneDailyProblems extends Solution {
                     System.out.println("Enter the value of k");
                     int k = scan.nextInt();
                     System.out.println("The number of non-empty subarrays that have a sum divisible by k is: " + s.subarraysDivByK(nums, k));
+                    break;
+                }
+                case 10:{
+                    System.out.println("Enter the number of students");
+                    int n = scan.nextInt();
+                    int[] heights = new int[n];
+                    System.out.println("Enter the heights of the students");
+                    for(int i = 0; i < n; i++) heights[i] = scan.nextInt();
+                    System.out.println("The number of indices where heights[i] != expected[i] is: " + s.heightChecker(heights));
                     break;
                 }
                 case 88: {
@@ -522,6 +532,59 @@ class Solution {
             map.put(sum, map.getOrDefault(sum, 0) + 1);
         }
         return count;
+    }
+
+
+    // Day 10: Height Checker - Q1051(Easy)
+    /*
+        A school is trying to take an annual photo of all the students. 
+        The students are asked to stand in a single file line in non-decreasing order by height. 
+        Let this ordering be represented by the integer array expected where expected[i] is the expected height of the ith student in line.
+        You are given an integer array heights representing the current order that the students are standing in. 
+        Each heights[i] is the height of the ith student in line (0-indexed).
+        Return the number of indices where heights[i] != expected[i].
+
+        
+
+        Example 1:
+        Input: heights = [1,1,4,2,1,3]
+        Output: 3
+        Explanation: 
+        heights:  [1,1,4,2,1,3]
+        expected: [1,1,1,2,3,4]
+        Indices 2, 4, and 5 do not match.
+        
+        Example 2:
+        Input: heights = [5,1,2,3,4]
+        Output: 5
+        Explanation:
+        heights:  [5,1,2,3,4]
+        expected: [1,2,3,4,5]
+        All indices do not match.
+        
+        Example 3:
+        Input: heights = [1,2,3,4,5]
+        Output: 0
+        Explanation:
+        heights:  [1,2,3,4,5]
+        expected: [1,2,3,4,5]
+        All indices match.
+        
+
+        Constraints:
+        1 <= heights.length <= 100
+        1 <= heights[i] <= 100
+    */
+    public int heightChecker(int[] heights) {
+        // int[] expected = Arrays.copyOf(heights, heights.length);
+        // Arrays.sort(expected);
+        // int count = 0;
+        // for (int i = 0; i < heights.length; i++) {
+        //     if (heights[i] != expected[i]) {
+        //         count++;
+        //     }
+        // }
+        // return count;
     }
 }
 
