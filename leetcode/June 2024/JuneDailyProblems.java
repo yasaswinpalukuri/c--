@@ -24,7 +24,7 @@ public class JuneDailyProblems extends Solution {
             System.out.println("Day 9: Subarray Sums Divisible by K");
             System.out.println("Day 10: Height Checker");
             System.out.println("88: Exit");
-            System.out.println("Enter the day of the problem you want the answer for:");
+            System.out.print("Enter the day of the problem you want the answer for:");
             int day = scan.nextInt();
             switch (day) {
                 case 1: {
@@ -576,15 +576,15 @@ class Solution {
         1 <= heights[i] <= 100
     */
     public int heightChecker(int[] heights) {
-        // int[] expected = Arrays.copyOf(heights, heights.length);
-        // Arrays.sort(expected);
-        // int count = 0;
-        // for (int i = 0; i < heights.length; i++) {
-        //     if (heights[i] != expected[i]) {
-        //         count++;
-        //     }
-        // }
-        // return count;
+        int[] expected = Arrays.copyOf(heights, heights.length);
+        Arrays.sort(expected);
+        int count = 0;
+        for (int i = 0; i < heights.length; i++) {
+            if (heights[i] != expected[i]) {
+                count++;
+            }
+        }
+        return count;
     }
 }
 
