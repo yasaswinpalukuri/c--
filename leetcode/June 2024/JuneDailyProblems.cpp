@@ -363,6 +363,55 @@ class Solution{
         }
         return ans;
     }
+
+
+    // Day 10: Height Checker - Q1051(Easy)
+    /*
+        A school is trying to take an annual photo of all the students. 
+        The students are asked to stand in a single file line in non-decreasing order by height. 
+        Let this ordering be represented by the integer array expected where expected[i] is the expected height of the ith student in line.
+        You are given an integer array heights representing the current order that the students are standing in. 
+        Each heights[i] is the height of the ith student in line (0-indexed).
+        Return the number of indices where heights[i] != expected[i].
+
+        
+
+        Example 1:
+        Input: heights = [1,1,4,2,1,3]
+        Output: 3
+        Explanation: 
+        heights:  [1,1,4,2,1,3]
+        expected: [1,1,1,2,3,4]
+        Indices 2, 4, and 5 do not match.
+        
+        Example 2:
+        Input: heights = [5,1,2,3,4]
+        Output: 5
+        Explanation:
+        heights:  [5,1,2,3,4]
+        expected: [1,2,3,4,5]
+        All indices do not match.
+        
+        Example 3:
+        Input: heights = [1,2,3,4,5]
+        Output: 0
+        Explanation:
+        heights:  [1,2,3,4,5]
+        expected: [1,2,3,4,5]
+        All indices match.
+        
+
+        Constraints:
+        1 <= heights.length <= 100
+        1 <= heights[i] <= 100
+    */
+    int heightChecker(vector<int>& heights) {
+        // vector<int> expected = heights;
+        // sort(expected.begin(),expected.end());
+        // int ans = 0;
+        // for(int i=0;i<heights.size();i++) if(heights[i]!=expected[i]) ans++;
+        // return ans;
+    }
 };
 
 class JuneDailyProblems: public Solution{
@@ -386,6 +435,7 @@ class JuneDailyProblems: public Solution{
             cout << "Day 7: Replace Words\n";
             cout << "Day 8: Continuous Subarray Sum\n";
             cout << "Day 9: Subarrays Divisible by K\n";
+            cout << "Day 10: Height Checker\n";
             cout << "88: Exit" << '\n';
             int day; cin >> day;
             switch(day){
@@ -471,6 +521,15 @@ class JuneDailyProblems: public Solution{
                     cout << "Enter the value of k\n";
                     int k; cin >> k;
                     cout << "The number of non-empty subarrays that have a sum divisible by " << k << " is : " << s.subarraysDivByK(nums,k) << '\n';
+                    break;
+                }
+                case 10:{
+                    cout << "Enter the number of students\n";
+                    int n; cin >> n;
+                    vector<int> heights(n);
+                    cout << "Enter the heights of the students\n";
+                    for(int i=0;i<n;i++) cin >> heights[i];
+                    cout << "The number of indices where the heights do not match the expected heights is : " << s.heightChecker(heights) << '\n';
                     break;
                 }
                 case 88:{
