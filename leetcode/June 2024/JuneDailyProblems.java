@@ -544,8 +544,6 @@ class Solution {
         Each heights[i] is the height of the ith student in line (0-indexed).
         Return the number of indices where heights[i] != expected[i].
 
-        
-
         Example 1:
         Input: heights = [1,1,4,2,1,3]
         Output: 3
