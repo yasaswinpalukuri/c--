@@ -410,6 +410,26 @@ class Solution{
         for(int i=0;i<heights.size();i++) if(heights[i]!=expected[i]) ans++;
         return ans;
     }
+
+
+    
+    // Day 11: Relative Sort Array - Q1122(Easy)
+    /*
+        Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all elements in arr2 are also in arr1.
+
+        Sort the elements of arr1 such that the relative ordering of items in arr1 are the same as in arr2. 
+        Elements that don't appear in arr2 should be placed at the end of arr1 in ascending order.
+
+        Example 1:
+        Input: arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6]
+        Output: [2,2,2,1,4,3,3,9,6,7,19]
+        
+        Constraints:
+        1 <= arr1.length, arr2.length <= 1000
+        0 <= arr1[i], arr2[i] <= 1000
+        All the elements of arr2 are distinct.
+        Each arr2[i] is in arr1.
+    */
 };
 
 class JuneDailyProblems: public Solution{
@@ -434,6 +454,7 @@ class JuneDailyProblems: public Solution{
             cout << "Day 8: Continuous Subarray Sum\n";
             cout << "Day 9: Subarrays Divisible by K\n";
             cout << "Day 10: Height Checker\n";
+            cout << "Day 11: Relative Sort Array\n";
             cout << "88: Exit" << '\n';
             int day; cin >> day;
             switch(day){
@@ -528,6 +549,23 @@ class JuneDailyProblems: public Solution{
                     cout << "Enter the heights of the students\n";
                     for(int i=0;i<n;i++) cin >> heights[i];
                     cout << "The number of indices where the heights do not match the expected heights is : " << s.heightChecker(heights) << '\n';
+                    break;
+                }
+                case 11:{
+                    cout << "Enter the number of elements in the first array\n";
+                    int n; cin >> n;
+                    vector<int> arr1(n);
+                    cout << "Enter the elements of the first array\n";
+                    for(int i=0;i<n;i++) cin >> arr1[i];
+                    cout << "Enter the number of elements in the second array\n";
+                    int m; cin >> m;
+                    vector<int> arr2(m);
+                    cout << "Enter the elements of the second array\n";
+                    for(int i=0;i<m;i++) cin >> arr2[i];
+                    vector<int> ans = s.relativeSortArray(arr1,arr2);
+                    cout << "The relative sorted array is : ";
+                    for(auto c:ans) cout << c << " ";
+                    cout << '\n';
                     break;
                 }
                 case 88:{
