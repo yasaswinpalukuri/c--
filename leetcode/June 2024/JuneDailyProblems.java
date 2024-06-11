@@ -23,6 +23,7 @@ public class JuneDailyProblems extends Solution {
             System.out.println("Day 8: Continuous Subarray Sum");
             System.out.println("Day 9: Subarray Sums Divisible by K");
             System.out.println("Day 10: Height Checker");
+            System.out.println("Day 11: Relative Sort Array");
             System.out.println("88: Exit");
             System.out.print("Enter the day of the problem you want the answer for:");
             int day = scan.nextInt();
@@ -116,6 +117,20 @@ public class JuneDailyProblems extends Solution {
                     System.out.println("Enter the heights of the students");
                     for(int i = 0; i < n; i++) heights[i] = scan.nextInt();
                     System.out.println("The number of indices where heights[i] != expected[i] is: " + s.heightChecker(heights));
+                    break;
+                }
+                case 11:{
+                    System.out.println("Enter the number of elements in the first array");
+                    int n = scan.nextInt();
+                    int[] arr1 = new int[n];
+                    System.out.println("Enter the elements of the first array");
+                    for(int i = 0; i < n; i++) arr1[i] = scan.nextInt();
+                    System.out.println("Enter the number of elements in the second array");
+                    int m = scan.nextInt();
+                    int[] arr2 = new int[m];
+                    System.out.println("Enter the elements of the second array");
+                    for(int i = 0; i < m; i++) arr2[i] = scan.nextInt();
+                    System.out.println("The relative sort array is: " + Arrays.toString(s.relativeSortArray(arr1, arr2)));
                     break;
                 }
                 case 88: {
@@ -583,6 +598,63 @@ class Solution {
             }
         }
         return count;
+    }
+
+
+    // Day 11: Relative Sort Array - Q1122(Easy)
+    /*
+        Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all elements in arr2 are also in arr1.
+
+        Sort the elements of arr1 such that the relative ordering of items in arr1 are the same as in arr2. 
+        Elements that don't appear in arr2 should be placed at the end of arr1 in ascending order.
+
+        Example 1:
+        Input: arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6]
+        Output: [2,2,2,1,4,3,3,9,6,7,19]
+        
+        Constraints:
+        1 <= arr1.length, arr2.length <= 1000
+        0 <= arr1[i], arr2[i] <= 1000
+        All the elements of arr2 are distinct.
+        Each arr2[i] is in arr1.
+    */
+    public int[] relativeSortArray(int[] arr1, int[] arr2) {
+        // HashMap<Integer,Integer> hm = new HashMap<>();
+        // for (int j : arr1) {
+        //     if (hm.containsKey(j)) {
+        //         hm.put(j, hm.get(j) + 1);
+        //     } else {
+        //         hm.put(j, 1);
+        //     }
+        // }
+        // int[] ans = new int[arr1.length];
+        // int cnt=0;
+        // for (int j : arr2) {
+        //     while (hm.get(j) > 0) {
+        //         ans[cnt] = j;
+        //         cnt++;
+        //         hm.put(j, hm.get(j) - 1);
+        //     }
+        //     hm.remove(j);
+        // }
+        // int[] remaining = new int[arr1.length-cnt];
+        // int index = 0;
+        // for (int j : arr1) {
+        //     if (hm.containsKey(j)) {
+        //         while (hm.get(j) > 0) {
+        //             remaining[index] = j;
+        //             index++;
+        //             hm.put(j, hm.get(j) - 1);
+        //         }
+        //         hm.remove(j);
+        //     }
+        // }
+        // Arrays.sort(remaining);
+        // for (int j : remaining) {
+        //     ans[cnt] = j;
+        //     cnt++;
+        // }
+        // return ans;
     }
 }
 
