@@ -430,6 +430,16 @@ class Solution{
         All the elements of arr2 are distinct.
         Each arr2[i] is in arr1.
     */
+    vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
+        unordered_map<int,int> mp;
+        for(int i=0;i<arr2.size();i++) mp[arr2[i]] = i;
+        sort(arr1.begin(),arr1.end(),[&](int a,int b){
+            if(mp.find(a)!=mp.end() || mp.find(b)!=mp.end()) 
+            return mp.find(a)!=mp.end() && mp.find(b)!=mp.end() ? mp[a]<mp[b] : mp.find(a)!=mp.end();
+            return a<b;
+        });
+        return arr1;
+    }
 };
 
 class JuneDailyProblems: public Solution{
