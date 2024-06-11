@@ -404,6 +404,26 @@ class Solutions:
                 count += 1
         return count
 
+
+    # Day 11: Relative Sort Array - Q1122(Easy)
+    '''
+        Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all elements in arr2 are also in arr1.
+
+        Sort the elements of arr1 such that the relative ordering of items in arr1 are the same as in arr2. 
+        Elements that don't appear in arr2 should be placed at the end of arr1 in ascending order.
+
+        Example 1:
+        Input: arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6]
+        Output: [2,2,2,1,4,3,3,9,6,7,19]
+        
+        Constraints:
+        1 <= arr1.length, arr2.length <= 1000
+        0 <= arr1[i], arr2[i] <= 1000
+        All the elements of arr2 are distinct.
+        Each arr2[i] is in arr1.
+    '''
+
+
 class JuneDailyProblems(Solutions):
     def __init__(self):
         print("Welcome to June Daily Leetcode Problems")
@@ -425,6 +445,7 @@ class JuneDailyProblems(Solutions):
             print("Day 8: Continuous Subarray Sum")
             print("Day 9: Subarray Sums Divisible by K")
             print("Day 10: Height Checker")
+            print("Day 11: Relative Sort Array")
             print("88. Exit")
             day = int(input("Enter your choice: "))
             if day == 1:
@@ -471,6 +492,11 @@ class JuneDailyProblems(Solutions):
             elif day == 10:
                 heights = list(map(int, input("Enter the list of integers: ").split()))
                 print("The number of indices where heights[i] != expected[i] is: ", self.heightChecker(heights))
+
+            elif day == 11:
+                arr1 = list(map(int, input("Enter the list of integers: ").split()))
+                arr2 = list(map(int, input("Enter the list of integers: ").split()))
+                print("The sorted elements of arr1 are: ", self.relativeSortArray(arr1, arr2))
 
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
