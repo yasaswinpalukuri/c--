@@ -422,6 +422,20 @@ class Solutions:
         All the elements of arr2 are distinct.
         Each arr2[i] is in arr1.
     '''
+    def relativeSortArray(self, arr1: list, arr2: list) -> list:
+        freq = {}
+        for i in range(len(arr1)):
+            if arr1[i] in freq:
+                freq[arr1[i]] += 1
+            else:
+                freq[arr1[i]] = 1
+        result = []
+        for i in range(len(arr2)):
+            result.extend([arr2[i]] * freq[arr2[i]])
+            del freq[arr2[i]]
+        for key in sorted(freq):
+            result.extend([key] * freq[key])
+        return result
 
 
 class JuneDailyProblems(Solutions):
