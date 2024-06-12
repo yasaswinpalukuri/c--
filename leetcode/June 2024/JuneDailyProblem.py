@@ -437,6 +437,50 @@ class Solutions:
             result.extend([key] * freq[key])
         return result
 
+    
+    # Day 12: Sort Colors - Q75(Medium)
+    '''
+        Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, 
+        with the colors in the order red, white, and blue.
+        We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+
+        You must solve this problem without using the library's sort function.
+
+        Example 1:
+        Input: nums = [2,0,2,1,1,0]
+        Output: [0,0,1,1,2,2]
+        
+        Example 2:
+        Input: nums = [2,0,1]
+        Output: [0,1,2]
+        
+        Example 3:
+        Input: nums = [0]
+        Output: [0]
+        
+        Example 4:
+        Input: nums = [1]
+        Output: [1]
+        
+
+        Constraints:
+        n == nums.length
+        1 <= n <= 300
+        nums[i] is 0, 1, or 2.
+    '''
+    def sortColors(self, nums: list) -> None:
+        # low, mid, high = 0, 0, len(nums) - 1
+        # while mid <= high:
+        #     if nums[mid] == 0:
+        #         nums[low], nums[mid] = nums[mid], nums[low]
+        #         low += 1
+        #         mid += 1
+        #     elif nums[mid] == 1:
+        #         mid += 1
+        #     else:
+        #         nums[mid], nums[high] = nums[high], nums[mid]
+        #         high -= 1
+
 
 class JuneDailyProblems(Solutions):
     def __init__(self):
@@ -460,6 +504,7 @@ class JuneDailyProblems(Solutions):
             print("Day 9: Subarray Sums Divisible by K")
             print("Day 10: Height Checker")
             print("Day 11: Relative Sort Array")
+            print("Day 12: Sort Colors")
             print("88. Exit")
             day = int(input("Enter your choice: "))
             if day == 1:
@@ -511,6 +556,11 @@ class JuneDailyProblems(Solutions):
                 arr1 = list(map(int, input("Enter the list of integers: ").split()))
                 arr2 = list(map(int, input("Enter the list of integers: ").split()))
                 print("The sorted elements of arr1 are: ", self.relativeSortArray(arr1, arr2))
+
+            elif day == 12:
+                nums = list(map(int, input("Enter the list of integers: ").split()))
+                self.sortColors(nums)
+                print("The sorted list of integers is: ", nums)
 
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
