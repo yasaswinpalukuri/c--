@@ -472,6 +472,14 @@ class Solution{
         1 <= n <= 300
         nums[i] is 0, 1, or 2.
     */
+    void sortColors(vector<int>& nums) {
+        int n = nums.size();
+        int low = 0, high = n-1;
+        for(int i=0;i<=high;i++){
+            if(nums[i]==0) swap(nums[i],nums[low++]);
+            else if(nums[i]==2) swap(nums[i--],nums[high--]);
+        }
+    }
 };
 
 class JuneDailyProblems: public Solution{
