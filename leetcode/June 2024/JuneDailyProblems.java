@@ -12,7 +12,6 @@ public class JuneDailyProblems extends Solution {
     public static void solutions() {
         Solution s = new Solution();
         while (true) {
-            System.out.println("Enter the day of the problem you want the answer for or 88 to Exit:");
             System.out.println("Day 1: Score of the String");
             System.out.println("Day 2: Reverse String");
             System.out.println("Day 3: Append Characters to String to Make Subsequence");
@@ -26,7 +25,7 @@ public class JuneDailyProblems extends Solution {
             System.out.println("Day 11: Relative Sort Array");
             System.out.println("Day 12: Sort Colors");
             System.out.println("88: Exit");
-            System.out.print("Enter the day of the problem you want the answer for:");
+            System.out.print("Enter the day of the problem you want the answer for or 88 to Exit:");
             int day = scan.nextInt();
             switch (day) {
                 case 1: {
@@ -699,6 +698,16 @@ class Solution {
         1 <= n <= 300
         nums[i] is 0, 1, or 2.
     */
+    public void sortColors(int[] nums) {
+        int z=0,o=0,n = nums.length;
+        for(int i:nums){
+            if(i == 0) z++;
+            else if(i == 1) o++;
+        }
+        for(int i=0;i<z;i++) nums[i] = 0;
+        for(int i=z;i<z+o;i++) nums[i] = 1;
+        for(int i=o+z;i<n;i++) nums[i] = 2;
+    }
 }
 
 
