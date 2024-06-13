@@ -24,6 +24,7 @@ public class JuneDailyProblems extends Solution {
             System.out.println("Day 10: Height Checker");
             System.out.println("Day 11: Relative Sort Array");
             System.out.println("Day 12: Sort Colors");
+            System.out.println("Day 13: Minimum Number of Moves to Seat Everyone");
             System.out.println("88: Exit");
             System.out.print("Enter the day of the problem you want the answer for or 88 to Exit:");
             int day = scan.nextInt();
@@ -141,6 +142,20 @@ public class JuneDailyProblems extends Solution {
                     for(int i = 0; i < n; i++) nums[i] = scan.nextInt();
                     s.sortColors(nums);
                     System.out.println("The sorted array is: " + Arrays.toString(nums));
+                    break;
+                }
+                case 13:{
+                    System.out.println("Enter the number of seats");
+                    int n = scan.nextInt();
+                    int[] seats = new int[n];
+                    System.out.println("Enter the positions of the seats");
+                    for(int i = 0; i < n; i++) seats[i] = scan.nextInt();
+                    System.out.println("Enter the number of students");
+                    int m = scan.nextInt();
+                    int[] students = new int[m];
+                    System.out.println("Enter the positions of the students");
+                    for(int i = 0; i < m; i++) students[i] = scan.nextInt();
+                    System.out.println("The minimum number of moves required to move each student to a seat such that no two students are in the same seat is: " + s.minMovesToSeat(seats, students));
                     break;
                 }
                 case 88: {
@@ -707,6 +722,56 @@ class Solution {
         for(int i=0;i<z;i++) nums[i] = 0;
         for(int i=z;i<z+o;i++) nums[i] = 1;
         for(int i=o+z;i<n;i++) nums[i] = 2;
+    }
+
+
+    // Day 13: Minimum Number of Moves to Seat Everyone - Q2037(Easy)
+    /*
+        There are n seats and n students in a room. You are given an array seats of length n, where seats[i] is the position of the ith seat. 
+        You are also given the array students of length n, where students[j] is the position of the jth student.
+
+        You may perform the following move any number of times:
+
+        Increase or decrease the position of the ith student by 1 (i.e., moving the ith student from position x to x + 1 or x - 1)
+        Return the minimum number of moves required to move each student to a seat such that no two students are in the same seat.
+
+        Note that there may be multiple seats or students in the same position at the beginning.
+
+        Example 1:
+        Input: seats = [3,1,5], students = [2,7,4]
+        Output: 4
+        Explanation: The students are moved as follows:
+        - The first student is moved from from position 2 to position 1 using 1 move.
+        - The second student is moved from from position 7 to position 5 using 2 moves.
+        - The third student is moved from from position 4 to position 3 using 1 move.
+        In total, 1 + 2 + 1 = 4 moves were used.
+        
+        Example 2:
+        Input: seats = [4,1,5,9], students = [1,3,2,6]
+        Output: 7
+        Explanation: The students are moved as follows:
+        - The first student is not moved.
+        - The second student is moved from from position 3 to position 4 using 1 move.
+        - The third student is moved from from position 2 to position 1 using 1 move.
+        - The fourth student is moved from from position 6 to position 9 using 3 moves.
+        In total, 0 + 1 + 1 + 3 = 5 moves were used.
+        
+        Example 3:
+        Input: seats = [2,2,6], students = [1,3,2]
+        Output: 4
+        Explanation: The students are moved as follows:
+        - The first student is moved from from position 1 to position 2 using 1 move.
+        - The second student is not moved.
+        - The third student is moved from from position 2 to position 6 using 3 moves.
+    */
+    public int minMovesToSeat(int[] seats, int[] students) {
+        // Arrays.sort(seats);
+        // Arrays.sort(students);
+        // int ans = 0;
+        // for(int i = 0; i < seats.length; i++) {
+        //     ans += Math.abs(seats[i] - students[i]);
+        // }
+        // return ans;
     }
 }
 
