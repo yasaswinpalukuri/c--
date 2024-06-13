@@ -480,6 +480,53 @@ class Solutions:
             else:
                 nums[mid], nums[high] = nums[high], nums[mid]
                 high -= 1
+    
+    # Day 13: Minimum Number of Moves to Seat Everyone - Q2037(Easy)
+    '''
+        There are n seats and n students in a room. You are given an array seats of length n, where seats[i] is the position of the ith seat. 
+        You are also given the array students of length n, where students[j] is the position of the jth student.
+
+        You may perform the following move any number of times:
+
+        Increase or decrease the position of the ith student by 1 (i.e., moving the ith student from position x to x + 1 or x - 1)
+        Return the minimum number of moves required to move each student to a seat such that no two students are in the same seat.
+
+        Note that there may be multiple seats or students in the same position at the beginning.
+
+        Example 1:
+        Input: seats = [3,1,5], students = [2,7,4]
+        Output: 4
+        Explanation: The students are moved as follows:
+        - The first student is moved from from position 2 to position 1 using 1 move.
+        - The second student is moved from from position 7 to position 5 using 2 moves.
+        - The third student is moved from from position 4 to position 3 using 1 move.
+        In total, 1 + 2 + 1 = 4 moves were used.
+        
+        Example 2:
+        Input: seats = [4,1,5,9], students = [1,3,2,6]
+        Output: 7
+        Explanation: The students are moved as follows:
+        - The first student is not moved.
+        - The second student is moved from from position 3 to position 4 using 1 move.
+        - The third student is moved from from position 2 to position 1 using 1 move.
+        - The fourth student is moved from from position 6 to position 9 using 3 moves.
+        In total, 0 + 1 + 1 + 3 = 5 moves were used.
+        
+        Example 3:
+        Input: seats = [2,2,6], students = [1,3,2]
+        Output: 4
+        Explanation: The students are moved as follows:
+        - The first student is moved from from position 1 to position 2 using 1 move.
+        - The second student is not moved.
+        - The third student is moved from from position 2 to position 6 using 3 moves.
+    '''
+    def minMovesToSeat(self, seats: list, students: list) -> int:
+        # seats.sort()
+        # students.sort()
+        # moves = 0
+        # for i in range(len(seats)):
+        #     moves += abs(seats[i] - students[i])
+        # return moves
 
 
 class JuneDailyProblems(Solutions):
@@ -505,6 +552,7 @@ class JuneDailyProblems(Solutions):
             print("Day 10: Height Checker")
             print("Day 11: Relative Sort Array")
             print("Day 12: Sort Colors")
+            print("Day 13: Minimum Number of Moves to Seat Everyone")
             print("88. Exit")
             day = int(input("Enter your choice: "))
             if day == 1:
@@ -561,6 +609,11 @@ class JuneDailyProblems(Solutions):
                 nums = list(map(int, input("Enter the list of integers: ").split()))
                 self.sortColors(nums)
                 print("The sorted list of integers is: ", nums)
+
+            elif day == 13:
+                seats = list(map(int, input("Enter the list of integers: ").split()))
+                students = list(map(int, input("Enter the list of integers: ").split()))
+                print("The minimum number of moves required to move each student to a seat such that no two students are in the same seat is: ", self.minMovesToSeat(seats, students))
 
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
