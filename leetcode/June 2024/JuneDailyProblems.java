@@ -765,13 +765,13 @@ class Solution {
         - The third student is moved from from position 2 to position 6 using 3 moves.
     */
     public int minMovesToSeat(int[] seats, int[] students) {
-        // Arrays.sort(seats);
-        // Arrays.sort(students);
-        // int ans = 0;
-        // for(int i = 0; i < seats.length; i++) {
-        //     ans += Math.abs(seats[i] - students[i]);
-        // }
-        // return ans;
+        Arrays.sort(seats);
+        Arrays.sort(students);
+        int ans = 0;
+        for(int i = 0; i < seats.length; i++) {
+            ans += Math.abs(seats[i] - students[i]);
+        }
+        return ans;
     }
 }
 
