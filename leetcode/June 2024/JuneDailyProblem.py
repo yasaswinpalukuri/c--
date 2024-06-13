@@ -521,12 +521,12 @@ class Solutions:
         - The third student is moved from from position 2 to position 6 using 3 moves.
     '''
     def minMovesToSeat(self, seats: list, students: list) -> int:
-        # seats.sort()
-        # students.sort()
-        # moves = 0
-        # for i in range(len(seats)):
-        #     moves += abs(seats[i] - students[i])
-        # return moves
+        seats.sort()
+        students.sort()
+        moves = 0
+        for i in range(len(seats)):
+            moves += abs(seats[i] - students[i])
+        return moves
 
 
 class JuneDailyProblems(Solutions):
