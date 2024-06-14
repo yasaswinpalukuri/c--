@@ -528,6 +528,34 @@ class Solution{
         for(int i=0;i<seats.size();i++) ans += abs(seats[i]-students[i]);
         return ans;
     }
+
+
+    // Day 14: Minimum Increment to Make Array Unique - Q945(Medium)
+    /*
+        You are given an integer array nums. In one move, you can pick an index i where 0 <= i < nums.length and increment nums[i] by 1.
+
+        Return the minimum number of moves to make every value in nums unique.
+
+        The test cases are generated so that the answer fits in a 32-bit integer.
+
+        
+
+        Example 1:
+        Input: nums = [1,2,2]
+        Output: 1
+        Explanation: After 1 move, the array could be [1, 2, 3].
+        
+        Example 2:
+        Input: nums = [3,2,1,2,1,7]
+        Output: 6
+        Explanation: After 6 moves, the array could be [3, 4, 1, 2, 5, 7].
+        It can be shown with 5 or less moves that it is impossible for the array to have all unique values.
+        
+
+        Constraints:
+        1 <= nums.length <= 105
+        0 <= nums[i] <= 105
+    */
 };
 
 class JuneDailyProblems: public Solution{
@@ -555,6 +583,7 @@ class JuneDailyProblems: public Solution{
             cout << "Day 11: Relative Sort Array\n";
             cout << "Day 12: Sort Colors\n";
             cout << "Day 13: Minimum Number of Moves to Seat Everyone\n";
+            cout << "Day 14: Minimum Increment to Make Array Unique\n";
             cout << "88: Exit" << '\n';
             int day; cin >> day;
             switch(day){
@@ -692,6 +721,15 @@ class JuneDailyProblems: public Solution{
                     cout << "Enter the positions of the students\n";
                     for(int i=0;i<m;i++) cin >> students[i];
                     cout << "The minimum number of moves required to move each student to a seat such that no two students are in the same seat is : " << s.minMovesToSeat(seats,students) << '\n';
+                    break;
+                }
+                case 14:{
+                    cout << "Enter the number of elements in the array\n";
+                    int n; cin >> n;
+                    vector<int> nums(n);
+                    cout << "Enter the elements of the array\n";
+                    for(int i=0;i<n;i++) cin >> nums[i];
+                    cout << "The minimum number of moves required to make every value in the array unique is : " << s.minIncrementForUnique(nums) << '\n';
                     break;
                 }
                 case 88:{
