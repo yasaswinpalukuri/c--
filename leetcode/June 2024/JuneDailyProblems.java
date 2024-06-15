@@ -25,6 +25,7 @@ public class JuneDailyProblems extends Solution {
             System.out.println("Day 11: Relative Sort Array");
             System.out.println("Day 12: Sort Colors");
             System.out.println("Day 13: Minimum Number of Moves to Seat Everyone");
+            System.out.println("Day 14: Minimum Increment to Make Array Unique");
             System.out.println("88: Exit");
             System.out.print("Enter the day of the problem you want the answer for or 88 to Exit:");
             int day = scan.nextInt();
@@ -156,6 +157,15 @@ public class JuneDailyProblems extends Solution {
                     System.out.println("Enter the positions of the students");
                     for(int i = 0; i < m; i++) students[i] = scan.nextInt();
                     System.out.println("The minimum number of moves required to move each student to a seat such that no two students are in the same seat is: " + s.minMovesToSeat(seats, students));
+                    break;
+                }
+                case 14:{
+                    System.out.println("Enter the number of elements in the array");
+                    int n = scan.nextInt();
+                    int[] nums = new int[n];
+                    System.out.println("Enter the elements of the array");
+                    for(int i = 0; i < n; i++) nums[i] = scan.nextInt();
+                    System.out.println("The minimum number of moves to make every value in the array unique is: " + s.minIncrementForUnique(nums));
                     break;
                 }
                 case 88: {
@@ -772,6 +782,51 @@ class Solution {
             ans += Math.abs(seats[i] - students[i]);
         }
         return ans;
+    }
+
+
+    // Day 14: Minimum Increment to Make Array Unique - Q945(Medium)
+    /*
+        You are given an integer array nums. In one move, you can pick an index i where 0 <= i < nums.length and increment nums[i] by 1.
+
+        Return the minimum number of moves to make every value in nums unique.
+
+        The test cases are generated so that the answer fits in a 32-bit integer.
+
+        
+
+        Example 1:
+        Input: nums = [1,2,2]
+        Output: 1
+        Explanation: After 1 move, the array could be [1, 2, 3].
+        
+        Example 2:
+        Input: nums = [3,2,1,2,1,7]
+        Output: 6
+        Explanation: After 6 moves, the array could be [3, 4, 1, 2, 5, 7].
+        It can be shown with 5 or less moves that it is impossible for the array to have all unique values.
+        
+
+        Constraints:
+        1 <= nums.length <= 105
+        0 <= nums[i] <= 105
+    */
+    public int minIncrementForUnique(int[] nums) {
+        // int[] count = new int[100000];
+        // for (int x : nums) {
+        //     count[x]++;
+        // }
+        // int ans = 0, taken = 0;
+        // for (int x = 0; x < 100000; ++x) {
+        //     if (count[x] >= 2) {
+        //         taken += count[x] - 1;
+        //         ans -= x * (count[x] - 1);
+        //     } else if (taken > 0 && count[x] == 0) {
+        //         taken--;
+        //         ans += x;
+        //     }
+        // }
+        // return ans;
     }
 }
 
