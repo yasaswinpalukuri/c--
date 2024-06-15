@@ -527,6 +527,42 @@ class Solutions:
         for i in range(len(seats)):
             moves += abs(seats[i] - students[i])
         return moves
+    
+
+    # Day 14: Minimum Increment to Make Array Unique - Q945(Medium)
+    '''
+        You are given an integer array nums. In one move, you can pick an index i where 0 <= i < nums.length and increment nums[i] by 1.
+
+        Return the minimum number of moves to make every value in nums unique.
+
+        The test cases are generated so that the answer fits in a 32-bit integer.
+
+        
+
+        Example 1:
+        Input: nums = [1,2,2]
+        Output: 1
+        Explanation: After 1 move, the array could be [1, 2, 3].
+        
+        Example 2:
+        Input: nums = [3,2,1,2,1,7]
+        Output: 6
+        Explanation: After 6 moves, the array could be [3, 4, 1, 2, 5, 7].
+        It can be shown with 5 or less moves that it is impossible for the array to have all unique values.
+        
+
+        Constraints:
+        1 <= nums.length <= 105
+        0 <= nums[i] <= 105
+    '''
+    def minIncrementForUnique(self, nums: list) -> int:
+        # nums.sort()
+        # moves = 0
+        # for i in range(1, len(nums)):
+        #     if nums[i] <= nums[i - 1]:
+        #         moves += nums[i - 1] - nums[i] + 1
+        #         nums[i] = nums[i - 1] + 1
+        # return moves
 
 
 class JuneDailyProblems(Solutions):
@@ -553,6 +589,7 @@ class JuneDailyProblems(Solutions):
             print("Day 11: Relative Sort Array")
             print("Day 12: Sort Colors")
             print("Day 13: Minimum Number of Moves to Seat Everyone")
+            print("Day 14: Minimum Increment to Make Array Unique")
             print("88. Exit")
             day = int(input("Enter your choice: "))
             if day == 1:
@@ -614,6 +651,10 @@ class JuneDailyProblems(Solutions):
                 seats = list(map(int, input("Enter the list of integers: ").split()))
                 students = list(map(int, input("Enter the list of integers: ").split()))
                 print("The minimum number of moves required to move each student to a seat such that no two students are in the same seat is: ", self.minMovesToSeat(seats, students))
+            
+            elif day == 14:
+                nums = list(map(int, input("Enter the list of integers: ").split()))
+                print("The minimum number of moves to make every value in nums unique is: ", self.minIncrementForUnique(nums))
 
             elif day == 88:
                 print("Thank you for using the June Daily Leetcode Problems:)")
