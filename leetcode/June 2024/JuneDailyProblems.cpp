@@ -569,6 +569,389 @@ class Solution{
         }
         return ans;
     }
+
+
+    // Day 15: IPO - Q502(Hard)
+    /*
+        Suppose LeetCode will start its IPO soon. In order to sell a good price of its shares to Venture Capital, LeetCode would like to work on some projects to increase its capital before the IPO. 
+        Since it has limited resources, it can only finish at most k distinct projects before the IPO. Help LeetCode design the best way to maximize its total capital after finishing at most k distinct projects.
+
+        You are given n projects where the ith project has a pure profit profits[i] and a minimum capital of capital[i] is needed to start it.
+
+        Initially, you have w capital. When you finish a project, you will obtain its pure profit and the profit will be added to your total capital.
+
+        Pick a list of at most k distinct projects from given projects to maximize your final capital, and return the final maximized capital.
+
+        The answer is guaranteed to fit in a 32-bit signed integer.
+
+        Example 1:
+        Input: k = 2, w = 0, profits = [1,2,3], capital = [0,1,1]
+        Output: 4
+        Explanation: Since your initial capital is 0, you can only start the project indexed 0.
+        After finishing it you will obtain profit 1 and your capital becomes 1.
+        With capital 1, you can either start the project indexed 1 or the project indexed 2.
+        Since you can choose at most 2 projects, you need to start the project indexed 2 to get the maximum capital.
+        Therefore, the final capital is 0 + 1 + 3 = 4.
+        
+        Example 2:
+        Input: k = 3, w = 0, profits = [1,2,3], capital = [0,1,2]
+        Output: 6
+        
+
+        Constraints:
+        1 <= k <= 10^5
+        0 <= w <= 10^9
+        n == profits.length
+        n == capital.length
+        1 <= n <= 10^5
+        0 <= profits[i] <= 10^4
+        0 <= capital[i] <= 10^9
+    */
+    int findMaximizedCapital(int k, int w, vector<int>& profits, vector<int>& capital) {
+        int n = profits.size();
+        vector<pair<int,int>> projects;
+        for(int i=0;i<n;i++) projects.push_back({capital[i],profits[i]});
+        sort(projects.begin(),projects.end());
+        priority_queue<int> pq;
+        int i = 0;
+        for(int j=0;j<k;j++){
+            while(i<n && projects[i].first<=w){
+                pq.push(projects[i].second);
+                i++;
+            }
+            if(!pq.empty()){
+                w += pq.top();
+                pq.pop();
+            }else break;
+        }
+        return w;
+    }
+
+
+    // Day 16: Patching Array - Q330(Hard)
+    /*
+        Given a sorted integer array nums and an integer n, 
+        add/patch elements to the array such that any number in the range [1, n] 
+        inclusive can be formed by the sum of some elements in the array.
+        Return the minimum number of patches required.
+
+        Example 1:
+        Input: nums = [1,3], n = 6
+        Output: 1
+        Explanation:
+        Combinations of nums are [1], [3], [1,3], which form possible sums of: 1, 3, 4.
+        Now if we add/patch 2 to nums, the combinations are: [1], [2], [3], [1,3], [2,3], [1,2,3].
+        Possible sums are 1, 2, 3, 4, 5, 6, which now covers the range [1, 6].
+        So we only need 1 patch.
+        
+        Example 2:
+        Input: nums = [1,5,10], n = 20
+        Output: 2
+        Explanation: The two patches can be [2, 4].
+        
+        Example 3:
+        Input: nums = [1,2,2], n = 5
+        Output: 0
+
+        Constraints:
+        1 <= nums.length <= 1000
+        1 <= nums[i] <= 104
+        nums is sorted in ascending order.
+        1 <= n <= 231 - 1
+    */
+    int minPatches(vector<int>& nums, int n) {
+        long missing = 1;
+        int patches = 0;
+        int index = 0;
+
+        while (missing <= n) {
+            if (index < nums.size() && nums[index] <= missing) {
+                missing += nums[index];
+                index++;
+            } else {
+                missing += missing;
+                patches++;
+            }
+        }
+
+        return patches;
+    }
+
+
+    // Day 17: Sum of Square Numbers - Q633(Medium)
+    /*
+        Given a non-negative integer c, decide whether there're two integers a and b such that a^2 + b^2 = c.
+        Example 1:
+
+        Input: c = 5
+        Output: true
+        Explanation: 1 * 1 + 2 * 2 = 5
+        Example 2:
+
+        Input: c = 3
+        Output: false
+        
+
+        Constraints:
+
+        0 <= c <= 2^31 - 1
+    */
+    bool judgeSquareSum(int c) {
+        for (int divisor = 2; divisor * divisor <= c; divisor++) {
+            if (c % divisor == 0) {
+                int exponentCount = 0;
+                while (c % divisor == 0) {
+                    exponentCount++;
+                    c /= divisor;
+                }
+                if (divisor % 4 == 3 && exponentCount % 2 != 0) {
+                    return false;
+                }
+            }
+        }
+        return c % 4 != 3;
+    }
+
+
+
+    // Day 18: Most Profit Assigning Work - Q826(Meidum)
+    /*
+        You have n jobs and m workers. You are given three arrays: difficulty, profit, and worker where:
+        difficulty[i] and profit[i] are the difficulty and the profit of the ith job, and
+        worker[j] is the ability of jth worker (i.e., the jth worker can only complete a job with difficulty at most worker[j]).
+        Every worker can be assigned at most one job, but one job can be completed multiple times.
+
+        For example, if three workers attempt the same job that pays $1, then the total profit will be $3. If a worker cannot complete any job, their profit is $0.
+        Return the maximum profit we can achieve after assigning the workers to the jobs.
+
+        
+
+        Example 1:
+
+        Input: difficulty = [2,4,6,8,10], profit = [10,20,30,40,50], worker = [4,5,6,7]
+        Output: 100
+        Explanation: Workers are assigned jobs of difficulty [4,4,6,6] and they get a profit of [20,20,30,30] separately.
+        Example 2:
+
+        Input: difficulty = [85,47,57], profit = [24,66,99], worker = [40,25,25]
+        Output: 0
+        
+
+        Constraints:
+
+        n == difficulty.length
+        n == profit.length
+        m == worker.length
+        1 <= n, m <= 104
+        1 <= difficulty[i], profit[i], worker[i] <= 105
+    */
+    int maxProfitAssignment(vector<int>& difficulty, vector<int>& profit, vector<int>& worker) {
+        int maxDifficulty = *max_element(difficulty.begin(), difficulty.end());
+        vector<int> maxProfitUpToDifficulty(maxDifficulty + 1, 0);
+
+        for (int i = 0; i < difficulty.size(); ++i) {
+            maxProfitUpToDifficulty[difficulty[i]] = max(maxProfitUpToDifficulty[difficulty[i]], profit[i]);
+        }
+
+        for (int i = 1; i <= maxDifficulty; ++i) {
+            maxProfitUpToDifficulty[i] = max(maxProfitUpToDifficulty[i], maxProfitUpToDifficulty[i - 1]);
+        }
+
+        int totalProfit = 0;
+        for (int ability : worker) {
+            if (ability > maxDifficulty) {
+                totalProfit += maxProfitUpToDifficulty[maxDifficulty];
+            } else {
+                totalProfit += maxProfitUpToDifficulty[ability];
+            }
+        }
+
+        return totalProfit;
+    }
+
+
+    // Day 19: Minimum Number of Days to Make m Bouquets - Q1482(Medium)
+    /*
+        You are given an integer array bloomDay, an integer m and an integer k.
+        You want to make m bouquets. To make a bouquet, you need to use k adjacent flowers from the garden.
+        The garden consists of n flowers, the ith flower will bloom in the bloomDay[i] and then can be used in exactly one bouquet.
+        Return the minimum number of days you need to wait to be able to make m bouquets from the garden. If it is impossible to make m bouquets return -1.
+
+        
+        Example 1:
+        Input: bloomDay = [1,10,3,10,2], m = 3, k = 1
+        Output: 3
+        Explanation: Let us see what happened in the first three days. x means flower bloomed and _ means flower did not bloom in the garden.
+        We need 3 bouquets each should contain 1 flower.
+        After day 1: [x, _, _, _, _]   // we can only make one bouquet.
+        After day 2: [x, _, _, _, x]   // we can only make two bouquets.
+        After day 3: [x, _, x, _, x]   // we can make 3 bouquets. The answer is 3.
+        
+        Example 2:
+        Input: bloomDay = [1,10,3,10,2], m = 3, k = 2
+        Output: -1
+        Explanation: We need 3 bouquets each has 2 flowers, that means we need 6 flowers. We only have 5 flowers so it is impossible to get the needed bouquets and we return -1.
+        
+        Example 3:
+        Input: bloomDay = [7,7,7,7,12,7,7], m = 2, k = 3
+        Output: 12
+        Explanation: We need 2 bouquets each should have 3 flowers.
+        Here is the garden after the 7 and 12 days:
+        After day 7: [x, x, x, x, _, x, x]
+        We can make one bouquet of the first three flowers that bloomed. We cannot make another bouquet from the last three flowers that bloomed because they are not adjacent.
+        After day 12: [x, x, x, x, x, x, x]
+        It is obvious that we can make two bouquets in different ways.
+        
+        Constraints:
+        bloomDay.length == n
+        1 <= n <= 105
+        1 <= bloomDay[i] <= 109
+        1 <= m <= 106
+        1 <= k <= n
+    */
+    int minDays(vector<int>& bloomDay, int m, int k) {
+        if ((long long)m * k > bloomDay.size()) {
+            return -1;
+        }
+
+        int low = 1, high = 1e9;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+
+            if (canMakeBouquets(bloomDay, m, k, mid)) {
+                high = mid;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        return low;
+    }
+    bool canMakeBouquets(vector<int>& bloomDay, int m, int k, int day) {
+        int total = 0;
+        for (int i = 0; i < bloomDay.size(); i++) {
+            int count = 0;
+            while (i < bloomDay.size() && count < k && bloomDay[i] <= day) {
+                count++;
+                i++;
+            }
+
+            if (count == k) {
+                total++;
+                i--;
+            }
+
+            if (total >= m) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    // Day 20: Magnetic Force Between Two Balls - Q1552(Medium)
+    /*
+        In the universe Earth C-137, Rick discovered a special form of magnetic force between two balls if they are put in his new invented basket. Rick has n empty baskets, the ith basket is at position[i], Morty has m balls and needs to distribute the balls into the baskets such that the minimum magnetic force between any two balls is maximum.
+        Rick stated that magnetic force between two different balls at positions x and y is |x - y|.
+        Given the integer array position and the integer m. Return the required force.
+
+        Example 1:
+        Input: position = [1,2,3,4,7], m = 3
+        Output: 3
+        Explanation: Distributing the 3 balls into baskets 1, 4 and 7 will make the magnetic force between ball pairs [3, 3, 6]. The minimum magnetic force is 3. We cannot achieve a larger minimum magnetic force than 3.
+        
+        Example 2:
+        Input: position = [5,4,3,2,1,1000000000], m = 2
+        Output: 999999999
+        Explanation: We can use baskets 1 and 1000000000.
+        
+        Constraints:
+        n == position.length
+        2 <= n <= 10^5
+        1 <= position[i] <= 10^9
+        All integers in position are distinct.
+        2 <= m <= position.length
+    */
+    int maxDistance(vector<int>& position, int m) {
+        sort(position.begin(), position.end());
+        int lo = 1;
+        int hi = (position.back() - position[0]) / (m - 1);
+        int ans = 1;
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (canWePlace(position, mid, m)) {
+                ans = mid;
+                lo = mid + 1;
+            } else {
+                hi = mid - 1;
+            }
+        }
+        return ans;
+    }
+    bool canWePlace(const vector<int>& arr, int dist, int balls) {
+        int countBalls = 1;
+        int lastPlaced = arr[0];
+        for (int i = 1; i < arr.size(); i++) {
+            if (arr[i] - lastPlaced >= dist) {
+                countBalls++;
+                lastPlaced = arr[i];
+            }
+            if (countBalls >= balls) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    // Day 21: Grumpy Bookstore Owner - Q1052(Medium)
+    /*
+        There is a bookstore owner that has a store open for n minutes. Every minute, some number of customers enter the store. You are given an integer array customers of length n where customers[i] is the number of the customer that enters the store at the start of the ith minute and all those customers leave after the end of that minute.
+        On some minutes, the bookstore owner is grumpy. You are given a binary array grumpy where grumpy[i] is 1 if the bookstore owner is grumpy during the ith minute, and is 0 otherwise.
+        When the bookstore owner is grumpy, the customers of that minute are not satisfied, otherwise, they are satisfied.
+        The bookstore owner knows a secret technique to keep themselves not grumpy for minutes consecutive minutes, but can only use it once.
+        Return the maximum number of customers that can be satisfied throughout the day.
+
+        Example 1:
+        Input: customers = [1,0,1,2,1,1,7,5], grumpy = [0,1,0,1,0,1,0,1], minutes = 3
+        Output: 16
+        Explanation: The bookstore owner keeps themselves not grumpy for the last 3 minutes. 
+        The maximum number of customers that can be satisfied = 1 + 1 + 1 + 1 + 7 + 5 = 16.
+        
+        Example 2:
+        Input: customers = [1], grumpy = [0], minutes = 1
+        Output: 1
+        
+        Constraints:
+        n == customers.length == grumpy.length
+        1 <= minutes <= n <= 2 * 104
+        0 <= customers[i] <= 1000
+        grumpy[i] is either 0 or 1.
+    */
+    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {
+        int initialSatisfaction = 0;
+        int maxExtraSatisfaction = 0;
+        int currentWindowSatisfaction = 0;
+        
+        for (int i = 0; i < customers.size(); ++i) {
+            if (grumpy[i] == 0) {
+                initialSatisfaction += customers[i];
+            } else if (i < minutes) {
+                currentWindowSatisfaction += customers[i];
+            }
+        }
+        
+        maxExtraSatisfaction = currentWindowSatisfaction;
+        
+        for (int i = minutes; i < customers.size(); ++i) {
+            currentWindowSatisfaction += customers[i] * grumpy[i];
+            currentWindowSatisfaction -= customers[i - minutes] * grumpy[i - minutes];
+            maxExtraSatisfaction = max(maxExtraSatisfaction, currentWindowSatisfaction);
+        }
+        
+        return initialSatisfaction + maxExtraSatisfaction;   
+    }
 };
 
 class JuneDailyProblems: public Solution{
@@ -597,6 +980,13 @@ class JuneDailyProblems: public Solution{
             cout << "Day 12: Sort Colors\n";
             cout << "Day 13: Minimum Number of Moves to Seat Everyone\n";
             cout << "Day 14: Minimum Increment to Make Array Unique\n";
+            cout << "Day 15: IPO\n";
+            cout << "Day 16: Patching Array\n";
+            cout << "Day 17: Sum of Square Numbers\n";
+            cout << "Day 18: Most Profit Assigning Work\n";
+            cout << "Day 19: Minimum Number of Days to Make m Bouquets\n";
+            cout << "Day 20: Magnetic Force Between Two Balls\n";
+            cout << "Day 21: Grumpy Bookstore Owner\n";
             cout << "88: Exit" << '\n';
             int day; cin >> day;
             switch(day){
@@ -743,6 +1133,93 @@ class JuneDailyProblems: public Solution{
                     cout << "Enter the elements of the array\n";
                     for(int i=0;i<n;i++) cin >> nums[i];
                     cout << "The minimum number of moves required to make every value in the array unique is : " << s.minIncrementForUnique(nums) << '\n';
+                    break;
+                }
+                case 15:{
+                    cout << "Enter the value of k\n";
+                    int k; cin >> k;
+                    cout << "Enter the value of w\n";
+                    int w; cin >> w;
+                    cout << "Enter the number of projects\n";
+                    int n; cin >> n;
+                    vector<int> profits(n), capital(n);
+                    cout << "Enter the profits of the projects\n";
+                    for(int i=0;i<n;i++) cin >> profits[i];
+                    cout << "Enter the capital of the projects\n";
+                    for(int i=0;i<n;i++) cin >> capital[i];
+                    cout << "Enter the initial capital\n";
+                    int c; cin >> c;
+                    cout << "The final maximized capital is : " << s.findMaximizedCapital(k,c,profits,capital) << '\n';
+                    break;
+                }
+                case 16:{
+                    cout << "Enter the number of elements in the array\n";
+                    int n; cin >> n;
+                    vector<int> nums(n);
+                    cout << "Enter the elements of the array\n";
+                    for(int i=0;i<n;i++) cin >> nums[i];
+                    cout << "Enter the value of n\n";
+                    int m; cin >> m;
+                    cout << "The minimum number of days you need to wait to be able to make " << m << " bouquets from the garden is : " << s.minDays(nums,m) << '\n';
+                    break;
+                }
+                case 17:{
+                    cout << "Enter the value of c\n";
+                    int c; cin >> c;
+                    cout << "Is there a pair of integers a and b such that a^2 + b^2 = " << c << " : " << (bool)s.judgeSquareSum(c) << '\n';
+                    break;
+                }
+                case 18:{
+                    cout << "Enter the number of jobs\n";
+                    int n; cin >> n;
+                    vector<int> difficulty(n), profit(n);
+                    cout << "Enter the difficulties of the jobs\n";
+                    for(int i=0;i<n;i++) cin >> difficulty[i];
+                    cout << "Enter the profits of the jobs\n";
+                    for(int i=0;i<n;i++) cin >> profit[i];
+                    cout << "Enter the number of workers\n";
+                    int m; cin >> m;
+                    vector<int> worker(m);
+                    cout << "Enter the abilities of the workers\n";
+                    for(int i=0;i<m;i++) cin >> worker[i];
+                    cout << "The maximum profit we can achieve after assigning the workers to the jobs is : " << s.maxProfitAssignment(difficulty,profit,worker) << '\n';
+                    break;
+                }
+                case 19:{
+                    cout << "Enter the number of elements in the array\n";
+                    int n; cin >> n;
+                    vector<int> bloomDay(n);
+                    cout << "Enter the elements of the array\n";
+                    for(int i=0;i<n;i++) cin >> bloomDay[i];
+                    cout << "Enter the number of bouquets\n";
+                    int m; cin >> m;
+                    cout << "Enter the number of flowers in each bouquet\n";
+                    int k; cin >> k;
+                    cout << "The minimum number of days you need to wait to be able to make " << m << " bouquets from the garden is : " << s.minPatches(bloomDay,m,k) << '\n';
+                    break;
+                }
+                case 20:{
+                    cout << "Enter the number of elements in the array\n";
+                    int n; cin >> n;
+                    vector<int> position(n);
+                    cout << "Enter the elements of the array\n";
+                    for(int i=0;i<n;i++) cin >> position[i];
+                    cout << "Enter the number of balls\n";
+                    int m; cin >> m;
+                    cout << "The maximum distance between the balls is : " << s.maxDistance(position,m) << '\n';
+                    break;
+                }
+                case 21:{
+                    cout << "Enter the number of minutes the store is open\n";
+                    int n; cin >> n;
+                    vector<int> customers(n), grumpy(n);
+                    cout << "Enter the number of customers entering the store at the start of each minute\n";
+                    for(int i=0;i<n;i++) cin >> customers[i];
+                    cout << "Enter the grumpiness of the store owner during each minute\n";
+                    for(int i=0;i<n;i++) cin >> grumpy[i];
+                    cout << "Enter the number of minutes the store owner can keep themselves not grumpy\n";
+                    int minutes; cin >> minutes;
+                    cout << "The maximum number of customers that can be satisfied throughout the day is : " << s.maxSatisfied(customers,grumpy,minutes) << '\n';
                     break;
                 }
                 case 88:{
