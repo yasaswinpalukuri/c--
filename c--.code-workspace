@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": "A:/my repo/c--"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"algorithm": "cpp",
+			"iostream": "cpp",
+			"fstream": "cpp"
+		}
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			
+
+		]
+	}
+}
