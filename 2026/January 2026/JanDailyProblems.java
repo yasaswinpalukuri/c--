@@ -1,6 +1,4 @@
 import java.util.*;
-import java.math.*;
-import javax.swing.*;
 
 public class JanDailyProblems {
     class ListNode{
